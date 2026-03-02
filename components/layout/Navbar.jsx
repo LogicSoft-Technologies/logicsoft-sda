@@ -1,12 +1,20 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search, ChevronDown, Phone, Mail, ArrowRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-// ── Dropdown data ─────────────────────────────────────────────────────────────
+// ── Search data (adjust path to match your project) ───────────────────────────
+import { searchSite, POPULAR_SEARCHES, getCategoryColor } from "@/lib/search-index";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ORIGINAL DATA — unchanged
+// ─────────────────────────────────────────────────────────────────────────────
+
 const DROPDOWNS = {
   about: {
     featured: {
@@ -89,11 +97,11 @@ const DROPDOWNS = {
       {
         title: "Other Services",
         links: [
-          ["DevOps",           "/services/other-services/devops"                            ],
-          ["Cloud Engineering","/services/other-services/cloud-engineering" ],
-          ["Data Analytics",   "/services/other-services/data-analytics"    ],
-          ["Consultation",     "/services/other-services/consultation"      ],
-          ["Cost Optimization","/services/other-services/cost-optimization" ],
+          ["DevOps",           "/services/other-services/devops"             ],
+          ["Cloud Engineering","/services/other-services/cloud-engineering"  ],
+          ["Data Analytics",   "/services/other-services/data-analytics"     ],
+          ["Consultation",     "/services/other-services/consultation"       ],
+          ["Cost Optimization","/services/other-services/cost-optimization"  ],
         ],
       },
     ],
@@ -102,44 +110,263 @@ const DROPDOWNS = {
 
 const NAV_LINKS = ["about", "services", "industries", "technologies", "portfolio"];
 
-// ── Animations ────────────────────────────────────────────────────────────────
 const dropdownVariants = {
   hidden:  { opacity: 0, y: -8  },
   visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: "easeOut" } },
   exit:    { opacity: 0, y: -6, transition: { duration: 0.18, ease: "easeIn"  } },
 };
 
-// ── Component ─────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// SEARCH OVERLAY — new component, self-contained
+// ─────────────────────────────────────────────────────────────────────────────
+
+function SearchOverlay({ query, onClose }) {
+  const router   = useRouter();
+  const [active, setActive] = useState(-1);           // keyboard selected index
+  const results  = query.trim() ? searchSite(query) : [];
+  const flatHrefs = results.map((r) => r.href);
+
+  // Navigate and close
+  const go = useCallback((href) => {
+    router.push(href);
+    onClose();
+  }, [router, onClose]);
+
+  // Full search page (Enter with nothing selected, or explicit)
+  const goSearch = useCallback(() => {
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      onClose();
+    }
+  }, [query, router, onClose]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handle = (e) => {
+      if (e.key === "Escape")     { onClose(); return; }
+      if (e.key === "ArrowDown")  { e.preventDefault(); setActive((i) => Math.min(i + 1, flatHrefs.length - 1)); }
+      if (e.key === "ArrowUp")    { e.preventDefault(); setActive((i) => Math.max(i - 1, -1)); }
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (active >= 0 && flatHrefs[active]) go(flatHrefs[active]);
+        else goSearch();
+      }
+    };
+    window.addEventListener("keydown", handle);
+    return () => window.removeEventListener("keydown", handle);
+  }, [active, flatHrefs, go, goSearch, onClose]);
+
+  // Reset active on new query
+  useEffect(() => setActive(-1), [query]);
+
+  // Group by category (preserves relevance order within each group)
+  const grouped = results.reduce((acc, item) => {
+    (acc[item.category] = acc[item.category] || []).push(item);
+    return acc;
+  }, {});
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -6, scale: 0.99 }}
+      animate={{ opacity: 1, y: 0,  scale: 1    }}
+      exit={   { opacity: 0, y: -4, scale: 0.99 }}
+      transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+      className="absolute right-0 top-[calc(100%+6px)] w-[480px] max-h-[70vh] overflow-y-auto bg-white border border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.13)] z-[200]"
+      style={{ scrollbarWidth: "thin" }}
+    >
+
+      {/* ── Empty query: popular searches ── */}
+      {!query.trim() && (
+        <div className="p-4">
+          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.14em] mb-3">
+            Popular searches
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {POPULAR_SEARCHES.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => go(item.href)}
+                className="text-[12px] font-semibold text-[#1f3a5f] border border-[#e8eef6] bg-[#f8fafd] px-3 py-1.5 hover:border-[#1f6fb2]/40 hover:text-[#1f6fb2] hover:bg-[#eff6ff] transition-all duration-150"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <div className="mt-4 pt-3 border-t border-[#f1f5f9]">
+            <Link href="/services" onClick={onClose}
+              className="text-[12px] font-semibold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors flex items-center gap-1.5">
+              Browse all services <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* ── Has query, has results ── */}
+      {query.trim() && results.length > 0 && (
+        <>
+          {/* Sticky header */}
+          <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#f1f5f9] px-4 py-2 flex items-center justify-between z-10">
+            <p className="text-[10.5px] font-bold text-gray-400 uppercase tracking-[0.11em]">
+              {results.length} result{results.length !== 1 ? "s" : ""}
+              <span className="normal-case font-normal text-gray-500"> for </span>
+              <span className="text-[#1f3a5f] normal-case">"{query}"</span>
+            </p>
+            <button onClick={goSearch}
+              className="text-[11px] font-semibold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors flex items-center gap-1">
+              See all <ArrowRight className="w-2.5 h-2.5" />
+            </button>
+          </div>
+
+          {/* Results grouped by category */}
+          {Object.entries(grouped).map(([category, items]) => {
+            const c = getCategoryColor(category);
+            return (
+              <div key={category}>
+                {/* Category label */}
+                <div className="flex items-center gap-2 px-4 pt-3 pb-1">
+                  <span className="w-[6px] h-[6px] rounded-full shrink-0" style={{ background: c.dot }} />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.16em]" style={{ color: c.text }}>
+                    {category}
+                  </span>
+                </div>
+
+                {/* Items */}
+                {items.map((item) => {
+                  const idx      = flatHrefs.indexOf(item.href);
+                  const isActive = active === idx;
+                  // Highlight matched portion in title
+                  const q       = query.toLowerCase();
+                  const tl      = item.title.toLowerCase();
+                  const matchAt = tl.indexOf(q);
+
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => go(item.href)}
+                      onMouseEnter={() => setActive(idx)}
+                      className={`w-full text-left flex items-start gap-3 px-4 py-2.5 transition-colors duration-75 ${
+                        isActive ? "bg-[#f0f7ff]" : "hover:bg-[#f8fafd]"
+                      }`}
+                    >
+                      {/* Colour dot accent */}
+                      <div className="w-[3px] self-stretch shrink-0 mt-0.5 rounded-full" style={{ background: isActive ? c.dot : "transparent", minHeight: 20 }} />
+
+                      <div className="flex-1 min-w-0">
+                        {/* Title with inline highlight */}
+                        <p className={`text-[13.5px] font-semibold leading-snug ${isActive ? "text-[#1f6fb2]" : "text-[#1f3a5f]"}`}>
+                          {matchAt >= 0 ? (
+                            <>
+                              {item.title.slice(0, matchAt)}
+                              <mark className="bg-[#fef9c3] text-[#78350f] rounded-[2px] px-[1px] not-italic font-bold">
+                                {item.title.slice(matchAt, matchAt + query.length)}
+                              </mark>
+                              {item.title.slice(matchAt + query.length)}
+                            </>
+                          ) : item.title}
+                        </p>
+                        {/* Breadcrumb + description */}
+                        <p className="text-[10.5px] text-gray-400 mt-0.5 leading-none truncate">
+                          {item.section}
+                        </p>
+                        <p className="text-[12px] text-gray-500 mt-1 leading-snug line-clamp-1">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* Arrow — only visible on active */}
+                      <ArrowRight className={`w-3.5 h-3.5 mt-1 shrink-0 transition-opacity ${isActive ? "opacity-100 text-[#1f6fb2]" : "opacity-0"}`} />
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })}
+
+          {/* Footer — full search page link */}
+          <div className="sticky bottom-0 bg-[#f8fafd] border-t border-[#e8eef6] px-4 py-2.5 flex items-center justify-between">
+            <p className="text-[11px] text-gray-400">↑↓ navigate  ·  Enter to go</p>
+            <button onClick={goSearch}
+              className="text-[11.5px] font-semibold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors flex items-center gap-1.5">
+              Full results for "{query}" <ArrowRight className="w-3 h-3" />
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* ── Has query, no results ── */}
+      {query.trim() && results.length === 0 && (
+        <div className="px-5 py-10 text-center">
+          <Search className="w-8 h-8 text-gray-200 mx-auto mb-3" />
+          <p className="text-[14px] font-semibold text-[#1f3a5f] mb-1">
+            No results for "{query}"
+          </p>
+          <p className="text-[12.5px] text-gray-400 mb-5 max-w-[240px] mx-auto">
+            Try different keywords, or browse our services directly.
+          </p>
+          <Link href="/services" onClick={onClose}
+            className="inline-flex items-center gap-2 text-[12.5px] font-bold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors">
+            Browse all services <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 const Navbar = () => {
-  const [clicked,   setClicked]   = useState("");
-  const [scrolled,  setScrolled]  = useState(false);
-  const [searchOpen,setSearchOpen]= useState(false);
-  const [query,     setQuery]     = useState("");
-  const searchRef = useRef(null);
-  const pathname  = usePathname();
+  const [clicked,    setClicked]    = useState("");
+  const [scrolled,   setScrolled]   = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query,      setQuery]      = useState("");
 
-  const isHome        = pathname === "/";
+  const searchRef    = useRef(null);
+  const searchWrapRef = useRef(null); 
+  const pathname     = usePathname();
+
+  const isHome         = pathname === "/";
   const isDropdownOpen = clicked !== "";
-  const showSolid     = !isHome || scrolled || isDropdownOpen;
+  const showSolid      = !isHome || scrolled || isDropdownOpen;
 
+  // ── scroll listener — original ────────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setClicked(""); setSearchOpen(false); }, [pathname]);
+  // ── close on route change — original ─────────────────────────────────────
+  useEffect(() => { setClicked(""); setSearchOpen(false); setQuery(""); }, [pathname]);
 
+  // ── focus input when opened — original ───────────────────────────────────
   useEffect(() => {
     if (searchOpen) searchRef.current?.focus();
   }, [searchOpen]);
 
+  // ── NEW: click-away closes the search overlay ─────────────────────────────
+  useEffect(() => {
+    if (!searchOpen) return;
+    const handler = (e) => {
+      if (searchWrapRef.current && !searchWrapRef.current.contains(e.target)) {
+        setSearchOpen(false);
+        setQuery("");
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [searchOpen]);
+
   const toggle = (link) => setClicked((prev) => (prev === link ? "" : link));
+
+  const closeSearch = () => { setSearchOpen(false); setQuery(""); };
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // RENDER — original JSX, only the search AnimatePresence block is different
+  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}>
 
-      {/* ── Utility bar ── */}
+      {/* ── Utility bar — UNCHANGED ── */}
       <div className={`transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
         <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : "text-gray-800"}`}>
           <a href="mailto:contact@logicsoft.com"
@@ -166,11 +393,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── Main bar ── */}
+      {/* ── Main bar — UNCHANGED except search block ── */}
       <div className={`relative transition-all duration-300 border-b ${isDropdownOpen ? "border-gray-200" : "border-transparent"} ${showSolid ? "bg-white" : "bg-transparent"}`}>
         <div className="max-w-[82rem] mx-auto px-4 py-3 flex items-center">
 
-          {/* Logo */}
+          {/* Logo — UNCHANGED */}
           <Link href="/" className="flex items-center shrink-0 mr-10">
             <Image
               src="/images/logicsoft-logo.png"
@@ -181,10 +408,10 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Right side — nav links + CTA + search */}
+          {/* Right side — UNCHANGED except search block */}
           <div className="hidden md:flex items-center gap-1 ml-auto">
 
-            {/* Nav links */}
+            {/* Nav links — UNCHANGED */}
             {NAV_LINKS.map((link) => {
               const isActive    = clicked === link;
               const hasDropdown = link === "about" || link === "services";
@@ -221,10 +448,10 @@ const Navbar = () => {
               );
             })}
 
-            {/* Divider */}
+            {/* Divider — UNCHANGED */}
             <span className="w-px h-5 bg-gray-200 mx-3" />
 
-            {/* Contact CTA */}
+            {/* Contact CTA — UNCHANGED */}
             <div className="relative inline-flex items-center justify-center">
               {[0, 0.2].map((delay, i) => (
                 <motion.span
@@ -247,50 +474,62 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Search — after contact */}
-            <AnimatePresence mode="wait">
-              {searchOpen ? (
-                <motion.div
-                  key="search-input"
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 220, opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
-                  className="flex items-center border border-gray-200 bg-gray-50 overflow-hidden ml-2"
-                >
-                  <Search className="w-3.5 h-3.5 text-gray-400 ml-3 shrink-0" />
-                  <input
-                    ref={searchRef}
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search…"
-                    className="flex-1 px-2.5 py-2 text-[13px] bg-transparent outline-none text-gray-800 placeholder:text-gray-400"
-                  />
-                  <button
-                    onClick={() => { setSearchOpen(false); setQuery(""); }}
-                    className="p-2 text-gray-400 hover:text-gray-600"
+            <div ref={searchWrapRef} className="relative ml-2">
+              <AnimatePresence mode="wait">
+                {searchOpen ? (
+                  <motion.div
+                    key="search-input"
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 220, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="flex items-center border border-gray-200 bg-gray-50 overflow-hidden"
                   >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.button
-                  key="search-icon"
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  onClick={() => setSearchOpen(true)}
-                  className="ml-2 p-2 text-gray-500 hover:text-[#1f3a5f] hover:bg-gray-50 transition-colors duration-150"
-                  aria-label="Search"
-                >
-                  <Search className="w-4 h-4" />
-                </motion.button>
-              )}
-            </AnimatePresence>
+                    <Search className="w-3.5 h-3.5 text-gray-400 ml-3 shrink-0" />
+                    <input
+                      ref={searchRef}
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Search…"
+                      className="flex-1 px-2.5 py-2 text-[13px] bg-transparent outline-none text-gray-800 placeholder:text-gray-400"
+                    />
+                    <button
+                      onClick={closeSearch}
+                      className="p-2 text-gray-400 hover:text-gray-600"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key="search-icon"
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                    onClick={() => setSearchOpen(true)}
+                    className="p-2 text-gray-500 hover:text-[#1f3a5f] hover:bg-gray-50 transition-colors duration-150"
+                    aria-label="Search"
+                  >
+                    <Search className="w-4 h-4" />
+                  </motion.button>
+                )}
+              </AnimatePresence>
+
+              {/* Live results overlay — only mounts when open */}
+              <AnimatePresence>
+                {searchOpen && (
+                  <SearchOverlay
+                    query={query}
+                    onClose={closeSearch}
+                  />
+                )}
+              </AnimatePresence>
+            </div>
+            {/* ═════════ END SEARCH BLOCK ═════════ */}
 
           </div>
         </div>
       </div>
 
-      {/* ── Mega dropdown ── */}
+      {/* ── Mega dropdown — */}
       <AnimatePresence>
         {isDropdownOpen && DROPDOWNS[clicked] && (
           <motion.div
@@ -346,7 +585,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Dropdown footer */}
+            {/* Dropdown footer — UNCHANGED */}
             <div className="border-t border-gray-100 bg-[#f9f9f9]">
               <div className="max-w-[82rem] mx-auto px-4 py-3 flex items-center gap-4">
                 <span className="text-[12.5px] font-medium text-gray-500 whitespace-nowrap">

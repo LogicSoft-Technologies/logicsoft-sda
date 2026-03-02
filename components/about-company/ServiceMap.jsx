@@ -21,7 +21,7 @@ const services = [
     title: "IT Consulting",
     description:
       "Strategic technology advisory to align IT investments with measurable business outcomes and long-term digital roadmaps.",
-    href: "/services/it-consulting",
+    href: "/it-consulting",
     tag: "Strategy",
     stat: "200+ engagements",
     iconColor: "#b45309",
@@ -34,7 +34,7 @@ const services = [
     title: "Software Development",
     description:
       "End-to-end development of scalable web, mobile, and enterprise applications built on modern stacks.",
-    href: "/services/software-development",
+    href: "/software-development/services",
     tag: "Engineering",
     stat: "150+ products shipped",
     iconColor: "#1d4ed8",
@@ -60,7 +60,7 @@ const services = [
     title: "Help Desk Services",
     description:
       "24/7 technical support and ITIL-aligned service desk operations keeping your teams unblocked around the clock.",
-    href: "/services/help-desk",
+    href: "/about/support",
     tag: "Support",
     stat: "< 2hr avg response",
     iconColor: "#0891b2",
@@ -73,7 +73,7 @@ const services = [
     title: "Data Analytics",
     description:
       "Business intelligence, real-time data pipelines, and actionable insight delivery to drive informed decisions at scale.",
-    href: "/services/data-analytics",
+    href: "/services/other-services/data-analytics",
     tag: "Intelligence",
     stat: "80+ dashboards deployed",
     iconColor: "#059669",
@@ -86,7 +86,7 @@ const services = [
     title: "Cybersecurity Services",
     description:
       "Threat detection, penetration testing, compliance frameworks, and security hardening for enterprise systems.",
-    href: "/services/cybersecurity",
+    href: "/services/security/cyber-security",
     tag: "Security",
     stat: "ISO 27001 aligned",
     iconColor: "#dc2626",

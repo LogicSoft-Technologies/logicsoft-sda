@@ -2,21 +2,24 @@
 
 import Link from "next/link";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
 const footerLinks = {
   Company: [
-    { label: "About LogicSoft",   href: "/about/logicsoft"     },
-    { label: "Our Journey",       href: "/about/our-journey"   },
-    { label: "Leadership",        href: "/about/leadership"    },
-    { label: "Portfolio",         href: "/portfolio"           },
-    { label: "Client Reviews",    href: "/about/client-review" },
+    { label: "About LogicSoft",   href: "/about/about-company"   },
+    { label: "Our Journey",       href: "/about/our-journey"     },
+    { label: "Leadership",        href: "/about/leadership"      },
+    { label: "Portfolio",         href: "/portfolio"             },
+    { label: "Client Reviews",    href: "/about/client-review"   },
   ],
   Services: [
-    { label: "Full Stack Development",  href: "/services/web-development/fullstack"        },
-    { label: "Cross Platform Apps",     href: "/services/mobile-development/cross-platform" },
-    { label: "Cyber Security",          href: "/services/cyber-security"                   },
-    { label: "Cloud Engineering",       href: "/services/cloud-engineering"                },
-    { label: "DevOps Services",         href: "/services/devops"                           },
+    { label: "Full Stack Development",  href: "/services/web-development/full-stack"        },
+    { label: "Cross Platform Apps",     href: "/services/mobile-apps/cross-platform"        },
+    { label: "Cyber Security",          href: "/services/security/cyber-security"           },
+    { label: "Cloud Engineering",       href: "/services/other-services/cloud-engineering"  },
+    { label: "DevOps Services",         href: "/services/other-services/devops"             },
   ],
   Industries: [
     { label: "Banking & FinTech",  href: "/industries/banking"       },
@@ -35,6 +38,41 @@ const legalLinks = [
 ];
 
 export default function Footer() {
+  const [email,       setEmail]       = useState("");
+  const [status,      setStatus]      = useState(null); // null | "loading" | "success" | "error" | "duplicate"
+  const [errorMsg,    setErrorMsg]    = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email.trim()) return;
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res  = await fetch(`${BACKEND_URL}/api/newsletter/subscribe`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const json = await res.json();
+
+      if (!res.ok || json.error) {
+        setErrorMsg(json.error || "Subscription failed. Please try again.");
+        setStatus(res.status === 409 ? "duplicate" : "error");
+        return;
+      }
+
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
+  };
+
+  const handleKey = (e) => {
+    if (e.key === "Enter") handleSubscribe();
+  };
+
   return (
     <footer className="bg-white border-t border-gray-200">
 
@@ -54,19 +92,50 @@ export default function Footer() {
               transformation, and enterprise innovation strategies.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
-              <input
-                type="email"
-                placeholder="Enter your business email"
-                className="flex-1 border border-gray-200 bg-white px-4 py-2.5 text-[13.5px] outline-none focus:border-[#1f6fb2] focus:ring-1 focus:ring-[#1f6fb2]/20 transition-all duration-200 placeholder:text-gray-400"
-              />
-              <button className="flex items-center gap-2 px-6 py-2.5 text-[13.5px] font-semibold text-white
-                bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00]
-                hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]
-                ring-1 ring-inset ring-white/30 transition-all duration-200 whitespace-nowrap">
-                Subscribe <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+            {status === "success" ? (
+              <div className="flex items-center gap-3 px-5 py-4 bg-[#f0fdf4] border border-[#bbf7d0] max-w-lg">
+                <svg className="w-5 h-5 text-[#22c55e] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <p className="text-[13.5px] font-semibold text-[#15803d]">
+                  You're subscribed! Check your inbox for a welcome email.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setStatus(null); setErrorMsg(""); }}
+                    onKeyDown={handleKey}
+                    placeholder="Enter your business email"
+                    disabled={status === "loading"}
+                    className={`flex-1 border bg-white px-4 py-2.5 text-[13.5px] outline-none focus:border-[#1f6fb2] focus:ring-1 focus:ring-[#1f6fb2]/20 transition-all duration-200 placeholder:text-gray-400 disabled:opacity-60 ${
+                      status === "error" || status === "duplicate" ? "border-red-300" : "border-gray-200"
+                    }`}
+                  />
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={status === "loading" || !email.trim()}
+                    className="flex items-center gap-2 px-6 py-2.5 text-[13.5px] font-semibold text-white
+                      bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00]
+                      hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]
+                      ring-1 ring-inset ring-white/30 transition-all duration-200 whitespace-nowrap
+                      disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {status === "loading" ? (
+                      <><span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />Subscribing…</>
+                    ) : (
+                      <>Subscribe <ArrowRight className="w-4 h-4" /></>
+                    )}
+                  </button>
+                </div>
+                {(status === "error" || status === "duplicate") && (
+                  <p className="text-[12px] text-red-500 mt-2">{errorMsg}</p>
+                )}
+              </>
+            )}
 
             <p className="text-[12px] text-gray-400 mt-3">
               You may unsubscribe at any time.{" "}
@@ -77,12 +146,7 @@ export default function Footer() {
           </div>
 
           <div className="shrink-0 hidden lg:block">
-            <img
-              src="/images/welcome.svg"
-              alt=""
-              aria-hidden="true"
-              className="w-72 h-auto object-contain opacity-80"
-            />
+            <img src="/images/welcome.svg" alt="" aria-hidden="true" className="w-72 h-auto object-contain opacity-80" />
           </div>
         </div>
       </div>
@@ -102,29 +166,21 @@ export default function Footer() {
               with startups, FinTech firms, SaaS businesses, and enterprises to
               build scalable digital products engineered for long-term success.
             </p>
-
-            {/* Contact info */}
             <ul className="space-y-2.5">
               <li>
-                <a
-                  href="tel:+2349012688861"
-                  className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" aria-hidden="true" />
+                <a href="tel:+2349012688861" className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200">
+                  <Phone className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" />
                   +234 9012 688 861
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:contact@logicsoft.com"
-                  className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200"
-                >
-                  <Mail className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" aria-hidden="true" />
-                  contact@logicsoft.com
+                <a href="mailto:contact@logicsoft.ng" className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200">
+                  <Mail className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" />
+                  contact@logicsoft.ng
                 </a>
               </li>
               <li className="flex items-center gap-2.5 text-[13.5px] text-gray-500">
-                <MapPin className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" aria-hidden="true" />
+                <MapPin className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" />
                 Lagos, Nigeria
               </li>
             </ul>
@@ -139,10 +195,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map(({ label, href }) => (
                   <li key={label}>
-                    <Link
-                      href={href}
-                      className="text-[13.5px] text-gray-600 hover:text-[#1f6fb2] transition-colors duration-200"
-                    >
+                    <Link href={href} className="text-[13.5px] text-gray-600 hover:text-[#1f6fb2] transition-colors duration-200">
                       {label}
                     </Link>
                   </li>
@@ -156,16 +209,10 @@ export default function Footer() {
       {/* ── Bottom bar ── */}
       <div className="border-t border-gray-100 bg-[#f5f5f5]">
         <div className="max-w-[82rem] mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-4 text-[13.5px] text-gray-400">
-          <p>
-            © {new Date().getFullYear()} Logicsoft Technologies. All rights reserved.
-          </p>
+          <p>© {new Date().getFullYear()} Logicsoft Technologies. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
             {legalLinks.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                className="hover:text-[#1f6fb2] transition-colors duration-200"
-              >
+              <Link key={label} href={href} className="hover:text-[#1f6fb2] transition-colors duration-200">
                 {label}
               </Link>
             ))}

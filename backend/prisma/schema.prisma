@@ -1,0 +1,99 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ── Chat sessions ─────────────────────────────────────────────────────────────
+model ChatSession {
+  id            String        @id @default(cuid())
+  sessionId     String        @unique
+  status        SessionStatus @default(active)
+  transferredTo String?
+  pageUrl       String?
+  userAgent     String?
+  ip            String?
+  messages      ChatMessage[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([createdAt(sort: Desc)])
+  @@index([status, createdAt(sort: Desc)])
+  @@map("chat_sessions")
+}
+
+enum SessionStatus {
+  active
+  transferred_whatsapp
+  closed
+}
+
+// ── Chat messages ─────────────────────────────────────────────────────────────
+model ChatMessage {
+  id        String      @id @default(cuid())
+  sessionId String
+  session   ChatSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+  role      MessageRole
+  content   String      @db.VarChar(4000)
+  createdAt DateTime    @default(now())
+
+  @@map("chat_messages")
+}
+
+enum MessageRole {
+  user
+  assistant
+}
+
+// ── Staff ─────────────────────────────────────────────────────────────────────
+model Staff {
+  id                String   @id @default(cuid())
+  name              String
+  role              String
+  whatsappNumber    String
+  whatsappGreeting  String   @default("Hi! I'd like to discuss a project with Logicsoft Technologies.")
+  avatarInitials    String   @db.VarChar(2)
+  avatarColor       String   @default("#1f6fb2")
+  isOnline          Boolean  @default(true)
+  workingHoursStart Int      @default(8)
+  workingHoursEnd   Int      @default(18)
+  showInWidget      Boolean  @default(true)
+  order             Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([showInWidget, order])
+  @@map("staff")
+}
+
+// ── Contact submissions ───────────────────────────────────────────────────────
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  company   String?
+  email     String
+  phone     String?
+  country   String?
+  service   String?
+  budget    String?
+  message   String
+  hasVoice  Boolean  @default(false)
+  fileCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt(sort: Desc)])
+  @@map("contact_submissions")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([createdAt(sort: Desc)])
+  @@map("newsletter_subscribers")
+}

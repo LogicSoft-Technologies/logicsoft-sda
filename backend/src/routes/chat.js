@@ -1,8 +1,7 @@
 // src/routes/chat.js
 import express from "express";
 import OpenAI from "openai";
-import ChatSession from "../models/ChatSession.js";
-import Staff from "../models/Staff.js";
+import prisma from "../config/prisma.js";
 
 const router = express.Router();
 
@@ -47,10 +46,11 @@ TONE:
 - No excessive emojis — you represent a premium enterprise firm
 - Never say "As an AI language model"`;
 
+// ── Rate limiting (in-memory, unchanged) ────────────────────────────────────
 const ipWindows = new Map();
 function isRateLimited(ip) {
   const now = Date.now();
-  const WINDOW = 60_000; // 1 minute
+  const WINDOW = 60_000;
   const MAX = 25;
   let rec = ipWindows.get(ip);
   if (!rec || now > rec.resetAt) rec = { count: 0, resetAt: now + WINDOW };
@@ -58,7 +58,6 @@ function isRateLimited(ip) {
   ipWindows.set(ip, rec);
   return rec.count > MAX;
 }
-
 setInterval(() => {
   const now = Date.now();
   for (const [ip, rec] of ipWindows) {
@@ -66,19 +65,16 @@ setInterval(() => {
   }
 }, 300_000);
 
+// ── POST /api/chat/message ───────────────────────────────────────────────────
 router.post("/message", async (req, res) => {
   const ip = req.ip || req.headers["x-forwarded-for"] || "unknown";
   if (isRateLimited(ip)) {
-    return res
-      .status(429)
-      .json({ error: "Too many messages — please slow down." });
+    return res.status(429).json({ error: "Too many messages — please slow down." });
   }
 
   const { sessionId, message, pageUrl } = req.body;
 
-  if (!sessionId) {
-    return res.status(400).json({ error: "sessionId is required" });
-  }
+  if (!sessionId) return res.status(400).json({ error: "sessionId is required" });
   if (!message || typeof message !== "string" || !message.trim()) {
     return res.status(400).json({ error: "message is required" });
   }
@@ -87,28 +83,38 @@ router.post("/message", async (req, res) => {
   }
 
   try {
-   
-    let session = await ChatSession.findOne({ sessionId });
+    // ── Upsert session ──────────────────────────────────────────────────────
+    let session = await prisma.chatSession.findUnique({ where: { sessionId } });
 
     if (!session) {
-      session = await ChatSession.create({
-        sessionId,
-        pageUrl: pageUrl || null,
-        messages: [],
-        metadata: {
+      session = await prisma.chatSession.create({
+        data: {
+          sessionId,
+          pageUrl: pageUrl || null,
           userAgent: req.headers["user-agent"] || null,
           ip,
         },
       });
     }
 
-    session.messages.push({ role: "user", content: message.trim() });
+    // ── Save user message ───────────────────────────────────────────────────
+    await prisma.chatMessage.create({
+      data: { sessionId, role: "user", content: message.trim() },
+    });
 
-    const contextMessages = session.messages.slice(-16).map((m) => ({
+    // ── Fetch last 16 messages for context ──────────────────────────────────
+    const recentMessages = await prisma.chatMessage.findMany({
+      where: { sessionId },
+      orderBy: { createdAt: "asc" },
+      take: 16,
+    });
+
+    const contextMessages = recentMessages.map((m) => ({
       role: m.role,
       content: m.content,
     }));
 
+    // ── OpenAI completion ───────────────────────────────────────────────────
     const completion = await getOpenAI().chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       messages: [{ role: "system", content: SYSTEM_PROMPT }, ...contextMessages],
@@ -120,43 +126,53 @@ router.post("/message", async (req, res) => {
       completion.choices[0]?.message?.content?.trim() ||
       "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.";
 
-    session.messages.push({ role: "assistant", content: reply });
-    await session.save();
+    // ── Save assistant reply ────────────────────────────────────────────────
+    await prisma.chatMessage.create({
+      data: { sessionId, role: "assistant", content: reply },
+    });
 
     return res.json({ success: true, sessionId, reply });
+
   } catch (err) {
     console.error("[Chat /message] Error:", err.message);
-
     return res.status(200).json({
       success: true,
       sessionId,
-      reply:
-        "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.",
+      reply: "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.",
     });
   }
 });
 
+// ── GET /api/chat/staff ──────────────────────────────────────────────────────
 router.get("/staff", async (req, res) => {
   try {
-    const staffList = await Staff.find({ showInWidget: true })
-      .sort({ order: 1 })
-      .limit(3)
-      .select(
-        "name role whatsappNumber whatsappGreeting avatarInitials avatarColor isOnline workingHours"
-      );
+    const staffList = await prisma.staff.findMany({
+      where: { showInWidget: true },
+      orderBy: { order: "asc" },
+      take: 3,
+      select: {
+        name: true,
+        role: true,
+        whatsappNumber: true,
+        whatsappGreeting: true,
+        avatarInitials: true,
+        avatarColor: true,
+        isOnline: true,
+        workingHoursStart: true,
+        workingHoursEnd: true,
+      },
+    });
 
     // WAT = UTC+1
-    const nowUTC = new Date();
-    const watHour = (nowUTC.getUTCHours() + 1) % 24;
+    const watHour = (new Date().getUTCHours() + 1) % 24;
 
-    const result = staffList.map((s) => {
-      const obj = s.toObject();
-      obj.isAvailableNow =
-        s.isOnline &&
-        watHour >= s.workingHours.start &&
-        watHour < s.workingHours.end;
-      return obj;
-    });
+    const result = staffList.map((s) => ({
+      ...s,
+      // Keep the same shape as before for frontend compatibility
+      workingHours: { start: s.workingHoursStart, end: s.workingHoursEnd },
+      isAvailableNow:
+        s.isOnline && watHour >= s.workingHoursStart && watHour < s.workingHoursEnd,
+    }));
 
     return res.json({ success: true, staff: result });
   } catch (err) {
@@ -165,30 +181,27 @@ router.get("/staff", async (req, res) => {
   }
 });
 
+// ── POST /api/chat/transfer ──────────────────────────────────────────────────
 router.post("/transfer", async (req, res) => {
   const { sessionId, staffName } = req.body;
-
-  if (!sessionId) {
-    return res.status(400).json({ error: "sessionId is required" });
-  }
+  if (!sessionId) return res.status(400).json({ error: "sessionId is required" });
 
   try {
-    await ChatSession.findOneAndUpdate(
-      { sessionId },
-      {
+    await prisma.chatSession.update({
+      where: { sessionId },
+      data: {
         status: "transferred_whatsapp",
         transferredTo: staffName || null,
-      }
-    );
+      },
+    });
   } catch (err) {
-
     console.error("[Chat /transfer] Error:", err.message);
   }
 
   return res.json({ success: true });
 });
 
-
+// ── POST /api/chat (legacy stateless route) ──────────────────────────────────
 router.post("/", async (req, res) => {
   try {
     const { message, history = [] } = req.body;
@@ -218,8 +231,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.error("[Chat /] Error:", err.message);
     return res.status(500).json({
-      reply:
-        "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.",
+      reply: "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.",
     });
   }
 });

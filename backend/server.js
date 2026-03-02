@@ -1,16 +1,16 @@
 // server.js
 import dotenv from "dotenv";
+dotenv.config();
+
 import { createServer } from "http";
 import { Server } from "socket.io";
 import app from "./app.js";
-import connectDB from "./src/config/mongodb.js";
+import connectDB from "./src/config/db.js";
 import chatSocketHandler from "./src/sockets/chatSocket.js";
-
-dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
+// Connect to PostgreSQL via Prisma
 connectDB();
 
 const httpServer = createServer(app);
@@ -25,7 +25,6 @@ const io = new Server(httpServer, {
 
 chatSocketHandler(io);
 
-// Start server
 httpServer.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`✅ Socket.IO live chat active`);
