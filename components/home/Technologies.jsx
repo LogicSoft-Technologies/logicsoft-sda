@@ -1,12 +1,11 @@
 "use client";
 
-// ── CDN helpers ───────────────────────────────────────────────────────────────
 const dv = (name, variant = "plain-wordmark") =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${name}/${name}-${variant}.svg`;
 const si = (slug, color = "444444") =>
   `https://cdn.simpleicons.org/${slug}/${color}`;
 
-// ── Data — condensed showcase (4–5 per category) ──────────────────────────────
+
 const TECH_SECTIONS = [
   {
     eyebrow: "01",
@@ -111,7 +110,6 @@ const TECH_SECTIONS = [
   },
 ];
 
-// ── Logo tile ─────────────────────────────────────────────────────────────────
 function LogoTile({ tech }) {
   return (
     <div
@@ -142,7 +140,7 @@ function LogoTile({ tech }) {
   );
 }
 
-// ── Main section ──────────────────────────────────────────────────────────────
+
 export default function Technologies() {
   return (
     <section
@@ -171,7 +169,7 @@ export default function Technologies() {
           </a>
         </div>
         <p className="text-[17px] text-gray-600 leading-[1.85] max-w-[860px] mb-14">
-          We build with the tools that the world&apos;s best engineering teams rely on —
+          We build with the tools that the world&apos;s best engineering teams rely on
           choosing the right stack for every layer of every project, not just the
           most fashionable one.
         </p>

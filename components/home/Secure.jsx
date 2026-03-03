@@ -159,7 +159,7 @@ const Secure = () => {
         {/* ── Footer CTA ── */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8">
           <p className="text-[14px] text-gray-400 leading-relaxed max-w-[500px]">
-            Every engagement is governed end-to-end by these disciplines — from
+            Every engagement is governed end-to-end by these disciplines from
             kickoff through to post-launch.
           </p>
           <Link

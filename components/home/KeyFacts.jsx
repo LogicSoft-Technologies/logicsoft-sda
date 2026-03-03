@@ -51,7 +51,7 @@ export default function KeyFacts() {
         <p className="text-[17px] text-gray-700 leading-[2] max-w-[860px] mb-14">
           At Logicsoft Technologies, we specialise in software development and
           consulting for startups, FinTech innovators, SaaS platforms, and
-          enterprise organisations seeking long-term digital growth — engineering
+          enterprise organisations seeking long-term digital growth engineering
           high-performance systems designed to scale reliably, stay secure, and
           evolve with your business.
         </p>

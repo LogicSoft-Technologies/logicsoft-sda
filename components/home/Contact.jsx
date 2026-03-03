@@ -12,14 +12,8 @@ import {
   Newspaper, Briefcase,
 } from "lucide-react";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// CONFIG
-// ─────────────────────────────────────────────────────────────────────────────
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// STATIC DATA
-// ─────────────────────────────────────────────────────────────────────────────
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
 const COUNTRIES = [
   { code: "NG", dial: "+234" }, { code: "US", dial: "+1"   }, { code: "CA", dial: "+1"   },
@@ -82,13 +76,9 @@ const CHANNELS = [
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function ContactSection() {
 
-  // ── Blob animation ──────────────────────────────────────────────────────────
   const bgRef = useRef(null);
   useEffect(() => {
     if (!bgRef.current) return;
@@ -100,32 +90,29 @@ export default function ContactSection() {
     }).catch(() => {});
   }, []);
 
-  // ── Form state ──────────────────────────────────────────────────────────────
+
   const [formData, setFormData]     = useState({ name: "", company: "", email: "", service: "", budget: "", message: "" });
   const [submitted, setSubmitted]   = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [fileName, setFileName]     = useState(null);
 
-  // ── Phone / country ─────────────────────────────────────────────────────────
   const [country, setCountry]   = useState(COUNTRIES[0]);
   const [phone, setPhone]       = useState("");
   const [dropOpen, setDropOpen] = useState(false);
   const [dropPos, setDropPos]   = useState(null);
   const triggerRef              = useRef(null);
 
-  // ── Voice recording ─────────────────────────────────────────────────────────
   const [recording, setRecording] = useState(false);
   const [audioUrl, setAudioUrl]   = useState(null);
-  const [audioBlob, setAudioBlob] = useState(null);  // ← blob for upload
+  const [audioBlob, setAudioBlob] = useState(null);  
   const recorderRef               = useRef(null);
   const streamRef                 = useRef(null);
   const chunksRef                 = useRef([]);
 
-  // ── File input ref ───────────────────────────────────────────────────────────
-  const fileRef = useRef(null);  // ← needed so handleSubmit can read selected files
+ 
+  const fileRef = useRef(null); 
 
-  // ── Auto-detect country ─────────────────────────────────────────────────────
   useEffect(() => {
     fetch("https://ipapi.co/json/")
       .then((r) => r.json())
@@ -136,7 +123,6 @@ export default function ContactSection() {
       .catch(() => {});
   }, []);
 
-  // ── Phone formatting ────────────────────────────────────────────────────────
   const handlePhone = (e) => {
     let d = e.target.value.replace(/\D/g, "");
     if (d.length > 3 && d.length <= 6)  d = d.slice(0, 3) + " " + d.slice(3);
@@ -144,7 +130,6 @@ export default function ContactSection() {
     setPhone(d);
   };
 
-  // ── Country dropdown ────────────────────────────────────────────────────────
   const openDrop = () => {
     if (triggerRef.current) {
       const r = triggerRef.current.getBoundingClientRect();
@@ -153,7 +138,6 @@ export default function ContactSection() {
     setDropOpen(true);
   };
 
-  // ── Voice recording ─────────────────────────────────────────────────────────
   const handleVoice = async () => {
     if (recording) {
       recorderRef.current?.stop();
@@ -170,8 +154,8 @@ export default function ContactSection() {
       recorder.ondataavailable = (e) => chunksRef.current.push(e.data);
       recorder.onstop = () => {
         const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-        setAudioBlob(blob);                      // store for upload
-        setAudioUrl(URL.createObjectURL(blob));  // for in-page playback
+        setAudioBlob(blob);                 
+        setAudioUrl(URL.createObjectURL(blob)); 
       };
       recorder.start();
       setRecording(true);
@@ -180,7 +164,6 @@ export default function ContactSection() {
     }
   };
 
-  // ── Submit — real API call to backend ───────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -227,7 +210,7 @@ export default function ContactSection() {
     }
   };
 
-  // ── Helpers ─────────────────────────────────────────────────────────────────
+  // ── Helpers -- //
   const field = (key) => ({
     value: formData[key],
     onChange: (e) => setFormData((prev) => ({ ...prev, [key]: e.target.value })),
@@ -243,10 +226,7 @@ export default function ContactSection() {
     setSubmitError(null);
   };
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // RENDER
-  // ─────────────────────────────────────────────────────────────────────────────
-
+  
   return (
     <section className="relative py-16 bg-[#f5f8fc] overflow-hidden">
 
@@ -260,7 +240,7 @@ export default function ContactSection() {
       <div className="relative z-10 max-w-[82rem] mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 overflow-hidden shadow-lg">
 
-          {/* ══ LEFT — White form card ══════════════════════════════════════════ */}
+         
           <div className="lg:col-span-2 bg-white">
 
             {/* Form header */}
@@ -294,7 +274,7 @@ export default function ContactSection() {
                   </div>
                   <h3 className="text-[22px] font-bold text-[#1f3a5f] mb-2">Submission received</h3>
                   <p className="text-[13.5px] text-gray-500 leading-relaxed max-w-sm mx-auto mb-6">
-                    A LogicSoft solution architect will review your brief and respond within 24 business hours. Check your inbox — and spam folder, just in case.
+                    A LogicSoft solution architect will review your brief and respond within 24 business hours. Check your inbox and spam folder, just in case.
                   </p>
                   <button onClick={resetForm} className="text-[13px] font-semibold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors">
                     ← Submit another enquiry
@@ -330,7 +310,6 @@ export default function ContactSection() {
                     {audioUrl && <audio controls src={audioUrl} className="mt-2 w-full h-9" />}
                   </div>
 
-                  {/* File upload — ref={fileRef} is the key addition */}
                   <div>
                     <label htmlFor="cs-file-upload"
                       className="flex items-center gap-3 px-4 py-3 border border-dashed border-[#d1d5db] bg-[#f8fafc] hover:border-[#1f6fb2] hover:bg-[#f0f7ff] cursor-pointer transition-all duration-150 group">
@@ -345,7 +324,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       id="cs-file-upload"
-                      ref={fileRef}   // ← attached so handleSubmit can read files
+                      ref={fileRef}  
                       type="file"
                       multiple
                       className="hidden"
@@ -449,7 +428,6 @@ export default function ContactSection() {
             </AnimatePresence>
           </div>
 
-          {/* ══ RIGHT — Blue gradient sidebar ══════════════════════════════════ */}
           <aside className="bg-gradient-to-br from-[#e6f2ff] via-[#f2f8ff] to-[#ffffff] p-8 space-y-8 border-l border-[#bfdbfe]">
 
             {/* Direct contact channels */}

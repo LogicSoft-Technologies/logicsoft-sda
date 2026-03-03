@@ -71,7 +71,6 @@ export default function FAQ() {
           </Link>
         </div>
 
-        {/* ── Two-column FAQ grid ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {faqItems.map((item, i) => {
             const isOpen = openIndex === i;
@@ -140,7 +139,6 @@ export default function FAQ() {
           })}
         </div>
 
-        {/* ── Bottom CTA strip ── */}
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-gray-200 bg-white px-8 py-6">
           <div>
             <p className="text-[14px] font-semibold text-[#1f3a5f] mb-0.5">

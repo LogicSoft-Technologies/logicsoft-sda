@@ -58,7 +58,6 @@ const SECTIONS = [
   },
 ];
 
-// ── Card ──────────────────────────────────────────────────────────────────────
 function ServiceCard({ item }) {
   const Icon = item.icon;
   return (
@@ -98,7 +97,6 @@ function ServiceCard({ item }) {
   );
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
 export default function Expertise() {
   return (
     <section
@@ -119,8 +117,8 @@ export default function Expertise() {
           Our Core Services
         </h2>
         <p className="text-[17px] text-gray-700 leading-[2] max-w-[1100px] mb-14">
-          Logicsoft Technologies delivers enterprise-grade digital products with a focus on
-          scalability, security, performance optimisation, and long-term business growth
+          Logicsoft Technologies delivers enterprise grade digital products with a focus on
+          scalability, security, performance optimization, and long-term business growth
           across web, mobile, cloud, and design ecosystems.
         </p>
 
