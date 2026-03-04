@@ -2,7 +2,6 @@
 
 const FLAG_API = "https://flagcdn.com/28x21";
 
-// ── Country name lookup (most common) ──────────────────────────────────────
 const COUNTRY_NAMES = {
   NG:"Nigeria",US:"United States",CA:"Canada",GB:"United Kingdom",DE:"Germany",
   FR:"France",ES:"Spain",IT:"Italy",NL:"Netherlands",BE:"Belgium",CH:"Switzerland",
@@ -15,7 +14,6 @@ const COUNTRY_NAMES = {
   AR:"Argentina",CL:"Chile",CO:"Colombia",MX:"Mexico",VE:"Venezuela",
 };
 
-// ── Service colour coding ───────────────────────────────────────────────────
 const SERVICE_COLOURS = {
   "Software Development":     { bg:"#eff6ff", text:"#1d4ed8", border:"#bfdbfe" },
   "IT Consulting":            { bg:"#f0fdf4", text:"#15803d", border:"#bbf7d0" },
@@ -28,7 +26,6 @@ const SERVICE_COLOURS = {
   "Other":                    { bg:"#f8fafc", text:"#475569", border:"#e2e8f0" },
 };
 
-// ── Budget colour coding ────────────────────────────────────────────────────
 const BUDGET_COLOURS = {
   "Under $10,000":          "#6b7280",
   "$10,000 – $50,000":      "#0369a1",
@@ -38,12 +35,11 @@ const BUDGET_COLOURS = {
   "Not yet defined":        "#6b7280",
 };
 
-// ── Helper: pill badge ──────────────────────────────────────────────────────
+
 function pill(text, { bg = "#f1f5f9", text: color = "#475569", border = "#e2e8f0" } = {}) {
   return `<span style="display:inline-block;background:${bg};color:${color};border:1px solid ${border};padding:3px 10px;font-size:11px;font-weight:700;border-radius:2px;font-family:monospace;letter-spacing:0.5px;">${text}</span>`;
 }
 
-// ── Helper: info row ────────────────────────────────────────────────────────
 function infoRow(icon, label, value, link = null) {
   const val = link
     ? `<a href="${link}" style="color:#1f6fb2;text-decoration:none;font-weight:600;">${value}</a>`
@@ -62,7 +58,6 @@ function infoRow(icon, label, value, link = null) {
     </tr>`;
 }
 
-// ── Main email builder ──────────────────────────────────────────────────────
 export function buildContactEmail({
   name, company, email, phone, country, service, budget, message,
   hasVoice = false, fileCount = 0,

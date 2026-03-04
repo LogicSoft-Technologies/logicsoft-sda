@@ -12,14 +12,8 @@ import {
   Clock, Shield, Users, Zap, Globe, ChevronDown,
 } from "lucide-react";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// CONFIG — backend URL comes from .env
-// ─────────────────────────────────────────────────────────────────────────────
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA
-// ─────────────────────────────────────────────────────────────────────────────
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
 const COUNTRIES = [
   { code: "NG", dial: "+234" }, { code: "US", dial: "+1"   }, { code: "CA", dial: "+1"   },
@@ -123,9 +117,6 @@ const FAQS = [
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SUB-COMPONENTS
-// ─────────────────────────────────────────────────────────────────────────────
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -186,13 +177,9 @@ function OfficeCard({ office }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN PAGE
-// ─────────────────────────────────────────────────────────────────────────────
-
 export default function ContactPage() {
 
-  // ── Form state ──────────────────────────────────────────────────────────────
+  
   const [formData, setFormData] = useState({
     name: "", company: "", email: "", service: "", budget: "", message: "",
   });
@@ -201,14 +188,12 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState(null);
   const [fileName,    setFileName]    = useState(null);
 
-  // ── Phone / country picker ──────────────────────────────────────────────────
   const [country,  setCountry]  = useState(COUNTRIES[0]);
   const [phone,    setPhone]    = useState("");
   const [dropOpen, setDropOpen] = useState(false);
   const [dropPos,  setDropPos]  = useState(null);
   const triggerRef = useRef(null);
 
-  // ── Voice recording ─────────────────────────────────────────────────────────
   const [recording, setRecording] = useState(false);
   const [audioUrl,  setAudioUrl]  = useState(null);
   const [audioBlob, setAudioBlob] = useState(null);
@@ -217,7 +202,6 @@ export default function ContactPage() {
   const chunksRef   = useRef([]);
   const fileRef     = useRef(null);
 
-  // ── GSAP blobs ──────────────────────────────────────────────────────────────
   const blobRef = useRef(null);
 
   // Auto-detect country via IP
@@ -288,7 +272,6 @@ export default function ContactPage() {
     }
   };
 
-  // ── SUBMIT — POSTs to separate backend ──────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -315,11 +298,10 @@ export default function ContactPage() {
         fd.append("attachments", file, file.name);
       }
 
-      // ← Uses NEXT_PUBLIC_BACKEND_URL from .env
       const res  = await fetch(`${BACKEND_URL}/api/contact`, {
         method: "POST",
         body: fd,
-        // No Content-Type header — browser sets multipart boundary automatically
+       
       });
 
       const json = await res.json();
@@ -353,14 +335,11 @@ export default function ContactPage() {
     setSubmitError(null);
   };
 
-  // ─────────────────────────────────────────────────────────────────────────
-  // RENDER
-  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-white pt-[80px]">
 
-      {/* ══ HERO ═══════════════════════════════════════════════════════════════ */}
+      {/* ══ HERO ══ */}
       <section className="relative overflow-hidden border-b border-[#1a3258]"
         style={{ background: "linear-gradient(145deg, #050c18 0%, #0a1e38 45%, #0d2448 100%)" }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -389,7 +368,7 @@ export default function ContactPage() {
                 Let&rsquo;s Build<br /><span className="text-[#1f6fb2]">Something</span> Together
               </h1>
               <p className="text-[16px] text-white/50 leading-[1.95] max-w-[520px]">
-                Whether you have a defined brief or an open challenge — our solution architects will listen, scope, and propose a path forward. No sales pressure. No commitment required.
+                Whether you have a defined brief or an open challenge our solution architects will listen, scope, and propose a path forward. No sales pressure. No commitment required.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55, delay: 0.2 }} className="grid grid-cols-2 gap-2 min-w-[280px]">
@@ -405,7 +384,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ══ CHANNELS STRIP ═════════════════════════════════════════════════════ */}
+      {/* ══ CHANNELS STRIP ══*/}
       <div className="bg-[#f5f8fc] border-b border-[#dce8f5]">
         <div className="max-w-[82rem] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#dce8f5]">
@@ -428,7 +407,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* ══ FORM + SIDEBAR ═════════════════════════════════════════════════════ */}
+      {/* ══ FORM + SIDEBAR ═══ */}
       <section className="relative bg-[#f5f8fc] py-16 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0">
           <div className="absolute -top-48 -left-48 w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[160px]" />
@@ -681,7 +660,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ══ OFFICES ════════════════════════════════════════════════════════════ */}
+      {/* ══ OFFICES ══ */}
       <section className="bg-white border-t border-[#e8eef6] py-16">
         <div className="max-w-[82rem] mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
@@ -694,7 +673,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ══ FAQ ════════════════════════════════════════════════════════════════ */}
+      {/* ══ FAQ ══ */}
       <section className="bg-[#f5f8fc] border-t border-[#e8eef6] py-16">
         <div className="max-w-[82rem] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16">
@@ -710,7 +689,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ══ CTA ════════════════════════════════════════════════════════════════ */}
+      {/* ══ CTA ═ */}
       <section className="relative overflow-hidden border-t border-[#1a3258]"
         style={{ background: "linear-gradient(160deg, #07111f 0%, #0d2448 60%, #0a1830 100%)" }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.035]"

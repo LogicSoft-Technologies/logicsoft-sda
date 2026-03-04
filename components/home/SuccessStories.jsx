@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Briefcase, Calendar } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Briefcase } from "lucide-react";
 
 const CATEGORIES = ["All", "Enterprise", "FinTech", "Healthcare", "E-Commerce", "UI/UX"];
 
@@ -17,8 +17,7 @@ const PROJECTS = [
     image: "/images/fintech.png",
     year: "2024",
     outcome: "40% faster processing",
-    resultBg: "#dbeafe",
-    resultText: "#1d4ed8",
+    resultBg: "#dbeafe", resultText: "#1d4ed8",
     tags: ["Node.js", "AWS", "REST API"],
   },
   {
@@ -29,8 +28,7 @@ const PROJECTS = [
     image: "/images/saas.png",
     year: "2024",
     outcome: "18 months zero downtime",
-    resultBg: "#d1fae5",
-    resultText: "#059669",
+    resultBg: "#d1fae5", resultText: "#059669",
     tags: ["React", "Python", "HIPAA"],
   },
   {
@@ -41,8 +39,7 @@ const PROJECTS = [
     image: "/images/real-estate.png",
     year: "2023",
     outcome: "3× listing conversion",
-    resultBg: "#fef3c7",
-    resultText: "#b45309",
+    resultBg: "#fef3c7", resultText: "#b45309",
     tags: ["Next.js", "TypeScript", "Stripe"],
   },
   {
@@ -53,8 +50,7 @@ const PROJECTS = [
     image: "/images/e-commerce.png",
     year: "2023",
     outcome: "40+ stores unified",
-    resultBg: "#fce7f3",
-    resultText: "#db2777",
+    resultBg: "#fce7f3", resultText: "#db2777",
     tags: ["React", "Redis", "Elasticsearch"],
   },
   {
@@ -65,8 +61,7 @@ const PROJECTS = [
     image: "/images/trading.png",
     year: "2024",
     outcome: "PCI compliant, day 1",
-    resultBg: "#ede9fe",
-    resultText: "#7c3aed",
+    resultBg: "#ede9fe", resultText: "#7c3aed",
     tags: ["React Native", "WebSockets", "PCI DSS"],
   },
   {
@@ -77,8 +72,7 @@ const PROJECTS = [
     image: "/images/real-estate.png",
     year: "2024",
     outcome: "200% organic traffic lift",
-    resultBg: "#dcfce7",
-    resultText: "#16a34a",
+    resultBg: "#dcfce7", resultText: "#16a34a",
     tags: ["Next.js", "Sanity CMS", "SEO"],
   },
 ];
@@ -94,23 +88,22 @@ export default function SuccessStories() {
     <section
       id="success-stories"
       aria-labelledby="success-stories-heading"
-      className="py-20 bg-gradient-to-br from-[#eaf6ff] via-[#dff0ff] to-[#eef7ff] border-t border-gray-200"
+      className="py-12 sm:py-20 bg-gradient-to-br from-[#eaf6ff] via-[#dff0ff] to-[#eef7ff] border-t border-gray-200"
     >
-      <div className="max-w-[82rem] mx-auto px-6">
+      <div className="max-w-[82rem] mx-auto px-4 sm:px-6">
 
-        {/* ── Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <p className="text-[11px] font-semibold text-[#1f6fb2] uppercase tracking-[0.12em] mb-4">
               Our work
             </p>
             <h2
               id="success-stories-heading"
-              className="text-[36px] font-serif text-[#1f3a5f] leading-tight"
+              className="text-[26px] sm:text-[32px] lg:text-[36px] font-serif text-[#1f3a5f] leading-tight"
             >
               Success Stories
             </h2>
-            <p className="text-[16px] text-gray-600 leading-[1.85] max-w-[520px] mt-3">
+            <p className="text-[14px] sm:text-[16px] text-gray-600 leading-[1.85] max-w-[520px] mt-3">
               A selection of projects we've delivered across banking, healthcare,
               retail, and enterprise software.
             </p>
@@ -124,14 +117,13 @@ export default function SuccessStories() {
           </Link>
         </div>
 
-        {/* ── Category pills ── */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap gap-2 mb-7 sm:mb-10">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActive(cat)}
               aria-pressed={active === cat}
-              className={`px-4 py-1.5 text-[12.5px] font-medium border transition-all duration-200 ${
+              className={`px-3 sm:px-4 py-1.5 text-[12px] sm:text-[12.5px] font-medium border transition-all duration-200 ${
                 active === cat
                   ? "bg-[#1f6fb2] border-[#1f6fb2] text-white"
                   : "bg-white border-gray-200 text-gray-500 hover:border-[#1f6fb2] hover:text-[#1f6fb2]"
@@ -142,8 +134,7 @@ export default function SuccessStories() {
           ))}
         </div>
 
-        {/* ── Project grid ── */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, index) => (
               <motion.div
@@ -155,31 +146,25 @@ export default function SuccessStories() {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="group relative bg-white flex flex-col border border-gray-200 overflow-hidden hover:border-[#1f6fb2] hover:shadow-md transition-all duration-300"
               >
-                {/* Top slide-in line */}
                 <span className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full z-10" aria-hidden="true" />
 
-                {/* Image */}
                 <div className="relative w-full overflow-hidden bg-gray-100" style={{ paddingBottom: "58%" }}>
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  {/* Year chip */}
                   <div className="absolute bottom-2.5 right-2.5 bg-white/85 backdrop-blur-sm border border-gray-200 px-2 py-[3px] text-[10.5px] font-medium text-gray-500">
                     {project.year}
                   </div>
-                  {/* Category chip */}
                   <div className="absolute top-2.5 left-2.5 px-2 py-[3px] text-[10px] font-bold uppercase tracking-[0.08em] bg-[#1f3a5f] text-white">
                     {project.category}
                   </div>
                 </div>
 
-                {/* Body */}
-                <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
-                  {/* Tags */}
+                <div className="flex flex-col flex-1 px-4 sm:px-5 pt-4 pb-4 sm:pb-5">
                   <div className="flex flex-wrap gap-1.5 mb-2.5">
                     {project.tags.map((tag) => (
                       <span
@@ -191,18 +176,15 @@ export default function SuccessStories() {
                     ))}
                   </div>
 
-                  <h3 className="text-[14px] font-semibold text-[#1f3a5f] leading-snug mb-2 group-hover:text-[#1f6fb2] transition-colors duration-200">
+                  <h3 className="text-[13.5px] sm:text-[14px] font-semibold text-[#1f3a5f] leading-snug mb-2 group-hover:text-[#1f6fb2] transition-colors duration-200">
                     {project.title}
                   </h3>
 
                   <div className="flex items-center gap-3 mt-auto pt-3 border-t border-gray-100">
-                    {/* Client */}
-                    <div className="flex items-center gap-1.5 text-[11.5px] text-gray-400 flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 text-[11px] sm:text-[11.5px] text-gray-400 flex-1 min-w-0">
                       <Briefcase className="w-3 h-3 shrink-0" aria-hidden="true" />
                       <span className="truncate">{project.client}</span>
                     </div>
-
-                    {/* Outcome badge */}
                     <span
                       className="text-[10px] font-bold uppercase tracking-[0.06em] px-2 py-[3px] border shrink-0"
                       style={{ backgroundColor: project.resultBg, borderColor: project.resultBg, color: project.resultText }}
@@ -211,7 +193,6 @@ export default function SuccessStories() {
                     </span>
                   </div>
 
-                  {/* CTA */}
                   <Link
                     href={`/case-studies/${project.id}`}
                     aria-label={`View case study: ${project.title}`}
@@ -222,22 +203,20 @@ export default function SuccessStories() {
                   </Link>
                 </div>
 
-                {/* Bottom slide-in line */}
                 <span className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-400 transition-all duration-500 ease-out group-hover:left-0 group-hover:w-full" aria-hidden="true" />
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
 
-        {/* ── Footer CTA ── */}
-        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-[13.5px] text-gray-500">
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-[13px] sm:text-[13.5px] text-gray-500">
             Showing <span className="font-semibold text-[#1f3a5f]">{filtered.length}</span> of{" "}
             <span className="font-semibold text-[#1f3a5f]">300+</span> completed projects.
           </p>
           <Link
             href="/portfolio"
-            className="flex items-center gap-2 px-6 py-2.5 text-[13.5px] font-medium border border-[#1f6fb2] text-[#1f6fb2] hover:bg-[#1f6fb2] hover:text-white transition-all duration-200"
+            className="flex items-center gap-2 px-5 sm:px-6 py-2.5 text-[13px] sm:text-[13.5px] font-medium border border-[#1f6fb2] text-[#1f6fb2] hover:bg-[#1f6fb2] hover:text-white transition-all duration-200"
           >
             Browse full portfolio <ArrowRight className="w-4 h-4" />
           </Link>

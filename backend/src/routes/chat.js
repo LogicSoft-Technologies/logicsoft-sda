@@ -46,7 +46,7 @@ TONE:
 - No excessive emojis — you represent a premium enterprise firm
 - Never say "As an AI language model"`;
 
-// ── Rate limiting (in-memory, unchanged) ────────────────────────────────────
+// Rate limiting 
 const ipWindows = new Map();
 function isRateLimited(ip) {
   const now = Date.now();
@@ -65,7 +65,7 @@ setInterval(() => {
   }
 }, 300_000);
 
-// ── POST /api/chat/message ───────────────────────────────────────────────────
+//  POST /api/chat/message
 router.post("/message", async (req, res) => {
   const ip = req.ip || req.headers["x-forwarded-for"] || "unknown";
   if (isRateLimited(ip)) {
@@ -83,7 +83,7 @@ router.post("/message", async (req, res) => {
   }
 
   try {
-    // ── Upsert session ──────────────────────────────────────────────────────
+    
     let session = await prisma.chatSession.findUnique({ where: { sessionId } });
 
     if (!session) {
@@ -97,12 +97,12 @@ router.post("/message", async (req, res) => {
       });
     }
 
-    // ── Save user message ───────────────────────────────────────────────────
+    // Save user message 
     await prisma.chatMessage.create({
       data: { sessionId, role: "user", content: message.trim() },
     });
 
-    // ── Fetch last 16 messages for context ──────────────────────────────────
+    // Fetch last 16 messages for context 
     const recentMessages = await prisma.chatMessage.findMany({
       where: { sessionId },
       orderBy: { createdAt: "asc" },
@@ -114,7 +114,7 @@ router.post("/message", async (req, res) => {
       content: m.content,
     }));
 
-    // ── OpenAI completion ───────────────────────────────────────────────────
+    // OpenAI completion 
     const completion = await getOpenAI().chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       messages: [{ role: "system", content: SYSTEM_PROMPT }, ...contextMessages],
@@ -126,7 +126,7 @@ router.post("/message", async (req, res) => {
       completion.choices[0]?.message?.content?.trim() ||
       "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.";
 
-    // ── Save assistant reply ────────────────────────────────────────────────
+    // Save assistant reply 
     await prisma.chatMessage.create({
       data: { sessionId, role: "assistant", content: reply },
     });
@@ -143,7 +143,6 @@ router.post("/message", async (req, res) => {
   }
 });
 
-// ── GET /api/chat/staff ──────────────────────────────────────────────────────
 router.get("/staff", async (req, res) => {
   try {
     const staffList = await prisma.staff.findMany({
@@ -181,7 +180,6 @@ router.get("/staff", async (req, res) => {
   }
 });
 
-// ── POST /api/chat/transfer ──────────────────────────────────────────────────
 router.post("/transfer", async (req, res) => {
   const { sessionId, staffName } = req.body;
   if (!sessionId) return res.status(400).json({ error: "sessionId is required" });
@@ -201,7 +199,6 @@ router.post("/transfer", async (req, res) => {
   return res.json({ success: true });
 });
 
-// ── POST /api/chat (legacy stateless route) ──────────────────────────────────
 router.post("/", async (req, res) => {
   try {
     const { message, history = [] } = req.body;

@@ -33,7 +33,7 @@ app.use(
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// ── ROUTES ───────────────────────────────────────────────────────────────────
+// ROUTES 
 app.get("/", (_req, res) =>
   res.json({ status: "ok", service: "LogicSoft Technologies API" })
 );
@@ -42,7 +42,7 @@ app.use("/api/chat",    chatRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/newsletter", newsletterRoute);
 
-// ── ERROR HANDLER ─────────────────────────────────────────────────────────────
+// ERROR HANDLER 
 app.use((err, req, res, next) => {
   console.error("[Error]", err.message);
   res.status(err.status || 500).json({ message: err.message || "Server error" });

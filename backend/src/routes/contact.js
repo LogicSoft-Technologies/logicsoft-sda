@@ -36,7 +36,6 @@ router.post("/", (req, res) => {
       const hasVoice   = voiceFiles.length > 0;
       const fileCount  = userFiles.length;
 
-      // ── Save to PostgreSQL (non-blocking — email still sends even if DB fails) ──
       try {
         await prisma.contactSubmission.create({
           data: {
@@ -56,7 +55,6 @@ router.post("/", (req, res) => {
         console.error("[Contact DB Save Error]", dbErr.message);
       }
 
-      // ── Build email attachments ─────────────────────────────────────────────
       const attachments = [];
 
       if (hasVoice) {
@@ -75,7 +73,6 @@ router.post("/", (req, res) => {
         });
       }
 
-      // ── Nodemailer transporter ──────────────────────────────────────────────
       const transporter = nodemailer.createTransport({
         host:   process.env.SMTP_HOST,
         port:   Number(process.env.SMTP_PORT) || 465,
@@ -86,7 +83,7 @@ router.post("/", (req, res) => {
         },
       });
 
-      // ── Send to company ─────────────────────────────────────────────────────
+      // ── Send to company ─────
       await transporter.sendMail({
         from:    `"LogicSoft Contact" <${process.env.SMTP_USER}>`,
         to:      process.env.CONTACT_RECIPIENT || "contact@logicsoft.ng",
@@ -96,7 +93,7 @@ router.post("/", (req, res) => {
         attachments,
       });
 
-      // ── Auto-reply to sender ────────────────────────────────────────────────
+      // ── Auto-reply to sender ───
       await transporter.sendMail({
         from:    `"LogicSoft Technologies" <${process.env.SMTP_USER}>`,
         to:      email,
