@@ -49,10 +49,10 @@ const SECTIONS = [
       { title: "CI/CD Automation Pipelines",       icon: Activity,        iconColor: "#059669", badgeBg: "#d1fae5", badgeBorder: "#6ee7b7" },
       { title: "Cloud Migration & Architecture",   icon: Cloud,           iconColor: "#0891b2", badgeBg: "#cffafe", badgeBorder: "#a5f3fc" },
       { title: "Infrastructure as Code (IaC)",     icon: Server,          iconColor: "#475569", badgeBg: "#f1f5f9", badgeBorder: "#cbd5e1" },
-      { title: "Containerisation & Orchestration", icon: Code2,           iconColor: "#1d4ed8", badgeBg: "#dbeafe", badgeBorder: "#bfdbfe" },
+      { title: "Containerization & Orchestration", icon: Code2,           iconColor: "#1d4ed8", badgeBg: "#dbeafe", badgeBorder: "#bfdbfe" },
       { title: "System Monitoring & Logging",      icon: Activity,        iconColor: "#b45309", badgeBg: "#fef3c7", badgeBorder: "#fde68a" },
       { title: "DevSecOps & Security Hardening",   icon: ShieldCheck,     iconColor: "#dc2626", badgeBg: "#fee2e2", badgeBorder: "#fecaca" },
-      { title: "Cloud Cost Optimisation (FinOps)", icon: Landmark,        iconColor: "#7c3aed", badgeBg: "#ede9fe", badgeBorder: "#ddd6fe" },
+      { title: "Cloud Cost Optimization (FinOps)", icon: Landmark,        iconColor: "#7c3aed", badgeBg: "#ede9fe", badgeBorder: "#ddd6fe" },
     ],
   },
 ];

@@ -64,7 +64,7 @@ export default function DifferenceCard() {
 
             <p className="mt-5 text-[15px] text-white/65 leading-[1.85] max-w-[680px]">
               Project success is our standard, not a slogan. We drive projects to their goals by
-              overcoming constraints, designing solutions that prioritise business value, and
+              overcoming constraints, designing solutions that prioritize business value, and
               bringing in experts trained for your specific industry.
             </p>
           </div>

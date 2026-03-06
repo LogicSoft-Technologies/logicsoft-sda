@@ -3,12 +3,6 @@ import KeyFacts from "@/components/home/KeyFacts";
 import Offering from "@/components/home/Offering";
 import Expertise from "@/components/home/Expertise";
 import Technologies from "@/components/home/Technologies";
-import Finance from "@/components/home/Finance";
-import MoreIndustries from "@/components/home/MoreIndustries";
-import Solutions from "@/components/home/Solutions";
-import TechTrends from "@/components/home/TechTrends";
-import OurClients from "@/components/home/OurClients";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQ from "@/components/home/FAQ";
 import DifferenceCard from "@/components/home/DifferenceCard";
 import Contact from "@/components/home/Contact";
@@ -27,12 +21,6 @@ export default function Home() {
       <Technologies />
       <Secure />
       <Contact />
-      <Finance />
-      <MoreIndustries />
-      <Solutions />
-      <TechTrends />
-      <OurClients />
-      <WhyChooseUs />
       <FAQ />
     </>
   );

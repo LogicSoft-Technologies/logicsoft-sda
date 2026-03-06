@@ -7,9 +7,6 @@ import {
   Activity, AlertTriangle, ChevronRight, Terminal,
 } from "lucide-react";
 
-// ── Design: SOC command-centre. Deep crimson-black, animated live threat feed
-//    terminal, hex dot grid, red danger accent on near-black.
-
 const THREAT_FEED = [
   { time: "09:14:22", sev: "CRIT", type: "Auth bypass attempt — /admin",       src: "194.165.16.x",  action: "BLOCKED"   },
   { time: "09:14:18", sev: "HIGH", type: "SQL injection — POST /api/users",     src: "185.220.101.x", action: "BLOCKED"   },
@@ -135,7 +132,7 @@ export default function CyberSecurity() {
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
                 Offensive testing, continuous threat monitoring, compliance readiness, and
-                security engineering — a full-spectrum practice for organisations that treat
+                security engineering a full-spectrum practice for organizations that treat
                 security as a business requirement, not an afterthought.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
@@ -168,8 +165,8 @@ export default function CyberSecurity() {
         <div className="max-w-[82rem] mx-auto px-4 py-4 flex items-center gap-4">
           <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
           <p className="text-[13px] text-amber-200/65">
-            <span className="font-bold text-amber-400">43% of cyberattacks target SMBs.</span>{" "}
-            Most are preventable with a structured security programme — not a one-time scan.
+            <span className="font-bold text-amber-400">43% of cyber-attacks target SMBs.</span>{" "}
+            Most are preventable with a structured security programme not a one-time scan.
           </p>
           <Link href="/contact" className="ml-auto shrink-0 text-[12px] font-bold text-amber-400 hover:text-amber-300 whitespace-nowrap flex items-center gap-1">
             Get assessed <ChevronRight className="w-3.5 h-3.5" />

@@ -99,12 +99,10 @@ export default function Hero() {
     exit: (dir) => ({ x: dir * -80, opacity: 0 }),
   };
 
-  /* ─────────────────────────────────────────────
-     MOBILE LAYOUT  (< 1024px)
-  ───────────────────────────────────────────── */
+  // - Mobile View -//
   if (isMobile) {
     return (
-      // FIX: section itself must NOT create a new stacking context above the nav
+
       <section className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]" style={{ zIndex: 0 }}>
         <HeroColorMood activeIndex={activeIndex} />
         <div ref={blob1} className="absolute top-10 left-10 w-[300px] h-[300px] bg-blue-400/20 blur-[120px] rounded-full pointer-events-none" style={{ zIndex: 0 }} />
@@ -214,11 +212,8 @@ export default function Hero() {
     );
   }
 
-  /* ─────────────────────────────────────────────
-     DESKTOP LAYOUT  (≥ 1024px) — 100% ORIGINAL
-  ───────────────────────────────────────────── */
+  // - Desktop view -//
   return (
-    // FIX: section itself must NOT create a new stacking context above the nav
     <section className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]" style={{ zIndex: 0 }}>
 
       <HeroColorMood activeIndex={activeIndex} />

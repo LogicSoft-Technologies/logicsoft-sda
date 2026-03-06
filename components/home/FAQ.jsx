@@ -13,7 +13,7 @@ const faqItems = [
   },
   {
     title: "How fast can you deliver a project?",
-    desc: "Depending on complexity and scope, we can deliver an MVP within 2–12 weeks. Full-scale enterprise platforms are delivered in structured phases with iterative releases every 2–4 weeks. We prioritize speed without compromising architecture quality or security.",
+    desc: "Depending on complexity and scope, we can deliver an MVP within 2-12 weeks. Full-scale enterprise platforms are delivered in structured phases with iterative releases every 2–4 weeks. We prioritize speed without compromising architecture quality or security.",
     href: "/contact",
     btnText: "Share your project",
   },
@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     title: "What development methodologies do you use?",
-    desc: "We primarily use Agile methodologies such as Scrum and Kanban, delivering structured iterations every 2–3 weeks. For projects with strict compliance or fixed scope requirements, we can adopt Waterfall or hybrid models.",
+    desc: "We primarily use Agile methodologies such as Scrum and Kanban, delivering structured iterations every 2-3 weeks. For projects with strict compliance or fixed scope requirements, we can adopt Waterfall or hybrid models.",
     href: "/about/collaboration",
     btnText: "Learn about collaboration",
   },

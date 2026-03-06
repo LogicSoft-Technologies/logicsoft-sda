@@ -77,9 +77,9 @@ export function buildContactEmail({
     if (fileCount > 0) parts.push(`📎 ${fileCount} file${fileCount > 1 ? "s" : ""} attached`);
     if (!parts.length) return "";
     return `
-      <tr><td style="padding:0 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff7ed;border:1px solid #fed7aa;padding:12px 16px;margin-top:0;">
-          <tr><td style="font-size:12.5px;color:#92400e;font-weight:600;">${parts.join("&emsp;·&emsp;")}</td></tr>
+      <tr><td style="padding:0 40px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fff8f5;border:1px solid rgba(196,85,0,0.25);border-left:3px solid #C45500;padding:12px 16px;margin-top:0;">
+          <tr><td style="font-size:12.5px;color:#7A2E00;font-weight:600;">${parts.join("&emsp;·&emsp;")}</td></tr>
         </table>
       </td></tr>`;
   })();
@@ -91,69 +91,114 @@ export function buildContactEmail({
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>New Contact Enquiry — LogicSoft</title>
 </head>
-<body style="margin:0;padding:0;background:#eef2f7;font-family:'Segoe UI',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+<body style="margin:0;padding:0;background:#edf2f7;font-family:'Segoe UI',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
 
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#eef2f7;padding:40px 16px;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#edf2f7;padding:40px 16px;">
   <tr><td align="center">
 
-    <!-- Outer card -->
-    <table width="620" cellpadding="0" cellspacing="0" style="max-width:620px;background:#ffffff;border-radius:0;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+    <!-- ── Outer card ── -->
+    <table width="620" cellpadding="0" cellspacing="0" style="max-width:620px;background:#ffffff;box-shadow:0 2px 24px rgba(31,58,95,0.10);">
 
-      <!-- ══ TOP ACCENT ══ -->
-      <tr><td style="height:4px;background:linear-gradient(90deg,#1f6fb2,#0d3a6e,#1f6fb2);font-size:0;">&nbsp;</td></tr>
+      <!-- ══ TOP GRADIENT ACCENT LINE ══ -->
+      <tr><td style="height:3px;background:linear-gradient(90deg,#1f3a5f 0%,#1f6fb2 45%,#FF7A00 72%,#C45500 100%);font-size:0;">&nbsp;</td></tr>
 
       <!-- ══ HEADER ══ -->
-      <tr><td style="background:linear-gradient(145deg,#050c18 0%,#0a1e38 50%,#0d2448 100%);padding:36px 40px 32px;">
+      <tr><td style="background:linear-gradient(135deg,#0a1628 0%,#1f3a5f 55%,#0e2040 100%);padding:36px 40px 30px;position:relative;overflow:hidden;">
+
+        <!-- Orange triangle decoration (top-right) -->
+        <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 72px 72px 0;border-color:transparent #C45500 transparent transparent;opacity:0.85;"></div>
+        <div style="position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 40px 40px 0;border-color:transparent rgba(255,122,0,0.4) transparent transparent;"></div>
+
         <table width="100%" cellpadding="0" cellspacing="0"><tr>
-          <td>
-            <p style="margin:0;font-size:10px;font-weight:700;color:rgba(96,168,220,0.8);text-transform:uppercase;letter-spacing:3px;font-family:monospace;">LogicSoft Technologies</p>
-            <p style="margin:8px 0 4px;font-size:26px;font-weight:300;color:#ffffff;letter-spacing:-0.3px;">New <strong style="font-weight:700;color:#60a8dc;">Enquiry</strong> Received</p>
-            <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.35);">${timestamp}</p>
+
+          <!-- Left: logo mark + wordmark -->
+          <td style="vertical-align:middle;">
+            <table cellpadding="0" cellspacing="0"><tr>
+
+              <!-- Monogram block (matches navbar logo) -->
+              <td style="vertical-align:middle;padding-right:14px;">
+                <table cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,#1f3a5f,#1f6fb2);width:42px;height:42px;position:relative;">
+                  <tr><td style="text-align:center;vertical-align:middle;padding:0;">
+                    <!-- E letterform via border trick -->
+                    <span style="display:inline-block;font-family:Georgia,serif;font-size:22px;font-weight:700;color:#ffffff;line-height:42px;">E</span>
+                  </td></tr>
+                </table>
+              </td>
+
+              <!-- Wordmark -->
+              <td style="vertical-align:middle;">
+                <p style="margin:0 0 1px;font-size:15px;font-weight:700;color:#ffffff;letter-spacing:0.3px;font-family:'Segoe UI',Helvetica,sans-serif;">LogicSoft</p>
+                <p style="margin:0;font-size:9px;font-weight:700;color:rgba(144,196,232,0.7);text-transform:uppercase;letter-spacing:2.5px;">Technologies</p>
+              </td>
+
+            </tr></table>
+
+            <!-- Divider -->
+            <div style="height:1px;background:rgba(255,255,255,0.08);margin:18px 0 14px;"></div>
+
+            <!-- Heading -->
+            <p style="margin:0 0 5px;font-size:22px;font-weight:300;color:#ffffff;letter-spacing:-0.2px;">
+              New <strong style="font-weight:700;color:#90c4e8;">Project Enquiry</strong>
+            </p>
+            <p style="margin:0;font-size:11.5px;color:rgba(255,255,255,0.35);">${timestamp}</p>
           </td>
-          <td align="right" style="vertical-align:top;">
-            <table cellpadding="0" cellspacing="0" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:10px 14px;text-align:center;">
-              <tr><td style="font-size:22px;line-height:1;">📬</td></tr>
-              <tr><td style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;padding-top:4px;">Contact<br>Form</td></tr>
+
+          <!-- Right: status badge -->
+          <td align="right" style="vertical-align:top;padding-top:4px;">
+            <table cellpadding="0" cellspacing="0" style="border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);text-align:center;">
+              <tr><td style="padding:12px 16px;">
+                <p style="margin:0;font-size:22px;line-height:1;">📬</p>
+                <p style="margin:6px 0 0;font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;line-height:1.4;">Contact<br>Form</p>
+              </td></tr>
             </table>
           </td>
+
         </tr></table>
       </td></tr>
 
       <!-- ══ ALERT BANNER ══ -->
-      <tr><td style="background:#1f6fb2;padding:10px 40px;">
-        <p style="margin:0;font-size:12px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:1.5px;">
-          ⚡ Action required — respond within 24 business hours
+      <tr><td style="background:linear-gradient(90deg,#7A2E00,#C45500 50%,#FF7A00);padding:10px 40px;">
+        <p style="margin:0;font-size:11.5px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:1.5px;">
+          ⚡ &nbsp;Action required — respond within 24 business hours
         </p>
       </td></tr>
 
       <!-- ══ CONTACT IDENTITY ══ -->
-      <tr><td style="padding:32px 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,#f8fbff,#ffffff);border:1px solid #e0ecf8;">
+      <tr><td style="padding:28px 40px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dce8f5;background:#f8fbff;">
 
-          <!-- Identity header -->
-          <tr><td style="background:#1f3a5f;padding:12px 16px;">
-            <p style="margin:0;font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;">Contact Details</p>
+          <!-- Section label -->
+          <tr><td style="background:#1f3a5f;padding:10px 16px;">
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="width:3px;background:#FF7A00;border-radius:1px;margin-right:8px;">&nbsp;</td>
+              <td style="padding-left:8px;">
+                <p style="margin:0;font-size:9.5px;font-weight:700;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:2px;">Contact Details</p>
+              </td>
+            </tr></table>
           </td></tr>
 
-          <!-- Avatar + name row -->
+          <!-- Avatar + name -->
           <tr><td style="padding:20px 16px 16px;">
             <table cellpadding="0" cellspacing="0"><tr>
-              <!-- Avatar circle -->
+
+              <!-- Initial avatar -->
               <td style="vertical-align:top;padding-right:14px;">
-                <div style="width:52px;height:52px;background:linear-gradient(135deg,#1f6fb2,#0d3a6e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;text-align:center;line-height:52px;">
+                <div style="width:50px;height:50px;background:linear-gradient(135deg,#1f3a5f,#1f6fb2);display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;text-align:center;line-height:50px;font-family:Georgia,serif;">
                   ${name.charAt(0).toUpperCase()}
                 </div>
               </td>
+
               <td style="vertical-align:middle;">
-                <p style="margin:0 0 3px;font-size:20px;font-weight:700;color:#1f3a5f;line-height:1.2;">${name}</p>
-                ${company ? `<p style="margin:0 0 6px;font-size:13px;color:#6b7280;font-weight:500;">🏢 ${company}</p>` : ""}
+                <p style="margin:0 0 3px;font-size:19px;font-weight:700;color:#1f3a5f;line-height:1.2;">${name}</p>
+                ${company ? `<p style="margin:0 0 6px;font-size:12.5px;color:#6b7280;font-weight:500;">🏢 ${company}</p>` : ""}
                 <table cellpadding="0" cellspacing="0"><tr>
-                  <td style="padding-right:8px;">
-                    <img src="${FLAG_API}/${(country || "NG").toLowerCase()}.png" width="20" height="14" alt="${countryName}" style="display:inline-block;vertical-align:middle;margin-right:4px;">
-                    <span style="font-size:11px;color:#6b7280;vertical-align:middle;">${countryName}</span>
+                  <td>
+                    <img src="${FLAG_API}/${(country || "NG").toLowerCase()}.png" width="20" height="14" alt="${countryName}" style="display:inline-block;vertical-align:middle;margin-right:5px;border:1px solid #e5e7eb;">
+                    <span style="font-size:11px;color:#6b7280;vertical-align:middle;font-weight:500;">${countryName}</span>
                   </td>
                 </tr></table>
               </td>
+
             </tr></table>
           </td></tr>
 
@@ -164,103 +209,139 @@ export function buildContactEmail({
               ${phone ? infoRow("📞", "Phone", phone, `tel:${phone.replace(/\s/g,"")}`) : ""}
             </table>
           </td></tr>
+
         </table>
       </td></tr>
 
       <!-- ══ PROJECT DETAILS ══ -->
-      <tr><td style="padding:16px 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e0ecf8;">
-          <tr><td style="background:#1f3a5f;padding:12px 16px;">
-            <p style="margin:0;font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;">Project Details</p>
+      <tr><td style="padding:14px 40px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dce8f5;">
+
+          <tr><td style="background:#1f3a5f;padding:10px 16px;">
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="width:3px;background:#FF7A00;border-radius:1px;">&nbsp;</td>
+              <td style="padding-left:8px;">
+                <p style="margin:0;font-size:9.5px;font-weight:700;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:2px;">Project Details</p>
+              </td>
+            </tr></table>
           </td></tr>
+
           <tr><td style="padding:20px 16px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="width:50%;vertical-align:top;padding-right:12px;">
-                  <p style="margin:0 0 6px;font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;">Service Required</p>
+                <td style="width:50%;vertical-align:top;padding-right:16px;">
+                  <p style="margin:0 0 7px;font-size:9.5px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:1.2px;">Service Required</p>
                   ${service
                     ? pill(service, serviceStyle)
                     : `<span style="font-size:13px;color:#9ca3af;font-style:italic;">Not specified</span>`}
                 </td>
-                <td style="width:50%;vertical-align:top;">
-                  <p style="margin:0 0 6px;font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;">Budget Range</p>
+                <td style="width:50%;vertical-align:top;border-left:1px solid #f1f5f9;padding-left:16px;">
+                  <p style="margin:0 0 7px;font-size:9.5px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:1.2px;">Budget Range</p>
                   ${budget
-                    ? `<span style="font-size:13.5px;font-weight:700;color:${budgetColor};">${budget}</span>`
+                    ? `<span style="font-size:14px;font-weight:700;color:${budgetColor};">${budget}</span>`
                     : `<span style="font-size:13px;color:#9ca3af;font-style:italic;">Not specified</span>`}
                 </td>
               </tr>
             </table>
           </td></tr>
+
         </table>
       </td></tr>
 
-      <!-- ══ ATTACHMENT NOTICE (if any) ══ -->
+      <!-- ══ ATTACHMENT NOTICE ══ -->
       ${attachmentNotice}
 
       <!-- ══ MESSAGE ══ -->
-      <tr><td style="padding:16px 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e0ecf8;">
-          <tr><td style="background:#1f3a5f;padding:12px 16px;">
-            <p style="margin:0;font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;">Project Brief / Message</p>
+      <tr><td style="padding:14px 40px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dce8f5;">
+
+          <tr><td style="background:#1f3a5f;padding:10px 16px;">
+            <table cellpadding="0" cellspacing="0"><tr>
+              <td style="width:3px;background:#FF7A00;border-radius:1px;">&nbsp;</td>
+              <td style="padding-left:8px;">
+                <p style="margin:0;font-size:9.5px;font-weight:700;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:2px;">Project Brief / Message</p>
+              </td>
+            </tr></table>
           </td></tr>
-          <tr><td style="padding:20px 16px;">
-            <div style="font-size:14px;color:#374151;line-height:1.85;white-space:pre-wrap;border-left:3px solid #1f6fb2;padding-left:16px;">${message.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+
+          <tr><td style="padding:20px 20px 20px 0;">
+            <div style="font-size:13.5px;color:#374151;line-height:1.85;white-space:pre-wrap;border-left:3px solid #1f6fb2;padding:4px 0 4px 20px;margin-left:16px;background:linear-gradient(90deg,rgba(31,111,178,0.04),transparent);">${message.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
           </td></tr>
+
         </table>
       </td></tr>
 
       <!-- ══ QUICK REPLY ACTIONS ══ -->
-      <tr><td style="padding:24px 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border:1px solid #e8eef6;">
+      <tr><td style="padding:14px 40px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fbff;border:1px solid #dce8f5;">
           <tr><td style="padding:16px 20px;">
-            <p style="margin:0 0 12px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1.5px;">Quick Actions</p>
+            <p style="margin:0 0 12px;font-size:9.5px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:1.5px;">Quick Actions</p>
             <table cellpadding="0" cellspacing="0"><tr>
               <td style="padding-right:8px;">
                 <a href="mailto:${email}?subject=Re:%20Your%20LogicSoft%20Enquiry&body=Hi%20${encodeURIComponent(name)}%2C%0A%0AThank%20you%20for%20reaching%20out.%20"
-                  style="display:inline-block;background:linear-gradient(135deg,#1f6fb2,#0d3a6e);color:#ffffff;font-size:12px;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:0;letter-spacing:0.5px;">
-                  ✉️ Reply to ${name}
+                  style="display:inline-block;background:linear-gradient(135deg,#7A2E00,#C45500 50%,#FF7A00);color:#ffffff;font-size:12px;font-weight:700;text-decoration:none;padding:10px 22px;letter-spacing:0.5px;box-shadow:0 3px 12px rgba(196,85,0,0.25);">
+                  ✉️ &nbsp;Reply to ${name}
                 </a>
               </td>
-              ${phone ? `<td><a href="tel:${phone.replace(/\s/g,"")}" style="display:inline-block;background:#ffffff;border:1px solid #1f6fb2;color:#1f6fb2;font-size:12px;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:0;letter-spacing:0.5px;">📞 Call now</a></td>` : ""}
+              ${phone ? `
+              <td>
+                <a href="tel:${phone.replace(/\s/g,"")}"
+                  style="display:inline-block;background:#ffffff;border:1px solid #1f6fb2;color:#1f6fb2;font-size:12px;font-weight:700;text-decoration:none;padding:10px 22px;letter-spacing:0.5px;">
+                  📞 &nbsp;Call now
+                </a>
+              </td>` : ""}
             </tr></table>
           </td></tr>
         </table>
       </td></tr>
 
       <!-- ══ METADATA ══ -->
-      <tr><td style="padding:20px 40px 0;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f7ff;border:1px solid #bfdbfe;padding:12px 16px;">
+      <tr><td style="padding:14px 40px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#eff6ff;border:1px solid #bfdbfe;border-left:3px solid #1f6fb2;padding:12px 16px;">
           <tr>
             <td style="font-size:11px;color:#1d4ed8;">
-              <strong>Submission metadata</strong><br>
-              <span style="color:#3b82f6;">Country code: ${country || "N/A"} &nbsp;·&nbsp; Has voice note: ${hasVoice ? "Yes ✅" : "No"} &nbsp;·&nbsp; Attachments: ${fileCount}</span>
+              <strong style="font-weight:700;">Submission metadata</strong><br>
+              <span style="color:#3b82f6;font-size:10.5px;">Country: ${country || "N/A"} &nbsp;·&nbsp; Voice note: ${hasVoice ? "Yes ✅" : "No"} &nbsp;·&nbsp; Attachments: ${fileCount}</span>
             </td>
           </tr>
         </table>
       </td></tr>
 
       <!-- ══ FOOTER ══ -->
-      <tr><td style="padding:32px 40px;margin-top:24px;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e8eef6;padding-top:24px;">
-          <tr>
-            <td>
-              <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#1f3a5f;">LogicSoft Technologies</p>
-              <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.6;">
-                14 Adeola Odeku Street, Victoria Island, Lagos · Nigeria<br>
-                1 Canada Square, Canary Wharf · London, UK<br>
-                Dubai Internet City, Building 1 · Dubai, UAE
-              </p>
-            </td>
-            <td align="right" style="vertical-align:top;">
-              <p style="margin:0;font-size:10px;color:#d1d5db;text-transform:uppercase;letter-spacing:1px;">Internal notification</p>
-              <p style="margin:4px 0 0;font-size:10px;color:#d1d5db;">Do not reply to this email</p>
-            </td>
-          </tr>
+      <tr><td style="padding:28px 40px 32px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr><td colspan="2" style="border-top:1px solid #e5e7eb;padding-top:22px;">
+            <table width="100%" cellpadding="0" cellspacing="0"><tr>
+
+              <td style="vertical-align:top;">
+                <!-- Mini logo -->
+                <table cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr>
+                  <td style="background:linear-gradient(135deg,#1f3a5f,#1f6fb2);width:26px;height:26px;text-align:center;vertical-align:middle;padding-right:8px;">
+                    <span style="font-family:Georgia,serif;font-size:14px;font-weight:700;color:#fff;line-height:26px;">E</span>
+                  </td>
+                  <td style="padding-left:8px;vertical-align:middle;">
+                    <span style="font-size:12px;font-weight:700;color:#1f3a5f;">LogicSoft</span>
+                    <span style="font-size:9px;color:#9ca3af;letter-spacing:1.5px;text-transform:uppercase;display:block;">Technologies</span>
+                  </td>
+                </tr></table>
+                <p style="margin:0;font-size:10.5px;color:#9ca3af;line-height:1.75;">
+                  Lekki, Lagos, Nigeria<br>
+                  logicsofttech.dev@gmail.com
+                </p>
+              </td>
+
+              <td align="right" style="vertical-align:top;">
+                <p style="margin:0 0 3px;font-size:9.5px;color:#d1d5db;text-transform:uppercase;letter-spacing:1px;">Internal notification</p>
+                <p style="margin:0;font-size:9.5px;color:#d1d5db;">Do not reply to this email</p>
+              </td>
+
+            </tr></table>
+          </td></tr>
         </table>
       </td></tr>
 
-      <!-- ══ BOTTOM ACCENT ══ -->
-      <tr><td style="height:3px;background:linear-gradient(90deg,#1f6fb2,#0d3a6e);font-size:0;">&nbsp;</td></tr>
+      <!-- ══ BOTTOM ACCENT LINE ══ -->
+      <tr><td style="height:3px;background:linear-gradient(90deg,#1f3a5f 0%,#1f6fb2 45%,#FF7A00 72%,#C45500 100%);font-size:0;">&nbsp;</td></tr>
 
     </table>
   </td></tr>
