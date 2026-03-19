@@ -47,7 +47,7 @@ const PROJECTS = [
     title: "Multi-Tenant E-Commerce Marketplace",
     client: "RetailChain West Africa",
     category: "E-Commerce",
-    image: "/images/e-commerce.png",
+    image: "/images/ecommerce.png",
     year: "2023",
     outcome: "40+ stores unified",
     resultBg: "#fce7f3", resultText: "#db2777",

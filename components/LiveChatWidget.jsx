@@ -20,7 +20,7 @@ const GREETING = {
   id: "greeting",
   ts: Date.now(),
   content:
-    "👋 Hi! I'm the Logicsoft AI assistant.\n\nI can help you with web development, mobile apps, cybersecurity, cloud, and more.\n\nWhat can I help you with today?",
+    "Hello! I'm Treasure, LogicSoft Technologies' AI assistant.\n\nI'm here to help you explore our services from web and mobile development to cloud engineering, cybersecurity, and enterprise consultation.\n\nHow can I assist you today?",
 };
 
 const QUICK_REPLIES = [
@@ -29,6 +29,7 @@ const QUICK_REPLIES = [
   "Cybersecurity",
   "Cloud / DevOps",
   "Get a quote",
+  "Book a consultation",
 ];
 
 function getSession() {
@@ -551,6 +552,17 @@ export default function LiveChatWidget() {
   const sendMessage = async () => {
     const text = input.trim();
     if (!text || loading || !online) return;
+
+    // Booking intent — open calendar directly
+    const bookingIntent =
+      /book|schedule|consultation|call|meeting|calendar/i.test(text);
+    if (bookingIntent && process.env.NEXT_PUBLIC_CALENDAR_URL) {
+      window.open(
+        process.env.NEXT_PUBLIC_CALENDAR_URL,
+        "_blank",
+        "noopener,noreferrer",
+      );
+    }
 
     const userMsg = {
       role: "user",

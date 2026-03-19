@@ -7,11 +7,36 @@ import gsap from "gsap";
 import HeroColorMood from "@/components/shared/HeroColorMood";
 
 const INDUSTRIES = [
-  { label: "FinTech & Banking", image: "/images/fintech.png", cta: "Our FinTech & Banking portfolio →", link: "/portfolio/fintech" },
-  { label: "Real Estate & Investment", image: "/images/real-estate.png", cta: "Our Real Estate & Investment portfolio →", link: "/portfolio/real-estate" },
-  { label: "E-commerce Marketing", image: "/images/e-commerce.png", cta: "Our E-commerce Marketing portfolio →", link: "/portfolio/ecommerce" },
-  { label: "Broker Platforms", image: "/images/trading.png", cta: "Our Broker Platforms portfolio →", link: "/portfolio/trading" },
-  { label: "Enterprise & SaaS Businesses", image: "/images/saas.png", cta: "Our Enterprise & SaaS portfolio →", link: "/portfolio/saas" },
+  {
+    label: "FinTech & Banking",
+    image: "/images/fintech.png",
+    cta: "Our FinTech & Banking portfolio →",
+    link: "/portfolio/fintech",
+  },
+  {
+    label: "Real Estate & Investment",
+    image: "/images/real-estate.png",
+    cta: "Our Real Estate & Investment portfolio →",
+    link: "/portfolio/real-estate",
+  },
+  {
+    label: "E-commerce Marketing",
+    image: "/images/ecommerce.png",
+    cta: "Our E-commerce Marketing portfolio →",
+    link: "/portfolio/ecommerce",
+  },
+  {
+    label: "Broker Platforms",
+    image: "/images/trading.png",
+    cta: "Our Broker Platforms portfolio →",
+    link: "/portfolio/trading",
+  },
+  {
+    label: "Enterprise & SaaS Businesses",
+    image: "/images/saas.png",
+    cta: "Our Enterprise & SaaS portfolio →",
+    link: "/portfolio/saas",
+  },
 ];
 
 export default function Hero() {
@@ -37,7 +62,10 @@ export default function Hero() {
 
   useEffect(() => {
     const handleMouse = (e) => {
-      setMouse({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
+      setMouse({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      });
     };
     const handleScroll = () => setScroll(window.scrollY || window.pageYOffset);
     window.addEventListener("mousemove", handleMouse);
@@ -73,21 +101,48 @@ export default function Hero() {
   const goPrev = () => {
     setDirection(-1);
     setPrevIndex(activeIndex);
-    setActiveIndex((prev) => (prev - 1 + INDUSTRIES.length) % INDUSTRIES.length);
+    setActiveIndex(
+      (prev) => (prev - 1 + INDUSTRIES.length) % INDUSTRIES.length,
+    );
   };
 
   const spiralStyle = {
     transform: `translate(${mouse.x * 12}px, ${mouse.y * 12 + scroll * 0.02}px)`,
-    zIndex: 0,  // FIX: lock spiral behind everything
+    zIndex: 0, // FIX: lock spiral behind everything
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, { y: 50, opacity: 0, duration: 1, ease: "power3.out" });
-      gsap.from(paragraphRef.current, { y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+      gsap.from(paragraphRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.out",
+      });
       if (blob1.current && blob2.current) {
-        gsap.to(blob1.current, { x: 180, y: 100, duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        gsap.to(blob2.current, { x: -180, y: -120, duration: 14, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        gsap.to(blob1.current, {
+          x: 180,
+          y: 100,
+          duration: 12,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+        gsap.to(blob2.current, {
+          x: -180,
+          y: -120,
+          duration: 14,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
       }
     });
     return () => ctx.revert();
@@ -102,17 +157,30 @@ export default function Hero() {
   // - Mobile View -//
   if (isMobile) {
     return (
-
-      <section className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]" style={{ zIndex: 0 }}>
+      <section
+        className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]"
+        style={{ zIndex: 0 }}
+      >
         <HeroColorMood activeIndex={activeIndex} />
-        <div ref={blob1} className="absolute top-10 left-10 w-[300px] h-[300px] bg-blue-400/20 blur-[120px] rounded-full pointer-events-none" style={{ zIndex: 0 }} />
-        <div ref={blob2} className="absolute bottom-10 right-10 w-[320px] h-[320px] bg-indigo-500/18 blur-[140px] rounded-full pointer-events-none" style={{ zIndex: 0 }} />
+        <div
+          ref={blob1}
+          className="absolute top-10 left-10 w-[300px] h-[300px] bg-blue-400/20 blur-[120px] rounded-full pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
+        <div
+          ref={blob2}
+          className="absolute bottom-10 right-10 w-[320px] h-[320px] bg-indigo-500/18 blur-[140px] rounded-full pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
         <div className="hero-gradient-layer" style={{ zIndex: 0 }} />
         <ThreeHeroBackground activeIndex={activeIndex} />
-        <div ref={spiralRef} className="hero-spiral-layer" style={spiralStyle} />
+        <div
+          ref={spiralRef}
+          className="hero-spiral-layer"
+          style={spiralStyle}
+        />
 
         <div className="relative z-10 w-full px-5 flex flex-col justify-center min-h-screen py-24 gap-7">
-
           <div className="flex flex-col items-center text-center">
             <h1
               ref={titleRef}
@@ -125,7 +193,8 @@ export default function Hero() {
               ref={paragraphRef}
               className="mt-3 text-[15px] sm:text-[16px] text-gray-700 leading-relaxed max-w-sm"
             >
-              Delivering scalable, secure, and enterprise-grade digital solutions for startups and global organizations.
+              Delivering scalable, secure, and enterprise-grade digital
+              solutions for startups and global organizations.
             </p>
 
             <div className="mt-5 w-full flex items-center justify-center gap-3">
@@ -136,7 +205,10 @@ export default function Hero() {
                 ‹
               </button>
 
-              <div className="relative overflow-hidden flex-1 flex justify-center" style={{ height: "40px" }}>
+              <div
+                className="relative overflow-hidden flex-1 flex justify-center"
+                style={{ height: "40px" }}
+              >
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeIndex}
@@ -175,7 +247,16 @@ export default function Hero() {
           </div>
 
           <div className="relative w-full">
-            <div className="relative rounded-md overflow-hidden bg-white border border-gray-200 shadow-sm p-3">
+            <div
+              className="relative rounded-2xl overflow-hidden border border-white/20 p-3"
+              style={{
+                background: "rgba(255,255,255,0.12)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                boxShadow:
+                  "0 8px 32px 0 rgba(31,111,178,0.15), inset 0 1px 0 rgba(255,255,255,0.3)",
+              }}
+            >
               <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
@@ -206,7 +287,6 @@ export default function Hero() {
               {INDUSTRIES[activeIndex].cta}
             </a>
           </div>
-
         </div>
       </section>
     );
@@ -214,11 +294,21 @@ export default function Hero() {
 
   // - Desktop view -//
   return (
-    <section className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]" style={{ zIndex: 0 }}>
-
+    <section
+      className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]"
+      style={{ zIndex: 0 }}
+    >
       <HeroColorMood activeIndex={activeIndex} />
-      <div ref={blob1} className="absolute top-10 left-10 w-[450px] h-[450px] bg-blue-400/20 blur-[160px] rounded-full pointer-events-none" style={{ zIndex: 0 }} />
-      <div ref={blob2} className="absolute bottom-10 right-10 w-[520px] h-[520px] bg-indigo-500/18 blur-[180px] rounded-full pointer-events-none" style={{ zIndex: 0 }} />
+      <div
+        ref={blob1}
+        className="absolute top-10 left-10 w-[450px] h-[450px] bg-blue-400/20 blur-[160px] rounded-full pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
+      <div
+        ref={blob2}
+        className="absolute bottom-10 right-10 w-[520px] h-[520px] bg-indigo-500/18 blur-[180px] rounded-full pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
 
       <div className="hero-gradient-layer" style={{ zIndex: 0 }} />
       <ThreeHeroBackground activeIndex={activeIndex} />
@@ -226,7 +316,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-[82rem] mx-auto px-6 min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-[3.5rem] items-center w-full">
-
           <div className="relative">
             <h1
               ref={titleRef}
@@ -239,7 +328,8 @@ export default function Hero() {
               ref={paragraphRef}
               className="mt-4 text-[17px] max-w-xl text-gray-700 leading-relaxed"
             >
-              Delivering scalable, secure, and enterprise-grade digital solutions for startups and global organizations.
+              Delivering scalable, secure, and enterprise-grade digital
+              solutions for startups and global organizations.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -250,9 +340,10 @@ export default function Hero() {
                     key={item.label}
                     className={`
                       px-4 py-2.5 text-[13.5px] font-medium border transition-all
-                      ${isActive
-                        ? "bg-[#1f6fb2] border-[#1f6fb2] text-white"
-                        : "bg-white border-gray-300 text-gray-700 hover:border-[#1f6fb2] hover:text-[#1f6fb2]"
+                      ${
+                        isActive
+                          ? "bg-[#1f6fb2] border-[#1f6fb2] text-white"
+                          : "bg-white border-gray-300 text-gray-700 hover:border-[#1f6fb2] hover:text-[#1f6fb2]"
                       }
                     `}
                     onClick={() => goTo(index)}
@@ -265,7 +356,16 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="relative p-6 rounded-md overflow-hidden bg-white border border-gray-200 shadow-sm">
+            <div
+              className="relative p-6 rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
+              style={{
+                background: "rgba(255,255,255,0.12)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                boxShadow:
+                  "0 8px 32px 0 rgba(31,111,178,0.15), inset 0 1px 0 rgba(255,255,255,0.3)",
+              }}
+            >
               <div className="relative w-full aspect-[17/9]">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -289,20 +389,27 @@ export default function Hero() {
 
               <button
                 onClick={goPrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded border border-gray-300 bg-white hover:bg-gray-50 transition"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/20 transition"
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(8px)",
+                }}
               >
                 ‹
               </button>
 
               <button
                 onClick={goNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded border border-gray-300 bg-white hover:bg-gray-50 transition"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/20 transition"
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(8px)",
+                }}
               >
                 ›
               </button>
             </div>
           </div>
-
         </div>
       </div>
 

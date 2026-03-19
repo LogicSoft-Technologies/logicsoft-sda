@@ -10,7 +10,6 @@ import chatSocketHandler from "./src/sockets/chatSocket.js";
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to PostgreSQL Prisma
 connectDB();
 
 const httpServer = createServer(app);

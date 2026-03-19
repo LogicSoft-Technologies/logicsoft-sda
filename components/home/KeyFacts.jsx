@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const KEY_FACTS = [
-  { value: "3+",  label: "Years of industry experience",      description: "Focused on enterprise delivery since day one"         },
-  { value: "50+", label: "Projects successfully delivered",   description: "Across web, mobile, cloud, and data platforms"        },
-  { value: "40+", label: "Enterprise & startup clients",      description: "From funded startups to established conglomerates"    },
+  { value: "5+",  label: "Years of industry experience",      description: "Focused on enterprise delivery since day one"         },
+  { value: "100+", label: "Projects successfully delivered",   description: "Across web, mobile, cloud, and data platforms"        },
+  { value: "60+", label: "Enterprise & startup clients",      description: "From funded startups to established conglomerates"    },
   { value: "12+", label: "Industries served globally",        description: "Banking, healthcare, retail, telecoms, oil & gas, more"},
 ];
 

@@ -1,52 +1,82 @@
 // src/routes/chat.js
 import express from "express";
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import prisma from "../config/prisma.js";
+import { sendLeadNotification } from "../services/mailer.js";
+import { scoreConversation } from "../services/leadScorer.js";
 
 const router = express.Router();
 
-let openai;
-function getOpenAI() {
-  if (!openai) openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  return openai;
+let genAI;
+function getGenAI() {
+  if (!genAI) genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  return genAI;
 }
 
-const SYSTEM_PROMPT = `You are the LogicSoft Technologies AI assistant — a professional, concise support agent for a premium enterprise software and technology company based in Nigeria.
+const SYSTEM_PROMPT = `You are Treasure, the official AI assistant for LogicSoft Technologies — an enterprise software and technology company headquartered in Nigeria, serving clients across Africa, Europe, and the Middle East.
 
 COMPANY OVERVIEW:
-LogicSoft Technologies is an enterprise technology partner delivering:
-- Web Development (Frontend, Backend, Full Stack)
-- Mobile Apps (iOS, Android, Cross-Platform)
-- Cybersecurity (Pen Testing, SIEM, Compliance, Security Testing)
-- Cloud Engineering (AWS, Azure, GCP — migration, IaC, FinOps, multi-cloud)
-- Data Analytics (pipelines, BI dashboards, ML, real-time streaming)
-- DevOps Engineering
-- Technology Consultation (strategy, architecture review, product discovery)
-- Cost Optimisation
+LogicSoft Technologies delivers end-to-end digital transformation solutions including:
+- Web Development (Frontend, Backend, Full Stack — React, Next.js, Node.js, and more)
+- Mobile Applications (iOS, Android, Cross-Platform — React Native, Flutter)
+- Cybersecurity (Penetration Testing, SIEM, Compliance Audits, Security Architecture)
+- Cloud Engineering (AWS, Azure, GCP — migration, Infrastructure as Code, FinOps, multi-cloud strategy)
+- Data Analytics & AI (data pipelines, BI dashboards, machine learning, real-time streaming)
+- DevOps Engineering (CI/CD, containerisation, Kubernetes, monitoring)
+- Technology Consultation (digital strategy, architecture review, product discovery, vendor selection)
+- Cost Optimisation (cloud spend, tech stack rationalisation)
 
 KEY FACTS:
-- 12+ years in business
-- 300+ projects delivered
-- Clients across Africa, Europe, and the Middle East
-- All engagements are fixed-scope, clearly priced
-- Free introductory consultation available
+- 5+ years in business
+- 300+ enterprise projects delivered
+- Fixed-scope engagements, clearly scoped and priced
+- Free introductory consultation available for all prospects
 - Contact: contact@logicsoft.com | +234 9012 688 861
 - Website: logicsofttechnologies.com
 
 YOUR ROLE:
-1. Answer questions about LogicSoft services accurately and professionally
-2. Qualify leads: understand what the user is building, their timeline, and budget range
-3. If the user wants a quote, collect: project type, scope (brief description), timeline, and company name — then tell them the team will follow up within 1 business day
-4. If the user wants to speak to a human, recommend the WhatsApp option in the chat widget
-5. Never make up pricing — say pricing is project-specific and a free consultation is the best first step
+1. Represent LogicSoft with the professionalism of a senior enterprise account executive
+2. ALWAYS answer the user's question directly and fully before anything else
+3. If a user asks about the company, a service, or any general topic — answer it thoroughly first
+4. Only ask for lead details (project type, scope, timeline, company name) if the user EXPLICITLY asks for a quote, proposal, or pricing — never ask these questions unprompted
+5. Never ask more than ONE question at a time
+6. For human agent requests: direct them to the WhatsApp option in the chat widget
+7. When the user asks about booking a consultation or scheduling a call, share this link: ${process.env.GOOGLE_CALENDAR_BOOKING_URL || "https://calendar.google.com/calendar/r"}
+8. Never fabricate pricing — state that engagements are custom-scoped and a free consultation is the best starting point
+
+CRITICAL CONVERSATION RULES:
+- Answer first, qualify later — never lead with qualification questions
+- If someone says "tell me about the company" — tell them about the company, do not ask what service they want
+- If someone says "web development" — explain LogicSoft's web development capabilities in detail
+- If someone says "cybersecurity" — explain the cybersecurity services in detail
+- Only switch into lead qualification mode when the user says something like "I want a quote", "how much does it cost", "I want to hire you", "let's get started"
+- Never repeat the same question twice
+- Never get stuck asking the same thing in a loop
+
+CONVERSATION BEHAVIOUR:
+- Always respond directly to what the user just asked
+- Each response must address the user's current message specifically
+- Do not summarise or repeat what you said in a previous turn
+- If the user changes the subject, follow their lead immediately
+- Never get stuck in a loop
+
+HANDLING OFF-TOPIC OR UNRELATED QUESTIONS:
+If a user asks something unrelated to technology or LogicSoft's services, respond politely but redirect professionally:
+"That's a little outside my expertise — I'm here to help with anything related to LogicSoft's services or your technology needs. Is there something I can assist you with on that front?"
+
+RESPONSE STANDARDS:
+- Keep responses under 120 words unless the question genuinely requires more depth
+- Use clear, structured language — avoid filler phrases and corporate clichés
+- Never use excessive bullet points in casual responses
+- Never begin with "Certainly!", "Of course!", "Great question!" or similar filler openers
+- Never say "As an AI language model" or reference being an AI unless directly asked
 
 TONE:
-- Professional, confident, warm
-- Concise (keep responses under 120 words unless genuinely needed)
-- No excessive emojis — you represent a premium enterprise firm
-- Never say "As an AI language model"`;
+- Confident, warm, and commercially sharp
+- You represent a premium enterprise firm — every response should reflect that standard
+- Treat every user as a potential enterprise client`;
 
-// Rate limiting 
+// Rate limiting
 const ipWindows = new Map();
 function isRateLimited(ip) {
   const now = Date.now();
@@ -65,7 +95,27 @@ setInterval(() => {
   }
 }, 300_000);
 
-//  POST /api/chat/message
+// Track notified sessions to avoid duplicate emails
+const notifiedSessions = new Set();
+
+async function geminiChat(contextMessages) {
+  const model = getGenAI().getGenerativeModel({
+    model: "gemini-2.5-flash",
+    systemInstruction: SYSTEM_PROMPT,
+  });
+
+  const history = contextMessages.slice(0, -1).map((m) => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }],
+  }));
+
+  const lastMessage = contextMessages[contextMessages.length - 1].content;
+  const chat = model.startChat({ history });
+  const result = await chat.sendMessage(lastMessage);
+  return result.response.text().trim();
+}
+
+// POST /api/chat/message
 router.post("/message", async (req, res) => {
   const ip = req.ip || req.headers["x-forwarded-for"] || "unknown";
   if (isRateLimited(ip)) {
@@ -83,9 +133,7 @@ router.post("/message", async (req, res) => {
   }
 
   try {
-    
     let session = await prisma.chatSession.findUnique({ where: { sessionId } });
-
     if (!session) {
       session = await prisma.chatSession.create({
         data: {
@@ -97,12 +145,10 @@ router.post("/message", async (req, res) => {
       });
     }
 
-    // Save user message 
     await prisma.chatMessage.create({
       data: { sessionId, role: "user", content: message.trim() },
     });
 
-    // Fetch last 16 messages for context 
     const recentMessages = await prisma.chatMessage.findMany({
       where: { sessionId },
       orderBy: { createdAt: "asc" },
@@ -114,24 +160,27 @@ router.post("/message", async (req, res) => {
       content: m.content,
     }));
 
-    // OpenAI completion 
-    const completion = await getOpenAI().chat.completions.create({
-      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...contextMessages],
-      max_tokens: 300,
-      temperature: 0.65,
-    });
+    const reply = await geminiChat(contextMessages);
 
-    const reply =
-      completion.choices[0]?.message?.content?.trim() ||
-      "I'm having trouble responding right now. Please try again or reach our team on WhatsApp.";
-
-    // Save assistant reply 
     await prisma.chatMessage.create({
       data: { sessionId, role: "assistant", content: reply },
     });
 
-    return res.json({ success: true, sessionId, reply });
+    // Lead scoring — run after every message, notify once when threshold hit
+    const { score, signals, isHotLead, isWarmLead } = scoreConversation(contextMessages);
+    const shouldNotify = (isHotLead || isWarmLead) && !notifiedSessions.has(sessionId);
+
+    if (shouldNotify) {
+      notifiedSessions.add(sessionId);
+      sendLeadNotification({
+        sessionId,
+        messages: contextMessages,
+        score,
+        signals,
+      }).catch(err => console.error("[Lead Notification Error]", err.message));
+    }
+
+    return res.json({ success: true, sessionId, reply, leadScore: score });
 
   } catch (err) {
     console.error("[Chat /message] Error:", err.message);
@@ -162,15 +211,11 @@ router.get("/staff", async (req, res) => {
       },
     });
 
-    // WAT = UTC+1
     const watHour = (new Date().getUTCHours() + 1) % 24;
-
     const result = staffList.map((s) => ({
       ...s,
-      // Keep the same shape as before for frontend compatibility
       workingHours: { start: s.workingHoursStart, end: s.workingHoursEnd },
-      isAvailableNow:
-        s.isOnline && watHour >= s.workingHoursStart && watHour < s.workingHoursEnd,
+      isAvailableNow: s.isOnline && watHour >= s.workingHoursStart && watHour < s.workingHoursEnd,
     }));
 
     return res.json({ success: true, staff: result });
@@ -187,10 +232,7 @@ router.post("/transfer", async (req, res) => {
   try {
     await prisma.chatSession.update({
       where: { sessionId },
-      data: {
-        status: "transferred_whatsapp",
-        transferredTo: staffName || null,
-      },
+      data: { status: "transferred_whatsapp", transferredTo: staffName || null },
     });
   } catch (err) {
     console.error("[Chat /transfer] Error:", err.message);
@@ -202,13 +244,11 @@ router.post("/transfer", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { message, history = [] } = req.body;
-
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "message is required" });
     }
 
-    const messages = [
-      { role: "system", content: SYSTEM_PROMPT },
+    const contextMessages = [
       ...history.slice(-10).map((m) => ({
         role: m.from === "user" ? "user" : "assistant",
         content: m.text,
@@ -216,14 +256,7 @@ router.post("/", async (req, res) => {
       { role: "user", content: message },
     ];
 
-    const completion = await getOpenAI().chat.completions.create({
-      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-      messages,
-      max_tokens: 300,
-      temperature: 0.65,
-    });
-
-    const reply = completion.choices[0]?.message?.content?.trim();
+    const reply = await geminiChat(contextMessages);
     return res.json({ reply });
   } catch (err) {
     console.error("[Chat /] Error:", err.message);

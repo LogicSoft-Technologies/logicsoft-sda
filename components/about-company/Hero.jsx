@@ -12,8 +12,8 @@ const heroImages = [
 ];
 
 const signals = [
-  "12+ years delivering enterprise software",
-  "300+ projects shipped across 30+ industries",
+  "5+ years delivering enterprise software",
+  "100+ projects shipped across 30+ industries",
   "Offices in Lagos, Abuja and Edo",
 ];
 
