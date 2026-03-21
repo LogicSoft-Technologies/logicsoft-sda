@@ -51,6 +51,8 @@ CRITICAL CONVERSATION RULES:
 - If someone says "cybersecurity" — explain the cybersecurity services in detail
 - Only switch into lead qualification mode when the user says something like "I want a quote", "how much does it cost", "I want to hire you", "let's get started"
 - Never repeat the same question twice
+- If the user says goodbye, thank you, or farewell but then continues with a new question, treat the new question as a fresh topic — completely ignore the goodbye and answer the new question directly
+- A farewell followed by a new question means the user is continuing the conversation — never reference the goodbye or wrap up the conversation again
 - Never get stuck asking the same thing in a loop
 
 CONVERSATION BEHAVIOUR:
@@ -97,6 +99,25 @@ setInterval(() => {
 
 // Track notified sessions to avoid duplicate emails
 const notifiedSessions = new Set();
+
+const FAREWELL_PATTERN = /goodbye|see you|take care|pleasure speaking|best of luck|have a great|talk soon|until next|farewell|that will be all|that's all for now/i;
+const USER_FAREWELL_PATTERN = /^(thank you|thanks|bye|goodbye|see you|see ya|take care|that's all|that will be all|cheers|later|good day|have a good).{0,40}$/i;
+
+function stripFarewellContext(msgs) {
+  // Find the last assistant farewell message index
+  let lastFarewellIdx = -1;
+  msgs.forEach((m, i) => {
+    if (m.role === "assistant" && FAREWELL_PATTERN.test(m.content)) {
+      lastFarewellIdx = i;
+    }
+  });
+
+  // If farewell found and there are messages after it, strip everything up to and including it
+  if (lastFarewellIdx !== -1 && lastFarewellIdx < msgs.length - 1) {
+    return msgs.slice(lastFarewellIdx + 1);
+  }
+  return msgs;
+}
 
 async function geminiChat(contextMessages) {
   const model = getGenAI().getGenerativeModel({
@@ -150,15 +171,26 @@ router.post("/message", async (req, res) => {
     });
 
     const recentMessages = await prisma.chatMessage.findMany({
-      where: { sessionId },
+      where: {
+        sessionId,
+        createdAt: {
+          gte: new Date(Date.now() - 30 * 60 * 1000),
+        },
+      },
       orderBy: { createdAt: "asc" },
-      take: 16,
+      take: 8,
     });
 
-    const contextMessages = recentMessages.map((m) => ({
+    const rawMessages = recentMessages.map((m) => ({
       role: m.role,
       content: m.content,
     }));
+
+    // If the current message is NOT a farewell, strip any prior farewell context
+    const isCurrentFarewell = USER_FAREWELL_PATTERN.test(message.trim());
+    const contextMessages = isCurrentFarewell
+      ? rawMessages
+      : stripFarewellContext(rawMessages);
 
     const reply = await geminiChat(contextMessages);
 
@@ -166,7 +198,7 @@ router.post("/message", async (req, res) => {
       data: { sessionId, role: "assistant", content: reply },
     });
 
-    // Lead scoring — run after every message, notify once when threshold hit
+    // Lead scoring
     const { score, signals, isHotLead, isWarmLead } = scoreConversation(contextMessages);
     const shouldNotify = (isHotLead || isWarmLead) && !notifiedSessions.has(sessionId);
 
@@ -177,11 +209,10 @@ router.post("/message", async (req, res) => {
         messages: contextMessages,
         score,
         signals,
-      }).catch(err => console.error("[Lead Notification Error]", err.message));
+      }).catch((err) => console.error("[Lead Notification Error]", err.message));
     }
 
     return res.json({ success: true, sessionId, reply, leadScore: score });
-
   } catch (err) {
     console.error("[Chat /message] Error:", err.message);
     return res.status(200).json({
