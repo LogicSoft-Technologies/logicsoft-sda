@@ -38,10 +38,10 @@ const SERVICES = [
       ["IT Service Management",         "/itsm"                   ],
     ],
     linksRight: [
-      ["Solution Consulting",           "/it-consulting/solution" ],
-      ["Platform Consulting",           "/it-consulting/platform" ],
+      ["Solution Consulting",           "/it-consulting/solution"  ],
+      ["Platform Consulting",           "/it-consulting/platform"  ],
       ["Enterprise IT Consulting",      "/it-consulting/enterprise"],
-      ["User Training",                 "/it-consulting/training" ],
+      ["User Training",                 "/it-consulting/training"  ],
     ],
     cta: "/it-consulting",
     stat: "40+ enterprise clients",
@@ -128,6 +128,9 @@ export default function Offering() {
           <div className="lg:hidden border-b border-blue-100 bg-white/60">
             <button
               onClick={() => setMobileOpen((v) => !v)}
+              aria-expanded={mobileOpen}
+              aria-controls="offering-mobile-list"
+              aria-label={`Currently viewing ${active.title}. Tap to switch service`}
               className="w-full flex items-center justify-between px-5 py-4 text-left"
             >
               <div>
@@ -138,12 +141,15 @@ export default function Offering() {
                   {active.title}
                 </span>
               </div>
-              <ArrowUpRight className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${mobileOpen ? "rotate-180" : ""}`} />
+              <ArrowUpRight className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${mobileOpen ? "rotate-180" : ""}`} aria-hidden="true" />
             </button>
 
             <AnimatePresence>
               {mobileOpen && (
-                <motion.div
+                <motion.ul
+                  id="offering-mobile-list"
+                  role="listbox"
+                  aria-label="Select a service"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -151,33 +157,35 @@ export default function Offering() {
                   className="overflow-hidden border-t border-blue-50"
                 >
                   {SERVICES.filter((s) => s.id !== activeId).map((service) => (
-                    <button
-                      key={service.id}
-                      onClick={() => handleSelect(service.id)}
-                      className="w-full text-left px-5 py-3.5 border-b border-blue-50 last:border-b-0 hover:bg-white/80 transition-colors"
-                    >
-                      <span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-gray-400 mb-0.5">
-                        {service.eyebrow}
-                      </span>
-                      <span className="block text-[14.5px] font-semibold text-gray-600">
-                        {service.title}
-                      </span>
-                    </button>
+                    <li key={service.id} role="option" aria-selected={false}>
+                      <button
+                        onClick={() => handleSelect(service.id)}
+                        className="w-full text-left px-5 py-3.5 border-b border-blue-50 last:border-b-0 hover:bg-white/80 transition-colors"
+                      >
+                        <span className="block text-[10px] font-semibold uppercase tracking-[0.1em] text-gray-400 mb-0.5">
+                          {service.eyebrow}
+                        </span>
+                        <span className="block text-[14.5px] font-semibold text-gray-600">
+                          {service.title}
+                        </span>
+                      </button>
+                    </li>
                   ))}
-                </motion.div>
+                </motion.ul>
               )}
             </AnimatePresence>
           </div>
 
           {/* Desktop: sidebar tabs */}
-          <aside className="hidden lg:block border-r border-blue-100 bg-white/60">
+          <nav aria-label="Service categories" className="hidden lg:block border-r border-blue-100 bg-white/60">
             {SERVICES.map((service) => {
               const isActive = activeId === service.id;
               return (
                 <button
                   key={service.id}
                   onClick={() => setActiveId(service.id)}
-                  aria-selected={isActive}
+                  aria-pressed={isActive}
+                  aria-controls="offering-panel"
                   className={`group relative w-full text-left px-6 py-5 border-b border-blue-50 last:border-b-0 transition-all duration-200 ${
                     isActive
                       ? "bg-white border-l-[3px] border-l-[#1f6fb2]"
@@ -197,11 +205,14 @@ export default function Offering() {
                 </button>
               );
             })}
-          </aside>
+          </nav>
 
+          {/* Active service panel */}
           <AnimatePresence mode="wait">
-            <motion.div
+            <motion.article
+              id="offering-panel"
               key={active.id}
+              aria-label={`${active.title} services`}
               initial={{ opacity: 0, x: 8 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -8 }}
@@ -230,11 +241,12 @@ export default function Offering() {
                 <p className="text-[10.5px] font-semibold text-gray-400 uppercase tracking-[0.1em] whitespace-nowrap">
                   Services included
                 </p>
-                <div className="flex-1 h-px bg-gray-100" />
+                <div className="flex-1 h-px bg-gray-100" aria-hidden="true" />
               </div>
 
+              {/* Service links — two columns */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-0 mb-6 sm:mb-8">
-                <ul>
+                <ul aria-label={`${active.title} services — left column`}>
                   {active.linksLeft.map(([label, href]) => (
                     <li key={label}>
                       <Link
@@ -250,7 +262,7 @@ export default function Offering() {
                     </li>
                   ))}
                 </ul>
-                <ul>
+                <ul aria-label={`${active.title} services — right column`}>
                   {active.linksRight.map(([label, href]) => (
                     <li key={label}>
                       <Link
@@ -274,13 +286,14 @@ export default function Offering() {
                 </p>
                 <Link
                   href={active.cta}
+                  aria-label={`Explore all ${active.title} services`}
                   className="flex items-center gap-2 px-5 py-2 text-[13px] font-semibold text-white bg-[#1f6fb2] hover:bg-[#1f3a5f] transition-colors duration-200 self-start sm:self-auto"
                 >
-                  Explore {active.title} <ArrowRight className="w-3.5 h-3.5" />
+                  Explore {active.title} <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </Link>
               </div>
 
-            </motion.div>
+            </motion.article>
           </AnimatePresence>
         </div>
 
