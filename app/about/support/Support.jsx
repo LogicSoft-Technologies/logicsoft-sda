@@ -67,10 +67,10 @@ const CHANNELS = [
   {
     icon: Mail,
     title: "Email Support",
-    detail: "support@logicsoft.com",
+    detail: "contact@logicsofttechnologies.online",
     desc: "For general support, bug reports, and non-urgent requests. All emails acknowledged within 2 business hours.",
     action: "Send an email",
-    href: "mailto:support@logicsoft.com",
+    href: "mailto:contact@logicsofttechnologies.online",
     accentColor: "#1f6fb2",
     accentBg: "#eaf4ff",
     availability: "Mon–Fri, 8am–6pm WAT",
@@ -311,7 +311,7 @@ export default function Support() {
             <div>
               <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-4">Support FAQ</p>
               <h3 className="text-[28px] font-serif text-[#1f3a5f] leading-tight mb-5">Common support questions.</h3>
-              <p className="text-[14px] text-gray-500 leading-[1.85] mb-8">Can't find what you need? Email us at <a href="mailto:support@logicsoft.com" className="text-[#1f6fb2] hover:underline">support@logicsoft.com</a>.</p>
+              <p className="text-[14px] text-gray-500 leading-[1.85] mb-8">Can't find what you need? Email us at <a href="contact@logicsofttechnologies.online" className="text-[#1f6fb2] hover:underline">contact@logicsofttechnologies.online</a>.</p>
               <Link href="/about/faq" className="inline-flex items-center gap-2 text-[13px] font-bold text-white bg-[#1f3a5f] px-7 py-3.5 hover:bg-[#1f6fb2] transition-all duration-200">
                 Full FAQ <ArrowRight className="w-4 h-4" />
               </Link>

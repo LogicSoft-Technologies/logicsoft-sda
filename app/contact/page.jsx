@@ -63,8 +63,8 @@ const CHANNELS = [
   {
     icon: Mail,
     label: "Email our team",
-    value: "contact@logicsoft.ng",
-    href: "mailto:contact@logicsoft.ng",
+    value: "contact@logicsofttechnologies.online",
+    href: "mailto:contact@logicsofttechnologies.online",
     sub: "Responses within 24 hours",
   },
   {
@@ -78,19 +78,19 @@ const CHANNELS = [
 
 const OFFICES = [
   {
-    city: "Lagos",  country: "Nigeria",         flag: "NG",
+    city: "Lekki",  country: "Nigeria",         flag: "NG",
     address: "14 Adeola Odeku Street, Victoria Island",
     phone: "+234 9012 688 861", timezone: "WAT · UTC+1", primary: true,
   },
   {
-    city: "London", country: "United Kingdom",  flag: "GB",
-    address: "1 Canada Square, Canary Wharf",
-    phone: "+44 20 7946 0800",  timezone: "GMT/BST · UTC+0/+1", primary: false,
+    city: "Benin", country: "Nigeria",  flag: "NG",
+    address: "15 Akenzua Street, GRA",
+    phone: "+234 7034302054",  timezone: "WAT · UTC+1", primary: false,
   },
   {
-    city: "Dubai",  country: "UAE",             flag: "AE",
-    address: "Dubai Internet City, Building 1",
-    phone: "+971 4 123 4567",   timezone: "GST · UTC+4", primary: false,
+    city: "Abuja",  country: "Nigeria",             flag: "NG",
+    address: "12 Aguiyi Ironsi Street, Maitama District",
+    phone: "+234 9135257462",   timezone: "WAT · UTC+1", primary: false,
   },
 ];
 
@@ -623,13 +623,13 @@ export default function ContactPage() {
 
               <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.14 }}
                 className="border border-[#e8eef6] bg-white divide-y divide-[#f1f5f9]">
-                <a href="mailto:press@logicsoft.ng" className="flex items-center gap-3 p-4 group hover:bg-[#f8fafc] transition-colors">
+                <a href="mailto:contact@logicsofttechnologies.online.ng" className="flex items-center gap-3 p-4 group hover:bg-[#f8fafc] transition-colors">
                   <div className="w-8 h-8 bg-[#f0f7ff] border border-[#dce8f5] flex items-center justify-center shrink-0 group-hover:bg-[#1f6fb2] group-hover:border-[#1f6fb2] transition-all">
                     <Mail className="w-3.5 h-3.5 text-[#1f6fb2] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#1f3a5f] group-hover:text-[#1f6fb2] transition-colors">Media & press enquiries</p>
-                    <p className="text-[11px] text-gray-400">press@logicsoft.ng</p>
+                    <p className="text-[11px] text-gray-400">contact@logicsofttechnologies.online</p>
                   </div>
                   <ArrowRight className="w-3.5 h-3.5 text-gray-200 group-hover:text-[#1f6fb2] ml-auto transition-all group-hover:translate-x-0.5" />
                 </a>

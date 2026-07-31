@@ -174,9 +174,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@logicsoft.ng" className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200">
+                <a href="mailto:contact@logicsofttechnologies.online" className="flex items-center gap-2.5 text-[13.5px] text-gray-500 hover:text-[#1f6fb2] transition-colors duration-200">
                   <Mail className="w-3.5 h-3.5 text-[#1f6fb2] shrink-0" />
-                  contact@logicsoft.ng
+                  contact@logicsofttechnologies.online
                 </a>
               </li>
               <li className="flex items-center gap-2.5 text-[13.5px] text-gray-500">

@@ -56,8 +56,8 @@ const CHANNELS = [
   {
     icon: Mail,
     label: "Email our team",
-    sub: "contact@logicsoft.ng",
-    href: "mailto:contact@logicsoft.ng",
+    sub: "contact@logicsofttechnologies.online",
+    href: "mailto:contact@logicsofttechnologies.online",
     hoverColor: "#1f6fb2",
   },
   {
@@ -473,13 +473,13 @@ export default function ContactSection() {
             {/* Media & press */}
             <div>
               <p className="text-[11px] font-bold text-[#1f3a5f] uppercase tracking-[0.14em] mb-3">Media & press</p>
-              <a href="mailto:press@logicsoft.ng" className="flex items-center gap-3 group">
+              <a href="mailto:contact@logicsofttechnologies.online" className="flex items-center gap-3 group">
                 <div className="w-8 h-8 flex items-center justify-center border border-[#bfdbfe] bg-white group-hover:bg-[#1f6fb2] group-hover:border-[#1f6fb2] transition-all duration-150 shrink-0">
                   <Newspaper className="w-3.5 h-3.5 text-[#1f6fb2] group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="text-[13px] font-semibold text-[#1f3a5f] group-hover:text-[#1f6fb2] transition-colors">Request executive insights</p>
-                  <p className="text-[11px] text-gray-400">press@logicsoft.ng</p>
+                  <p className="text-[11px] text-gray-400">contact@logicsofttechnologies.online</p>
                 </div>
                 <ArrowRight className="w-3 h-3 text-gray-300 group-hover:text-[#1f6fb2] group-hover:translate-x-0.5 transition-all ml-auto shrink-0" />
               </a>
