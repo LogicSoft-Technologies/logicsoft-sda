@@ -8,20 +8,24 @@ import Image from "next/image";
 
 // ── Founders data ─────────────────────────────────────────────────────────────
 const FOUNDERS = [
-  {
-    name: "Adewale Okonkwo",
-    title: "Chief Executive Officer & Co-Founder",
-    initials: "AO",
-    avatarBg: "#1f3a5f",
-    accentColor: "#1f6fb2",
-    accentBg: "#eaf4ff",
-    bio: [
-      "Adewale graduated from the University of Lagos in 2008 with a first-class degree in Computer Science. He spent three years at a Lagos-based systems integrator before concluding that Nigerian enterprises were being systematically underserved by both local vendors (who lacked technical rigour) and international firms (who lacked local context).",
-      "In 2012, he assembled a small team of engineers and incorporated SDA Logicsoft Technologies with a simple mandate: build enterprise software to global standards, from Lagos. No offshore outsourcing, no template solutions — just disciplined engineering applied to real African business problems.",
-      "Under his leadership, Logicsoft has grown from 3 to 85+ engineers, delivered over 300 projects, and built a reputation in sectors as demanding as banking, healthcare, and government.",
-    ],
-    quote: "I never wanted to build the biggest software company in Nigeria. I wanted to build the most trustworthy one. Those aren't the same goal — and making that distinction early is what shaped everything that followed.",
-    credentials: ["B.Sc Computer Science, UNILAG", "PMP Certified", "ISO 27001 Lead Implementer", "15+ years in enterprise software"],
+ {
+  name: "Elijah Alexander Okpochini",
+  title: "Founder & Chief Executive Officer",
+  image: "/images/founders/elijah.jpg",
+  avatarBg: "#1f3a5f",
+  accentColor: "#1f6fb2",
+  accentBg: "#eaf4ff",
+  bio: [
+    "Elijah Alexander Okpochini is a software engineer and entrepreneur pursuing a Bachelor of Science (B.Sc.) in Industrial Physics at the University of Benin. Alongside his academic journey, he has spent the last several years building full-stack software applications with a focus on scalable web platforms, backend architecture, and modern cloud infrastructure.",
+    "In July 2024, he founded Logicsoft Technologies with a clear vision: to build an African technology company capable of delivering enterprise-grade software that meets global engineering standards. Rather than competing on price, Logicsoft was created to compete on technical excellence, long-term reliability, and thoughtful product execution.",
+    "Today, Elijah leads the company's engineering direction, overseeing product architecture, client delivery, and technology strategy. His work spans custom software development, AI-powered business solutions, cloud deployments, and digital transformation initiatives for startups and growing businesses, while continuously investing in building Logicsoft into a globally respected technology company."
+  ],
+  quote: "Great software isn't built by writing more code—it's built by solving the right problems with discipline, clarity, and uncompromising engineering standards.",
+  credentials: [
+    "B.Sc. Industrial Physics (In View), University of Benin",
+    "Founder & CEO, Logicsoft Technologies",
+    "4+ Years in Full-Stack Software Engineering",
+    "Specializing in AI, Cloud & Enterprise Software"],
   },
 {
   name: "Saviour Oviahon Efe",
@@ -185,26 +189,46 @@ export default function FoundersStory() {
           <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
             style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
 
-          <div className="relative z-10 max-w-[780px]">
-            <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.16em] mb-5">The founder's story</p>
-            <h2 className="text-[38px] lg:text-[54px] font-serif text-white leading-[1.1] mb-6">
-              Built from Conviction.<br />Not Capital.
-            </h2>
-            <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
-              Three engineers. One shared belief. No external funding. This is the story of how
-              SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
-              across three continents — told by the people who built it.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {FOUNDERS.map((f) => (
-                  <div key={f.name} className="w-10 h-10 flex items-center justify-center text-[11px] font-bold text-white border-2 border-white/20 shrink-0" style={{ background: f.avatarBg }}>
-                    {f.initials}
-                  </div>
-                ))}
+          {/* Two columns: text + avatars on the left, full-size rotating photo on the right */}
+          <div className="relative z-10 grid lg:grid-cols-[1fr_auto] gap-16 items-center">
+
+            <div className="max-w-[780px]">
+              <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.16em] mb-5">The founder's story</p>
+              <h2 className="text-[38px] lg:text-[54px] font-serif text-white leading-[1.1] mb-6">
+                Built from Conviction.<br />Not Capital.
+              </h2>
+              <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
+                Three engineers. One shared belief. No external funding. This is the story of how
+                SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
+                across three continents — told by the people who built it.
+              </p>
+
+              {/* Small avatar trio — left as-is */}
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {FOUNDERS.map((f) => (
+                    <div
+                      key={f.name}
+                      className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/20"
+                    >
+                      <Image
+                        src={f.image}
+                        alt={f.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[13px] text-white/60">Three co-founders. One company. 12 years.</p>
               </div>
-              <p className="text-[13px] text-white/60">Three co-founders. One company. 12 years.</p>
             </div>
+
+            {/* Right side: full-size rotating founder showcase */}
+            <div className="hidden lg:flex justify-end">
+              <FounderHeroShowcase founders={FOUNDERS} />
+            </div>
+
           </div>
         </div>
       </div>
