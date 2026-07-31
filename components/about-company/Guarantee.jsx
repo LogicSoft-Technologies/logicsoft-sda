@@ -19,14 +19,14 @@ const guarantees = [
   {
     icon: FaCalculator,
     title: "Accurate and Realistic Cost Estimation",
-    description: "Our thorough discovery work gives us a complete project scope, enabling precise cost estimates. We factor in risk and actively pursue cost optimisation where possible.",
+    description: "Our thorough discovery work gives us a complete project scope, enabling precise cost estimates. We factor in risk and actively pursue cost optimization where possible.",
     href: "/how-we-work/estimation",
     iconColor: "#0891b2", badgeBg: "#cffafe", badgeBorder: "#a5f3fc",
   },
   {
     icon: FaSlidersH,
     title: "Dynamic, Yet Controllable, Project Scoping",
-    description: "We work out granular requirements at the start and stay responsive throughout. The result is software that meets your current goals — even if those goals evolved over time.",
+    description: "We work out granular requirements at the start and stay responsive throughout. The result is software that meets your current goals even if those goals evolved over time.",
     href: "/how-we-work/scoping",
     iconColor: "#7c3aed", badgeBg: "#ede9fe", badgeBorder: "#ddd6fe",
   },
@@ -40,21 +40,21 @@ const guarantees = [
   {
     icon: FaExclamationTriangle,
     title: "Comprehensive Risk Management",
-    description: "We evaluate operational, business, technology, and external risk factors — then plan mitigation strategies so we can react quickly and confidently to any disruption.",
+    description: "We evaluate operational, business, technology, and external risk factors then plan mitigation strategies so we can react quickly and confidently to any disruption.",
     href: "/how-we-work/risk-management",
     iconColor: "#dc2626", badgeBg: "#fee2e2", badgeBorder: "#fecaca",
   },
   {
     icon: FaRocket,
     title: "Agile Delivery",
-    description: "We manage evolving requirements by working in sprints — each covering a full cycle of feature ideation, development, testing, and deployment from a prioritised backlog.",
+    description: "We manage evolving requirements by working in sprints — each covering a full cycle of feature ideation, development, testing, and deployment from a prioritized backlog.",
     href: "/how-we-work/agile",
     iconColor: "#d97706", badgeBg: "#fef3c7", badgeBorder: "#fde68a",
   },
   {
     icon: FaExchangeAlt,
     title: "Prevention of Scope Creep",
-    description: "We're flexible to change — but every change request is assessed for feasibility and desirability before it enters the project, keeping the process firmly under control.",
+    description: "We're flexible to change but every change request is assessed for feasibility and desirability before it enters the project, keeping the process firmly under control.",
     href: "/how-we-work/scope-control",
     iconColor: "#b45309", badgeBg: "#fff7ed", badgeBorder: "#fed7aa",
   },
@@ -82,13 +82,13 @@ const guarantees = [
   {
     icon: FaChartBar,
     title: "Routine Reporting",
-    description: "We report regularly on agreed KPIs and provide progress forecasts so clients are always in the loop — no surprises, no ambiguity.",
+    description: "We report regularly on agreed KPIs and provide progress forecasts so clients are always in the loop no surprises, no ambiguity.",
     href: "/how-we-work/reporting",
     iconColor: "#0891b2", badgeBg: "#cffafe", badgeBorder: "#a5f3fc",
   },
   {
     icon: FaDatabase,
-    title: "Centralised Knowledge Management",
+    title: "Centralized Knowledge Management",
     description: "All important decisions and processes are documented to prevent data silos and knowledge loss, ensuring continuity across the full project team.",
     href: "/how-we-work/knowledge-management",
     iconColor: "#dc2626", badgeBg: "#fee2e2", badgeBorder: "#fecaca",
@@ -116,8 +116,8 @@ export default function Guarantee() {
         </h2>
 
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] mb-10 sm:mb-14 max-w-[1100px]">
-          At Logicsoft Technologies, we see our mission in driving project success no
-          matter what. These are not just ambitious words — we apply a proven set of
+          At LogicSoft Technologies, we see our mission in driving project success no
+          matter what. These are not just ambitious words we apply a proven set of
           practices and techniques to keep projects on track and deliver on our
           commitments despite any possible obstacles. Our Code of Conduct underpins
           this dedication, fostering accountability, fairness, and professionalism

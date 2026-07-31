@@ -9,7 +9,7 @@ const team = [
     name: "Elijah O Alexander",
     role: "Chief Executive Officer",
     image: "/about/experts/elijah-alexander.jpg",
-    bio: "Elijah leads Logicsoft Technologies with a focus on strategic growth, enterprise partnerships, and delivery excellence. With a background spanning software engineering and business development, he founded Logicsoft to bridge the gap between world-class technical execution and real business outcomes.",
+    bio: "Elijah leads LogicSoft Technologies with a focus on strategic growth, enterprise partnerships, and delivery excellence. With a background spanning software engineering and business development, he founded LogicSoft to bridge the gap between world-class technical execution and real business outcomes.",
     linkedin: "https://linkedin.com/in/elijah-alexander",
     email: "elijah@logicsoft.com",
   },
@@ -17,7 +17,7 @@ const team = [
     name: "TBA",
     role: "Chief Technology Officer",
     image: null,
-    bio: "Overseeing Logicsoft's technical direction, architecture standards, and engineering excellence across all service lines.",
+    bio: "Overseeing LogicSoft's technical direction, architecture standards, and engineering excellence across all service lines.",
     linkedin: null,
     email: null,
   },
@@ -25,7 +25,7 @@ const team = [
     name: "TBA",
     role: "Head of Delivery",
     image: null,
-    bio: "Responsible for project management operations, client delivery frameworks, and ensuring every engagement meets Logicsoft's quality standards.",
+    bio: "Responsible for project management operations, client delivery frameworks, and ensuring every engagement meets LogicSoft's quality standards.",
     linkedin: null,
     email: null,
   },
@@ -64,7 +64,7 @@ export default function Leadership() {
             Leadership
           </h1>
           <p className="text-[17px] text-gray-700 leading-[2] max-w-[760px]">
-            Logicsoft Technologies is led by a focused team of technology and
+            LogicSoft Technologies is led by a focused team of technology and
             business professionals committed to delivering measurable outcomes for
             every client we serve.
           </p>

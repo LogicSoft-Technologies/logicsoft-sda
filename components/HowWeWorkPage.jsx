@@ -114,7 +114,7 @@ export default function HowWeWorkPage({ index, title, tagline, description, step
         <div className="relative z-10 max-w-[82rem] mx-auto px-6 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-[26px] font-serif text-white mb-2">Ready to start your engagement?</h2>
-            <p className="text-[14px] text-white/45 max-w-lg">Every LogicSoft project is governed by all eight disciplines — from kickoff through post-launch.</p>
+            <p className="text-[14px] text-white/45 max-w-lg">Every LogicSoft project is governed by all eight disciplines from kickoff through post-launch.</p>
           </div>
           <div className="flex gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white transition-all hover:scale-[1.02]"

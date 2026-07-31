@@ -1,8 +1,8 @@
-// src/routes/contact.js
 import express from "express";
 import multer from "multer";
 import nodemailer from "nodemailer";
 import { buildContactEmail } from "../emails/contactEmail.js";
+import { renderHeader, renderFooter, logoAttachment, BRAND } from "../emails/brand.js";
 import prisma from "../config/prisma.js";
 
 const router = express.Router();
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
         console.error("[Contact DB Save Error]", dbErr.message);
       }
 
-      const attachments = [];
+      const attachments = [logoAttachment()];
 
       if (hasVoice) {
         attachments.push({
@@ -83,22 +83,21 @@ router.post("/", (req, res) => {
         },
       });
 
-      // ── Send to company ─────
       await transporter.sendMail({
         from:    `"LogicSoft Contact" <${process.env.SMTP_USER}>`,
-        to:      process.env.CONTACT_RECIPIENT || "contact@logicsoft.ng",
+        to:      process.env.CONTACT_RECIPIENT || BRAND.companyEmail,
         replyTo: email,
         subject: `[New Enquiry] ${name}${company ? ` · ${company}` : ""} — ${service || "General"}`,
         html:    buildContactEmail({ name, company, email, phone, country, service, budget, message, hasVoice, fileCount }),
         attachments,
       });
 
-      // ── Auto-reply to sender ───
       await transporter.sendMail({
-        from:    `"LogicSoft Technologies" <${process.env.SMTP_USER}>`,
-        to:      email,
-        subject: "We've received your enquiry — LogicSoft Technologies",
-        html:    buildAutoReply({ name }),
+        from:        `"LogicSoft Technologies" <${process.env.SMTP_USER}>`,
+        to:          email,
+        subject:     "We've received your enquiry — LogicSoft Technologies",
+        html:        buildAutoReply({ name }),
+        attachments: [logoAttachment()],
       });
 
       return res.json({ success: true });
@@ -113,33 +112,53 @@ router.post("/", (req, res) => {
 function buildAutoReply({ name }) {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f0f4f8;font-family:'Segoe UI',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4f8;padding:40px 20px;">
-    <tr><td align="center">
-      <table width="580" cellpadding="0" cellspacing="0" style="background:#ffffff;border-top:4px solid #1f6fb2;max-width:580px;">
-        <tr><td style="background:linear-gradient(135deg,#050c18,#0d2448);padding:36px 40px;">
-          <p style="margin:0;font-size:22px;font-weight:300;color:#ffffff;">LogicSoft <strong style="font-weight:700;">Technologies</strong></p>
-          <p style="margin:6px 0 0;font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;">Enterprise Technology Partner</p>
-        </td></tr>
-        <tr><td style="padding:40px;">
-          <p style="margin:0 0 20px;font-size:16px;color:#1f3a5f;font-weight:600;">Hi ${name},</p>
-          <p style="margin:0 0 16px;font-size:14px;color:#4b5563;line-height:1.8;">Thank you for reaching out to LogicSoft Technologies. We have received your enquiry and a solution architect will respond within <strong>24 business hours</strong>.</p>
-          <p style="margin:0 0 16px;font-size:14px;color:#4b5563;line-height:1.8;">For urgent matters, reach us directly:</p>
-          <table cellpadding="0" cellspacing="0" style="margin:24px 0;background:#f8fafc;border:1px solid #e8eef6;padding:20px;width:100%;">
-            <tr><td style="font-size:13px;color:#1f3a5f;padding:5px 0;">📞 <a href="tel:+2349012688861" style="color:#1f6fb2;text-decoration:none;">+234 9012 688 861</a></td></tr>
-            <tr><td style="font-size:13px;color:#1f3a5f;padding:5px 0;">✉️ <a href="mailto:contact@logicsoft.ng" style="color:#1f6fb2;text-decoration:none;">contact@logicsoft.ng</a></td></tr>
-            <tr><td style="font-size:13px;color:#1f3a5f;padding:5px 0;">💬 <a href="https://wa.me/2349012688861" style="color:#1f6fb2;text-decoration:none;">WhatsApp — typically replies in minutes</a></td></tr>
-          </table>
-          <p style="margin:24px 0 0;font-size:14px;color:#1f3a5f;font-weight:600;">The LogicSoft Team</p>
-        </td></tr>
-        <tr><td style="background:#f5f8fc;border-top:1px solid #e8eef6;padding:20px 40px;">
-          <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.7;">LogicSoft Technologies · 14 Adeola Odeku Street, Victoria Island, Lagos, Nigeria</p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body></html>`;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>We've received your enquiry — LogicSoft Technologies</title>
+</head>
+<body style="margin:0; padding:0; background:${BRAND.bg}; font-family:-apple-system, Segoe UI, Helvetica, Arial, sans-serif;">
+  <div style="padding:32px 16px;">
+    <div style="max-width:560px; margin:0 auto; background:#ffffff; border:1px solid ${BRAND.border}; border-radius:8px; overflow:hidden;">
+
+      ${renderHeader({ eyebrow: "Enquiry Received", title: "Thanks for reaching out" })}
+
+      <div style="padding:32px;">
+        <p style="margin:0 0 18px; font-size:15px; color:#1a2d4a; font-weight:600;">Hi ${name},</p>
+        <p style="margin:0 0 16px; font-size:14px; color:#4b5563; line-height:1.7;">
+          Thank you for reaching out. We've received your enquiry and a solution architect will get back to you within <strong>24 business hours</strong>.
+        </p>
+        <p style="margin:0 0 20px; font-size:14px; color:#4b5563; line-height:1.7;">
+          For urgent matters, you can reach us directly:
+        </p>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafbfc; border:1px solid ${BRAND.border}; border-radius:6px; padding:4px 0;">
+          <tr>
+            <td style="padding:12px 20px; font-size:13px; color:#1a2d4a; border-bottom:1px solid #edf0f2;">
+              Phone &nbsp;·&nbsp; <a href="tel:+2349012688861" style="color:${BRAND.blue}; text-decoration:none; font-weight:600;">+234 9012 688 861</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:12px 20px; font-size:13px; color:#1a2d4a; border-bottom:1px solid #edf0f2;">
+              Email &nbsp;·&nbsp; <a href="mailto:${BRAND.companyEmail}" style="color:${BRAND.blue}; text-decoration:none; font-weight:600;">${BRAND.companyEmail}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:12px 20px; font-size:13px; color:#1a2d4a;">
+              WhatsApp &nbsp;·&nbsp; <a href="https://wa.me/2349012688861" style="color:${BRAND.blue}; text-decoration:none; font-weight:600;">Typically replies in minutes</a>
+            </td>
+          </tr>
+        </table>
+
+        <p style="margin:28px 0 0; font-size:14px; color:#1a2d4a; font-weight:600;">The LogicSoft Team</p>
+      </div>
+
+      ${renderFooter()}
+
+    </div>
+  </div>
+</body>
+</html>`;
 }
 
 export default router;

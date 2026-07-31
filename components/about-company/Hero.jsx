@@ -50,7 +50,7 @@ export default function HeroSection() {
 
           <div>
             <h1 className="text-[28px] sm:text-[36px] lg:text-[50px] font-serif font-normal text-[#1f3a5f] leading-[1.12] mb-3 sm:mb-4">
-              About LogicSoft —
+              About LogicSoft
             </h1>
 
             <h2 className="text-[16px] sm:text-[18px] text-[#1f6fb2] font-medium mb-4 sm:mb-6 leading-snug">

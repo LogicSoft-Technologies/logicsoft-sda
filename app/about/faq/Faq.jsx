@@ -5,13 +5,14 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronDown, Search, X } from "lucide-react";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// Data --- Elijah 28 April
+
 const FAQ_ITEMS = [
   // Services
   {
     id: 1, category: "Services",
     q: "What software development services does Logicsoft offer?",
-    a: "We offer full-stack web development, native and cross-platform mobile development, cloud engineering, DevOps and CI/CD pipeline implementation, cybersecurity services (penetration testing, SIEM, compliance), data analytics platforms, and long-term support retainers. We cover the entire software development lifecycle — from discovery and architecture to deployment and post-launch support.",
+    a: "We offer full-stack web development, native and cross-platform mobile development, cloud engineering, DevOps and CI/CD pipeline implementation, cybersecurity services (penetration testing, SIEM, compliance), data analytics platforms, and long-term support retainers. We cover the entire software development lifecycle from discovery and architecture to deployment and post-launch support.",
     related: ["/services", "/about/software-approach"],
   },
   {
@@ -29,7 +30,7 @@ const FAQ_ITEMS = [
   {
     id: 4, category: "Services",
     q: "Can you work with our existing in-house team?",
-    a: "Absolutely. Team extension is one of our most common engagement types. We embed senior engineers into your existing workflow, using your tools, processes, and communication channels. We don't require you to change how you work — we adapt to you.",
+    a: "Absolutely. Team extension is one of our most common engagement types. We embed senior engineers into your existing workflow, using your tools, processes, and communication channels. We don't require you to change how you work we adapt to you.",
     related: ["/about/where-to-start"],
   },
 
@@ -49,13 +50,13 @@ const FAQ_ITEMS = [
   {
     id: 7, category: "Process",
     q: "How do you handle changing requirements mid-project?",
-    a: "Under our T&M model, scope changes are handled at sprint boundaries — you simply re-prioritise the backlog. Under Fixed Price, changes go through a formal change control process: we assess impact, provide a revised estimate, and get written approval before proceeding. We document every scope change. Nothing is implemented without a record.",
+    a: "Under our T&M model, scope changes are handled at sprint boundaries you simply re-prioritize the backlog. Under Fixed Price, changes go through a formal change control process: we assess impact, provide a revised estimate, and get written approval before proceeding. We document every scope change. Nothing is implemented without a record.",
     related: ["/about/price-models", "/how-we-work/change-requests"],
   },
   {
     id: 8, category: "Process",
     q: "Do you write documentation?",
-    a: "Yes — always. We maintain Architecture Decision Records (ADRs), API documentation, infrastructure runbooks, deployment guides, and code-level documentation as part of every project. Documentation is not an optional deliverable; it's a project requirement. We will not hand over a system without comprehensive documentation.",
+    a: "Yes always. We maintain Architecture Decision Records (ADRs), API documentation, infrastructure runbooks, deployment guides, and code-level documentation as part of every project. Documentation is not an optional deliverable; it's a project requirement. We will not hand over a system without comprehensive documentation.",
     related: ["/how-we-work/reporting"],
   },
 
@@ -69,7 +70,7 @@ const FAQ_ITEMS = [
   {
     id: 10, category: "Pricing",
     q: "Do you provide cost estimates before starting?",
-    a: "Yes. Every project starts with a proposal that includes a detailed cost breakdown, phased milestones, team composition, and delivery timeline. For Fixed Price engagements, this is a firm quote. For T&M engagements, we provide a budget range based on estimated effort. There are no hidden fees — our rate cards are provided upfront.",
+    a: "Yes. Every project starts with a proposal that includes a detailed cost breakdown, phased milestones, team composition, and delivery timeline. For Fixed Price engagements, this is a firm quote. For T&M engagements, we provide a budget range based on estimated effort. There are no hidden fees our rate cards are provided upfront.",
     related: ["/about/price-models", "/how-we-work/estimate"],
   },
   {
@@ -89,7 +90,7 @@ const FAQ_ITEMS = [
   {
     id: 13, category: "Quality",
     q: "How do you ensure software quality?",
-    a: "We follow a shift-left testing strategy: testing starts at requirements, not after the build. We implement automated unit, integration, and end-to-end tests. Code review is mandatory on every pull request — no exception. CI/CD pipelines include automated security scanning, performance benchmarking, and test suite execution. We don't merge code that breaks tests.",
+    a: "We follow a shift-left testing strategy: testing starts at requirements, not after the build. We implement automated unit, integration, and end-to-end tests. Code review is mandatory on every pull request no exception. CI/CD pipelines include automated security scanning, performance benchmarking, and test suite execution. We don't merge code that breaks tests.",
     related: ["/about/quality", "/about/software-approach"],
   },
   {
@@ -109,7 +110,7 @@ const FAQ_ITEMS = [
   {
     id: 16, category: "Delivery",
     q: "How quickly can you start a project?",
-    a: "For most engagements, we can begin within 1–2 weeks of proposal acceptance. Team extension engagements — where we embed engineers into your existing team — can begin in as little as 5 business days. The timeline depends on team composition requirements and any specific onboarding your systems require.",
+    a: "For most engagements, we can begin within 1–2 weeks of proposal acceptance. Team extension engagements — where we embed engineers into your existing team can begin in as little as 5 business days. The timeline depends on team composition requirements and any specific onboarding your systems require.",
     related: ["/about/where-to-start"],
   },
   {
@@ -121,13 +122,13 @@ const FAQ_ITEMS = [
   {
     id: 18, category: "Delivery",
     q: "What happens after my project launches?",
-    a: "We offer structured post-launch support via our Support Retainer model: a fixed monthly hours block covering incident management (L1–L3), performance monitoring, security patching, and continuous improvement. We also offer a standard 30-day stabilisation period after every Fixed Price project launch at no additional cost.",
+    a: "We offer structured post-launch support via our Support Retainer model: a fixed monthly hours block covering incident management (L1–L3), performance monitoring, security patching, and continuous improvement. We also offer a standard 30-day stabilization period after every Fixed Price project launch at no additional cost.",
     related: ["/about/price-models"],
   },
   {
     id: 19, category: "Delivery",
     q: "Can you maintain software that another company built?",
-    a: "Yes. We regularly take over maintenance of systems built by other vendors. We begin with a Technical Audit — a structured review of the codebase, architecture, infrastructure, and documentation — to establish a baseline. We then propose a stabilisation plan before committing to ongoing maintenance.",
+    a: "Yes. We regularly take over maintenance of systems built by other vendors. We begin with a Technical Audit a structured review of the codebase, architecture, infrastructure, and documentation to establish a baseline. We then propose a stabilization plan before committing to ongoing maintenance.",
     related: ["/about/where-to-start"],
   },
 
@@ -154,7 +155,7 @@ const FAQ_ITEMS = [
 
 const CATEGORIES = ["All", "Services", "Process", "Pricing", "Quality", "Delivery", "Company"];
 
-// ── Sub-components ────────────────────────────────────────────────────────────
+// -- Sub-components -- //
 function FaqCard({ item, index }) {
   const [open, setOpen] = useState(false);
   return (
@@ -213,7 +214,7 @@ function FaqCard({ item, index }) {
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// ── Main Page ── //
 export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [query, setQuery] = useState("");
@@ -230,7 +231,7 @@ export default function FAQPage() {
 
   return (
     <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Frequently Asked Questions — Logicsoft Technologies</h1>
+      <h1 className="sr-only">Frequently Asked Questions LogicSoft Technologies</h1>
 
       {/* Breadcrumb */}
       <div className="max-w-[82rem] mx-auto px-4">
@@ -398,7 +399,7 @@ export default function FAQPage() {
         <div className="max-w-[82rem] mx-auto px-4 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="text-[14px] font-bold text-[#1f3a5f] mb-0.5">Your question isn't here?</p>
-            <p className="text-[13px] text-gray-400">Book a free 30-minute call. No commitment, no sales pitch — just answers.</p>
+            <p className="text-[13px] text-gray-400">Book a free 30-minute call. No commitment, no sales pitch just answers.</p>
           </div>
           <Link href="/contact" className="shrink-0 inline-flex items-center gap-2 bg-[#1f3a5f] text-white text-[13px] font-bold px-7 py-3.5 hover:bg-[#1f6fb2] transition-all duration-200">
             Book a free call <ArrowRight className="w-4 h-4" />

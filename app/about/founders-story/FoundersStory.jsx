@@ -7,14 +7,14 @@ import { ArrowRight, Quote } from "lucide-react";
 // ── Founders data ─────────────────────────────────────────────────────────────
 const FOUNDERS = [
   {
-    name: "Adewale Okonkwo",
+    name: "Elijah O Alexander",
     title: "Chief Executive Officer & Co-Founder",
-    initials: "AO",
+    initials: "EA",
     avatarBg: "#1f3a5f",
     accentColor: "#1f6fb2",
     accentBg: "#eaf4ff",
     bio: [
-      "Adewale graduated from the University of Lagos in 2008 with a first-class degree in Computer Science. He spent three years at a Lagos-based systems integrator before concluding that Nigerian enterprises were being systematically underserved by both local vendors (who lacked technical rigour) and international firms (who lacked local context).",
+      "Elijah graduated from the University of Lagos in 2008 with a first-class degree in Computer Science. He spent three years at a Lagos-based systems integrator before concluding that Nigerian enterprises were being systematically underserved by both local vendors (who lacked technical rigour) and international firms (who lacked local context).",
       "In 2012, he assembled a small team of engineers and incorporated SDA Logicsoft Technologies with a simple mandate: build enterprise software to global standards, from Lagos. No offshore outsourcing, no template solutions — just disciplined engineering applied to real African business problems.",
       "Under his leadership, Logicsoft has grown from 3 to 85+ engineers, delivered over 300 projects, and built a reputation in sectors as demanding as banking, healthcare, and government.",
     ],
@@ -80,7 +80,7 @@ const CHAPTERS = [
 export default function FoundersStory() {
   return (
     <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Founder's Story — Logicsoft Technologies</h1>
+      <h1 className="sr-only">Founder's Story LogicSoft Technologies</h1>
 
       {/* Breadcrumb */}
       <div className="max-w-[82rem] mx-auto px-4">
@@ -108,8 +108,8 @@ export default function FoundersStory() {
             </h2>
             <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
               Three engineers. One shared belief. No external funding. This is the story of how
-              SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
-              across three continents — told by the people who built it.
+              SDA LogicSoft Technologies went from a Victoria Island café to 300+ delivered projects
+              across three continents told by the people who built it.
             </p>
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
@@ -220,7 +220,7 @@ export default function FoundersStory() {
           <div>
             <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">Work with us</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">The founders are still involved in every major engagement.</h3>
-            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">We're a founder-led company. When you work with Logicsoft, you work with people who care personally about the outcome.</p>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">We're a founder-led company. When you work with LogicSoft, you work with people who care personally about the outcome.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] ring-1 ring-inset ring-white/30 transition-all duration-200">
