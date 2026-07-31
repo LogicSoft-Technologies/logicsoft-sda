@@ -594,9 +594,9 @@ const Navbar = () => {
         {/* ── Utility bar (desktop only) ── */}
         <div className={`hidden md:block transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
           <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : "text-gray-800"}`}>
-            <a href="mailto:contact@logicsoft.ng"
+            <a href="mailto:contact@logicsofttechnologies.online"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>
-              <Mail className="w-3 h-3" /> contact@logicsoft.ng
+              <Mail className="w-3 h-3" /> contact@logicsofttechnologies.online
             </a>
             <a href="tel:+2349012688861"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>
@@ -657,7 +657,7 @@ const Navbar = () => {
                 ))}
                 <Link href="/contact"
                   className="relative z-10 px-5 py-[8px] text-[13.5px] font-bold text-white bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] ring-1 ring-inset ring-white/30 transition-all duration-200 whitespace-nowrap">
-                  Contact us
+                  Contact us 
                 </Link>
               </div>
 

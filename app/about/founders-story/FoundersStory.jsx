@@ -1,45 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Quote } from "lucide-react";
+import Image from "next/image";
 
 // ── Founders data ─────────────────────────────────────────────────────────────
 const FOUNDERS = [
-  {
-    name: "Adewale Okonkwo",
-    title: "Chief Executive Officer & Co-Founder",
-    initials: "AO",
-    avatarBg: "#1f3a5f",
-    accentColor: "#1f6fb2",
-    accentBg: "#eaf4ff",
-    bio: [
-      "Adewale graduated from the University of Lagos in 2008 with a first-class degree in Computer Science. He spent three years at a Lagos-based systems integrator before concluding that Nigerian enterprises were being systematically underserved by both local vendors (who lacked technical rigour) and international firms (who lacked local context).",
-      "In 2012, he assembled a small team of engineers and incorporated SDA Logicsoft Technologies with a simple mandate: build enterprise software to global standards, from Lagos. No offshore outsourcing, no template solutions — just disciplined engineering applied to real African business problems.",
-      "Under his leadership, Logicsoft has grown from 3 to 85+ engineers, delivered over 300 projects, and built a reputation in sectors as demanding as banking, healthcare, and government.",
-    ],
-    quote: "I never wanted to build the biggest software company in Nigeria. I wanted to build the most trustworthy one. Those aren't the same goal — and making that distinction early is what shaped everything that followed.",
-    credentials: ["B.Sc Computer Science, UNILAG", "PMP Certified", "ISO 27001 Lead Implementer", "15+ years in enterprise software"],
+ {
+  name: "Elijah Alexander Okpochini",
+  title: "Founder & Chief Executive Officer",
+  image: "/images/founders/elijah.jpg",
+  avatarBg: "#1f3a5f",
+  accentColor: "#1f6fb2",
+  accentBg: "#eaf4ff",
+  bio: [
+    "Elijah Alexander Okpochini is a software engineer and entrepreneur pursuing a Bachelor of Science (B.Sc.) in Industrial Physics at the University of Benin. Alongside his academic journey, he has spent the last several years building full-stack software applications with a focus on scalable web platforms, backend architecture, and modern cloud infrastructure.",
+    "In July 2024, he founded Logicsoft Technologies with a clear vision: to build an African technology company capable of delivering enterprise-grade software that meets global engineering standards. Rather than competing on price, Logicsoft was created to compete on technical excellence, long-term reliability, and thoughtful product execution.",
+    "Today, Elijah leads the company's engineering direction, overseeing product architecture, client delivery, and technology strategy. His work spans custom software development, AI-powered business solutions, cloud deployments, and digital transformation initiatives for startups and growing businesses, while continuously investing in building Logicsoft into a globally respected technology company."
+  ],
+  quote: "Great software isn't built by writing more code—it's built by solving the right problems with discipline, clarity, and uncompromising engineering standards.",
+  credentials: [
+    "B.Sc. Industrial Physics (In View), University of Benin",
+    "Founder & CEO, Logicsoft Technologies",
+    "4+ Years in Full-Stack Software Engineering",
+    "Specializing in AI, Cloud & Enterprise Software"],
   },
-  {
-    name: "Chukwuemeka Eze",
-    title: "Chief Technology Officer & Co-Founder",
-    initials: "CE",
-    avatarBg: "#059669",
-    accentColor: "#059669",
-    accentBg: "#ecfdf5",
-    bio: [
-      "Emeka studied Electrical and Electronics Engineering at Covenant University before pivoting into software — a transition he describes as inevitable. He spent time in Johannesburg working on banking infrastructure before returning to Nigeria in 2011 convinced that the continent's technical talent gap was a solvable problem.",
-      "As CTO, Emeka built Logicsoft's engineering culture from scratch: mandatory code reviews, shift-left testing, architecture documentation requirements, and an internal learning programme that has trained over 40 junior engineers into senior roles. These aren't policies — they're deeply held beliefs about how good software is made.",
-      "He leads all technical direction at Logicsoft, chairs the architecture review board, and personally interviews every senior engineer hired.",
-    ],
-    quote: "The best thing you can do for a client is tell them the truth when the truth is uncomfortable. We've walked away from projects where the requirements were fundamentally broken. That reputation for honesty is what keeps clients coming back.",
-    credentials: ["B.Eng Electrical Engineering, Covenant University", "AWS Solutions Architect Professional", "Google Cloud Professional", "Security+ Certified"],
-  },
+{
+  name: "Saviour Oviahon Efe",
+  title: "Chief Technology Officer & Co-Founder",
+  image: "/images/founders/saviourr.jpg",
+  avatarBg: "#059669",
+  accentColor: "#059669",
+  accentBg: "#ecfdf5",
+
+  bio: [
+    "Saviour Oviahon Efe is the Chief Technology Officer and Co-Founder of Logicsoft Technologies, where he leads the company's technology vision, software architecture, and engineering excellence. With a passion for building secure, scalable, and high-performance digital solutions, he has been instrumental in transforming complex business challenges into innovative software products that deliver measurable results.",
+    "As CTO, Saviour established the engineering standards and development culture that define Logicsoft today. He champions clean architecture, rigorous code reviews, modern cloud infrastructure, cybersecurity best practices, and continuous learning, ensuring every solution is built with long-term reliability, performance, and maintainability in mind.",
+    "Working closely with clients, stakeholders, and the engineering team, he oversees the complete software development lifecycle—from strategy and solution design to deployment and continuous improvement. His leadership has helped position Logicsoft Technologies as a trusted technology partner for businesses seeking world-class software solutions across multiple industries."
+  ],
+  quote:
+    "Technology alone doesn't transform businesses—people do. Our responsibility is to build software that empowers organizations to grow, innovate, and compete with confidence. Every solution we deliver is a reflection of our commitment to excellence, integrity, and lasting value.",
+  credentials: [
+    "Co-Founder & Chief Technology Officer, Logicsoft Technologies",
+    "Software Architecture & System Design",
+    "Cloud Infrastructure & DevOps",
+    "Cybersecurity & Enterprise Application Development"],
+},
   {
     name: "Ngozi Adeleke",
     title: "Chief Operating Officer & Co-Founder",
-    initials: "NA",
+    image: "/images/founders/ngozi.jpg",
     avatarBg: "#7c3aed",
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
@@ -76,6 +88,82 @@ const CHAPTERS = [
   },
 ];
 
+// ── Full-size rotating showcase, right side of the hero ────────────────────────
+function FounderHeroShowcase({ founders }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % founders.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [founders.length]);
+
+  const current = founders[index];
+
+  return (
+    <div className="flex flex-col items-center">
+      {/* Image frame */}
+      <div className="relative w-[280px] h-[340px] lg:w-[320px] lg:h-[390px] rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-2xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.name}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={current.image}
+              alt={current.name}
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Bottom gradient so text below reads as one composition */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Name + title, styled and animated in sync with the photo */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current.name + "-caption"}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="mt-5 text-center"
+        >
+          <p className="text-[16px] font-serif font-semibold text-white">{current.name}</p>
+          <p
+            className="text-[11.5px] font-semibold uppercase tracking-[0.1em] mt-1"
+            style={{ color: current.accentColor }}
+          >
+            {current.title}
+          </p>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Progress dots */}
+      <div className="flex items-center gap-1.5 mt-4">
+        {founders.map((f, i) => (
+          <span
+            key={f.name}
+            className="h-1 rounded-full transition-all duration-300"
+            style={{
+              width: i === index ? "18px" : "6px",
+              background: i === index ? current.accentColor : "rgba(255,255,255,0.25)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function FoundersStory() {
   return (
@@ -101,26 +189,46 @@ export default function FoundersStory() {
           <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
             style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
 
-          <div className="relative z-10 max-w-[780px]">
-            <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.16em] mb-5">The founder's story</p>
-            <h2 className="text-[38px] lg:text-[54px] font-serif text-white leading-[1.1] mb-6">
-              Built from Conviction.<br />Not Capital.
-            </h2>
-            <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
-              Three engineers. One shared belief. No external funding. This is the story of how
-              SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
-              across three continents — told by the people who built it.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {FOUNDERS.map((f) => (
-                  <div key={f.name} className="w-10 h-10 flex items-center justify-center text-[11px] font-bold text-white border-2 border-white/20 shrink-0" style={{ background: f.avatarBg }}>
-                    {f.initials}
-                  </div>
-                ))}
+          {/* Two columns: text + avatars on the left, full-size rotating photo on the right */}
+          <div className="relative z-10 grid lg:grid-cols-[1fr_auto] gap-16 items-center">
+
+            <div className="max-w-[780px]">
+              <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.16em] mb-5">The founder's story</p>
+              <h2 className="text-[38px] lg:text-[54px] font-serif text-white leading-[1.1] mb-6">
+                Built from Conviction.<br />Not Capital.
+              </h2>
+              <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
+                Three engineers. One shared belief. No external funding. This is the story of how
+                SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
+                across three continents — told by the people who built it.
+              </p>
+
+              {/* Small avatar trio — left as-is */}
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {FOUNDERS.map((f) => (
+                    <div
+                      key={f.name}
+                      className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/20"
+                    >
+                      <Image
+                        src={f.image}
+                        alt={f.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[13px] text-white/60">Three co-founders. One company. 12 years.</p>
               </div>
-              <p className="text-[13px] text-white/60">Three co-founders. One company. 12 years.</p>
             </div>
+
+            {/* Right side: full-size rotating founder showcase */}
+            <div className="hidden lg:flex justify-end">
+              <FounderHeroShowcase founders={FOUNDERS} />
+            </div>
+
           </div>
         </div>
       </div>
@@ -168,8 +276,13 @@ export default function FoundersStory() {
                   {/* Identity */}
                   <div className="p-8 flex flex-col justify-between">
                     <div>
-                      <div className="w-14 h-14 flex items-center justify-center text-[16px] font-bold text-white mb-5" style={{ background: f.avatarBg }}>
-                        {f.initials}
+                      <div className="relative w-14 h-14 rounded-full overflow-hidden mb-5">
+                        <Image
+                          src={f.image}
+                          alt={f.name}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <h4 className="text-[18px] font-serif font-bold text-[#1f3a5f] mb-1">{f.name}</h4>
                       <p className="text-[12px] font-semibold leading-snug" style={{ color: f.accentColor }}>{f.title}</p>

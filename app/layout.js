@@ -166,7 +166,7 @@ const organizationSchema = {
     },
     {
       "@type":       "ContactPoint",
-      email:         "contact@logicsofttechnologies.com",
+      email:         "contact@logicsofttechnologies.online",
       contactType:   "customer support",
     },
   ],
