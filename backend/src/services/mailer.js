@@ -1,5 +1,5 @@
-// src/services/mailer.js
 import nodemailer from "nodemailer";
+import { renderHeader, renderFooter, logoAttachment, BRAND } from "../emails/brand.js";
 
 let transporter;
 function getTransporter() {
@@ -17,107 +17,152 @@ function getTransporter() {
   return transporter;
 }
 
-export async function sendLeadNotification({ sessionId, messages, score, signals }) {
-  const html = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <div style="background: linear-gradient(135deg, #1a2d4a, #1f6fb2); padding: 24px; border-radius: 8px 8px 0 0;">
-        <h2 style="color: white; margin: 0; font-size: 18px;">🎯 New Lead Detected — LogicSoft AI Chat</h2>
-      </div>
-      <div style="background: #f9fafb; padding: 24px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-          <tr>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-weight: bold; width: 40%; font-size: 13px;">Session ID</td>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-size: 13px;">${sessionId}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; background: #f9fafb; border: 1px solid #e5e7eb; font-weight: bold; font-size: 13px;">Lead Score</td>
-            <td style="padding: 8px 12px; background: #f9fafb; border: 1px solid #e5e7eb; font-size: 13px;">
-              <span style="background: ${score >= 70 ? '#dcfce7' : score >= 40 ? '#fef9c3' : '#fee2e2'}; 
-                           color: ${score >= 70 ? '#166534' : score >= 40 ? '#854d0e' : '#991b1b'}; 
-                           padding: 2px 10px; border-radius: 20px; font-weight: bold;">
-                ${score}/100 — ${score >= 70 ? 'Hot 🔥' : score >= 40 ? 'Warm 🌡️' : 'Cold'}
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-weight: bold; font-size: 13px;">Signals Detected</td>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-size: 13px;">${signals.join(", ") || "None"}</td>
-          </tr>
-        </table>
+function scoreLabel(score) {
+  if (score >= 70) return "High Priority";
+  if (score >= 40) return "Medium Priority";
+  return "Low Priority";
+}
 
-        <h3 style="font-size: 14px; color: #1a2d4a; margin-bottom: 12px;">Conversation Transcript</h3>
-        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; max-height: 400px; overflow-y: auto;">
-          ${messages.map(m => `
-            <div style="margin-bottom: 12px;">
-              <span style="font-size: 11px; font-weight: bold; color: ${m.role === 'user' ? '#1f6fb2' : '#6b7280'}; text-transform: uppercase;">
-                ${m.role === 'user' ? '👤 Visitor' : '🤖 Treasure'}
-              </span>
-              <p style="margin: 4px 0 0; font-size: 13px; color: #374151; line-height: 1.6;">${m.content}</p>
+function scoreColor(score) {
+  if (score >= 70) return "#0f5132";
+  if (score >= 40) return "#7a5b00";
+  return "#58151c";
+}
+
+function scoreBg(score) {
+  if (score >= 70) return "#e7f6ec";
+  if (score >= 40) return "#fff6dd";
+  return "#fbe9ea";
+}
+
+function renderTranscript(messages) {
+  return messages
+    .map(
+      (m) => `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid #edf0f2;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: ${
+              m.role === "user" ? "#1a2d4a" : "#8a94a3"
+            }; margin-bottom: 4px;">
+              ${m.role === "user" ? "Visitor" : "Assistant"}
             </div>
-          `).join('<hr style="border: none; border-top: 1px solid #f3f4f6; margin: 8px 0;">')}
-        </div>
+            <div style="font-size: 14px; line-height: 1.6; color: #2c333c;">
+              ${m.content}
+            </div>
+          </td>
+        </tr>`
+    )
+    .join("");
+}
 
-        <div style="margin-top: 20px; text-align: center;">
-          <a href="https://logicsofttechnologies.com/admin" 
-             style="background: linear-gradient(135deg, #1a2d4a, #1f6fb2); color: white; padding: 10px 24px; 
-                    border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold;">
-            View in Dashboard →
-          </a>
-        </div>
+function baseLayout({ eyebrow, title, badge, badgeBg, badgeColor, bodyHtml }) {
+  return `
+  <div style="background: ${BRAND.bg}; padding: 32px 16px; font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid ${BRAND.border}; border-radius: 8px; overflow: hidden;">
+
+      ${renderHeader({ eyebrow, title, badge, badgeBg, badgeColor })}
+
+      <div style="padding: 32px;">
+        ${bodyHtml}
       </div>
+
+      <div style="padding: 0 32px 24px;">
+        <a href="https://logicsofttechnologies.com/admin" style="display:inline-block; background:${BRAND.blue}; color:#ffffff; font-size:13px; font-weight:600; text-decoration:none; padding:10px 20px; border-radius:6px;">
+          View in Dashboard
+        </a>
+      </div>
+
+      ${renderFooter()}
     </div>
+  </div>`;
+}
+
+function detailRow(label, valueHtml, isLast) {
+  return `
+    <tr>
+      <td style="padding: 10px 0; ${isLast ? "" : "border-bottom: 1px solid #edf0f2;"} font-size: 13px; color: #6b7280; width: 40%;">
+        ${label}
+      </td>
+      <td style="padding: 10px 0; ${isLast ? "" : "border-bottom: 1px solid #edf0f2;"} font-size: 13px; color: #1a2d4a; font-weight: 500;">
+        ${valueHtml}
+      </td>
+    </tr>`;
+}
+
+export async function sendLeadNotification({ sessionId, messages, score, signals }) {
+  const bodyHtml = `
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 28px;">
+      ${detailRow("Session ID", sessionId)}
+      ${detailRow(
+        "Lead Score",
+        `<span style="background: ${scoreBg(score)}; color: ${scoreColor(
+          score
+        )}; padding: 3px 10px; border-radius: 4px; font-weight: 600; font-size: 12px;">
+          ${score}/100 · ${scoreLabel(score)}
+        </span>`
+      )}
+      ${detailRow("Signals Detected", signals.join(", ") || "None", true)}
+    </table>
+
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a94a3; margin-bottom: 8px;">
+      Conversation Transcript
+    </div>
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid ${BRAND.border}; border-radius: 6px; padding: 0 16px;">
+      ${renderTranscript(messages)}
+    </table>
   `;
+
+  const html = baseLayout({
+    eyebrow: "New Lead",
+    title: `${scoreLabel(score)} lead captured`,
+    badge: scoreLabel(score),
+    badgeBg: scoreBg(score),
+    badgeColor: scoreColor(score),
+    bodyHtml,
+  });
 
   await getTransporter().sendMail({
     from: `"LogicSoft AI" <${process.env.SMTP_USER}>`,
     to: process.env.CONTACT_RECIPIENT,
-    subject: `🎯 New ${score >= 70 ? 'Hot' : score >= 40 ? 'Warm' : 'Cold'} Lead — Score ${score}/100`,
+    subject: `New ${scoreLabel(score)} Lead — Score ${score}/100`,
     html,
+    attachments: [logoAttachment()],
   });
 }
 
 export async function sendConversationSummary({ sessionId, messages, duration }) {
-  const userMessages = messages.filter(m => m.role === "user");
-  const html = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <div style="background: linear-gradient(135deg, #1a2d4a, #1f6fb2); padding: 24px; border-radius: 8px 8px 0 0;">
-        <h2 style="color: white; margin: 0; font-size: 18px;">📋 Conversation Summary — LogicSoft AI Chat</h2>
-      </div>
-      <div style="background: #f9fafb; padding: 24px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-          <tr>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-weight: bold; width: 40%; font-size: 13px;">Session ID</td>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-size: 13px;">${sessionId}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; background: #f9fafb; border: 1px solid #e5e7eb; font-weight: bold; font-size: 13px;">Duration</td>
-            <td style="padding: 8px 12px; background: #f9fafb; border: 1px solid #e5e7eb; font-size: 13px;">${duration}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-weight: bold; font-size: 13px;">Messages Exchanged</td>
-            <td style="padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; font-size: 13px;">${messages.length} total · ${userMessages.length} from visitor</td>
-          </tr>
-        </table>
+  const userMessages = messages.filter((m) => m.role === "user");
 
-        <h3 style="font-size: 14px; color: #1a2d4a; margin-bottom: 12px;">Full Transcript</h3>
-        <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
-          ${messages.map(m => `
-            <div style="margin-bottom: 12px;">
-              <span style="font-size: 11px; font-weight: bold; color: ${m.role === 'user' ? '#1f6fb2' : '#6b7280'}; text-transform: uppercase;">
-                ${m.role === 'user' ? '👤 Visitor' : '🤖 Treasure'}
-              </span>
-              <p style="margin: 4px 0 0; font-size: 13px; color: #374151; line-height: 1.6;">${m.content}</p>
-            </div>
-          `).join('<hr style="border: none; border-top: 1px solid #f3f4f6; margin: 8px 0;">')}
-        </div>
-      </div>
+  const bodyHtml = `
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 28px;">
+      ${detailRow("Session ID", sessionId)}
+      ${detailRow("Duration", duration)}
+      ${detailRow(
+        "Messages Exchanged",
+        `${messages.length} total · ${userMessages.length} from visitor`,
+        true
+      )}
+    </table>
+
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a94a3; margin-bottom: 8px;">
+      Full Transcript
     </div>
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid ${BRAND.border}; border-radius: 6px; padding: 0 16px;">
+      ${renderTranscript(messages)}
+    </table>
   `;
+
+  const html = baseLayout({
+    eyebrow: "Conversation Summary",
+    title: "Chat session completed",
+    bodyHtml,
+  });
 
   await getTransporter().sendMail({
     from: `"LogicSoft AI" <${process.env.SMTP_USER}>`,
     to: process.env.CONTACT_RECIPIENT,
-    subject: `📋 Chat Summary — ${messages.length} messages · Session ${sessionId.slice(0, 8)}`,
+    subject: `Chat Summary — ${messages.length} messages · Session ${sessionId.slice(0, 8)}`,
     html,
+    attachments: [logoAttachment()],
   });
 }

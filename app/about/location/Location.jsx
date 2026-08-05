@@ -10,10 +10,10 @@ import "leaflet/dist/leaflet.css";
 const LeafletMap  = dynamic(() => import("@/components/about-company/LeafletMapClient"), { ssr: false });
 const Globe       = dynamic(() => import("react-globe.gl"),     { ssr: false });
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ── Data ── //
 const OFFICES = [
   {
-    name: "Logicsoft HQ — Lagos",
+    name: "LogicSoft HQ — Lagos",
     city: "Lagos",
     type: "Headquarters",
     address: "Victoria Island, Lagos, Nigeria",
@@ -27,7 +27,7 @@ const OFFICES = [
     headcount: "60+ engineers",
   },
   {
-    name: "Logicsoft Branch — Abuja",
+    name: "LogicSoft Branch — Abuja",
     city: "Abuja",
     type: "Regional Office",
     address: "Maitama District, Abuja, Nigeria",
@@ -37,11 +37,11 @@ const OFFICES = [
     position: [9.0765, 7.3986],
     accentColor: "#059669",
     accentBg: "#ecfdf5",
-    desc: "Our public sector and government practice hub. Engineering teams specialising in compliance, regulatory systems, and e-government solutions.",
+    desc: "Our public sector and government practice hub. Engineering teams specializing in compliance, regulatory systems, and e-government solutions.",
     headcount: "15+ engineers",
   },
   {
-    name: "Logicsoft Branch — Edo",
+    name: "LogicSoft Branch — Edo",
     city: "Edo",
     type: "Engineering Hub",
     address: "GRA, Benin City, Edo State, Nigeria",
@@ -75,7 +75,7 @@ const REGIONS = [
   { icon: MapPin,    title: "Market Focus",           lines: ["Enterprise · FinTech · Healthcare", "Government · Logistics · Telecoms"],  iconColor: "#7c3aed", accentBg: "#ede9fe", accentBorder: "#ddd6fe" },
 ];
 
-// ── Globe wrapper ─────────────────────────────────────────────────────────────
+// ── Globe wrapper ── //
 function GlobeWrapper() {
   const [mounted, setMounted] = useState(false);
   const globeRef = useRef(null);
@@ -122,7 +122,8 @@ function GlobeWrapper() {
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// Main page // added by Elijah alexander // Don't touch
+
 export default function OurLocation() {
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -145,7 +146,7 @@ export default function OurLocation() {
 
   return (
     <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Our Location — Logicsoft Technologies</h1>
+      <h1 className="sr-only">Our Location LogicSoft Technologies</h1>
 
       {/* Breadcrumb */}
       <div className="max-w-[82rem] mx-auto px-4">
@@ -174,7 +175,7 @@ export default function OurLocation() {
                 <span className="text-[#60a5fa]">Global Reach.</span>
               </h2>
               <p className="text-[17px] text-white/70 leading-[1.9] max-w-[560px] mb-10">
-                Headquartered in Lagos with offices in Abuja and Edo — and distributed delivery teams
+                Headquartered in Lagos with offices in Abuja and Edo and distributed delivery teams
                 serving clients across Africa, Europe, the Middle East, and beyond.
               </p>
 

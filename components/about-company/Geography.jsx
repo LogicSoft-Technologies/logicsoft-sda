@@ -8,9 +8,9 @@ import { MapPin, Globe2, Building2, ArrowUpRight } from "lucide-react";
 const LeafletMap = dynamic(() => import("./LeafletMapClient"), { ssr: false });
 
 const offices = [
-  { name: "Logicsoft HQ – Lagos",     position: [6.5244, 3.3792], city: "Lagos" },
-  { name: "Logicsoft Branch – Abuja", position: [9.0765, 7.3986], city: "Abuja" },
-  { name: "Logicsoft Branch – Edo",   position: [6.335,  5.6037], city: "Edo"   },
+  { name: "LogicSoft HQ – Lagos",     position: [6.5244, 3.3792], city: "Lagos" },
+  { name: "LogicSoft Branch – Abuja", position: [9.0765, 7.3986], city: "Abuja" },
+  { name: "LogicSoft Branch – Edo",   position: [6.335,  5.6037], city: "Edo"   },
 ];
 
 const regions = [
@@ -68,7 +68,7 @@ export default function Geography() {
         </h2>
 
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] mb-10 sm:mb-14 max-w-[1100px]">
-          Logicsoft Technologies is a global software engineering and digital
+          LogicSoft Technologies is a global software engineering and digital
           transformation company with strategic operations across Africa and
           distributed delivery teams worldwide. Our geographical footprint enables
           us to deliver scalable enterprise solutions with local presence and global
@@ -136,7 +136,7 @@ export default function Geography() {
                       {o.name}
                     </h4>
                     <p className="text-[12px] sm:text-[12.5px] text-gray-400">
-                      Logicsoft Technologies — Regional Office
+                      LogicSoft Technologies Regional Office
                     </p>
                     <button
                       onClick={() => zoomTo(o.position)}

@@ -168,7 +168,7 @@ function FounderHeroShowcase({ founders }) {
 export default function FoundersStory() {
   return (
     <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Founder's Story — Logicsoft Technologies</h1>
+      <h1 className="sr-only">Founder's Story LogicSoft Technologies</h1>
 
       {/* Breadcrumb */}
       <div className="max-w-[82rem] mx-auto px-4">
@@ -333,7 +333,7 @@ export default function FoundersStory() {
           <div>
             <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">Work with us</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">The founders are still involved in every major engagement.</h3>
-            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">We're a founder-led company. When you work with Logicsoft, you work with people who care personally about the outcome.</p>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">We're a founder-led company. When you work with LogicSoft, you work with people who care personally about the outcome.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] ring-1 ring-inset ring-white/30 transition-all duration-200">

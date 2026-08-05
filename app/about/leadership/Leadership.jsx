@@ -16,8 +16,8 @@ const team = [
   {
     name: "Saviour Oviahon Efe",
     role: "Chief Technology Officer",
-    image: "/images/founders/saviour-2.png",
-    bio: "Saviour is the Chief Technology Officer at Logicsoft, leading the company's technology strategy, software architecture, and engineering operations. He champions innovation, technical excellence, and scalable solutions, ensuring every product is built with performance, security, and long-term growth in mind. His leadership drives the development of modern digital experiences that help businesses innovate and succeed in an evolving technology landscape.",
+    image: "/about/experts/saviour-efe.jpg",
+    bio: "Saviour is the Chief Technology Officer at LogicSoft, leading the company's technology strategy, software architecture, and engineering operations. He champions innovation, technical excellence, and scalable solutions, ensuring every product is built with performance, security, and long-term growth in mind. His leadership drives the development of modern digital experiences that help businesses innovate and succeed in an evolving technology landscape.",
     linkedin: "https://linkedin.com/in/oviahon-saviour-837a2b422",
     email: "oviahonsaviourefe@gmail.com",
   },
@@ -25,7 +25,7 @@ const team = [
     name: "TBA",
     role: "Head of Delivery",
     image: null,
-    bio: "Responsible for project management operations, client delivery frameworks, and ensuring every engagement meets Logicsoft's quality standards.",
+    bio: "Responsible for project management operations, client delivery frameworks, and ensuring every engagement meets LogicSoft's quality standards.",
     linkedin: null,
     email: null,
   },
@@ -64,7 +64,7 @@ export default function Leadership() {
             Leadership
           </h1>
           <p className="text-[17px] text-gray-700 leading-[2] max-w-[760px]">
-            Logicsoft Technologies is led by a focused team of technology and
+            LogicSoft Technologies is led by a focused team of technology and
             business professionals committed to delivering measurable outcomes for
             every client we serve.
           </p>
