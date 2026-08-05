@@ -67,7 +67,7 @@ function baseLayout({ eyebrow, title, badge, badgeBg, badgeColor, bodyHtml }) {
       </div>
 
       <div style="padding: 0 32px 24px;">
-        <a href="https://logicsofttechnologies.com/admin" style="display:inline-block; background:${BRAND.blue}; color:#ffffff; font-size:13px; font-weight:600; text-decoration:none; padding:10px 20px; border-radius:6px;">
+        <a href="https://logicsofttechnologies.online/admin" style="display:inline-block; background:${BRAND.blue}; color:#ffffff; font-size:13px; font-weight:600; text-decoration:none; padding:10px 20px; border-radius:6px;">
           View in Dashboard
         </a>
       </div>

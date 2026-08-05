@@ -152,7 +152,6 @@ function SearchOverlay({ query, onClose }) {
       className="absolute right-0 top-[calc(100%+6px)] w-[480px] max-h-[70vh] overflow-y-auto bg-white border border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.13)] z-[9998]"
       style={{ scrollbarWidth: "thin" }}
     >
-      {/* Popular searches field that generates are users type in a letter // Added by Elijah at 28 march (DO NOT TOUCH !) */}
       {!query.trim() && (
         <div className="p-4">
           <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.14em] mb-3">Popular searches</p>
@@ -273,7 +272,6 @@ function MobileDrawer({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -282,7 +280,6 @@ function MobileDrawer({ open, onClose }) {
             className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-[2147483640]"
           />
 
-          {/* Drawer panel */}
           <motion.div
             key="drawer"
             variants={drawerVariants}
@@ -292,7 +289,6 @@ function MobileDrawer({ open, onClose }) {
             aria-label="Mobile navigation menu"
             className="fixed top-0 right-0 h-[100dvh] w-full max-w-[320px] bg-white z-[2147483647] flex flex-col shadow-[−20px_0_60px_rgba(0,0,0,0.15)] overflow-hidden"
           >
-            {/* ── Drawer header ── */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#e8eef6] bg-[#f8fafc] shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-6 h-6 bg-[#1f3a5f] flex items-center justify-center">
@@ -312,10 +308,8 @@ function MobileDrawer({ open, onClose }) {
               </button>
             </div>
 
-            {/* ── Scrollable nav body ── */}
             <div className="flex-1 overflow-y-auto overscroll-contain" style={{ scrollbarWidth: "none" }}>
 
-              {/* Quick contact strip */}
               <div className="flex border-b border-[#e8eef6]">
                 <a href="tel:+2349012688861"
                   className="flex-1 flex items-center justify-center gap-2 py-3 text-[11.5px] font-semibold text-[#1f3a5f] hover:bg-[#f0f7ff] transition-colors border-r border-[#e8eef6]">
@@ -327,10 +321,8 @@ function MobileDrawer({ open, onClose }) {
                 </a>
               </div>
 
-              {/* Nav items */}
               <nav aria-label="Mobile navigation">
 
-                {/* About + Services accordions */}
                 {["about", "services"].map((key) => {
                   const isOpen  = expanded === key;
                   const label   = key.charAt(0).toUpperCase() + key.slice(1);
@@ -357,7 +349,6 @@ function MobileDrawer({ open, onClose }) {
                             initial="hidden" animate="visible" exit="exit"
                             style={{ overflow: "hidden" }}
                           >
-                            {/* Featured link */}
                             <Link href={dd.featured.href}
                               className="flex items-start gap-3 mx-4 mb-3 mt-1 p-3 bg-gradient-to-br from-[#eaf6ff] to-[#dff0ff] border border-[#bfdbfe]/60 hover:border-[#1f6fb2]/40 transition-colors group">
                               <div className="flex-1 min-w-0">
@@ -367,7 +358,6 @@ function MobileDrawer({ open, onClose }) {
                               <ArrowRight className="w-3.5 h-3.5 text-[#1f6fb2] mt-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
 
-                            {/* Columns flattened into sections */}
                             {dd.columns.map((col) => (
                               <div key={col.title} className="px-4 mb-4">
                                 <p className="text-[9.5px] font-bold text-gray-400 uppercase tracking-[0.15em] mb-1.5 px-1">{col.title}</p>
@@ -387,7 +377,6 @@ function MobileDrawer({ open, onClose }) {
                   );
                 })}
 
-                {/* Simple nav links */}
                 {["industries", "technologies", "portfolio"].map((link) => (
                   <Link key={link} href={`/${link}`}
                     className="flex items-center justify-between px-5 py-4 text-[14px] font-semibold text-[#1f3a5f] hover:text-[#1f6fb2] hover:bg-[#f8fafd] border-b border-[#f1f5f9] transition-colors group">
@@ -396,7 +385,6 @@ function MobileDrawer({ open, onClose }) {
                   </Link>
                 ))}
 
-                {/* Additional quick links */}
                 <div className="px-5 pt-4 pb-2">
                   <p className="text-[9.5px] font-bold text-gray-400 uppercase tracking-[0.15em] mb-3">Quick links</p>
                   <div className="grid grid-cols-2 gap-2">
@@ -414,7 +402,6 @@ function MobileDrawer({ open, onClose }) {
                   </div>
                 </div>
 
-                {/* Trust badges */}
                 <div className="mx-5 my-4 p-3 bg-[#f8fafc] border border-[#e8eef6]">
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.14em] mb-2">Certifications</p>
                   <div className="flex flex-wrap gap-1.5">
@@ -426,7 +413,6 @@ function MobileDrawer({ open, onClose }) {
               </nav>
             </div>
 
-            {/* ── CTA footer — always visible ── */}
             <div className="shrink-0 border-t border-[#e8eef6] bg-white p-4 space-y-2.5">
               <Link
                 href="/contact"
@@ -471,7 +457,6 @@ function MobileSearchPanel({ query, onChange, onClose }) {
       transition={{ duration: 0.2 }}
       className="absolute left-0 right-0 top-full bg-white border-b border-gray-200 shadow-[0_12px_40px_rgba(0,0,0,0.1)] z-[9998] max-h-[70vh] overflow-y-auto"
     >
-      {/* Input row */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-[#f1f5f9]">
         <Search className="w-4 h-4 text-gray-400 shrink-0" />
         <input
@@ -488,7 +473,6 @@ function MobileSearchPanel({ query, onChange, onClose }) {
         </button>
       </div>
 
-      {/* Results */}
       {!query.trim() && (
         <div className="p-4">
           <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.14em] mb-3">Popular searches</p>
@@ -554,6 +538,12 @@ const Navbar = () => {
   const isDropdownOpen = clicked !== "";
   const showSolid      = !isHome || scrolled || isDropdownOpen || mobileOpen;
 
+  // Case study detail pages (/case-studies/[id]) run their own minimal,
+  // flush top bar over the hero video instead of the global nav — those
+  // pages are meant to feel like a full-bleed cinematic piece, not a
+  // subpage with a header sitting on top of it.
+  const isCaseStudyDetail = /^\/case-studies\/[^/]+\/?$/.test(pathname);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     window.addEventListener("scroll", onScroll);
@@ -569,7 +559,6 @@ const Navbar = () => {
     if (searchOpen) searchRef.current?.focus(); // Function added by Elijah march 23rd d not touch please 🙏
   }, [searchOpen]);
 
-  // Click-away for desktop search
   useEffect(() => {
     if (!searchOpen) return;
     const handler = (e) => {
@@ -585,13 +574,16 @@ const Navbar = () => {
   const closeSearch = () => { setSearchOpen(false); setQuery(""); };
   const closeMobileSearch = () => { setMobileSearch(false); setMobileQuery(""); };
 
+  // All hooks above still run on every render regardless of route — this
+  // early return only skips the *output*, so hook order never changes.
+  if (isCaseStudyDetail) return null;
+
   return (
     <>
       <nav
         aria-label="Main navigation"
         className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}
       >
-        {/* ── Utility bar (desktop only) ── */}
         <div className={`hidden md:block transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
           <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : "text-gray-800"}`}>
             <a href="mailto:contact@logicsofttechnologies.online"
@@ -610,16 +602,13 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* ── Main bar ── */}
         <div className={`relative transition-all duration-300 border-b ${isDropdownOpen ? "border-gray-200" : "border-transparent"} ${showSolid ? "bg-white" : "bg-transparent"}`}>
           <div className="max-w-[82rem] mx-auto px-4 py-3 flex items-center">
 
-            {/* Logo */}
             <Link href="/" aria-label="LogicSoft Technologies — Home" className="flex items-center shrink-0 mr-6">
               <Image src="/images/logicsoft-logo.png" alt="LogicSoft Technologies" width={148} height={26} priority className="h-7 w-auto md:h-8 lg:h-9"/>
             </Link>
 
-            {/* ── DESKTOP nav ── */}
             <div className="hidden md:flex items-center gap-1 ml-auto">
               {NAV_LINKS.map((link) => {
                 const isActive    = clicked === link;
@@ -631,14 +620,14 @@ const Navbar = () => {
                     aria-expanded={isActive}
                     aria-haspopup="true"
                     aria-controls={`dropdown-${link}`}
-                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "text-[#1f6fb2] bg-blue-50" : "text-gray-700 hover:text-[#1f3a5f] hover:bg-gray-50"}`}>
+                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "text-[#1f6fb2] bg-blue-50" : "text-gray-700 hover:text-[#1f3a5f] hover:text-[#1f6fb2]"}`}>
                     {label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : "text-gray-400"}`} />
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : "text-gray-400 hover:text-[#1f6fb2]"}`} />
                     {isActive && <motion.span layoutId="navUnderline" className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1f6fb2]" />}
                   </button>
                 ) : (
                   <Link key={link} href={`/${link}`}
-                    className="px-3 py-2 text-[14px] font-medium text-gray-700 hover:text-[#1f3a5f] hover:bg-gray-50 transition-colors duration-150 capitalize">
+                    className="px-3 py-2 text-[14px] font-medium text-gray-700 hover:text-[#1f3a5f] hover:text-[#1f6fb2] transition-colors duration-150 capitalize">
                     {label}
                   </Link>
                 );
@@ -646,7 +635,6 @@ const Navbar = () => {
 
               <span className="w-px h-5 bg-gray-200 mx-3" />
 
-              {/* Contact CTA */}
               <div className="relative inline-flex items-center justify-center">
                 {[0, 0.2].map((delay, i) => (
                   <motion.span key={i} className="absolute inset-0 pointer-events-none"
@@ -661,7 +649,6 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* Desktop search */}
               <div ref={searchWrapRef} className="relative ml-2">
                 <AnimatePresence mode="wait">
                   {searchOpen ? (
@@ -693,9 +680,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* ── MOBILE controls ── */}
             <div className="md:hidden flex items-center gap-2 ml-auto">
-              {/* Mobile search icon */}
               <button
                 onClick={() => { setMobileSearch((v) => !v); setMobileQuery(""); setMobileOpen(false); }}
                 className="p-2 text-gray-500 hover:text-[#1f3a5f] transition-colors"
@@ -704,7 +689,6 @@ const Navbar = () => {
                 {mobileSearch ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
               </button>
 
-              {/* Hamburger */}
               <button
                 onClick={() => { setMobileOpen((v) => !v); setMobileSearch(false); }}
                 className={`p-2 transition-colors ${mobileOpen ? "text-[#1f6fb2]" : "text-gray-600 hover:text-[#1f3a5f]"}`}
@@ -727,7 +711,6 @@ const Navbar = () => {
 
           </div>
 
-          {/* Mobile search panel */}
           <AnimatePresence>
             {mobileSearch && (
               <MobileSearchPanel
@@ -739,7 +722,6 @@ const Navbar = () => {
           </AnimatePresence>
         </div>
 
-        {/* ── DESKTOP mega dropdown ── */}
         <AnimatePresence>
           {isDropdownOpen && DROPDOWNS[clicked] && (
             <motion.div
@@ -805,7 +787,6 @@ const Navbar = () => {
 
       </nav>
 
-      {/* Mobile Drawer // Added by Elijah do not touch */}
       <MobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );

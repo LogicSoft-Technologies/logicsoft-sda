@@ -7,7 +7,7 @@ import prisma from "../config/prisma.js";
 const STAFF = [
   {
     name: "Elijah O Alexander",
-    role: "Sales & Account Manager",
+    role: "Project Collaborator",
     whatsappNumber: "2349012688861",
     whatsappGreeting:
       "Hi Elijah! I was just chatting with the Logicsoft AI assistant and I'd like to discuss a project.",
@@ -20,11 +20,11 @@ const STAFF = [
     order: 1,
   },
   {
-    name: "Treasure Alexander",
+    name: "Oviahon Saviour",
     role: "Technical Lead",
-    whatsappNumber: "2348136616434",
+    whatsappNumber: "2347034302056",
     whatsappGreeting:
-      "Hi Treasure! I was just chatting with the Logicsoft AI assistant and I have some technical questions.",
+      "Hi Oviahon! I was just chatting with the Logicsoft AI assistant and I have some technical questions.",
     avatarInitials: "TA",
     avatarColor: "#7c3aed",
     isOnline: true,
