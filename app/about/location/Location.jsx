@@ -176,7 +176,7 @@ export default function OurLocation() {
               </h2>
               <p className="text-[17px] text-white/70 leading-[1.9] max-w-[560px] mb-10">
                 Headquartered in Lagos with offices in Abuja and Edo and distributed delivery teams
-                serving clients across Africa, Europe, the Middle East, and beyond.
+                serving clients across Africa, Europe, the Middle East and beyond.
               </p>
 
               {/* Region cards */}
