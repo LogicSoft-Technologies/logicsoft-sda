@@ -168,7 +168,7 @@ function FounderHeroShowcase({ founders }) {
 export default function FoundersStory() {
   return (
     <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Founder's Story LogicSoft Technologies</h1>
+      <h1 className="sr-only">Founders Story LogicSoft Technologies</h1>
 
       {/* Breadcrumb */}
       <div className="max-w-[82rem] mx-auto px-4">
@@ -177,7 +177,7 @@ export default function FoundersStory() {
           <span className="text-gray-300">›</span>
           <Link href="/about" className="hover:text-[#1f6fb2] transition-colors">About</Link>
           <span className="text-gray-300">›</span>
-          <span className="text-gray-600 font-medium">Founder's Story</span>
+          <span className="text-gray-600 font-medium">Founders Story</span>
         </nav>
       </div>
 
