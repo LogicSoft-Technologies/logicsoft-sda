@@ -24,13 +24,13 @@ const SERVICES = [
       ["Post-Launch Support",           "/software-development/support"           ],
     ],
     cta: "/software-development/services",
-    stat: "300+ projects delivered",
+    stat: "100+ projects delivered",
   },
   {
     id: 2,
     title: "IT Consulting",
     eyebrow: "Strategy",
-    description: "We help businesses plan and execute effective IT strategies — guiding digital transformation initiatives, modernising legacy systems, and integrating complex technologies to support sustainable growth.",
+    description: "We help businesses plan and execute effective IT strategies guiding digital transformation initiatives, modernising legacy systems, and integrating complex technologies to support sustainable growth.",
     linksLeft: [
       ["Digital Transformation",        "/digital-transformation" ],
       ["Project Management Consulting", "/project-management"     ],
@@ -69,7 +69,7 @@ const SERVICES = [
     id: 4,
     title: "Testing & QA",
     eyebrow: "Quality",
-    description: "We deliver full-range QA and testing services that guarantee quality across mobile, web, and desktop applications — catching issues before they reach production and protecting your reputation.",
+    description: "We deliver full-range QA and testing services that guarantee quality across mobile, web, and desktop applications catching issues before they reach production and protecting your reputation.",
     linksLeft: [
       ["QA Outsourcing",                "/qa/outsourcing"      ],
       ["QA Consulting",                 "/qa/consulting"       ],

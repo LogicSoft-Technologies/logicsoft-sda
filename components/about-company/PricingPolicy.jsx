@@ -31,7 +31,7 @@ const pricingModels = [
     badge: "Pay for what you use",
     badgeBg: "#cffafe",
     badgeColor: "#0891b2",
-    description: "Used for managed services and help desk engagements — billing is tied directly to usage metrics such as tickets resolved or cloud resources consumed.",
+    description: "Used for managed services and help desk engagements, billing is tied directly to usage metrics such as tickets resolved or cloud resources consumed.",
     bestFor: ["Managed services", "Help desk support", "Cloud-based workloads"],
     iconColor: "#dc2626", iconBg: "#fee2e2", iconBorder: "#fecaca",
   },
@@ -69,7 +69,7 @@ export default function PricingPolicy() {
 
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] mb-10 sm:mb-14 max-w-[1100px]">
           Depending on the nature of your project and the service being delivered,
-          Logicsoft Technologies applies one of the following pricing models — each
+          Logicsoft Technologies applies one of the following pricing models each
           designed to give you cost clarity, flexibility, and value at every stage
           of the engagement:
         </p>

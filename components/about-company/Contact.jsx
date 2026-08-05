@@ -376,7 +376,7 @@ export default function ContactSection() {
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@logicsoft.ng" className="flex items-center gap-3 hover:text-[#1f6fb2] transition">
+                <a href="mailto:contact@logicsofttechnologies.online" className="flex items-center gap-3 hover:text-[#1f6fb2] transition">
                   <Image src="/images/email-icon.svg" width={20} height={20} alt="" />
                   Email us
                 </a>
@@ -399,9 +399,7 @@ export default function ContactSection() {
               </li>
             </ul>
 
-            <div className="mt-8">
-              <Image src="/images/newsletter.jpg" width={300} height={200} alt="Contact us" />
-            </div>
+     
 
           </aside>
         </div>

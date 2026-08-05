@@ -1,0 +1,90 @@
+.wrap {
+  width: 200px;
+  height: 320px;
+}
+
+/* ---------- Head bob + slight tilt ---------- */
+.headGroup {
+  transform-origin: 250px 260px;
+  animation: headMove 3s ease-in-out infinite;
+}
+
+@keyframes headMove {
+  0%   { transform: translateY(0) rotate(0deg); }
+  20%  { transform: translateY(-4px) rotate(-2deg); }
+  40%  { transform: translateY(0) rotate(0deg); }
+  60%  { transform: translateY(-3px) rotate(2deg); }
+  80%  { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ---------- Antenna wiggle ---------- */
+.antenna {
+  transform-origin: 250px 150px;
+  animation: antennaWiggle 3.0s ease-in-out infinite;
+}
+
+@keyframes antennaWiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(8deg); }
+  50%  { transform: rotate(0deg); }
+  75%  { transform: rotate(-8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ---------- Blinking (neutral eyes only) ---------- */
+.eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4.5s infinite;
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%           { transform: scaleY(0.1); }
+  96%           { transform: scaleY(1); }
+}
+
+/* ---------- Mouth dots mimicking sound / speech (neutral only) ---------- */
+.mouthDot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.mouthDot:nth-child(1) { animation: talk1 0.42s ease-in-out infinite; animation-delay: 0s; }
+.mouthDot:nth-child(2) { animation: talk2 0.35s ease-in-out infinite; animation-delay: 0.08s; }
+.mouthDot:nth-child(3) { animation: talk3 0.5s ease-in-out infinite; animation-delay: 0.18s; }
+.mouthDot:nth-child(4) { animation: talk1 0.38s ease-in-out infinite; animation-delay: 0.26s; }
+
+@keyframes talk1 {
+  0%   { transform: scaleY(1); }
+  40%  { transform: scaleY(1.8); }
+  70%  { transform: scaleY(0.5); }
+  100% { transform: scaleY(1); }
+}
+@keyframes talk2 {
+  0%   { transform: scaleY(1); }
+  30%  { transform: scaleY(0.5); }
+  65%  { transform: scaleY(2); }
+  100% { transform: scaleY(1); }
+}
+@keyframes talk3 {
+  0%   { transform: scaleY(1); }
+  50%  { transform: scaleY(1.5); }
+  80%  { transform: scaleY(0.6); }
+  100% { transform: scaleY(1); }
+}
+
+/* ---------- Expression crossfade ---------- */
+.expression {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.expression.active {
+  opacity: 1;
+  animation: popIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+  0%   { transform: scale(0.85); }
+  60%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}

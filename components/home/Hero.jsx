@@ -21,19 +21,19 @@ const INDUSTRIES = [
   },
   {
     label: "E-commerce Marketing",
-    image: "/images/ecommerce.png",
+    image: "/images/az-african.png",
     cta: "Our E-commerce Marketing portfolio →",
     link: "/portfolio/ecommerce",
   },
   {
     label: "Broker Platforms",
-    image: "/images/trading.png",
+    image: "/images/owodex-desktop.png",
     cta: "Our Broker Platforms portfolio →",
     link: "/portfolio/trading",
   },
   {
     label: "Enterprise & SaaS Businesses",
-    image: "/images/saas.png",
+    image: "/images/telefya.png",
     cta: "Our Enterprise & SaaS portfolio →",
     link: "/portfolio/saas",
   },
@@ -321,7 +321,7 @@ export default function Hero() {
               ref={titleRef}
               className="text-[30px] lg:text-[42px] font-serif leading-tight  text-[#1f3a5f]"
             >
-              Software Consulting <br /> and Devlopment
+              Software Consulting <br /> and Development
             </h1>
 
             <p

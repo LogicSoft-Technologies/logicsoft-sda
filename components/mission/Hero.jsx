@@ -46,7 +46,7 @@ export default function MissionHero() {
           <div className="relative w-full overflow-hidden border border-gray-200 shadow-sm">
             <div className="relative w-full" style={{ paddingBottom: "68%" }}>
               <img
-                src="/about/mission/cover-our-mission.jpg"
+                src="/images/case-1.png"
                 alt="Logicsoft Technologies — Driving Project Success"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -99,7 +99,7 @@ export default function MissionHero() {
             <div className="border-l-[3px] border-[#1f6fb2] pl-5 mb-10">
               <p className="text-[15px] text-[#1f3a5f] font-semibold leading-[1.75] italic">
                 "Our mission is simple: if you trust us with your initiative,
-                We'll make sure it succeeds — completely, and with integrity
+                We'll make sure it succeeds completely, and with integrity
                 at every step."
               </p>
             </div>

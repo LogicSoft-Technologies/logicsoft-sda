@@ -15,7 +15,7 @@ const services = [
     description: "Strategic technology advisory to align IT investments with measurable business outcomes and long-term digital roadmaps.",
     href: "/it-consulting",
     tag: "Strategy",
-    stat: "200+ engagements",
+    stat: "100+ engagements",
     iconColor: "#b45309",
     badgeBg: "#fef3c7",
     badgeBorder: "#fde68a",
@@ -27,7 +27,7 @@ const services = [
     description: "End-to-end development of scalable web, mobile, and enterprise applications built on modern stacks.",
     href: "/software-development/services",
     tag: "Engineering",
-    stat: "150+ products shipped",
+    stat: "50+ products shipped",
     iconColor: "#1d4ed8",
     badgeBg: "#dbeafe",
     badgeBorder: "#bfdbfe",
@@ -179,7 +179,7 @@ export default function ServiceMap() {
         </div>
 
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] mb-10 sm:mb-14 max-w-[1100px]">
-          Logicsoft Technologies delivers a full spectrum of IT services — from
+          Logicsoft Technologies delivers a full spectrum of IT services from
           strategic consulting and custom software engineering through to
           cybersecurity, cloud infrastructure, and round-the-clock support.
           Each practice is staffed by dedicated specialists with deep domain expertise.

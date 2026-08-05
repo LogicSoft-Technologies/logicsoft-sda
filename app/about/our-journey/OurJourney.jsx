@@ -7,17 +7,17 @@ import { ArrowRight, Award, Users, Globe2, Code2 } from "lucide-react";
 // ── Timeline data ─────────────────────────────────────────────────────────────
 const MILESTONES = [
   {
-    year: "2012",
+    year: "2021",
     quarter: "Q3",
     title: "Founded in Lagos",
-    desc: "SDA Logicsoft Technologies was incorporated in Lagos, Nigeria, by a group of engineers who believed African businesses deserved world-class software — built locally, to global standards. The first office was a single room in Victoria Island with three workstations.",
+    desc: "SDA Logicsoft Technologies was incorporated in Lagos, Nigeria, by a group of engineers who believed African businesses deserved world-class software built locally, to global standards. The first office was a single room in Victoria Island with three workstations.",
     tags: ["Incorporation", "Lagos", "3 founders"],
     accentColor: "#1f6fb2",
     accentBg: "#eaf4ff",
     highlight: false,
   },
   {
-    year: "2013",
+    year: "2022",
     quarter: "Q1",
     title: "First enterprise client",
     desc: "Secured our first enterprise engagement with a tier-2 Nigerian bank, delivering a customer onboarding automation platform. The project ran 2 weeks ahead of schedule and established our reputation for delivery discipline in the financial services sector.",
@@ -27,38 +27,17 @@ const MILESTONES = [
     highlight: false,
   },
   {
-    year: "2014",
+    year: "2023",
     quarter: "Q2",
     title: "10-person engineering team",
-    desc: "Grew from 3 founders to a team of 10 full-time engineers. Introduced our first formal code review process, sprint cadence, and documentation standards — the foundations of the delivery methodology still in use today.",
+    desc: "Grew from 3 founders to a team of 10 full-time engineers. Introduced our first formal code review process, sprint cadence, and documentation standards the foundations of the delivery methodology still in use today.",
     tags: ["Team growth", "Process", "Engineering standards"],
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
     highlight: false,
   },
   {
-    year: "2015",
-    quarter: "Q4",
-    title: "Healthcare practice launched",
-    desc: "Delivered our first HIPAA-aligned electronic health records system for a network of private clinics in Lagos. This engagement launched our dedicated Healthcare practice and became the first of many health-tech projects across Nigeria and Ghana.",
-    tags: ["Healthcare", "EHR", "HIPAA"],
-    accentColor: "#db2777",
-    accentBg: "#fdf2f8",
-    highlight: false,
-  },
-  {
-    year: "2017",
-    quarter: "Q1",
-    title: "ISO 27001 certification",
-    desc: "Achieved ISO 27001:2013 certification for our information security management system — a first for a Nigerian software firm of our size. This unlocked enterprise procurement processes with regulated clients across banking, government, and healthcare.",
-    tags: ["ISO 27001", "Security", "Certification"],
-    accentColor: "#d97706",
-    accentBg: "#fff7ed",
-    highlight: true,
-    highlightLabel: "Major milestone",
-  },
-  {
-    year: "2018",
+    year: "2025",
     quarter: "Q2",
     title: "Abuja & Edo offices opened",
     desc: "Expanded operations beyond Lagos with new offices in Abuja (serving public sector and government clients) and Edo (engineering hub). Total headcount reached 45 engineers across three locations.",
@@ -68,72 +47,20 @@ const MILESTONES = [
     highlight: false,
   },
   {
-    year: "2019",
+    year: "2026",
     quarter: "Q3",
     title: "First international client — London",
-    desc: "Delivered a cross-border payments platform for a UK-based FinTech serving the African diaspora market. Our first engagement outside Nigeria validated our capacity for distributed, time-zone-spanning delivery to international standards.",
+    desc: "Delivered a cross-border payments platform for a UK-based FinTech serving the African diaspora market. Our first engagement outside Nigeria validated our capacity for distributed, time-zone spanning delivery to international standards.",
     tags: ["UK", "FinTech", "International", "Cross-border payments"],
     accentColor: "#1f6fb2",
     accentBg: "#eaf4ff",
     highlight: false,
   },
-  {
-    year: "2020",
-    quarter: "Q2",
-    title: "Remote-first pivot",
-    desc: "COVID-19 forced a full remote transition in March 2020. Within 3 months, we had formalised our distributed delivery model, updated our project management tooling, and completed 8 active projects without a single deadline missed.",
-    tags: ["Remote-first", "Resilience", "8 active projects maintained"],
-    accentColor: "#374151",
-    accentBg: "#f9fafb",
-    highlight: false,
-  },
-  {
-    year: "2021",
-    quarter: "Q1",
-    title: "100th project delivered",
-    desc: "Celebrated our 100th successfully delivered project — a logistics management platform for a Gulf-based freight company. The milestone reflected 9 years of consistent, discipline-led delivery across 14 industries.",
-    tags: ["100 projects", "Logistics", "Gulf region"],
-    accentColor: "#059669",
-    accentBg: "#ecfdf5",
-    highlight: true,
-    highlightLabel: "100 projects",
-  },
-  {
-    year: "2022",
-    quarter: "Q3",
-    title: "Cybersecurity practice launched",
-    desc: "Formally launched our dedicated Cybersecurity practice with a team of certified penetration testers, SIEM specialists, and compliance consultants. First engagement: an ISO 27001 readiness programme for a Nigerian commercial bank.",
-    tags: ["Cybersecurity", "Penetration testing", "SIEM", "ISO 27001"],
-    accentColor: "#dc2626",
-    accentBg: "#fff1f2",
-    highlight: false,
-  },
-  {
-    year: "2023",
-    quarter: "Q2",
-    title: "Dubai & MENA expansion",
-    desc: "Established delivery capability in the UAE and MENA region, serving clients in logistics, property technology, and financial services. Our first MENA client: a Dubai-based logistics group requiring fleet and warehouse management systems.",
-    tags: ["UAE", "MENA", "Dubai", "Logistics"],
-    accentColor: "#7c3aed",
-    accentBg: "#f5f3ff",
-    highlight: false,
-  },
-  {
-    year: "2024",
-    quarter: "Q4",
-    title: "300+ projects. 30+ industries.",
-    desc: "As of Q4 2024, Logicsoft has delivered over 300 projects across 30+ industries, maintained a 98% client retention rate, and grown to a team of 85+ engineers. The company remains privately held, profitable, and entirely focused on building software that lasts.",
-    tags: ["300+ projects", "85+ engineers", "98% retention", "30+ industries"],
-    accentColor: "#d97706",
-    accentBg: "#fff7ed",
-    highlight: true,
-    highlightLabel: "Today",
-  },
 ];
 
 const COMPANY_STATS = [
-  { value: "12+",  label: "Years in operation",    icon: Award    },
-  { value: "300+", label: "Projects delivered",    icon: Code2    },
+  { value: "5+",  label: "Years in operation",    icon: Award    },
+  { value: "100+", label: "Projects delivered",    icon: Code2    },
   { value: "85+",  label: "Engineers",             icon: Users    },
   { value: "30+",  label: "Industries served",     icon: Globe2   },
 ];
@@ -160,14 +87,14 @@ export default function OurJourney() {
         <div className="max-w-[82rem] mx-auto px-4 py-16">
           <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-end">
             <div>
-              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-4">Est. 2012 · Lagos, Nigeria</p>
+              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-4">Est. 2021 · Lagos, Nigeria</p>
               <h2 className="text-[38px] lg:text-[52px] font-serif text-[#1f3a5f] leading-[1.08] mb-5">
-                12 Years of Building<br className="hidden lg:block" />
+                5 Years of Building<br className="hidden lg:block" />
                 <span className="text-[#1f6fb2]">Software That Lasts.</span>
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[640px]">
                 From three workstations in a Victoria Island office to 85+ engineers serving clients
-                across Africa, Europe, and the Middle East — this is the unfiltered story of how
+                across Africa, Europe, and the Middle East. This is the unfiltered story of how
                 Logicsoft Technologies was built, one delivered project at a time.
               </p>
             </div>
@@ -194,10 +121,10 @@ export default function OurJourney() {
         <div className="max-w-[82rem] mx-auto px-4 py-12">
           <blockquote className="text-[19px] lg:text-[22px] font-serif font-normal text-white leading-[1.65] max-w-[820px]">
             "We didn't set out to build the biggest software company in Africa. We set out to build
-            the most trustworthy one — and to prove that a Nigerian engineering firm could deliver
+            the most trustworthy one and to prove that a Nigerian engineering firm could deliver
             to the same standard as any team in London, Dubai, or Silicon Valley."
           </blockquote>
-          <p className="text-[12px] text-white/40 mt-4">— Logicsoft Technologies Founding Principles, 2012</p>
+          <p className="text-[12px] text-white/40 mt-4">— Logicsoft Technologies Founding Principles, 2021</p>
         </div>
       </div>
 
@@ -324,7 +251,7 @@ export default function OurJourney() {
           <div>
             <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">Be part of the story</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">Let's build something together.</h3>
-            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">Every client relationship is a new chapter. Join the 300+ organisations who've trusted us to build their most important systems.</p>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">Every client relationship is a new chapter. Join the 100+ organisations who've trusted us to build their most important systems.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] ring-1 ring-inset ring-white/30 transition-all duration-200">

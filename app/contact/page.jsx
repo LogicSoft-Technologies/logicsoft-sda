@@ -47,9 +47,9 @@ const BUDGETS = [
 
 const STATS = [
   { icon: Zap,    val: "24hr", label: "Response guarantee" },
-  { icon: Users,  val: "300+", label: "Projects delivered"  },
+  { icon: Users,  val: "100+", label: "Projects delivered"  },
   { icon: Globe,  val: "5",    label: "Continents served"   },
-  { icon: Shield, val: "12+",  label: "Years of practice"   },
+  { icon: Shield, val: "5+",  label: "Years of practice"   },
 ];
 
 const CHANNELS = [

@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const heroImages = [
-  { src: "/images/newsletter.jpg", alt: "Logicsoft Lagos HQ"      },
-  { src: "/images/office2.jpg",    alt: "Engineering team at work" },
-  { src: "/images/office3.jpg",    alt: "Client collaboration"     },
+  { src: "/images/company.png", alt: "Logicsoft Lagos HQ"      },
+  { src: "/images/eng-at-work.png",    alt: "Engineering team at work" },
+  { src: "/images/client-collaboration-2.png",    alt: "Client collaboration"     },
 ];
 
 const signals = [

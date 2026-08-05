@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    image: "/images/case-studies/dwh-project.png",
+    image: "/images/case-study-1.png",
     alt: "Data warehouse project management",
     tag: "Data Engineering",
     title: "Getting a Multi-Vendor DWH Development Project Back on Track",
@@ -16,29 +16,29 @@ const projects = [
     href: "/case-studies/dwh-project-recovery",
   },
   {
-    image: "/images/case-studies/insurance-revamp.jpg",
+    image: "/images/case-study-2.png",
     alt: "Insurance software revamp",
     tag: "Insurance",
     title: "Rescuing an Insurance Software Revamp From Prior Vendor Missteps",
     challenge:
-      "A property insurance brokerage's custom system had incomplete documentation, no structured change management, and changes were being tested directly in production — meaning every unfixed defect immediately disrupted live operations.",
+      "A property insurance brokerage's custom system had incomplete documentation, no structured change management, and changes were being tested directly in production, meaning every unfixed defect immediately disrupted live operations.",
     solution:
-      "Within one week, Logicsoft audited the legacy software and produced a full revamp plan including rearchitecting and refactoring guidelines. We identified workflow bottlenecks and helped implement standardised documentation, reporting, and change management practices — reducing costs and accelerating the revamp.",
+      "Within one week, Logicsoft audited the legacy software and produced a full revamp plan including rearchitecting and refactoring guidelines. We identified workflow bottlenecks and helped implement standardised documentation, reporting, and change management practices reducing costs and accelerating the revamp.",
     href: "/case-studies/insurance-software-rescue",
   },
   {
-    image: "/images/case-studies/enterprise-integration.jpg",
+    image: "/images/case-study-3.png",
     alt: "Enterprise application integration",
     tag: "Enterprise IT",
     title: "Securing Enterprise Data Flows for a Multi-Billion-Dollar Conglomerate",
     challenge:
-      "A global conglomerate with 30+ businesses across retail, BFSI, and logistics operated dozens of siloed systems. Data was transferred manually between CRMs, ERPs, POS, and supply chain tools — delaying decisions, causing errors, and making group-wide analytics impossible.",
+      "A global conglomerate with 30+ businesses across retail, BFSI, and logistics operated dozens of siloed systems. Data was transferred manually between CRMs, ERPs, POS, and supply chain tools delaying decisions, causing errors, and making group-wide analytics impossible.",
     solution:
-      "Logicsoft architects presented four integration scenarios, each backed by a detailed technology stack recommendation. The new integration foundation kept data clean, consistent, secure, and instantly accessible — positioning the company to scale, innovate faster, and capitalise fully on its global reach.",
+      "Logicsoft architects presented four integration scenarios, each backed by a detailed technology stack recommendation. The new integration foundation kept data clean, consistent, secure, and instantly accessible positioning the company to scale, innovate faster, and capitalise fully on its global reach.",
     href: "/case-studies/enterprise-integration",
   },
   {
-    image: "/images/case-studies/oncology-system.jpg",
+    image: "/images/case-study-4.png",
     alt: "Oncology drug production automation",
     tag: "Healthcare",
     title: "Ensuring GAMP4-Compliant Oncology and TPN Drug Production Without Disruptions",
@@ -49,18 +49,18 @@ const projects = [
     href: "/case-studies/oncology-drug-system",
   },
   {
-    image: "/images/case-studies/telecom-analytics.jpg",
+    image: "/images/case-study-5.png",
     alt: "Telecom analytics platform",
     tag: "Telecoms",
     title: "Delivering a Cost-Aware Streaming and Analytics Platform for Telecom",
     challenge:
-      "A Texas-based telecom provider needed a platform to consolidate data from 10+ sources. The legacy setup couldn't support multi-tenancy, high-velocity telemetry, or predictive analytics — creating cost inefficiencies and preventing churn prediction.",
+      "A Texas-based telecom provider needed a platform to consolidate data from 10+ sources. The legacy setup couldn't support multi-tenancy, high-velocity telemetry, or predictive analytics creating cost inefficiencies and preventing churn prediction.",
     solution:
       "Logicsoft delivered a scalable, multi-tenant big data platform using AWS, Apache Kafka, and ROLAP cubes. Combining Amazon Spot Instances and load balancers with a thoughtfully designed data pipeline, the platform reduced AWS computing costs by 80% without compromising performance.",
     href: "/case-studies/telecom-analytics",
   },
   {
-    image: "/images/case-studies/digital-imaging.jpg",
+    image: "/images/case-study-6.png",
     alt: "Digital imaging software delivery",
     tag: "Software Development",
     title: "Succeeding Where Other Vendors Failed: Scrum-Based Delivery of Digital Imaging Software",

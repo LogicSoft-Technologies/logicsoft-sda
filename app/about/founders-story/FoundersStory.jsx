@@ -18,9 +18,9 @@ const FOUNDERS = [
   bio: [
     "Elijah Alexander Okpochini is a software engineer and entrepreneur pursuing a Bachelor of Science (B.Sc.) in Industrial Physics at the University of Benin. Alongside his academic journey, he has spent the last several years building full-stack software applications with a focus on scalable web platforms, backend architecture, and modern cloud infrastructure.",
     "In July 2024, he founded Logicsoft Technologies with a clear vision: to build an African technology company capable of delivering enterprise-grade software that meets global engineering standards. Rather than competing on price, Logicsoft was created to compete on technical excellence, long-term reliability, and thoughtful product execution.",
-    "Today, Elijah leads the company's engineering direction, overseeing product architecture, client delivery, and technology strategy. His work spans custom software development, AI-powered business solutions, cloud deployments, and digital transformation initiatives for startups and growing businesses, while continuously investing in building Logicsoft into a globally respected technology company."
+    "Today, Elijah leads the company's engineering direction, overseeing product architecture, client delivery, and technology strategy. His work spans custom software development, AI powered business solutions, cloud deployments, and digital transformation initiatives for startups and growing businesses, while continuously investing in building Logicsoft into a globally respected technology company."
   ],
-  quote: "Great software isn't built by writing more code—it's built by solving the right problems with discipline, clarity, and uncompromising engineering standards.",
+  quote: "Great software isn't built by writing more code, it's built by solving the right problems with discipline, clarity, and uncompromising engineering standards.",
   credentials: [
     "B.Sc. Industrial Physics (In View), University of Benin",
     "Founder & CEO, Logicsoft Technologies",
@@ -36,12 +36,12 @@ const FOUNDERS = [
   accentBg: "#ecfdf5",
 
   bio: [
-    "Saviour Oviahon Efe is the Chief Technology Officer and Co-Founder of Logicsoft Technologies, where he leads the company's technology vision, software architecture, and engineering excellence. With a passion for building secure, scalable, and high-performance digital solutions, he has been instrumental in transforming complex business challenges into innovative software products that deliver measurable results.",
+    "Saviour Oviahon Efe is the Chief Technology Officer and Co-Founder of Logicsoft Technologies, where he leads the company's technology vision, software architecture, and engineering excellence. With a passion for building secure, scalable, and high performance digital solutions, he has been instrumental in transforming complex business challenges into innovative software products that deliver measurable results.",
     "As CTO, Saviour established the engineering standards and development culture that define Logicsoft today. He champions clean architecture, rigorous code reviews, modern cloud infrastructure, cybersecurity best practices, and continuous learning, ensuring every solution is built with long-term reliability, performance, and maintainability in mind.",
-    "Working closely with clients, stakeholders, and the engineering team, he oversees the complete software development lifecycle—from strategy and solution design to deployment and continuous improvement. His leadership has helped position Logicsoft Technologies as a trusted technology partner for businesses seeking world-class software solutions across multiple industries."
+    "Working closely with clients, stakeholders, and the engineering team, he oversees the complete software development lifecycle from strategy and solution design to deployment and continuous improvement. His leadership has helped position Logicsoft Technologies as a trusted technology partner for businesses seeking world-class software solutions across multiple industries."
   ],
   quote:
-    "Technology alone doesn't transform businesses—people do. Our responsibility is to build software that empowers organizations to grow, innovate, and compete with confidence. Every solution we deliver is a reflection of our commitment to excellence, integrity, and lasting value.",
+    "Technology alone doesn't transform businesses, people do. Our responsibility is to build software that empowers organizations to grow, innovate, and compete with confidence. Every solution we deliver is a reflection of our commitment to excellence, integrity, and lasting value.",
   credentials: [
     "Co-Founder & Chief Technology Officer, Logicsoft Technologies",
     "Software Architecture & System Design",
@@ -56,11 +56,11 @@ const FOUNDERS = [
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
     bio: [
-      "Ngozi brings the operational rigour that turns engineering talent into reliable delivery. With a background in management consulting at a Big Four firm, she joined Adewale and Emeka as the third co-founder to build the business infrastructure — the project management frameworks, client relationship processes, and financial discipline — that allowed Logicsoft to scale without losing quality.",
-      "She architected Logicsoft's project management methodology, which draws from PRINCE2, Agile, and the company's own 12 years of hard-won delivery lessons. She also leads People & Culture, a function she considers as important as engineering.",
-      "Under her leadership, Logicsoft has maintained a 98% client retention rate and a zero-crunch culture that attracts and keeps exceptional engineers.",
+      "Ngozi brings the operational rigour that turns engineering talent into reliable delivery. With a background in management consulting at a Big Four firm, she joined Adewale and Emeka as the third co-founder to build the business infrastructure, the project management frameworks, client relationship processes, and financial discipline that allowed Logicsoft to scale without losing quality.",
+      "She architected Logicsoft's project management methodology, which draws from PRINCE2, Agile, and the company's own 5 years of hard won delivery lessons. She also leads People & Culture, a function she considers as important as engineering.",
+      "Under her leadership, Logicsoft has maintained a 98% client retention rate and a zero crunch culture that attracts and keeps exceptional engineers.",
     ],
-    quote: "Delivery methodology is not bureaucracy. It's the difference between a project that works and one that doesn't. Our clients don't pay us to be creative with their budgets — they pay us to hit our commitments, every single time.",
+    quote: "Delivery methodology is not bureaucracy. It's the difference between a project that works and one that doesn't. Our clients don't pay us to be creative with their budgets, they pay us to hit our commitments, every single time.",
     credentials: ["MBA, Lagos Business School", "PRINCE2 Practitioner", "PMP Certified", "Former Big Four Management Consultant"],
   },
 ];
@@ -69,22 +69,22 @@ const CHAPTERS = [
   {
     num: "01",
     title: "The problem we set out to solve",
-    content: "Nigerian businesses in 2012 faced a brutal choice: work with local vendors who often lacked technical depth, or engage international firms who lacked market context and charged fees that only the largest companies could afford. The middle market — growing companies that needed serious software — was poorly served by everyone. That was the gap.",
+    content: "Nigerian businesses in 2021 faced a brutal choice: work with local vendors who often lacked technical depth, or engage international firms who lacked market context and charged fees that only the largest companies could afford. The middle market growing companies that needed serious software was poorly served by everyone. That was the gap.",
   },
   {
     num: "02",
     title: "The decision to start",
-    content: "None of the three founders came from wealth. There was no angel investor, no accelerator, no safety net. The decision to incorporate was made over two meetings in a café in Victoria Island. Adewale would lead the business. Emeka would run engineering. Ngozi would build the operations. Each brought what the others lacked. The first year was lean — three clients, a shared workspace, and a shared determination not to cut corners.",
+    content: "None of the three founders came from wealth. There was no angel investor, no accelerator, no safety net. The decision to incorporate was made over two meetings in a café in Victoria Island. Elijah would lead the business. Saviour would run engineering. Ngozi would build the operations. Each brought what the others lacked. The first year was lean, three clients, a shared workspace, and a shared determination not to cut corners.",
   },
   {
     num: "03",
     title: "The moment we knew it was working",
-    content: "In 2015, a client we had worked with the previous year returned with a referral — their CFO had recommended us to his counterpart at another financial institution. We hadn't advertised, hadn't pitched, hadn't entered any awards. We had simply delivered on time, documented everything, and been honest when problems arose. That referral was worth more than any marketing campaign.",
+    content: "In 2023, a client we had worked with the previous year returned with a referral, their CFO had recommended us to his counterpart at another financial institution. We hadn't advertised, hadn't pitched, hadn't entered any awards. We had simply delivered on time, documented everything, and been honest when problems arose. That referral was worth more than any marketing campaign.",
   },
   {
     num: "04",
     title: "What we've learned",
-    content: "Twelve years of running a software company in Lagos has taught us that trust is earned in small moments: answering emails at 11pm when a system goes down, admitting when an estimate was wrong, delivering two days early when the client thought it would be late. These small moments compound. The companies that last are the ones that treat every client interaction as evidence of who they really are.",
+    content: "Five years of running a software company in Lagos has taught us that trust is earned in small moments: answering emails at 11pm when a system goes down, admitting when an estimate was wrong, delivering two days early when the client thought it would be late. These small moments compound. The companies that last are the ones that treat every client interaction as evidence of who they really are.",
   },
 ];
 
@@ -199,8 +199,8 @@ export default function FoundersStory() {
               </h2>
               <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
                 Three engineers. One shared belief. No external funding. This is the story of how
-                SDA Logicsoft Technologies went from a Victoria Island café to 300+ delivered projects
-                across three continents — told by the people who built it.
+                SDA Logicsoft Technologies went from a Victoria Island café to 100+ delivered projects
+                across three continents told by the people who built it.
               </p>
 
               {/* Small avatar trio — left as-is */}
@@ -220,7 +220,7 @@ export default function FoundersStory() {
                     </div>
                   ))}
                 </div>
-                <p className="text-[13px] text-white/60">Three co-founders. One company. 12 years.</p>
+                <p className="text-[13px] text-white/60">Three co-founders. One company. 5 years.</p>
               </div>
             </div>
 

@@ -17,7 +17,7 @@ const DROPDOWNS = {
   about: {
     featured: {
       label: "Why LogicSoft?",
-      desc: "300+ projects. 12 years. Clients across Africa, Europe, and the Middle East.",
+      desc: "200+ projects. 5 years. Clients across Africa, Europe, and the Middle East.",
       href: "/about/about-company",
     },
     columns: [
@@ -295,9 +295,7 @@ function MobileDrawer({ open, onClose }) {
             {/* ── Drawer header ── */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#e8eef6] bg-[#f8fafc] shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 bg-[#1f3a5f] flex items-center justify-center">
-                  <span className="text-white text-[9px] font-black tracking-widest">LS</span>
-                </div>
+                    <img src="/favicon.ico" alt="LogicSoft" className="w-12 h-12" />
                 <div>
                   <p className="text-[12px] font-bold text-[#1f3a5f] leading-none">LogicSoft</p>
                   <p className="text-[8.5px] font-semibold text-[#1f6fb2] uppercase tracking-[0.15em] leading-none mt-0.5">Technologies</p>
@@ -321,7 +319,7 @@ function MobileDrawer({ open, onClose }) {
                   className="flex-1 flex items-center justify-center gap-2 py-3 text-[11.5px] font-semibold text-[#1f3a5f] hover:bg-[#f0f7ff] transition-colors border-r border-[#e8eef6]">
                   <Phone className="w-3.5 h-3.5 text-[#1f6fb2]" /> Call us
                 </a>
-                <a href="mailto:contact@logicsoft.ng"
+                <a href="mailto:contact@logicsofttechnologies.online"
                   className="flex-1 flex items-center justify-center gap-2 py-3 text-[11.5px] font-semibold text-[#1f3a5f] hover:bg-[#f0f7ff] transition-colors">
                   <Mail className="w-3.5 h-3.5 text-[#1f6fb2]" /> Email us
                 </a>

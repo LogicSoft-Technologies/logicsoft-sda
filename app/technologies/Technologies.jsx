@@ -165,8 +165,8 @@ const TECH_SECTIONS = [
 const STATS = [
   { value: "40+",  label: "Technologies mastered" },
   { value: "8",    label: "Practice areas"         },
-  { value: "300+", label: "Projects shipped"       },
-  { value: "12+",  label: "Years in practice"      },
+  { value: "100+", label: "Projects shipped"       },
+  { value: "5+",  label: "Years in practice"      },
 ];
 
 // ── Logo Tile — big, bold, generous ─────────────────────────────────────────

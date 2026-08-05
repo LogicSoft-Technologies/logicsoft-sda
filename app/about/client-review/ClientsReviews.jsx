@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import Image from "next/image";
 
 // ── Load Globe client-side only (WebGL) ──────────────────────────────────────
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
@@ -34,7 +35,7 @@ const testimonials = [
     industry: "Banking",
     rating: 5,
     text: "Logicsoft delivered our core banking integration on time and within budget. Their understanding of financial systems and regulatory requirements was impressive. The level of transparency was unlike anything we'd experienced with previous vendors.",
-    initials: "AO",
+    image: "/images/client-1.png",
     avatarBg: "#1d4ed8",
     tagBg: "#dbeafe",
     tagBorder: "#bfdbfe",
@@ -47,7 +48,7 @@ const testimonials = [
     industry: "Healthcare",
     rating: 5,
     text: "We needed a patient management platform built to HIPAA-aligned standards. Logicsoft was a genuine strategic partner throughout. The system has run without disruption for over 18 months.",
-    initials: "CE",
+    image: "/images/client-2.png",
     avatarBg: "#059669",
     tagBg: "#d1fae5",
     tagBorder: "#6ee7b7",
@@ -60,7 +61,7 @@ const testimonials = [
     industry: "Real Estate",
     rating: 5,
     text: "Logicsoft proposed a modern architecture, handled the migration cleanly, and built features our customers immediately loved. Communication was always professional and proactive.",
-    initials: "EN",
+    image: "/images/c3.png",
     avatarBg: "#b45309",
     tagBg: "#fef3c7",
     tagBorder: "#fde68a",
@@ -73,7 +74,7 @@ const testimonials = [
     industry: "Logistics",
     rating: 5,
     text: "Logicsoft integrated our fleet management, warehouse, and ERP systems into one coherent platform. What seemed impossible was handled with remarkable precision. Our efficiency improved by over 30%.",
-    initials: "FA",
+    image: "/images/c4.png",
     avatarBg: "#0891b2",
     tagBg: "#cffafe",
     tagBorder: "#a5f3fc",
@@ -86,7 +87,7 @@ const testimonials = [
     industry: "FinTech",
     rating: 5,
     text: "We needed a partner who could build fast without cutting corners on security. Our payment platform launched in 3 months and passed PCI compliance review first time. Remarkable execution.",
-    initials: "OA",
+    image: "/images/c5.png",
     avatarBg: "#7c3aed",
     tagBg: "#ede9fe",
     tagBorder: "#ddd6fe",
@@ -98,8 +99,8 @@ const testimonials = [
     company: "RetailChain West Africa",
     industry: "Retail",
     rating: 5,
-    text: "Real-time stock visibility across 40+ stores — something we'd been trying to achieve for years. Logicsoft made it a reality in under 4 months. The system is rock solid.",
-    initials: "NO",
+    text: "Real-time stock visibility across 40+ stores, something we'd been trying to achieve for years. Logicsoft made it a reality in under 4 months. The system is rock solid.",
+    image: "/images/c6.png",
     avatarBg: "#db2777",
     tagBg: "#fce7f3",
     tagBorder: "#fbcfe8",
@@ -163,13 +164,43 @@ function Stars({ count }) {
   );
 }
 
+// ── Avatar (handles both photo + initials fallback) ──────────────────────────
+function Avatar({ t, size = 40, textSize = "text-[12px]" }) {
+  return (
+    <div
+      className={`relative overflow-hidden flex items-center justify-center font-bold text-white shrink-0 ${textSize}`}
+      style={{ backgroundColor: t.avatarBg, width: size, height: size }}
+    >
+      {t.image ? (
+        <Image src={t.image} alt={t.name} fill sizes={`${size}px`} className="object-cover" />
+      ) : (
+        t.initials
+      )}
+    </div>
+  );
+}
+
 // ── Globe wrapper ─────────────────────────────────────────────────────────────
+const GLOBE_ALTITUDE = 2.0;
+const GLOBE_DEFAULT_VIEW = { lat: 10, lng: 20 };
+
 function GlobeWrapper() {
   const [mounted, setMounted] = useState(false);
   const globeRef = useRef(null);
+  const containerRef = useRef(null);
+  const rafRef = useRef(null);
+  const isHovering = useRef(false);
+  const current = useRef({ ...GLOBE_DEFAULT_VIEW });
+  const target = useRef({ ...GLOBE_DEFAULT_VIEW });
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const handleGlobeReady = () => {
@@ -180,7 +211,54 @@ function GlobeWrapper() {
     ctrl.enableZoom = false;
     ctrl.enableRotate = false;
     ctrl.enablePan = false;
-    globeRef.current.pointOfView({ lat: 10, lng: 20, altitude: 2.0 }, 800);
+    globeRef.current.pointOfView({ ...GLOBE_DEFAULT_VIEW, altitude: GLOBE_ALTITUDE }, 800);
+
+    // Smoothly eases the camera toward the mouse target whenever hovering.
+    const animate = () => {
+      if (isHovering.current && globeRef.current) {
+        current.current.lat += (target.current.lat - current.current.lat) * 0.09;
+        current.current.lng += (target.current.lng - current.current.lng) * 0.09;
+        globeRef.current.pointOfView(
+          { lat: current.current.lat, lng: current.current.lng, altitude: GLOBE_ALTITUDE },
+          0
+        );
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+  };
+
+  const handleMouseEnter = () => {
+    if (!globeRef.current) return;
+    isHovering.current = true;
+    // Start the follow from wherever the camera currently is (incl. mid-auto-rotate)
+    // so it doesn't snap when the cursor enters.
+    const pov = globeRef.current.pointOfView();
+    current.current = { lat: pov.lat, lng: pov.lng };
+    target.current = { lat: pov.lat, lng: pov.lng };
+    globeRef.current.controls().autoRotate = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1; // -1..1
+    const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1; // -1..1
+
+    const lng = GLOBE_DEFAULT_VIEW.lng + nx * 100;
+    const lat = GLOBE_DEFAULT_VIEW.lat - ny * 55;
+
+    target.current = {
+      lat: Math.max(-85, Math.min(85, lat)),
+      lng: ((lng + 180) % 360 + 360) % 360 - 180,
+    };
+  };
+
+  const handleMouseLeave = () => {
+    isHovering.current = false;
+    if (globeRef.current) {
+      globeRef.current.controls().autoRotate = true;
+    }
   };
 
   if (!mounted) return (
@@ -190,25 +268,33 @@ function GlobeWrapper() {
   );
 
   return (
-    <Globe
-      ref={globeRef}
-      width={340}
-      height={340}
-      backgroundColor="rgba(0,0,0,0)"
-      globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-      bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-      atmosphereColor="#60a5fa"
-      atmosphereAltitude={0.18}
-      pointsData={CLIENT_POINTS}
-      pointLat="lat"
-      pointLng="lng"
-      pointLabel="label"
-      pointColor="color"
-      pointAltitude={0.03}
-      pointRadius={0.7}
-      pointsMerge={false}
-      onGlobeReady={handleGlobeReady}
-    />
+    <div
+      ref={containerRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="w-[340px] h-[340px] cursor-grab active:cursor-grabbing"
+    >
+      <Globe
+        ref={globeRef}
+        width={340}
+        height={340}
+        backgroundColor="rgba(0,0,0,0)"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        atmosphereColor="#60a5fa"
+        atmosphereAltitude={0.18}
+        pointsData={CLIENT_POINTS}
+        pointLat="lat"
+        pointLng="lng"
+        pointLabel="label"
+        pointColor="color"
+        pointAltitude={0.03}
+        pointRadius={0.7}
+        pointsMerge={false}
+        onGlobeReady={handleGlobeReady}
+      />
+    </div>
   );
 }
 
@@ -289,12 +375,8 @@ export default function Testimonials() {
               <div className="flex items-center gap-3 bg-white/10 border border-white/20 px-5 py-3 backdrop-blur-sm">
                 <div className="flex -space-x-2">
                   {testimonials.slice(0, 5).map((t, i) => (
-                    <div
-                      key={i}
-                      className="w-7 h-7 flex items-center justify-center text-[9px] font-bold text-white border-2 border-white shrink-0"
-                      style={{ backgroundColor: t.avatarBg }}
-                    >
-                      {t.initials}
+                    <div key={i} className="border-2 border-white">
+                      <Avatar t={t} size={28} textSize="text-[9px]" />
                     </div>
                   ))}
                 </div>
@@ -344,12 +426,7 @@ export default function Testimonials() {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 flex items-center justify-center text-[12px] font-bold text-white shrink-0"
-                      style={{ backgroundColor: t.avatarBg }}
-                    >
-                      {t.initials}
-                    </div>
+                    <Avatar t={t} size={40} textSize="text-[12px]" />
                     <div>
                       <p className="text-[13.5px] font-semibold text-[#1f3a5f] leading-snug">{t.name}</p>
                       <p className="text-[12px] text-gray-400">{t.role}, {t.company}</p>

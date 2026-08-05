@@ -212,7 +212,7 @@ export default function SuccessStories() {
         <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="text-[13px] sm:text-[13.5px] text-gray-500">
             Showing <span className="font-semibold text-[#1f3a5f]">{filtered.length}</span> of{" "}
-            <span className="font-semibold text-[#1f3a5f]">300+</span> completed projects.
+            <span className="font-semibold text-[#1f3a5f]">100+</span> completed projects.
           </p>
           <Link
             href="/portfolio"

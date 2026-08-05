@@ -11,7 +11,7 @@ const forces = [
     subtitle: "Accountable Delivery",
     href: "/how-we-work/pmo",
     description:
-      "Our PMO applies lessons from hundreds of past projects to keep every initiative on track — even in complex, changing environments. Certified project managers take full ownership of scope, budget, timelines, and risks, and stay completely accountable for results. Where multiple projects run in parallel, delivery managers oversee the full programme to keep all efforts aligned with your business goals.",
+      "Our PMO applies lessons from hundreds of past projects to keep every initiative on track even in complex, changing environments. Certified project managers take full ownership of scope, budget, timelines, and risks, and stay completely accountable for results. Where multiple projects run in parallel, delivery managers oversee the full programme to keep all efforts aligned with your business goals.",
     iconColor: "#1d4ed8",
     badgeBg: "#dbeafe",
     badgeBorder: "#bfdbfe",
@@ -22,7 +22,7 @@ const forces = [
     subtitle: "Strategic, Risk-Aware Design",
     href: "/how-we-work/architecture-coe",
     description:
-      "Our Architecture and Solutions CoE sets and enforces the standards for scalable, secure, and cost-effective solutions. Led by Principal Architects with 15+ years of experience each, it establishes reusable architecture patterns and best practices, tracks emerging technologies, and conducts hands-on reviews to ensure every system supports your goals, avoids costly rework, and stands up to change.",
+      "Our Architecture and Solutions CoE sets and enforces the standards for scalable, secure, and cost-effective solutions. Led by Principal Architects with 10+ years of experience each, it establishes reusable architecture patterns and best practices, tracks emerging technologies, and conducts hands-on reviews to ensure every system supports your goals, avoids costly rework, and stands up to change.",
     iconColor: "#7c3aed",
     badgeBg: "#ede9fe",
     badgeBorder: "#ddd6fe",
@@ -33,7 +33,7 @@ const forces = [
     subtitle: "People, Skills, Performance",
     href: "/how-we-work/competency-coe",
     description:
-      "Our Technology & Competency CoE ensures every professional on your project performs above market average, bringing appropriate skills and deep industry knowledge. A core team of senior experts continuously trains, coaches, and certifies engineers, QA specialists, DevOps engineers, and business analysts — focusing on both the latest technologies and the sectoral challenges and regulations that shape each engagement.",
+      "Our Technology & Competency CoE ensures every professional on your project performs above market average, bringing appropriate skills and deep industry knowledge. A core team of senior experts continuously trains, coaches, and certifies engineers, QA specialists, DevOps engineers, and business analysts focusing on both the latest technologies and the sectoral challenges and regulations that shape each engagement.",
     iconColor: "#059669",
     badgeBg: "#d1fae5",
     badgeBorder: "#6ee7b7",
@@ -61,7 +61,7 @@ export default function CoreForces() {
         </h2>
         <p className="text-[17px] text-gray-700 leading-[2] mb-14 max-w-[1100px]">
           Logicsoft Technologies delivery model is built on three organisational
-          units that work in unison — ensuring every project is managed with
+          units that work in unison ensuring every project is managed with
           discipline, designed with rigour, and staffed with the right people.
         </p>
 

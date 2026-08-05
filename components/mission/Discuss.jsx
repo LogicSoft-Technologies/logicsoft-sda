@@ -5,7 +5,7 @@ import { ArrowRight, Phone, Mail, MessageCircle, Headphones } from "lucide-react
 
 const contacts = [
   { icon: Phone,         label: "+234 9012 688 861",        href: "tel:+2349012688861",           hoverClass: "hover:text-[#1f6fb2]"  },
-  { icon: Mail,          label: "contact@logicsoft.com",    href: "mailto:contact@logicsoft.com", hoverClass: "hover:text-[#1f6fb2]"  },
+  { icon: Mail,          label: "contact@logicsofttechnologies.online",    href: "mailto:contact@logicsofttechnologies.online", hoverClass: "hover:text-[#1f6fb2]"  },
   { icon: MessageCircle, label: "WhatsApp",                 href: "https://wa.me/2349012688861",  hoverClass: "hover:text-green-600", external: true },
   { icon: Headphones,    label: "Live chat",                href: "#",                            hoverClass: "hover:text-[#1f6fb2]"  },
 ];

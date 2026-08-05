@@ -85,7 +85,7 @@ const Secure = () => {
           <div className="shrink-0 flex flex-row lg:flex-col gap-8 lg:gap-5 lg:items-end">
             {[
               { value: "8", label: "Management disciplines" },
-              { value: "300+", label: "Projects governed" },
+              { value: "100+", label: "Projects governed" },
             ].map((s) => (
               <div key={s.label} className="lg:text-right">
                 <p className="text-[40px] font-light text-[#0f2b46] leading-none">

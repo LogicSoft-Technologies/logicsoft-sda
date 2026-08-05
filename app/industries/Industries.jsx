@@ -210,8 +210,8 @@ const CATEGORIES = ["All", "Financial Services", "Healthcare", "Commerce", "Prop
 
 const STATS = [
   { value: "30+",  label: "Industries served"    },
-  { value: "300+", label: "Projects delivered"   },
-  { value: "12+",  label: "Years of experience"  },
+  { value: "100+", label: "Projects delivered"   },
+  { value: "5+",  label: "Years of experience"  },
   { value: "98%",  label: "Client retention rate"},
 ];
 
