@@ -16,7 +16,7 @@ const team = [
   {
     name: "Saviour Oviahon Efe",
     role: "Chief Technology Officer",
-    image: "/about/experts/saviour-efe.jpg",
+    image: "/images/founders/saviour-2.png",
     bio: "Saviour is the Chief Technology Officer at LogicSoft, leading the company's technology strategy, software architecture, and engineering operations. He champions innovation, technical excellence, and scalable solutions, ensuring every product is built with performance, security, and long-term growth in mind. His leadership drives the development of modern digital experiences that help businesses innovate and succeed in an evolving technology landscape.",
     linkedin: "https://linkedin.com/in/oviahon-saviour-837a2b422",
     email: "oviahonsaviourefe@gmail.com",
