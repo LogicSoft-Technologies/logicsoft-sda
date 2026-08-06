@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import ElijahAvatar from "../public/images/founders/elijah.jpg";
 import SaviourAvatar from "../public/images/founders/saviourr.jpg";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL || "https://api.logicsofttechnologies.online";
 const SESSION_KEY = "ls_chat_sid";
 const WA_BASE = "https://wa.me";
 
