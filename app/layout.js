@@ -44,24 +44,33 @@ export const metadata = {
   title: {
     template: `%s | ${SITE_NAME}`,
     default:
-      "Enterprise Software Development & IT Consulting | LogicSoft Technologies",
+      "Custom Software Development Company | Web, Mobile, AI & Cloud | LogicSoft Technologies",
   },
 
   description: SITE_DESCRIPTION,
 
   keywords: [
-    "enterprise software development company",
+    "software development company",
     "custom software development",
-    "cybersecurity consulting",
-    "cloud engineering services",
+    "website development company",
+    "web development company",
+    "mobile app development company",
+    "enterprise software development",
+    "React development company",
+    "Next.js development",
+    "Node.js development",
+    "AI software development",
+    "AI development company",
+    "cloud engineering",
     "DevOps consulting",
-    "IT consulting firm",
-    "mobile app development",
-    "full stack development",
-    "software outsourcing company",
+    "cybersecurity company",
+    "penetration testing",
+    "UI UX design",
+    "startup MVP development",
+    "ecommerce development",
+    "IT consulting",
+    "software outsourcing",
     "LogicSoft Technologies",
-    "global software company",
-    "software development Africa",
   ],
 
   metadataBase: new URL(SITE_URL),
@@ -86,7 +95,7 @@ export const metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     title:
-      "Enterprise Software Development & IT Consulting | LogicSoft Technologies",
+      "Custom Software Development Company | Web, Mobile, AI & Cloud | LogicSoft Technologies",
     description:
       "We engineer high-performance software, cloud infrastructure, and cybersecurity solutions for enterprises across 4 continents. 300+ projects delivered.",
     images: [
@@ -104,7 +113,7 @@ export const metadata = {
     site: TWITTER_HANDLE,
     creator: TWITTER_HANDLE,
     title:
-      "Enterprise Software Development & IT Consulting | LogicSoft Technologies",
+      "Custom Software Development Company | Web, Mobile, AI & Cloud | LogicSoft Technologies",
     description:
       "High-performance software, cloud infrastructure, and cybersecurity for enterprises worldwide.",
     images: [`${SITE_URL}/og-image.jpg`],
