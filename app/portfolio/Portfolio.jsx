@@ -11,7 +11,7 @@ import { CASE_STUDIES as PROJECTS, CATEGORIES } from "@/lib/case-studies-data";
 export const metadata = {
   title: "Portfolio & Case Studies | Logicsoft Technologies",
   description:
-    "Browse Logicsoft Technologies' project portfolio — enterprise software, FinTech platforms, healthcare systems, e-commerce, and data engineering solutions across 30+ industries.",
+    "Browse Logicsoft Technologies' project portfolio enterprise software, FinTech platforms, healthcare systems, e-commerce, and data engineering solutions across 30+ industries.",
   keywords: [
     "software development portfolio Nigeria",
     "enterprise software case studies",
@@ -26,13 +26,10 @@ export const metadata = {
   },
 };
 
-// ── Data (project + category data now lives in lib/case-studies-data.js,
-// shared with the /case-studies/[id] detail page) ─────────────────────────────
-
 const STATS = [
-  { value: "300+", label: "Projects delivered",  icon: Briefcase    },
-  { value: "120+", label: "Enterprise clients",  icon: Users        },
-  { value: "12+",  label: "Years of experience", icon: Calendar     },
+  { value: "100+", label: "Projects delivered",  icon: Briefcase    },
+  { value: "50+", label: "Enterprise clients",  icon: Users        },
+  { value: "5+",  label: "Years of experience", icon: Calendar     },
   { value: "98%",  label: "Client retention",    icon: TrendingUp   },
 ];
 

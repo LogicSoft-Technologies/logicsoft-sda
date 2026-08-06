@@ -5,6 +5,9 @@ import { Playfair_Display, Inter } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalLoader from "@/components/GlobalLoader";
 import LiveChatWidget from "@/components/LiveChatWidget";
+import MascotPeekaboo from "@/components/robot/MascotPeekaboo";
+import MascotHideout from "@/components/robot/MascotHideout";
+
 import {
   SITE_URL,
   SITE_NAME,
@@ -365,6 +368,8 @@ export default function RootLayout({ children }) {
         <ScrollToTop />
         <Navbar />
         {children}
+        <MascotPeekaboo />
+        <MascotHideout />
         <LiveChatWidget />
         <Footer />
         <div id="dropdown-root" />
