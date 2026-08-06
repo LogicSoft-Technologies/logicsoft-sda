@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Outsourcing",
+  description:
+    "Software development outsourcing from LogicSoft Technologies, giving you dedicated engineering teams without the overhead of hiring.",
+  path: "/software-development/outsourcing",
+});
+
 // app/software-development/outsourcing/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

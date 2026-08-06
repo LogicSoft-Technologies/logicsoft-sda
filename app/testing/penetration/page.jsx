@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Penetration",
+  description:
+    "Penetration testing services from LogicSoft Technologies, simulating real-world attacks to uncover security vulnerabilities.",
+  path: "/testing/penetration",
+});
+
 // app/testing/penetration/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Outsourcing",
+  description:
+    "QA outsourcing services from LogicSoft Technologies, providing dedicated testing teams for your software projects.",
+  path: "/qa/outsourcing",
+});
+
 // app/qa/outsourcing/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

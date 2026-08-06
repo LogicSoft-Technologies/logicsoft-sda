@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Enterprise",
+  description:
+    "Enterprise IT consulting services from LogicSoft Technologies, tailored to large-scale organisational technology needs.",
+  path: "/it-consulting/enterprise",
+});
+
 // app/it-consulting/enterprise/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

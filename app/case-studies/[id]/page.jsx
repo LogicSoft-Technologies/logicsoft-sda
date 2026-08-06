@@ -14,7 +14,11 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-import { CASE_STUDIES, getCaseStudy, getRelatedCaseStudies } from "@/lib/case-studies-data";
+import {
+  CASE_STUDIES,
+  getCaseStudy,
+  getRelatedCaseStudies,
+} from "@/lib/case-studies-data";
 
 // NOTE: this file is a Client Component (video autoplay + scroll-linked
 // motion need the browser). If you want per-project <title>/<meta> tags,
@@ -66,7 +70,8 @@ export default function CaseStudyPage({ params }) {
               Back to portfolio
             </Link>
             <span className="hidden sm:block font-mono text-[11px] tabular-nums tracking-[0.08em] text-white/50">
-              {String(project.id).padStart(2, "0")} / {String(CASE_STUDIES.length).padStart(2, "0")}
+              {String(project.id).padStart(2, "0")} /{" "}
+              {String(CASE_STUDIES.length).padStart(2, "0")}
             </span>
           </div>
         </div>
@@ -117,6 +122,18 @@ export default function CaseStudyPage({ params }) {
             <h1 className="text-[34px] sm:text-[46px] lg:text-[54px] font-semibold text-white leading-[1.1] tracking-tight mb-6 max-w-[780px]">
               {project.title}
             </h1>
+
+            {project.website && (
+              <a
+                href={project.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#7ec1ff] hover:text-white transition-colors duration-200 text-[14px] font-medium mb-6"
+              >
+                View live project
+                <ArrowUpRight className="w-4 h-4 animate-pulse" />
+              </a>
+            )}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-white/65 text-[13.5px]">
               <span className="flex items-center gap-2">
                 <Briefcase className="w-3.5 h-3.5" aria-hidden="true" />
@@ -146,12 +163,19 @@ export default function CaseStudyPage({ params }) {
               return (
                 <div key={m.label} className="px-5 py-6">
                   <div className="flex items-center gap-1.5 mb-1.5">
-                    <Icon className="w-3 h-3" style={{ color: ACCENT }} aria-hidden="true" />
+                    <Icon
+                      className="w-3 h-3"
+                      style={{ color: ACCENT }}
+                      aria-hidden="true"
+                    />
                     <span className="font-mono text-[10px] font-medium text-gray-400 uppercase tracking-[0.08em]">
                       {m.label}
                     </span>
                   </div>
-                  <p className="text-[13.5px] font-medium leading-snug" style={{ color: INK }}>
+                  <p
+                    className="text-[13.5px] font-medium leading-snug"
+                    style={{ color: INK }}
+                  >
                     {m.value}
                   </p>
                 </div>
@@ -180,7 +204,10 @@ export default function CaseStudyPage({ params }) {
         <div className="max-w-[720px]">
           {/* Overview */}
           <section id="overview" className="scroll-mt-[28px] mb-16">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={{ color: ACCENT }}>
+            <p
+              className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4"
+              style={{ color: ACCENT }}
+            >
               Overview
             </p>
             <p className="text-[17px] text-gray-600 leading-[1.8]">
@@ -200,10 +227,16 @@ export default function CaseStudyPage({ params }) {
 
           {/* Challenge */}
           <section id="challenge" className="scroll-mt-[28px] mb-16">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={{ color: ACCENT }}>
+            <p
+              className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4"
+              style={{ color: ACCENT }}
+            >
               The Challenge
             </p>
-            <h2 className="text-[24px] font-semibold tracking-tight leading-tight mb-5" style={{ color: INK }}>
+            <h2
+              className="text-[24px] font-semibold tracking-tight leading-tight mb-5"
+              style={{ color: INK }}
+            >
               Where {project.client} was stuck
             </h2>
             <p className="text-[15.5px] text-gray-600 leading-[1.9]">
@@ -213,10 +246,16 @@ export default function CaseStudyPage({ params }) {
 
           {/* Solution */}
           <section id="solution" className="scroll-mt-[28px] mb-16">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={{ color: ACCENT }}>
+            <p
+              className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4"
+              style={{ color: ACCENT }}
+            >
               Our Solution
             </p>
-            <h2 className="text-[24px] font-semibold tracking-tight leading-tight mb-5" style={{ color: INK }}>
+            <h2
+              className="text-[24px] font-semibold tracking-tight leading-tight mb-5"
+              style={{ color: INK }}
+            >
               What we built
             </h2>
             <p className="text-[15.5px] text-gray-600 leading-[1.9] mb-8">
@@ -234,10 +273,16 @@ export default function CaseStudyPage({ params }) {
 
           {/* Results */}
           <section id="results" className="scroll-mt-[28px] mb-16">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={{ color: ACCENT }}>
+            <p
+              className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4"
+              style={{ color: ACCENT }}
+            >
               Results
             </p>
-            <h2 className="text-[24px] font-semibold tracking-tight leading-tight mb-8" style={{ color: INK }}>
+            <h2
+              className="text-[24px] font-semibold tracking-tight leading-tight mb-8"
+              style={{ color: INK }}
+            >
               The outcome, in numbers
             </h2>
             <div className="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200">
@@ -249,7 +294,9 @@ export default function CaseStudyPage({ params }) {
                   >
                     {r.value}
                   </p>
-                  <p className="text-[12px] text-gray-500 leading-snug">{r.label}</p>
+                  <p className="text-[12px] text-gray-500 leading-snug">
+                    {r.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -257,10 +304,16 @@ export default function CaseStudyPage({ params }) {
 
           {/* Tech stack */}
           <section id="stack" className="scroll-mt-[28px] mb-16">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={{ color: ACCENT }}>
+            <p
+              className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-4"
+              style={{ color: ACCENT }}
+            >
               Tech Stack
             </p>
-            <h2 className="text-[24px] font-semibold tracking-tight leading-tight mb-6" style={{ color: INK }}>
+            <h2
+              className="text-[24px] font-semibold tracking-tight leading-tight mb-6"
+              style={{ color: INK }}
+            >
               What it runs on
             </h2>
             <div className="flex flex-wrap gap-2.5">
@@ -278,8 +331,14 @@ export default function CaseStudyPage({ params }) {
 
           {/* Testimonial */}
           <section className="border-t border-gray-200 pt-14">
-            <blockquote className="border-l-2 pl-6" style={{ borderColor: ACCENT }}>
-              <p className="text-[17px] leading-[1.8] mb-6" style={{ color: INK }}>
+            <blockquote
+              className="border-l-2 pl-6"
+              style={{ borderColor: ACCENT }}
+            >
+              <p
+                className="text-[17px] leading-[1.8] mb-6"
+                style={{ color: INK }}
+              >
                 {project.testimonial.quote}
               </p>
               <footer className="flex items-center gap-3">
@@ -290,10 +349,15 @@ export default function CaseStudyPage({ params }) {
                   {project.testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-[13.5px] font-semibold" style={{ color: INK }}>
+                  <p
+                    className="text-[13.5px] font-semibold"
+                    style={{ color: INK }}
+                  >
                     {project.testimonial.name}
                   </p>
-                  <p className="text-[12px] text-gray-500">{project.testimonial.role}</p>
+                  <p className="text-[12px] text-gray-500">
+                    {project.testimonial.role}
+                  </p>
                 </div>
               </footer>
             </blockquote>
@@ -307,10 +371,16 @@ export default function CaseStudyPage({ params }) {
           <div className="max-w-[80rem] mx-auto px-6 py-16">
             <div className="flex items-end justify-between mb-8">
               <div>
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-3" style={{ color: ACCENT }}>
+                <p
+                  className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] mb-3"
+                  style={{ color: ACCENT }}
+                >
                   Keep exploring
                 </p>
-                <h2 className="text-[24px] font-semibold tracking-tight" style={{ color: INK }}>
+                <h2
+                  className="text-[24px] font-semibold tracking-tight"
+                  style={{ color: INK }}
+                >
                   More projects
                 </h2>
               </div>
@@ -347,7 +417,10 @@ export default function CaseStudyPage({ params }) {
                     <p className="font-mono text-[10px] font-medium text-gray-400 uppercase tracking-[0.08em] mb-1.5">
                       {p.category}
                     </p>
-                    <h3 className="text-[14px] font-semibold group-hover:text-[#2C5282] transition-colors duration-150" style={{ color: INK }}>
+                    <h3
+                      className="text-[14px] font-semibold group-hover:text-[#2C5282] transition-colors duration-150"
+                      style={{ color: INK }}
+                    >
                       {p.title}
                     </h3>
                   </div>
@@ -359,7 +432,10 @@ export default function CaseStudyPage({ params }) {
       )}
 
       {/* ══════════════════════ CTA STRIP ══════════════════════ */}
-      <div className="border-t border-gray-200" style={{ backgroundColor: INK }}>
+      <div
+        className="border-t border-gray-200"
+        style={{ backgroundColor: INK }}
+      >
         <div className="max-w-[80rem] mx-auto px-6 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <p className="font-mono text-[11px] font-medium text-[#7ec1ff] uppercase tracking-[0.12em] mb-2">
@@ -369,8 +445,8 @@ export default function CaseStudyPage({ params }) {
               Want an outcome like this one?
             </h3>
             <p className="text-[14px] text-white/50 max-w-lg">
-              Tell us about your initiative and we'll show you exactly how Logicsoft
-              Technologies can deliver it.
+              Tell us about your initiative and we'll show you exactly how
+              Logicsoft Technologies can deliver it.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">

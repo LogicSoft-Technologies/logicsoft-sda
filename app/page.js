@@ -1,3 +1,12 @@
+import { createMetadata } from "../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Home",
+  description:
+    "Enterprise software development, cybersecurity, cloud engineering, and IT consulting for organisations across Africa, Europe, North America, and the Middle East.",
+  path: "/",
+});
+
 import Hero from "@/components/home/Hero";
 import KeyFacts from "@/components/home/KeyFacts";
 import Offering from "@/components/home/Offering";

@@ -1,3 +1,12 @@
+import { createMetadata } from "../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Software Testing",
+  description:
+    "Software testing services from LogicSoft Technologies, covering functional, performance, security, and usability testing.",
+  path: "/software-testing",
+});
+
 // app/software-testing/page.jsx  — Testing & QA index
 "use client";
 import Link from "next/link";

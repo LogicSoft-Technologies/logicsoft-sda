@@ -1,3 +1,12 @@
+import { createMetadata } from "../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "It Consulting",
+  description:
+    "IT consulting services from LogicSoft Technologies - strategic technology advisory for enterprise organisations.",
+  path: "/it-consulting",
+});
+
 // app/it-consulting/page.jsx
 "use client";
 import Link from "next/link";

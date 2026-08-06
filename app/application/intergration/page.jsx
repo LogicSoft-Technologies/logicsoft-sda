@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Intergration",
+  description:
+    "Application integration services from LogicSoft Technologies - connecting systems, APIs, and data across your technology stack.",
+  path: "/application/intergration",
+});
+
 // app/application/integration/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Security",
+  description:
+    "Application security services from LogicSoft Technologies, including vulnerability assessment and secure development practices.",
+  path: "/application/security",
+});
+
 // app/application/security/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";

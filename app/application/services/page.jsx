@@ -1,3 +1,12 @@
+import { createMetadata } from "../../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Services",
+  description:
+    "An overview of LogicSoft Technologies' application services - development, integration, modernization, security, and support.",
+  path: "/application/services",
+});
+
 // app/application/services/page.jsx
 "use client";
 import Link from "next/link";

@@ -33,7 +33,7 @@ const INDUSTRIES = [
   },
   {
     label: "Enterprise & SaaS Businesses",
-    image: "/images/telefya.png",
+    image: "/images/telefya-main.png",
     cta: "Our Enterprise & SaaS portfolio →",
     link: "/portfolio/saas",
   },
@@ -292,7 +292,7 @@ export default function Hero() {
     );
   }
 
-  // - Desktop view -//
+  // - Desktop view large -//
   return (
     <section
       className="hero-wrapper relative min-h-screen overflow-hidden pt-6 bg-[#f5f5f5]"

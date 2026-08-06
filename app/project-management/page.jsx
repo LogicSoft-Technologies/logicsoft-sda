@@ -1,3 +1,12 @@
+import { createMetadata } from "../../lib/metadata";
+
+export const metadata = createMetadata({
+  title: "Project Management",
+  description:
+    "Project management services from LogicSoft Technologies, ensuring enterprise software projects are delivered on time and on budget.",
+  path: "/project-management",
+});
+
 // app/project-management/page.jsx
 "use client";
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
