@@ -22,6 +22,17 @@ const PROJECTS = [
   },
   {
     id: 2,
+    title: "Law, Justice & Professional Excellence",
+    client: "Experts Legal Institute",
+    category: "Enterprise",
+    image: "/images/expertslegal.png",
+    year: "2026",
+    outcome: "100% Better Outcomes",
+    resultBg: "#051b45", resultText: "#b68208",
+    tags: ["Node.js", "AWS", "REST API"],
+  },
+  {
+    id: 3,
     title: "Patient Management & EHR System",
     client: "HealthBridge Nigeria",
     category: "Healthcare",
@@ -32,7 +43,7 @@ const PROJECTS = [
     tags: ["React", "Python", "HIPAA"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Real Estate Investment Platform",
     client: "Proptech Solutions",
     category: "Enterprise",
@@ -43,7 +54,7 @@ const PROJECTS = [
     tags: ["Next.js", "TypeScript", "Stripe"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Multi-Tenant E-Commerce Marketplace",
     client: "RetailChain West Africa",
     category: "E-Commerce",
@@ -54,7 +65,7 @@ const PROJECTS = [
     tags: ["React", "Redis", "Elasticsearch"],
   },
   {
-    id: 5,
+    id: 6,
     title: "Broker Trading Dashboard & Mobile App",
     client: "Finpay Africa",
     category: "FinTech",
@@ -65,7 +76,7 @@ const PROJECTS = [
     tags: ["React Native", "WebSockets", "PCI DSS"],
   },
   {
-    id: 6,
+    id: 7,
     title: "Corporate Website & CMS Platform",
     client: "PetroNIG Limited",
     category: "UI/UX",
