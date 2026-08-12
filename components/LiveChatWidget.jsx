@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import ElijahAvatar from "../public/images/founders/elijah.jpg";
 import SaviourAvatar from "../public/images/founders/saviourr.jpg";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.logicsofttechnologies.online";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
 const SESSION_KEY = "ls_chat_sid";
 const WA_BASE = "https://wa.me";
 
@@ -57,15 +57,49 @@ function fmtTime(ts) {
   });
 }
 
-function nl2p(text) {
+function cleanAiText(text) {
   return text
+    .replace(/\s*--\s*/g, ", ")
+    .replace(/\s*—\s*/g, ", ")
+    .replace(/\s*–\s*/g, ", ")
+    .replace(/#{1,6}\s*/g, "")
+    .trim();
+}
+
+function renderLineWithHighlight(line, key) {
+  const parts = line.split(/\*\*(.+?)\*\*/g);
+  if (parts.length === 1) {
+    return <p key={key}>{line}</p>;
+  }
+  return (
+    <p key={key}>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <span
+            key={i}
+            style={{
+              color: BRAND.blue,
+              fontWeight: 600,
+            }}
+          >
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </p>
+  );
+}
+
+function nl2p(text) {
+  return cleanAiText(text)
     .split("\n")
     .filter(Boolean)
-    .map((line, i) => (
-      <p key={i} className={i > 0 ? "mt-1" : ""}>
-        {line}
-      </p>
-    ));
+    .map((line, i) => {
+      const el = renderLineWithHighlight(line, i);
+      return i > 0 ? { ...el, props: { ...el.props, className: "mt-1" } } : el;
+    });
 }
 
 const WaIcon = () => (
@@ -533,7 +567,15 @@ function AiMessage({ msg, talking = false }) {
             boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
           }}
         >
-          <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.65 }}>
+          <div
+            style={{
+              fontSize: 13,
+              color: "#28374f",
+              lineHeight: 1.75,
+              fontWeight: 400,
+              letterSpacing: "-0.01px",
+            }}
+          >
             {nl2p(msg.content)}
           </div>
         </div>
