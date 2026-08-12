@@ -121,23 +121,23 @@ export default function KeyFacts() {
   </p>
   </div>
 {/* Large bold industries row */}
-<div className="mt-3 sm:mt-2 flex flex-wrap items-center gap-x-15 gap-y-3 py-6 font-[playfair]">
-<span className="px-7 engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+<div className="mt-3 sm:mt-2 grid grid-cols-2 sm:grid-cols-5 divide-x font-[playfair] divide-gray-200 py-6">
+  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
     HEALTHCARE
   </span>
-  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
     E-COMMERCE & RETAIL
   </span>
-  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
     TELECOMS
   </span>
-  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
     MANUFACTURING
   </span>
-  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
     EDUCATION & EDTECH
   </span>
-  </div>
+</div>
       </div>
 
       </div>
