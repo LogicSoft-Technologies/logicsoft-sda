@@ -22,7 +22,7 @@ const CAPABILITIES = [
     num: "01",
     icon: Monitor,
     title: "Responsive Web Applications",
-    desc: "Pixel-perfect interfaces that work flawlessly across every screen size. We build to a mobile-first strategy with desktop enhancements — not the reverse.",
+    desc: "Pixel-perfect interfaces that work flawlessly across every screen size. We build to a mobile-first strategy with desktop enhancements not the reverse.",
     tags: ["React", "Next.js", "Vue", "Responsive CSS"],
   },
   {
@@ -43,21 +43,21 @@ const CAPABILITIES = [
     num: "04",
     icon: Accessibility,
     title: "Accessibility (WCAG 2.1 AA)",
-    desc: "Accessible interfaces aren't optional. We build to WCAG 2.1 AA as a default standard — keyboard navigation, screen reader compatibility, contrast ratios.",
+    desc: "Accessible interfaces aren't optional. We build to WCAG 2.1 AA as a default standard keyboard navigation, screen reader compatibility, contrast ratios.",
     tags: ["WCAG 2.1", "ARIA", "axe-core", "Screen reader testing"],
   },
   {
     num: "05",
     icon: Smartphone,
     title: "Progressive Web Apps",
-    desc: "PWAs that work offline, load instantly, and feel native on mobile — without the overhead of an app store submission. Service workers, push notifications, install prompts.",
+    desc: "PWAs that work offline, load instantly, and feel native on mobile without the overhead of an app store submission. Service workers, push notifications, install prompts.",
     tags: ["Service Workers", "Web Push", "IndexedDB", "Workbox"],
   },
   {
     num: "06",
     icon: Code2,
     title: "API Integration & State Management",
-    desc: "Complex data flows handled cleanly. REST, GraphQL, WebSocket integrations wired to robust state management — Redux, Zustand, TanStack Query.",
+    desc: "Complex data flows handled cleanly. REST, GraphQL, WebSocket integrations wired to robust state management Redux, Zustand, TanStack Query.",
     tags: ["REST", "GraphQL", "WebSockets", "Zustand", "TanStack"],
   },
 ];
@@ -259,7 +259,7 @@ export default function Frontend() {
                 Six capabilities. One standard: production-ready.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
-                Whether you need a component library, a full SPA, or a performance-critical PWA —
+                Whether you need a component library, a full SPA, or a performance-critical PWA
                 our frontend engineers deliver to a single quality bar.
               </p>
             </div>

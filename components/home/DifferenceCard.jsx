@@ -7,7 +7,7 @@ const PILLARS = [
   {
     num: "01",
     title: "Business-First Engineering",
-    desc: "Every technical decision is evaluated against business outcomes — not engineering preference.",
+    desc: "Every technical decision is evaluated against business outcomes not engineering preference.",
   },
   {
     num: "02",
@@ -17,7 +17,7 @@ const PILLARS = [
   {
     num: "03",
     title: "Constraint-Proof Delivery",
-    desc: "Changing requirements, tight budgets, shifting timelines — we build the process to absorb all of it.",
+    desc: "Changing requirements, tight budgets, shifting timelines, we build the process to absorb all of it.",
   },
 ];
 

@@ -7,7 +7,7 @@ import { FiChevronDown } from "react-icons/fi";
 const faqItems = [
   {
     title: "Do you cover all stages of the Software Development Lifecycle (SDLC)?",
-    desc: "Absolutely. SDA LogicSoft Technologies delivers end-to-end software engineering services — from business analysis, system architecture, UI/UX design, and development to deployment, DevOps, quality assurance, and long-term support. Our multidisciplinary team ensures seamless execution across every phase of the lifecycle.",
+    desc: "Absolutely. SDA LogicSoft Technologies delivers end-to-end software engineering services from business analysis, system architecture, UI/UX design, and development to deployment, DevOps, quality assurance, and long-term support. Our multidisciplinary team ensures seamless execution across every phase of the lifecycle.",
     href: "/about/how-we-work",
     btnText: "Our approach",
   },
