@@ -76,7 +76,7 @@ const Secure = () => {
               >
                 Code of Conduct
               </Link>{" "}
-              — ensuring every interaction is grounded in trust, respect, and
+              ensuring every interaction is grounded in trust, respect, and
               transparency.
             </p>
           </div>

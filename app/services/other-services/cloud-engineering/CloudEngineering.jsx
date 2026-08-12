@@ -22,7 +22,7 @@ const CAPABILITIES = [
     num:"01", icon:Cloud,
     title:"Cloud Migration",
     accent:"#0ea5e9", bg:"#f0f9ff",
-    desc:"Structured migration of on-premise workloads to cloud — lift-and-shift, re-platform, or re-architect. Every migration starts with a discovery of dependencies, risks, and cost implications before a single VM moves.",
+    desc:"Structured migration of on-premise workloads to cloud lift-and-shift, re-platform, or re-architect. Every migration starts with a discovery of dependencies, risks, and cost implications before a single VM moves.",
     tags:["Lift & shift","Re-platform","Re-architect","Migration waves","Cutover planning"],
   },
   {
@@ -75,14 +75,14 @@ const STACK = [
 
 const PROCESS = [
   { num:"01", title:"Cloud Readiness Assessment",  desc:"Current infrastructure audit, workload classification, security posture review, and total cost of ownership analysis."          },
-  { num:"02", title:"Architecture Design",          desc:"Target architecture documented — provider selection, network design, security controls, and cost model — before any provisioning." },
+  { num:"02", title:"Architecture Design",          desc:"Target architecture documented provider selection, network design, security controls, and cost model before any provisioning." },
   { num:"03", title:"Migration Execution",          desc:"Wave-by-wave migration with rollback plans. Zero-downtime cutovers. Every stage tested and signed off before the next begins."    },
   { num:"04", title:"Optimisation & Handover",      desc:"90-day post-migration cost optimisation, runbook creation, team training, and knowledge transfer before we step back."           },
 ];
 
 const MIGRATION_STRATEGIES = [
   { code:"Rehost",      name:"Lift & Shift",       desc:"Move workloads as-is. Fastest time to cloud, minimal change. Best for tight deadlines or compliance deadlines.",                    effort:"Low",  savings:"~20%" },
-  { code:"Replatform",  name:"Lift & Reshape",     desc:"Minor optimisations — swap out databases for managed services, containerise apps — without changing core architecture.",            effort:"Med",  savings:"~40%" },
+  { code:"Replatform",  name:"Lift & Reshape",     desc:"Minor optimisations swap out databases for managed services, containerise apps without changing core architecture.",            effort:"Med",  savings:"~40%" },
   { code:"Rearchitect", name:"Re-architect",       desc:"Redesign to cloud-native patterns. Microservices, serverless, event-driven. Highest effort, highest long-term ROI.",               effort:"High", savings:"~60%" },
 ];
 
@@ -208,7 +208,7 @@ export default function CloudEngineering() {
                 Cloud<br /><span style={{ color:"#0ea5e9" }}>Engineering</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                Cloud migration, infrastructure as code, serverless architecture, and FinOps — across
+                Cloud migration, infrastructure as code, serverless architecture, and FinOps across
                 AWS, Azure, and GCP. We design and build cloud estates that are secure, cost-efficient,
                 and properly documented.
               </p>
@@ -300,7 +300,7 @@ export default function CloudEngineering() {
             <div className="lg:sticky top-[120px]">
               <p className="text-[11px] font-bold text-sky-600 uppercase tracking-[0.16em] mb-4">What we deliver</p>
               <h3 className="text-[30px] lg:text-[34px] font-serif text-[#1f3a5f] leading-tight mb-5">Six cloud capabilities. Multi-cloud, properly done.</h3>
-              <p className="text-[13.5px] text-gray-500 leading-[1.85]">We're platform-agnostic. We recommend the right cloud — and the right architecture — for your workload, not the easiest one for us.</p>
+              <p className="text-[13.5px] text-gray-500 leading-[1.85]">We're platform-agnostic. We recommend the right cloud and the right architecture for your workload, not the easiest one for us.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CAPABILITIES.map((cap, i) => (

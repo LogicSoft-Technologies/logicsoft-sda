@@ -19,7 +19,7 @@ const TESTING_TYPES = [
   {
     num:"02", icon:Scan,         title:"DAST — Dynamic Analysis",
     accent:"#0891b2", accentBg:"#ecfeff",
-    desc:"Runtime testing of a running application. DAST discovers vulnerabilities that only appear when the application is executing — authentication flaws, injection points, session management issues, and server-side logic errors.",
+    desc:"Runtime testing of a running application. DAST discovers vulnerabilities that only appear when the application is executing authentication flaws, injection points, session management issues, and server-side logic errors.",
     tools:["OWASP ZAP","Burp Suite Pro","Nuclei","Nikto","w3af"],
     when:"Staging environment, pre-release gates.",
   },
@@ -33,7 +33,7 @@ const TESTING_TYPES = [
   {
     num:"04", icon:Bug,           title:"Manual Code Review",
     accent:"#0891b2", accentBg:"#ecfeff",
-    desc:"Human-led security review of critical code paths — authentication, cryptography, payment flows, and data handling. Tools miss context; our engineers catch the business logic vulnerabilities that automated scanners cannot.",
+    desc:"Human-led security review of critical code paths authentication, cryptography, payment flows, and data handling. Tools miss context; our engineers catch the business logic vulnerabilities that automated scanners cannot.",
     tools:["Custom review methodology","OWASP Code Review Guide","CERT Secure Coding","Threat modelling"],
     when:"Pre-release of security-critical features.",
   },
@@ -71,11 +71,11 @@ const SCAN_RESULTS = [
 ];
 
 const FINDINGS_PREVIEW = [
-  { id:"SEC-047", sev:"HIGH",   file:"src/auth/login.js:142",     desc:"Timing attack in password comparison — use crypto.timingSafeEqual()",         fixed:false },
+  { id:"SEC-047", sev:"HIGH",   file:"src/auth/login.js:142",     desc:"Timing attack in password comparison use crypto.timingSafeEqual()",         fixed:false },
   { id:"SEC-046", sev:"HIGH",   file:"src/api/users.js:78",       desc:"Missing authorisation check on DELETE /users/:id endpoint",                   fixed:false },
-  { id:"SEC-045", sev:"MED",    file:"package.json:lodash",       desc:"CVE-2021-23337 — lodash 4.17.20 prototype pollution. Upgrade to 4.17.21",     fixed:true  },
-  { id:"SEC-044", sev:"MED",    file:"terraform/s3.tf:12",        desc:"S3 bucket public ACL enabled — set acl = private",                            fixed:true  },
-  { id:"SEC-043", sev:"MED",    file:"Dockerfile:1",              desc:"Base image node:16 — EOL. Migrate to node:20-alpine",                         fixed:false },
+  { id:"SEC-045", sev:"MED",    file:"package.json:lodash",       desc:"CVE-2021-23337 lodash 4.17.20 prototype pollution. Upgrade to 4.17.21",     fixed:true  },
+  { id:"SEC-044", sev:"MED",    file:"terraform/s3.tf:12",        desc:"S3 bucket public ACL enabled set acl = private",                            fixed:true  },
+  { id:"SEC-043", sev:"MED",    file:"Dockerfile:1",              desc:"Base image node:16 EOL. Migrate to node:20-alpine",                         fixed:false },
 ];
 
 const SEV_DOT = { CRITICAL:"#ef4444", HIGH:"#f97316", MED:"#f59e0b", LOW:"#6b7280", INFO:"#3b82f6" };
@@ -252,7 +252,7 @@ export default function SecurityTesting() {
               <h3 className="text-[30px] lg:text-[36px] font-serif text-[#1f3a5f] leading-tight mb-5">Six ways we test your security.</h3>
               <p className="text-[13.5px] text-gray-500 leading-[1.85]">
                 Each type catches different vulnerability classes. A complete programme uses
-                all of them — automated in CI, manual for critical paths.
+                all of them automated in CI, manual for critical paths.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

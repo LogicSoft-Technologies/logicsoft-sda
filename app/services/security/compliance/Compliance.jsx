@@ -30,7 +30,7 @@ const FRAMEWORKS = [
     accentBg: "#ecfdf5",
     scope: "Nigerian operations",
     duration: "4–8 weeks",
-    desc: "Full compliance programme for the Nigeria Data Protection Regulation — data audit, privacy notices, consent frameworks, DPO appointment support, and NITDA audit readiness.",
+    desc: "Full compliance programme for the Nigeria Data Protection Regulation data audit, privacy notices, consent frameworks, DPO appointment support, and NITDA audit readiness.",
     deliverables: ["Data inventory and flow mapping","Privacy policy and notices","Consent management framework","NITDA annual audit report support","Data breach response plan"],
     available: true,
   },
@@ -87,8 +87,8 @@ const FRAMEWORKS = [
 const PROCESS_STEPS = [
   { num:"01", title:"Initial Scoping Call",        desc:"We identify which frameworks apply to your business, the scope of assessment, and outline a realistic programme timeline."           },
   { num:"02", title:"Gap Analysis",                desc:"A thorough review of your current controls, policies, and practices against the target framework requirements."                   },
-  { num:"03", title:"Remediation Programme",       desc:"Prioritised, practical remediation tasks assigned to your team — with our consultants supporting implementation at every step."  },
-  { num:"04", title:"Documentation Suite",         desc:"Full policy, procedure, and evidence documentation developed and reviewed. Written to be maintained — not abandoned post-audit."  },
+  { num:"03", title:"Remediation Programme",       desc:"Prioritised, practical remediation tasks assigned to your team with our consultants supporting implementation at every step."  },
+  { num:"04", title:"Documentation Suite",         desc:"Full policy, procedure, and evidence documentation developed and reviewed. Written to be maintained not abandoned post-audit."  },
   { num:"05", title:"Internal Audit",              desc:"A rehearsal audit using the same criteria the certifying body will use. Gaps closed before the real assessment."                  },
   { num:"06", title:"Certification / Attestation", desc:"Audit body or QSA engagement managed. We attend, respond to queries, and coordinate until your certificate is issued."            },
 ];
@@ -96,7 +96,7 @@ const PROCESS_STEPS = [
 const WHY = [
   { icon: Award,      title: "Certified consultants",       desc: "ISO 27001 Lead Implementers, CISM, CISA, and GDPR-certified specialists across the team." },
   { icon: Clock,      title: "Realistic timelines",         desc: "We've seen what over-scoped programmes do to teams. Our plans are honest about effort and sequencing." },
-  { icon: FileText,   title: "Audit-ready documentation",   desc: "Policies and procedures written to survive an audit — not to fill a folder. Practical, maintained, and yours." },
+  { icon: FileText,   title: "Audit-ready documentation",   desc: "Policies and procedures written to survive an audit not to fill a folder. Practical, maintained, and yours." },
   { icon: Users,      title: "Embedded, not remote",        desc: "Our consultants work alongside your team. You understand the programme; we don't just hand over a report." },
 ];
 
@@ -195,7 +195,7 @@ export default function Compliance() {
                 Compliance<br /><span style={{ color:"#d97706" }}>Consulting</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
-                ISO 27001, NDPR, GDPR, PCI DSS, HIPAA, and SOC 2 — managed by certified specialists
+                ISO 27001, NDPR, GDPR, PCI DSS, HIPAA, and SOC 2 managed by certified specialists
                 who have run these programmes before. Not templates handed over. Implementation delivered.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
@@ -258,7 +258,7 @@ export default function Compliance() {
               <h3 className="text-[28px] lg:text-[34px] font-serif text-[#1f3a5f] leading-tight mb-5">Six frameworks. One programme partner.</h3>
               <p className="text-[13.5px] text-gray-500 leading-[1.85]">
                 Click any framework to see our scope, deliverables, and typical timeline.
-                Most organisations need more than one — we sequence them to maximise efficiency.
+                Most organisations need more than one, we sequence them to maximise efficiency.
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -347,7 +347,7 @@ export default function Compliance() {
         <div className="max-w-[82rem] mx-auto px-4 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <p className="text-[11px] font-bold text-amber-400 uppercase tracking-[0.15em] mb-3">Start your compliance programme</p>
-            <h3 className="text-[26px] font-serif font-normal text-white mb-2">From gap analysis to certification — we manage it all.</h3>
+            <h3 className="text-[26px] font-serif font-normal text-white mb-2">From gap analysis to certification, we manage it all.</h3>
             <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">Book a free scoping call. We'll identify which frameworks apply, what you already have, and what a realistic timeline looks like.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">

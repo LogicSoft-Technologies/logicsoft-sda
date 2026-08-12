@@ -33,7 +33,7 @@ const PROJECTS = [
     },
   {
     id: 3,
-    title: "Law, Justice & Professional Excellence",
+    title: "Legal Consulting Firm",
     client: "Experts Legal Institute",
     category: "Enterprise",
     image: "/images/expertslegal.png",

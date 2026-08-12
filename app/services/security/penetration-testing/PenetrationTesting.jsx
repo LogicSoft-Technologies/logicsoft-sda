@@ -47,7 +47,7 @@ const ATTACK_TYPES = [
   {
     num:"06", icon:ShieldOff,  title:"Red Team Exercises",
     accent:"#f97316",
-    scope:"Full organisation — people, process, technology",
+    scope:"Full organisation, people, process, technology",
     methods:["Custom attack scenarios per organisation","Phishing and social engineering campaigns","Physical security testing","Assumed breach simulation","Persistence and exfiltration testing","Defender detection capability assessment"],
     output:"Executive narrative, attack timeline, and detection gap analysis.",
   },
@@ -55,8 +55,8 @@ const ATTACK_TYPES = [
 
 const METHODOLOGY = [
   { phase:"01", code:"RECON",    title:"Reconnaissance",       desc:"Passive and active intelligence gathering on targets, technology stack, exposed services, and employee information.",      color:"#6b7280" },
-  { phase:"02", code:"ENUM",     title:"Enumeration",          desc:"Deep mapping of attack surface — open ports, service versions, web directories, API endpoints, credentials in public repos.", color:"#f97316" },
-  { phase:"03", code:"EXPLOIT",  title:"Exploitation",         desc:"Authorised exploitation of identified vulnerabilities to establish initial access — with full documentation of every step.",   color:"#ef4444" },
+  { phase:"02", code:"ENUM",     title:"Enumeration",          desc:"Deep mapping of attack surface open ports, service versions, web directories, API endpoints, credentials in public repos.", color:"#f97316" },
+  { phase:"03", code:"EXPLOIT",  title:"Exploitation",         desc:"Authorised exploitation of identified vulnerabilities to establish initial access with full documentation of every step.",   color:"#ef4444" },
   { phase:"04", code:"ESCALATE", title:"Privilege Escalation", desc:"Simulating attacker progression from low-privileged foothold to admin, domain controller, or database-level access.",          color:"#dc2626" },
   { phase:"05", code:"PERSIST",  title:"Lateral Movement",     desc:"Mapping how far a real attacker could move through your environment from the initial compromise point.",                         color:"#b91c1c" },
   { phase:"06", code:"REPORT",   title:"Reporting & Debrief",  desc:"Full technical report with CVSS-rated findings, proof-of-concept artefacts, remediation guidance, and executive summary.",      color:"#10b981" },
@@ -158,7 +158,7 @@ export default function PenetrationTesting() {
                 Penetration<br /><span className="text-red-500">Testing</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                We attack your systems — legally, methodically, and thoroughly — before someone else does.
+                We attack your systems legally, methodically, and thoroughly before someone else does.
                 Black-box, grey-box, and white-box engagements across web, mobile, API, network, and cloud.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">

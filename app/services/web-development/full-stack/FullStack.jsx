@@ -51,7 +51,7 @@ const CAPABILITIES = [
     num: "02",
     icon: Combine,
     title: "Architecture That Fits Your Scale",
-    desc: "Monolith for early-stage. Modular monolith as you grow. Microservices when the business genuinely needs them. We match architecture to business reality — not the latest conference talk.",
+    desc: "Monolith for early-stage. Modular monolith as you grow. Microservices when the business genuinely needs them. We match architecture to business reality not the latest conference talk.",
     tags: ["Monolith", "Modular architecture", "Microservices", "Domain-Driven Design"],
   },
   {
@@ -65,7 +65,7 @@ const CAPABILITIES = [
     num: "04",
     icon: ShieldCheck,
     title: "Security Across Every Layer",
-    desc: "Security isn't a backend concern or a frontend concern — it's a full-stack responsibility. Input validation at the edge, JWT at the API, RLS at the database. Defence in depth.",
+    desc: "Security isn't a backend concern or a frontend concern, it's a full-stack responsibility. Input validation at the edge, JWT at the API, RLS at the database. Defence in depth.",
     tags: ["OWASP", "CSP headers", "RLS", "Secrets management"],
   },
   {
@@ -79,7 +79,7 @@ const CAPABILITIES = [
     num: "06",
     icon: Users,
     title: "Team Continuity & Knowledge Transfer",
-    desc: "We document our systems so your team can maintain them without us in the room. Architecture Decision Records, API documentation, runbooks, and onboarding guides — always up to date.",
+    desc: "We document our systems so your team can maintain them without us in the room. Architecture Decision Records, API documentation, runbooks, and onboarding guides always up to date.",
     tags: ["ADRs", "API docs", "Runbooks", "Full IP transfer"],
   },
 ];
@@ -94,14 +94,14 @@ const ENGAGEMENTS = [
   },
   {
     title: "MVP acceleration",
-    desc: "You need to validate fast without cutting corners on quality. We scope the minimum viable product, build it lean, and ship it — then evolve it based on real user feedback.",
+    desc: "You need to validate fast without cutting corners on quality. We scope the minimum viable product, build it lean, and ship it then evolve it based on real user feedback.",
     timeframe: "4–10 weeks",
     accentColor: "#f59e0b",
     accentBg: "#fffbeb",
   },
   {
     title: "Legacy modernisation",
-    desc: "Your existing system needs to be rebuilt or significantly upgraded. We audit, plan the migration, and execute it — while keeping the lights on throughout.",
+    desc: "Your existing system needs to be rebuilt or significantly upgraded. We audit, plan the migration, and execute it while keeping the lights on throughout.",
     timeframe: "12–36 weeks",
     accentColor: "#10b981",
     accentBg: "#ecfdf5",
@@ -111,7 +111,7 @@ const ENGAGEMENTS = [
 const PROCESS = [
   { step: "01", title: "Discovery & Scoping",      desc: "Requirements, architecture, and technology choices agreed and documented before sprint 1."           },
   { step: "02", title: "Foundation Sprint",         desc: "CI/CD pipeline, auth, data models, and component library established in week one."                  },
-  { step: "03", title: "Feature Sprints",           desc: "2-week cycles delivering working software. Full-stack features — UI through API through database."   },
+  { step: "03", title: "Feature Sprints",           desc: "2-week cycles delivering working software. Full-stack features UI through API through database."   },
   { step: "04", title: "Launch & Handover",         desc: "Production deployment, monitoring, documentation, and knowledge transfer completed before close."    },
 ];
 
@@ -265,7 +265,7 @@ export default function FullStack() {
               <p className="text-[17px] text-white/65 leading-[1.9] max-w-[500px] mb-8">
                 One team. Every layer. UI through database through infrastructure.
                 We deliver complete, production-ready products with a single accountable
-                engineering partner — no coordination overhead, no integration surprises.
+                engineering partner no coordination overhead, no integration surprises.
               </p>
 
               {/* Stats */}
@@ -355,7 +355,7 @@ export default function FullStack() {
                 Six capabilities across the full stack.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
-                End-to-end ownership means every capability is designed to work together —
+                End-to-end ownership means every capability is designed to work together
                 no seams, no surprises, no blame between teams.
               </p>
             </div>

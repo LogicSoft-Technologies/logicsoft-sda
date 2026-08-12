@@ -24,7 +24,7 @@ const CAPABILITIES = [
     num: "01",
     icon: Server,
     title: "REST & GraphQL API Development",
-    desc: "Well-documented, versioned, and performant APIs — built to the standards your frontend and mobile teams expect. OpenAPI specifications, rate limiting, and auth handled correctly.",
+    desc: "Well-documented, versioned, and performant APIs built to the standards your frontend and mobile teams expect. OpenAPI specifications, rate limiting, and auth handled correctly.",
     tags: ["REST", "GraphQL", "OpenAPI 3.0", "JWT", "OAuth2"],
   },
   {
@@ -38,7 +38,7 @@ const CAPABILITIES = [
     num: "03",
     icon: GitBranch,
     title: "Microservices & Event-Driven Architecture",
-    desc: "Domain-driven decomposition of monoliths into independently deployable services. Event buses, message queues, and service mesh configuration — designed for operational simplicity.",
+    desc: "Domain-driven decomposition of monoliths into independently deployable services. Event buses, message queues, and service mesh configuration designed for operational simplicity.",
     tags: ["Kafka", "RabbitMQ", "gRPC", "Domain-Driven Design"],
   },
   {
@@ -214,7 +214,7 @@ export default function Backend() {
 
               <p className="text-[17px] text-white/65 leading-[1.9] max-w-[500px] mb-8">
                 Scalable APIs, battle-tested database architecture, and production-grade
-                infrastructure. We engineer the systems your product runs on — invisible
+                infrastructure. We engineer the systems your product runs on invisible
                 to users, unbreakable under load.
               </p>
 
@@ -293,7 +293,7 @@ export default function Backend() {
                 Six capabilities. One guarantee: it won't go down.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
-                Every backend system we deliver is designed for the load it will realistically face —
+                Every backend system we deliver is designed for the load it will realistically face
                 plus the load it might face when things go unexpectedly well.
               </p>
             </div>

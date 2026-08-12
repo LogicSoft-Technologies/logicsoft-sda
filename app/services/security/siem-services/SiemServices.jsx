@@ -26,14 +26,14 @@ const CAPABILITIES = [
     num: "01", icon: Activity,
     title: "Log Aggregation & Normalisation",
     accent: "#4f46e5", bg: "#eef2ff",
-    desc: "Centralised ingestion from every source in your environment — cloud, on-premise, SaaS, endpoints, network devices. Normalised into a common schema for consistent correlation regardless of source format.",
+    desc: "Centralised ingestion from every source in your environment cloud, on-premise, SaaS, endpoints, network devices. Normalised into a common schema for consistent correlation regardless of source format.",
     tags: ["Syslog", "CEF", "LEEF", "JSON", "Beats", "Kafka"],
   },
   {
     num: "02", icon: Eye,
     title: "Real-Time Threat Detection",
     accent: "#7c3aed", bg: "#f5f3ff",
-    desc: "Correlation rules built on MITRE ATT&CK tactics and your environment's specific risk profile. Tuned to your organisation — not a generic ruleset generating alert fatigue.",
+    desc: "Correlation rules built on MITRE ATT&CK tactics and your environment's specific risk profile. Tuned to your organisation not a generic ruleset generating alert fatigue.",
     tags: ["MITRE ATT&CK", "UEBA", "Correlation rules", "Threat intel feeds"],
   },
   {
@@ -47,14 +47,14 @@ const CAPABILITIES = [
     num: "04", icon: BarChart3,
     title: "Dashboards & Reporting",
     accent: "#7c3aed", bg: "#f5f3ff",
-    desc: "Executive dashboards showing risk posture at a glance. Technical dashboards for SOC analysts. Compliance reports for ISO 27001, PCI DSS, and NDPR audit evidence — generated automatically.",
+    desc: "Executive dashboards showing risk posture at a glance. Technical dashboards for SOC analysts. Compliance reports for ISO 27001, PCI DSS, and NDPR audit evidence generated automatically.",
     tags: ["Executive reporting", "Compliance evidence", "SOC dashboards", "Trend analysis"],
   },
   {
     num: "05", icon: Zap,
     title: "SOAR & Automated Response",
     accent: "#4f46e5", bg: "#eef2ff",
-    desc: "Security Orchestration, Automation and Response — predefined playbooks that execute automatically for known threat patterns. IP blocking, account suspension, and ticket creation without human latency.",
+    desc: "Security Orchestration, Automation and Response predefined playbooks that execute automatically for known threat patterns. IP blocking, account suspension, and ticket creation without human latency.",
     tags: ["SOAR playbooks", "Auto-remediation", "ServiceNow", "Jira integration"],
   },
   {
@@ -105,7 +105,7 @@ const TIERS = [
 
 const PROCESS = [
   { num: "01", title: "Environment Discovery",   desc: "Inventory of all log sources, network topology, cloud accounts, and critical assets. Scoping report delivered before any deployment."             },
-  { num: "02", title: "Platform Deployment",     desc: "SIEM platform deployed and configured — log collectors, parsing rules, and retention policies — typically within 2 weeks."                    },
+  { num: "02", title: "Platform Deployment",     desc: "SIEM platform deployed and configured log collectors, parsing rules, and retention policies typically within 2 weeks."                    },
   { num: "03", title: "Tuning & Baselining",     desc: "30-day baseline period. Detection rules tuned against your specific traffic patterns to reduce false positives before going live."              },
   { num: "04", title: "Go-Live Monitoring",      desc: "Full monitoring activated. Alerting matrix configured. Runbooks for common incident types handed to your team."                                },
 ];
@@ -253,7 +253,7 @@ export default function SiemServices() {
                 SIEM<br /><span style={{ color:"#818cf8" }}>Services</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                Security Information and Event Management — deployed, tuned, and monitored by our
+                Security Information and Event Management deployed, tuned, and monitored by our
                 analysts. Real-time threat detection across your entire environment, 24 hours a day,
                 365 days a year.
               </p>
@@ -294,7 +294,7 @@ export default function SiemServices() {
           <div className="flex items-center gap-6 mb-6">
             <span className="text-[10px] font-bold text-white/25 uppercase tracking-[0.2em] whitespace-nowrap font-mono">Platforms we deploy</span>
             <div className="flex-1 h-px bg-white/6" />
-            <span className="text-[10px] text-white/20 whitespace-nowrap">Platform-agnostic — we recommend what's right for you</span>
+            <span className="text-[10px] text-white/20 whitespace-nowrap">Platform-agnostic we recommend what's right for you</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
             {PLATFORMS.map(p => (

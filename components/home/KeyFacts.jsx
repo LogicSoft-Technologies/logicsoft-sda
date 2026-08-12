@@ -10,14 +10,6 @@ const KEY_FACTS = [
   { value: "12+", label: "Industries served globally",        description: "Banking, healthcare, retail, telecoms, oil & gas, more"},
 ];
 
-const CLIENT_LOGOS = [
-  "/images/client1.svg",
-  "/images/client2.svg",
-  "/images/client3.svg",
-  "/images/client4.svg",
-  "/images/client5.svg",
-  "/images/client4.svg",
-];
 
 const CAPABILITIES = [
   "Full-Stack Web Platforms",
@@ -123,30 +115,30 @@ export default function KeyFacts() {
         <div className="bg-white border border-gray-200">
 
           {/* "Trusted by" label row */}
-          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.1em]">
-              Trusted by
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-0 divide-x divide-y divide-gray-100">
-            {CLIENT_LOGOS.map((logo, index) => (
-              /* Individual logo cell */
-              <div
-                key={index}
-                className="flex items-center justify-center px-4 sm:px-6 py-5 sm:py-6 hover:bg-[#f9fbff] transition-colors duration-200"
-              >
-                <Image
-                  src={logo}
-                  alt={`Client ${index + 1}`}
-                  width={120}
-                  height={48}
-                  className="object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+<div className="px-4 sm:px-6 py-4 sm:py-3 border-b border-gray-100">
+  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.1em]">
+    Trusted by Several Industries around the world :
+  </p>
+  </div>
+{/* Large bold industries row */}
+<div className="mt-3 sm:mt-2 flex flex-wrap items-center gap-x-15 gap-y-3 py-6 font-[playfair]">
+<span className="px-7 engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+    HEALTHCARE
+  </span>
+  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+    E-COMMERCE & RETAIL
+  </span>
+  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+    TELECOMS
+  </span>
+  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+    MANUFACTURING
+  </span>
+  <span className="engraved-text text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide">
+    EDUCATION & EDTECH
+  </span>
+  </div>
+      </div>
 
       </div>
     </section>
