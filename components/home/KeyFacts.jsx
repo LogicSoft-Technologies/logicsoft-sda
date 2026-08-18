@@ -4,32 +4,46 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const KEY_FACTS = [
-  { value: "5+",  label: "Years of industry experience",      description: "Focused on enterprise delivery since day one"         },
-  { value: "100+", label: "Projects successfully delivered",   description: "Across web, mobile, cloud, and data platforms"        },
-  { value: "60+", label: "Enterprise & startup clients",      description: "From funded startups to established conglomerates"    },
-  { value: "12+", label: "Industries served globally",        description: "Banking, healthcare, retail, telecoms, oil & gas, more"},
+  {
+    value: "5+",
+    label: "Years of industry experience",
+    description: "Focused on reliable software delivery",
+  },
+  {
+    value: "20+",
+    label: "Production projects delivered",
+    description: "Across web, mobile, cloud, and data platforms",
+  },
+  {
+    value: "15+",
+    label: "Enterprise & startup clients",
+    description:
+      "Partnering with startups and growing businesses across industries",
+  },
+  {
+    value: "10+",
+    label: "Experience across 10+ industries",
+    description: "Banking, healthcare, retail, telecoms, oil & gas, more",
+  },
 ];
-
 
 const CAPABILITIES = [
   "Full-Stack Web Platforms",
   "Mobile Applications",
-  "Cloud-Native Architecture",
-  "Cybersecurity Frameworks",
-  "Data Engineering",
-  "IT Consulting",
+  "Cloud & Infrastructure",
+  "Secure Software Engineering",
+  "Data & Backend Systems",
+  "Technology Consulting",
 ];
 
 export default function KeyFacts() {
   return (
-   
     <section
       id="key-facts"
       aria-labelledby="key-facts-heading"
       className="py-12 sm:py-20 bg-[#f5f5f5] border-t border-gray-200"
     >
       <div className="max-w-[82rem] mx-auto px-4 sm:px-6">
-
         {/* Eyebrow label */}
         <p className="text-[11px] font-semibold text-[#1f6fb2] uppercase tracking-[0.12em] mb-4">
           Who we are
@@ -40,16 +54,15 @@ export default function KeyFacts() {
           id="key-facts-heading"
           className="text-[26px] sm:text-[32px] lg:text-[36px] font-serif text-[#1f3a5f] mb-4 sm:mb-5"
         >
-          Key Facts About Logicsoft Technologies
+          LogicSoft at a Glance
         </h2>
 
         {/* Intro paragraph */}
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] max-w-[860px] mb-10 sm:mb-14">
-          At Logicsoft Technologies, we specialize in software development and
-          consulting for startups, FinTech innovators, SaaS platforms, and
-          enterprise organizations seeking long-term digital growth engineering
-          high-performance systems designed to scale reliably, stay secure, and
-          evolve with your business.
+          LogicSoft Technologies provides software engineering and technology
+          consulting for startups and growing organizations. We design, build,
+          and improve web, mobile, and business software with a focus on
+          reliability, security, and long-term maintainability.
         </p>
 
         {/* Stats grid — 1 col mobile, 2 col sm, 4 col lg */}
@@ -105,7 +118,10 @@ export default function KeyFacts() {
               key={i}
               className="flex items-center gap-1.5 px-3 py-1.5 text-[12px] sm:text-[12.5px] font-medium text-[#1f3a5f] bg-white border border-gray-200 hover:border-[#1f6fb2] hover:text-[#1f6fb2] transition-colors duration-150 cursor-default"
             >
-              <span className="w-1.5 h-1.5 bg-[#1f6fb2] shrink-0" aria-hidden="true" />
+              <span
+                className="w-1.5 h-1.5 bg-[#1f6fb2] shrink-0"
+                aria-hidden="true"
+              />
               {cap}
             </span>
           ))}
@@ -113,33 +129,31 @@ export default function KeyFacts() {
 
         {/* Client logos grid — 2 col mobile, 3 col sm, 6 col md */}
         <div className="bg-white border border-gray-200">
-
           {/* "Trusted by" label row */}
-<div className="px-4 sm:px-6 py-4 sm:py-3 border-b border-gray-100">
-  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.1em]">
-    Trusted by Several Industries around the world :
-  </p>
-  </div>
-{/* Large bold industries row */}
-<div className="mt-3 sm:mt-2 grid grid-cols-2 sm:grid-cols-5 divide-x font-[playfair] divide-gray-200 py-6">
-  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
-    HEALTHCARE
-  </span>
-  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
-    E-COMMERCE & RETAIL
-  </span>
-  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
-    TELECOMS
-  </span>
-  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
-    MANUFACTURING
-  </span>
-  <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
-    EDUCATION & EDTECH
-  </span>
-</div>
-      </div>
-
+          <div className="px-4 sm:px-6 py-4 sm:py-3 border-b border-gray-100">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.1em]">
+              Experience across multiple industries :
+            </p>
+          </div>
+          {/* Large bold industries row */}
+          <div className="mt-3 sm:mt-2 grid grid-cols-2 sm:grid-cols-5 divide-x font-[playfair] divide-gray-200 py-6">
+            <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
+              HEALTHCARE
+            </span>
+            <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
+              E-COMMERCE & RETAIL
+            </span>
+            <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
+              TELECOMS
+            </span>
+            <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
+              MANUFACTURING
+            </span>
+            <span className="engraved-text flex items-center justify-center px-4 text-lg sm:text-xl font-extrabold text-gray-400 uppercase tracking-wide text-center">
+              EDUCATION & EDTECH
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

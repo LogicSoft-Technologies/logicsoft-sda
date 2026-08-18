@@ -1,14 +1,5 @@
-import { createMetadata } from "../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "It Consulting",
-  description:
-    "IT consulting services from LogicSoft Technologies - strategic technology advisory for enterprise organisations.",
-  path: "/it-consulting",
-});
-
-// app/it-consulting/page.jsx
 "use client";
+// app/it-consulting/page.jsx
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ServicePageLayout, { Label } from "@/components/ServicePageLayout";

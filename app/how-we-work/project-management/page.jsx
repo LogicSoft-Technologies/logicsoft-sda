@@ -1,14 +1,6 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Project Management",
-  description:
-    "How LogicSoft Technologies manages enterprise software projects end to end, from scoping through delivery.",
-  path: "/how-we-work/project-management",
-});
-
-// app/how-we-work/project-management/page.jsx
 "use client";
+// app/how-we-work/project-management/page.jsx
+
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -25,7 +17,7 @@ const DISCIPLINES = [
   },
   {
     n: "03", title: "Cost Estimation",   href: "/how-we-work/estimate",
-    desc: "Bottom-up estimates calibrated against 300+ projects. Every line item explained. No hidden padding.",
+    desc: "Bottom-up estimates calibrated against 20+ projects. Every line item explained. No hidden padding.",
   },
   {
     n: "04", title: "Risk Management",   href: "/how-we-work/risk-management",
@@ -51,8 +43,8 @@ const DISCIPLINES = [
 
 const STATS = [
   { val: "8",    label: "Management disciplines" },
-  { val: "300+", label: "Projects governed"      },
-  { val: "12+",  label: "Years of practice"      },
+  { val: "30+", label: "Projects governed"      },
+  { val: "20+",  label: "Projects calibrated"      },
   { val: "98%",  label: "On-time delivery rate"  },
 ];
 

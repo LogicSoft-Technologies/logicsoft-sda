@@ -193,8 +193,8 @@ export default function Hero() {
               ref={paragraphRef}
               className="mt-3 text-[15px] sm:text-[16px] text-gray-700 leading-relaxed max-w-sm"
             >
-              Delivering scalable, secure, and enterprise-grade digital
-              solutions for startups and global organizations.
+              Software engineering and technology consulting for startups,
+              businesses, and growing organizations.
             </p>
 
             <div className="mt-5 w-full flex items-center justify-center gap-3">
@@ -328,8 +328,8 @@ export default function Hero() {
               ref={paragraphRef}
               className="mt-4 text-[17px] max-w-xl text-gray-700 leading-relaxed"
             >
-              Delivering scalable, secure, and enterprise-grade digital
-              solutions for startups and global organizations.
+              Software engineering and technology consulting for startups,
+              businesses, and growing organizations.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

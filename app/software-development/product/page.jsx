@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Product",
-  description:
-    "Product software development services from LogicSoft Technologies, taking your idea from concept to a market-ready application.",
-  path: "/software-development/product",
-});
-
-// app/software-development/product/page.jsx
 "use client";
+// app/software-development/product/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function SoftwareProductPage() {

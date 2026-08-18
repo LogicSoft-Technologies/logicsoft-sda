@@ -1,14 +1,5 @@
-import { createMetadata } from "../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Digital Transformation",
-  description:
-    "Digital transformation consulting and delivery from LogicSoft Technologies, helping enterprises modernize processes and technology.",
-  path: "/digital-transformation",
-});
-
-// app/digital-transformation/page.jsx
 "use client";
+// app/digital-transformation/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function DigitalTransformationPage() {

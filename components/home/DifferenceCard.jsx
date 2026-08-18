@@ -49,8 +49,8 @@ export default function DifferenceCard() {
 
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
               <h2 className="text-[28px] lg:text-[40px] font-serif font-bold text-white leading-[1.1] max-w-[600px]">
-                We Achieve Project Success<br className="hidden lg:block" />
-                <span className="text-[#247cce]"> No Matter What.</span>
+                Engineering built around<br className="hidden lg:block" />
+                <span className="text-[#247cce]"> successful delivery.</span>
               </h2>
 
               <Link

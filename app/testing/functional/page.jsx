@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Functional",
-  description:
-    "Functional testing services from LogicSoft Technologies, verifying software behaves correctly against business requirements.",
-  path: "/testing/functional",
-});
-
-// app/testing/functional/page.jsx
 "use client";
+// app/testing/functional/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function FunctionalTestingPage() {

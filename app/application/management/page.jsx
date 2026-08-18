@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Management",
-  description:
-    "Ongoing application management services from LogicSoft Technologies, covering monitoring, maintenance, and performance optimisation.",
-  path: "/application/management",
-});
-
-// app/application/management/page.jsx
 "use client";
+// app/application/management/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationManagementPage() {

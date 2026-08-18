@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Support",
-  description:
-    "Ongoing application support services from LogicSoft Technologies, keeping your business-critical applications running reliably.",
-  path: "/application/support",
-});
-
-// app/application/support/page.jsx
 "use client";
+// app/application/support/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationSupportPage() {

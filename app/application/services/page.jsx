@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Services",
-  description:
-    "An overview of LogicSoft Technologies' application services - development, integration, modernization, security, and support.",
-  path: "/application/services",
-});
-
-// app/application/services/page.jsx
 "use client";
+// app/application/services/page.jsx
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ServicePageLayout, { Label } from "@/components/ServicePageLayout";

@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Usability",
-  description:
-    "Usability testing services from LogicSoft Technologies, ensuring your application is intuitive and easy to use.",
-  path: "/testing/usability",
-});
-
-// app/testing/usability/page.jsx
 "use client";
+// app/testing/usability/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function UsabilityTestingPage() {

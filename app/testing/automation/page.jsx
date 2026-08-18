@@ -1,14 +1,5 @@
-import { createMetadata } from "../../../lib/metadata";
-
-export const metadata = createMetadata({
-  title: "Automation",
-  description:
-    "Test automation services from LogicSoft Technologies, building reliable automated testing pipelines for faster releases.",
-  path: "/testing/automation",
-});
-
-// app/testing/automation/page.jsx
 "use client";
+// app/testing/automation/page.jsx
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function TestAutomationPage() {
