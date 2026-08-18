@@ -1,5 +1,6 @@
 "use client";
-// app/it-consulting/enterprise/page.jsx
+// app/it-consulting/enterprise/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function EnterpriseITConsultingPage() {
@@ -10,7 +11,7 @@ export default function EnterpriseITConsultingPage() {
       title="Enterprise IT Consulting"
       subtitle="Strategic technology advisory for large organisations — aligning IT investment to business outcomes, governing complex programmes, and building technology capability at scale."
       stats={[
-        { value: "40+", label: "Enterprise clients served" },
+        { value: "20+", label: "Enterprise clients served" },
         { value: "C-suite", label: "Engagement level" },
         { value: "Africa & EMEA", label: "Geographic coverage" },
       ]}

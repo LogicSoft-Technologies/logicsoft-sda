@@ -27,8 +27,8 @@ export const metadata = {
 };
 
 const STATS = [
-  { value: "100+", label: "Projects delivered",  icon: Briefcase    },
-  { value: "50+", label: "Enterprise clients",  icon: Users        },
+  { value: "20+", label: "Projects delivered",  icon: Briefcase    },
+  { value: "15+", label: "Enterprise & Startup clients",  icon: Users        },
   { value: "5+",  label: "Years of experience", icon: Calendar     },
   { value: "98%",  label: "Client retention",    icon: TrendingUp   },
 ];

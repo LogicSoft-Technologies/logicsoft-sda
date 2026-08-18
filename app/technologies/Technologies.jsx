@@ -165,7 +165,7 @@ const TECH_SECTIONS = [
 const STATS = [
   { value: "40+",  label: "Technologies mastered" },
   { value: "8",    label: "Practice areas"         },
-  { value: "100+", label: "Projects shipped"       },
+  { value: "20+", label: "Projects shipped"       },
   { value: "5+",  label: "Years in practice"      },
 ];
 
