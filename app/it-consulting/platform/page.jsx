@@ -1,5 +1,6 @@
 "use client";
-// app/it-consulting/platform/page.jsx
+// app/it-consulting/platform/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function PlatformConsultingPage() {
@@ -10,9 +11,9 @@ export default function PlatformConsultingPage() {
       title="Platform Consulting"
       subtitle="We advise on platform strategy, selection, and implementation — helping organisations build coherent technical platforms that support product development at scale."
       stats={[
-        { value: "30+", label: "Platform strategies designed" },
+        { value: "20+", label: "Platform strategies designed" },
         { value: "AWS · Azure · GCP", label: "Cloud platforms covered" },
-        { value: "12+", label: "Years of platform experience" },
+        { value: "5+", label: "Years of platform experience" },
       ]}
       ctaTitle="Design your platform strategy"
       ctaSub="Free platform maturity assessment and strategy session."

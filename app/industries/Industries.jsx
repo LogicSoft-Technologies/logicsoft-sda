@@ -209,8 +209,8 @@ const INDUSTRIES = [
 const CATEGORIES = ["All", "Financial Services", "Healthcare", "Commerce", "Property", "Operations", "Technology", "Education", "Public Sector", "Energy", "Travel", "Agriculture"];
 
 const STATS = [
-  { value: "30+",  label: "Industries served"    },
-  { value: "100+", label: "Projects delivered"   },
+  { value: "20+",  label: "Industries served"    },
+  { value: "20+", label: "Projects delivered"   },
   { value: "5+",  label: "Years of experience"  },
   { value: "98%",  label: "Client retention rate"},
 ];
