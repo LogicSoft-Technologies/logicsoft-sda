@@ -66,7 +66,7 @@ export default function HeroSection() {
               software development services with a strong focus on transparency,
               budget control, and consistently high service quality. Our clients
               trust us to build scalable, secure, and future-ready digital
-              solutions.
+              solutions
             </p>
 
             <ul className="flex flex-col gap-2 sm:gap-2.5 mb-8 sm:mb-10">
