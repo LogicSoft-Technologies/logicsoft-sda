@@ -1,5 +1,6 @@
 "use client";
-// app/software-development/services/page.jsx  — CTA landing / overview page
+// app/software-development/services/page.jsx  — CTA landing / overview page
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -8,7 +9,7 @@ import ServicePageLayout, { Label, CapCard } from "@/components/ServicePageLayou
 const ITEMS = [
   { href: "/software-development/consulting",         icon: "🏗️", title: "Software Consulting",           body: "Architecture reviews, technology selection, and engineering process advisory." },
   { href: "/software-development/custom",             icon: "⚙️", title: "Custom Software Development",  body: "Purpose-built software engineered for your specific workflows and scale requirements." },
-  { href: "/software-development/outsourcing",        icon: "🔄", title: "Software Outsourcing",          body: "Full delivery ownership — project-based, dedicated team, or on-demand capacity." },
+  { href: "/software-development/outsourcing",        icon: "🔄", title: "Software Outsourcing",          body: "Full delivery ownership project-based, dedicated team, or on-demand capacity." },
   { href: "/software-development/product",            icon: "🚀", title: "Product Development",           body: "From validated idea to market-ready product. Discovery, design, build, and launch." },
   { href: "/software-development/staff-augmentation", icon: "👥", title: "Team Augmentation",             body: "Senior engineers embedded in your team, tools, and culture." },
   { href: "/application/cloud",                       icon: "☁️", title: "Cloud Application Development", body: "Cloud-native apps built for elasticity, reliability, and operational efficiency." },
@@ -22,10 +23,10 @@ export default function SoftwareDevelopmentServicesPage() {
       breadcrumbs={[["Software Development", null]]}
       eyebrow="Software Development"
       title="Software Development Services"
-      subtitle="End-to-end software engineering capability — from strategy and architecture through to deployment, support, and continuous improvement."
+      subtitle="End-to-end software engineering capability from strategy and architecture through to deployment, support, and continuous improvement."
       stats={[
-        { value: "300+", label: "Projects delivered" },
-        { value: "12+", label: "Years of engineering experience" },
+        { value: "20+", label: "Projects delivered" },
+        { value: "5+", label: "Years of engineering experience" },
         { value: "5", label: "Continents with active clients" },
       ]}
       ctaTitle="Not sure where to start?"
