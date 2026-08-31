@@ -1,5 +1,6 @@
 "use client";
-// app/software-development/consulting/page.jsx
+// app/software-development/consulting/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList, fadeUp } from "@/components/ServicePageLayout";
 import { motion } from "framer-motion";
 
@@ -9,11 +10,11 @@ export default function SoftwareConsultingPage() {
       breadcrumbs={[["Software Development", "/software-development/services"], ["Consulting"]]}
       eyebrow="Software Development"
       title="Software Consulting"
-      subtitle="Expert guidance on architecture decisions, technology selection, and engineering best practices — so your team builds the right thing, the right way, from the start."
+      subtitle="Expert guidance on architecture decisions, technology selection, and engineering best practices so your team builds the right thing, the right way, from the start."
       stats={[
-        { value: "12+", label: "Years of advisory experience" },
-        { value: "300+", label: "Projects shaped" },
-        { value: "40+", label: "Enterprise clients advised" },
+        { value: "5+", label: "Years of advisory experience" },
+        { value: "20+", label: "Projects shaped" },
+        { value: "15+", label: "Enterprise clients advised" },
       ]}
       ctaTitle="Get expert guidance on your next project"
       ctaSub="Book a free 60-minute consultation with a LogicSoft principal engineer."
@@ -21,10 +22,10 @@ export default function SoftwareConsultingPage() {
       {/* Capabilities */}
       <Label>What we advise on</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="🏗️" title="Architecture Review" body="We assess your current architecture for scalability, resilience, and cost efficiency — and deliver a prioritised improvement roadmap." />
+        <CapCard icon="🏗️" title="Architecture Review" body="We assess your current architecture for scalability, resilience, and cost efficiency and deliver a prioritised improvement roadmap." />
         <CapCard icon="🔬" title="Technology Selection" body="Unbiased evaluation of frameworks, cloud platforms, databases, and vendors to match your context, not industry fashion." />
         <CapCard icon="⚙️" title="Engineering Process Audit" body="We review your CI/CD pipeline, code review practices, and deployment cadence to remove bottlenecks slowing delivery." />
-        <CapCard icon="🔐" title="Security Posture Review" body="Early identification of vulnerabilities in design — before they become expensive production incidents." />
+        <CapCard icon="🔐" title="Security Posture Review" body="Early identification of vulnerabilities in design before they become expensive production incidents." />
         <CapCard icon="💰" title="Cost Optimisation" body="Infrastructure and licensing analysis to reduce cloud spend and eliminate waste without sacrificing performance." />
         <CapCard icon="🗺️" title="Product Discovery" body="Structured workshops to define MVP scope, user flows, and technical requirements before a single line of code is written." />
       </div>
@@ -37,7 +38,7 @@ export default function SoftwareConsultingPage() {
           <Label>How an engagement works</Label>
           <div className="space-y-6">
             <Step n="01" title="Discovery call" body="We understand your context, constraints, and goals in a structured 60-minute session." />
-            <Step n="02" title="Assessment" body="Our engineers audit your codebase, infrastructure, and processes — typically over 1–2 weeks." />
+            <Step n="02" title="Assessment" body="Our engineers audit your codebase, infrastructure, and processes typically over 1–2 weeks." />
             <Step n="03" title="Findings report" body="A clear, prioritised document detailing risks, opportunities, and recommended actions." />
             <Step n="04" title="Advisory retainer (optional)" body="Ongoing access to a LogicSoft principal for quarterly reviews and ad-hoc guidance." />
           </div>
