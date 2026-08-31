@@ -58,6 +58,7 @@ export default function HeroSection() {
             </h1>
 
             <h2 className="text-[16px] sm:text-[18px] text-[#1f6fb2] font-medium mb-4 sm:mb-6 leading-snug">
+              {/* Your Partner for Project Success */}
               Your Partner for Project Success
             </h2>
 
