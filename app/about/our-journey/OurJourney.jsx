@@ -62,7 +62,7 @@ const COMPANY_STATS = [
   { value: "5+", label: "Years in operation", icon: Award },
   { value: "20+", label: "Projects delivered", icon: Code2 },
   { value: "20+", label: "Engineers", icon: Users },
-  { value: "30+", label: "Industries served", icon: Globe2 },
+  { value: "10+", label: "Industries served", icon: Globe2 },
 ];
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
@@ -77,7 +77,7 @@ export default function OurJourney() {
           <Link href="/" className="hover:text-[#1f6fb2] transition-colors">
             Home
           </Link>
-          <span className="text-gray-300">›</span>
+          <span className="text-gray-300"></span>
           <Link
             href="/about"
             className="hover:text-[#1f6fb2] transition-colors"
