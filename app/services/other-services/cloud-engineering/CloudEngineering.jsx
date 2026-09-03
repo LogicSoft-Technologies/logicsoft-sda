@@ -300,7 +300,7 @@ export default function CloudEngineering() {
             <div className="lg:sticky top-[120px]">
               <p className="text-[11px] font-bold text-sky-600 uppercase tracking-[0.16em] mb-4">What we deliver</p>
               <h3 className="text-[30px] lg:text-[34px] font-serif text-[#1f3a5f] leading-tight mb-5">Six cloud capabilities. Multi-cloud, properly done.</h3>
-              <p className="text-[13.5px] text-gray-500 leading-[1.85]">We're platform-agnostic. We recommend the right cloud and the right architecture for your workload, not the easiest one for us.</p>
+              <p className="text-[13.5px] text-gray-500 leading-[1.85]">We're platform-agnostic. We recommend the right cloud and the right architecture for your workload not the easiest one for us.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CAPABILITIES.map((cap, i) => (
