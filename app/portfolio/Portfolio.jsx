@@ -204,7 +204,7 @@ export default function Portfolio() {
               </h2>
               <p className="text-[17px] text-gray-700 leading-[2] max-w-[720px]">
                 From core banking integrations to healthcare platforms and analytics
-                infrastructure — every project in our portfolio is a real outcome
+                infrastructure, every project in our portfolio is a real outcome
                 delivered for a real client. Browse by industry or technology.
               </p>
             </div>

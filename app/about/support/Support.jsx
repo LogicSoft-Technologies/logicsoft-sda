@@ -250,7 +250,7 @@ export default function Support() {
                 <span className="text-[#1f6fb2]">After Delivery.</span>
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[620px]">
-                Support isn't a ticket queue — it's a continuation of the
+                Support isn't a ticket queue, it's a continuation of the
                 relationship. Our support structure is designed to resolve
                 issues at the right level, as fast as the severity demands.
               </p>
