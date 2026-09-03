@@ -17,7 +17,7 @@ const DROPDOWNS = {
   about: {
     featured: {
       label: "Why LogicSoft?",
-      desc: "200+ projects. 5 years. Clients across Africa, Europe, and the Middle East.",
+      desc: "20+ projects. 5 years. Clients across Africa, Europe, and the Middle East.",
       href: "/about/about-company",
     },
     columns: [
@@ -62,7 +62,7 @@ const DROPDOWNS = {
   services: {
     featured: {
       label: "End-to-End Engineering",
-      desc: "From architecture to deployment — we own the full delivery cycle.",
+      desc: "From architecture to deployment, we own the full delivery cycle.",
       href: "/service",
     },
     columns: [
@@ -313,7 +313,7 @@ function MobileDrawer({ open, onClose }) {
                   className="flex-1 flex items-center justify-center gap-2 py-3 text-[11.5px] font-semibold text-[#1f3a5f] hover:bg-[#f0f7ff] transition-colors border-r border-[#e8eef6]">
                   <Phone className="w-3.5 h-3.5 text-[#1f6fb2]" /> Call us
                 </a>
-                <a href="mailto:contact@logicsofttechnologies.online"
+                <a href="mailto:contact@logicsofttechnologies.com"
                   className="flex-1 flex items-center justify-center gap-2 py-3 text-[11.5px] font-semibold text-[#1f3a5f] hover:bg-[#f0f7ff] transition-colors">
                   <Mail className="w-3.5 h-3.5 text-[#1f6fb2]" /> Email us
                 </a>
@@ -584,9 +584,9 @@ const Navbar = () => {
       >
         <div className={`hidden md:block transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
           <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : "text-gray-800"}`}>
-            <a href="mailto:contact@logicsofttechnologies.online"
+            <a href="mailto:contact@logicsofttechnologies.com"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>
-              <Mail className="w-3 h-3" /> contact@logicsofttechnologies.online
+              <Mail className="w-3 h-3" /> contact@logicsofttechnologies.com
             </a>
             <a href="tel:+2349012688861"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>

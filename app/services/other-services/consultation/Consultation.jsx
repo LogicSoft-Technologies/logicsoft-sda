@@ -26,7 +26,7 @@ const ENGAGEMENT_TYPES = [
     title: "Architecture Review",
     accent: "#1f6fb2",
     bg: "#eaf4ff",
-    desc: "An independent review of your existing or planned system architecture. We identify risks, scalability bottlenecks, security gaps, and cost inefficiencies — with clear, prioritised recommendations.",
+    desc: "An independent review of your existing or planned system architecture. We identify risks, scalability bottlenecks, security gaps, and cost inefficiencies with clear, prioritised recommendations.",
     includes: ["Architecture documentation review","Non-functional requirements assessment","Risk register and technical debt analysis","Scalability and performance evaluation","Written findings with recommendations"],
     ideal: "Engineering leaders before major platform changes or scaling events.",
   },
@@ -35,7 +35,7 @@ const ENGAGEMENT_TYPES = [
     title: "Team & Process Assessment",
     accent: "#b45309",
     bg: "#fffbeb",
-    desc: "An honest assessment of your engineering organisation — skills gaps, delivery process bottlenecks, tooling mismatches, and culture. Actionable recommendations for a team that ships more and fights less.",
+    desc: "An honest assessment of your engineering organisation skills gaps, delivery process bottlenecks, tooling mismatches, and culture. Actionable recommendations for a team that ships more and fights less.",
     includes: ["Engineering capability assessment","DORA metrics baseline measurement","Process and tooling review","Team structure recommendations","Hiring and development roadmap"],
     ideal: "VP Engineering and CPOs scaling or restructuring engineering teams.",
   },
@@ -73,16 +73,16 @@ const ADVISORS = [
 
 const HOW_IT_WORKS = [
   { num:"01", title:"Introductory call (free)",    desc:"30 minutes. No obligation. We learn about your situation and tell you honestly whether we can add value."           },
-  { num:"02", title:"Scoping agreement",           desc:"We agree on objectives, deliverables, timeline, and fee. Fixed scope and fixed price — no billable-hour ambiguity." },
+  { num:"02", title:"Scoping agreement",           desc:"We agree on objectives, deliverables, timeline, and fee. Fixed scope and fixed price no billable-hour ambiguity." },
   { num:"03", title:"Discovery and research",      desc:"We interview stakeholders, review existing documentation, and study your environment before forming opinions."       },
   { num:"04", title:"Findings and recommendations",desc:"Written report delivered and presented. All recommendations prioritised with implementation effort estimates."        },
-  { num:"05", title:"Optional: implementation",   desc:"Most engagements end here. Some clients ask us to implement — we only do so where our teams can genuinely add value." },
+  { num:"05", title:"Optional: implementation",   desc:"Most engagements end here. Some clients ask us to implement, we only do so where our teams can genuinely add value." },
 ];
 
 const PRINCIPLES = [
   "We decline engagements where we can't add material value.",
   "Every recommendation comes with an honest effort and cost estimate.",
-  "We have no preferred vendors — our advice is always independent.",
+  "We have no preferred vendors, our advice is always independent.",
   "We write everything down. No verbal-only briefings.",
   "We hold ourselves to the same standards we advise others to meet.",
   "If the right answer is to hire someone full-time, we'll say so.",
@@ -152,10 +152,11 @@ function ProposalPreview() {
       {/* Footer */}
       <div className="border-t border-amber-100 px-8 py-3 flex items-center justify-between bg-amber-50/50">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-amber-700/15 flex items-center justify-center">
-            <span className="text-[9px] font-bold text-amber-700">LS</span>
-          </div>
-          <span className="text-[10px] font-bold text-gray-500">Logicsoft Technologies Limited</span>
+            <img
+            src="/favicon.ico"
+            alt="Logicsoft Technologies Limited"
+            className="w-4 h-4 object-contain" />
+          <span className="text-[10px] font-bold text-gray-500">Logicsoft Technologies</span>
         </div>
         <span className="text-[9px] font-mono text-gray-400">Page 1 of 8</span>
       </div>
@@ -205,7 +206,7 @@ export default function Consultation() {
                 Technology<br /><span style={{ color:"#d97706" }}>Consultation</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                Independent technology strategy, architecture review, and product discovery — from
+                Independent technology strategy, architecture review, and product discovery from
                 advisors with decades of experience making these decisions, not just recommending
                 that someone else does.
               </p>
@@ -345,7 +346,7 @@ export default function Consultation() {
       <div className="border-b border-amber-900/20" style={{ background:"linear-gradient(150deg,#0c0906 0%,#120c04 100%)" }}>
         <div className="max-w-[82rem] mx-auto px-4 py-14">
           <p className="text-[11px] font-bold text-amber-500 uppercase tracking-[0.16em] mb-3">Our consulting principles</p>
-          <h3 className="text-[28px] font-serif text-white mb-8">How we work — in plain language.</h3>
+          <h3 className="text-[28px] font-serif text-white mb-8">How we work in plain language.</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {PRINCIPLES.map((p, i) => (
               <motion.div key={i} initial={{ opacity:0 }} whileInView={{ opacity:1 }}

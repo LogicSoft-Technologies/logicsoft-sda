@@ -18,17 +18,17 @@ const NAV_SERVICES = [
     icon: Monitor,
     accent: "#1f6fb2",
     bg: "#eff6ff",
-    tagline: "Scalable, accessible web applications from frontend to backend — built for performance and longevity.",
+    tagline: "Scalable, accessible web applications from frontend to backend built for performance and longevity.",
     links: [
       {
         label: "Frontend Development",
         href:  "/services/web-development/frontend",
-        desc:  "React, Next.js, and Vue — pixel-perfect, performant, accessible UI engineering.",
+        desc:  "React, Next.js, and Vue pixel-perfect, performant, accessible UI engineering.",
       },
       {
         label: "Backend Development",
         href:  "/services/web-development/backend",
-        desc:  "Node.js, Python, Go — APIs, databases, and server-side logic built to scale.",
+        desc:  "Node.js, Python, Go APIs, databases, and server-side logic built to scale.",
       },
       {
         label: "Full Stack",
@@ -57,7 +57,7 @@ const NAV_SERVICES = [
       {
         label: "Cross Platform",
         href:  "/services/mobile-apps/cross-platform",
-        desc:  "React Native and Flutter — one codebase, two production-ready apps.",
+        desc:  "React Native and Flutter one codebase, two production-ready apps.",
       },
     ],
   },
@@ -71,12 +71,12 @@ const NAV_SERVICES = [
       {
         label: "Cyber Security",
         href:  "/services/security/cyber-security",
-        desc:  "Full-spectrum security practice — offensive testing and defensive architecture.",
+        desc:  "Full-spectrum security practice offensive testing and defensive architecture.",
       },
       {
         label: "Compliance Services",
         href:  "/services/security/compliance",
-        desc:  "ISO 27001, NDPR, GDPR, PCI DSS — certification and readiness end-to-end.",
+        desc:  "ISO 27001, NDPR, GDPR, PCI, DSS certification and readiness end-to-end.",
       },
       {
         label: "Security Testing",
@@ -110,7 +110,7 @@ const NAV_SERVICES = [
       {
         label: "Cloud Engineering",
         href:  "/services/other-services/cloud-engineering",
-        desc:  "AWS, Azure, GCP — cloud-native architecture, migration, and optimisation.",
+        desc:  "AWS, Azure, GCP, cloud-native architecture, migration, and optimisation.",
       },
       {
         label: "Data Analytics",
@@ -140,7 +140,7 @@ const SERVICE = {
   eyebrow:      "Software Development",
   accentColor:  "#1f6fb2",
   title:        "Custom Software Development",
-  tagline:      "Purpose-built software engineered for your exact workflows, integrations, and scale — not adapted from a generic template.",
+  tagline:      "Purpose-built software engineered for your exact workflows, integrations, and scale not adapted from a generic template.",
   description:  "We design and build software that solves real operational problems. Every system we deliver is architected from scratch for your specific context — your data model, your integrations, your users, your growth trajectory. No off-the-shelf shortcuts.",
 
   stats: [
@@ -168,8 +168,8 @@ const SERVICE = {
 
   methodology: [
     { n: "01", title: "Discovery & Requirements", duration: "1–2 weeks",  body: "Structured workshops to define functional requirements, technical constraints, integration points, and success criteria. We produce a written specification before a line of production code is written.", deliverable: "Requirements specification document" },
-    { n: "02", title: "Architecture & Design",    duration: "1–2 weeks",  body: "System architecture, data model, API surface, infrastructure design, and security model — documented and reviewed with your team before development begins.", deliverable: "Architecture blueprint + ERD" },
-    { n: "03", title: "Iterative Development",    duration: "4–16 weeks", body: "Two-week sprints with a working, deployable build at the end of each. You test real software, not wireframes — priorities can be refined based on what you see.", deliverable: "Working software every 2 weeks" },
+    { n: "02", title: "Architecture & Design",    duration: "1–2 weeks",  body: "System architecture, data model, API surface, infrastructure design, and security model documented and reviewed with your team before development begins.", deliverable: "Architecture blueprint + ERD" },
+    { n: "03", title: "Iterative Development",    duration: "4–16 weeks", body: "Two-week sprints with a working, deployable build at the end of each. You test real software, not wireframes priorities can be refined based on what you see.", deliverable: "Working software every 2 weeks" },
     { n: "04", title: "QA & Security Review",     duration: "1–2 weeks",  body: "Automated and manual testing, OWASP Top 10 validation, performance benchmarking, and load testing before every production release.", deliverable: "QA sign-off report + pentest summary" },
     { n: "05", title: "Deployment & Handover",    duration: "1 week",     body: "Production deployment with full CI/CD pipeline, monitoring setup, runbook documentation, and a structured knowledge transfer session for your team.", deliverable: "Deployed system + runbooks + docs" },
     { n: "06", title: "Post-Launch Support",      duration: "Ongoing",    body: "Optional SLA-backed support — bug fixes, dependency updates, performance monitoring, and a quarterly improvement review.", deliverable: "Monthly health reports + SLA" },
@@ -189,9 +189,9 @@ const SERVICE = {
   ],
 
   technologies: [
-    { category: "Frontend",  items: ["React", "Next.js", "Vue", "TypeScript", "Tailwind CSS"] },
-    { category: "Backend",   items: ["Node.js", "Python", "Go", "Java", "GraphQL"] },
-    { category: "Mobile",    items: ["React Native", "Flutter", "Swift", "Kotlin"] },
+    { category: "Frontend",  items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+    { category: "Backend",   items: ["Node.js", "Python", "Go", "JavaScript", "GraphQL"] },
+    { category: "Mobile",    items: ["React Native", "Express.js", "Swift", "Kotlin"] },
     { category: "Database",  items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch"] },
     { category: "Cloud",     items: ["AWS", "Azure", "GCP", "Kubernetes", "Terraform"] },
     { category: "AI / ML",   items: ["OpenAI", "LangChain", "HuggingFace", "Pinecone", "PyTorch"] },
@@ -199,23 +199,23 @@ const SERVICE = {
 
   caseStudy: {
     tag: "Case Study",
-    industry: "Logistics & Supply Chain",
-    title: "From zero to 200,000 active users in 11 months — a pan-African logistics SaaS",
-    challenge: "A logistics startup needed a full platform built from scratch: driver app, merchant portal, real-time tracking, route optimisation, and payment integration — all before a Series A close.",
-    outcome: "We delivered the MVP in 14 weeks, the full platform in 11 months. The product onboarded 200,000 active users in its first year and the client raised their Series A round within 6 months of launch.",
+    industry: "Enterprise Platforms",
+    title: "From zero to 200 active users in 4 months, ",
+    challenge: "An enterprise startup needed a scalable platform built from scratch: complex workflows, multi-tenant infrastructure, enterprise-grade security, analytics, integrations, and admin controls—all before a Series A close.",
+    outcome: "We delivered the MVP in 7 weeks, the full platform in 6 months. The product onboarded 200 active users in its first year and the client raised their Series A round within 3 months of launch.",
     metrics: [
-      { val: "11mo",     label: "Full platform delivered"          },
-      { val: "200k",     label: "Active users at 12 months"        },
+      { val: "8mo",     label: "Full platform delivered"          },
+      { val: "200",     label: "Active users at 4 months"        },
       { val: "Series A", label: "Raised within 6 months of launch" },
     ],
   },
 
   faqs: [
-    { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements — you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
+    { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
     { q: "What happens if requirements change mid-project?", a: "We use a formal change control process: any scope change is scoped, priced, and approved before it enters development. This keeps budgets predictable while giving you the flexibility to evolve priorities." },
-    { q: "Do you work with our existing development team?",  a: "Yes — many engagements involve our engineers working alongside your team. We adapt to your branching strategy, tools, and review process. We can also provide a standalone delivery squad that integrates into your Jira and Slack." },
+    { q: "Do you work with our existing development team?",  a: "Yes many engagements involve our engineers working alongside your team. We adapt to your branching strategy, tools, and review process. We can also provide a standalone delivery squad that integrates into your Jira and Slack." },
     { q: "How long does a typical project take?",            a: "An MVP typically takes 8–14 weeks. A full-featured enterprise application is usually 16–32 weeks. Duration depends on scope, integration complexity, and the number of concurrent engineers." },
-    { q: "What do you need from us to get started?",         a: "A 30-minute discovery call and whatever documentation you have — even a rough brief is enough. We'll guide you through the requirements process. You don't need a polished spec before engaging us." },
+    { q: "What do you need from us to get started?",         a: "A 30-minute discovery call and whatever documentation you have even a rough brief is enough. We'll guide you through the requirements process. You don't need a polished spec before engaging us." },
   ],
 };
 
@@ -271,7 +271,7 @@ function ServicesNavigator({ currentHref }) {
               Everything LogicSoft offers
             </h2>
             <p className="text-[13.5px] text-gray-400 mt-2 max-w-md leading-relaxed">
-              The same four service categories from our navigation — all links lead directly to their detail pages.
+              The same four service categories from our navigation all links lead directly to their detail pages.
             </p>
           </div>
           <Link href="/services"
@@ -334,7 +334,7 @@ function ServicesNavigator({ currentHref }) {
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1"
                 style={{ color: active.accent }}>Browse all</p>
               <p className="text-[11.5px] text-gray-400 leading-snug mb-2.5">
-                300+ projects · 30+ industries · since 2012
+                10+ projects · 15+ industries · since 2021
               </p>
               <Link href="/services"
                 className="inline-flex items-center gap-1.5 text-[12px] font-bold transition-all duration-200 hover:gap-3"
@@ -746,7 +746,7 @@ export default function ServiceDetailPage() {
                 <div className="p-4 border" style={{ borderColor: `${accent}25`, background: `${accent}06` }}>
                   <Quote className="w-4 h-4 mb-2" style={{ color: accent }} />
                   <p className="text-[12.5px] text-gray-500 italic leading-relaxed mb-3">
-                    "LogicSoft didn't just build what we asked for — they improved on it at every turn. The architecture decisions they made in month one are still serving us two years later."
+                    "LogicSoft didn't just build what we asked for they improved on it at every turn. The architecture decisions they made in month one are still serving us two years later."
                   </p>
                   <p className="text-[11px] font-bold text-[#1f3a5f]">Chief Technology Officer</p>
                   <p className="text-[10.5px] text-gray-400">Pan-African logistics platform</p>
@@ -794,7 +794,7 @@ export default function ServiceDetailPage() {
               </div>
               <h2 className="text-[32px] lg:text-[44px] font-serif text-white leading-tight mb-4">Ready to scope your project?</h2>
               <p className="text-[14.5px] text-white/45 leading-[1.9] max-w-lg">
-                Tell us what you're building. A LogicSoft principal will review your brief and schedule a scoping call — at no cost, with no commitment.
+                Tell us what you're building. A LogicSoft principal will review your brief and schedule a scoping call at no cost, with no commitment.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}

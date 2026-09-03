@@ -25,9 +25,9 @@ const SEV_STYLE = {
 const ACTION_COLOR = { BLOCKED:"#10b981", THROTTLED:"#f59e0b", LOGGED:"#6b7280", REJECTED:"#dc2626" };
 
 const SERVICES = [
-  { num:"01", icon:ShieldAlert, title:"Penetration Testing",   href:"/services/security/penetration-testing", accent:"#ef4444", bg:"#fff1f2", desc:"Authorised simulated attacks on web apps, APIs, mobile, and network infrastructure — before real attackers do it." },
+  { num:"01", icon:ShieldAlert, title:"Penetration Testing",   href:"/services/security/penetration-testing", accent:"#ef4444", bg:"#fff1f2", desc:"Authorised simulated attacks on web apps, APIs, mobile, and network infrastructure before real attackers do it." },
   { num:"02", icon:Activity,    title:"SIEM Services",         href:"/services/security/siem-services",        accent:"#f59e0b", bg:"#fffbeb", desc:"24/7 real-time threat detection, log correlation, and automated incident alerting across your entire stack." },
-  { num:"03", icon:Shield,      title:"Compliance Consulting", href:"/services/security/compliance",           accent:"#1f6fb2", bg:"#eaf4ff", desc:"ISO 27001, NDPR, GDPR, PCI DSS, HIPAA — certification and readiness programmes managed end-to-end." },
+  { num:"03", icon:Shield,      title:"Compliance Consulting", href:"/services/security/compliance",           accent:"#1f6fb2", bg:"#eaf4ff", desc:"ISO 27001, NDPR, GDPR, PCI DSS, HIPAA certification and readiness programmes managed end-to-end." },
   { num:"04", icon:Eye,         title:"Security Testing",      href:"/services/security/security-testing",     accent:"#0d9488", bg:"#f0fdfa", desc:"SAST, DAST, SCA and manual code review integrated into your SDLC. Vulnerabilities found before release, not after." },
 ];
 

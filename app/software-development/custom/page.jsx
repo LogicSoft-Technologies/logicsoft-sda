@@ -16,7 +16,7 @@ export default function CustomSoftwarePage() {
         { value: "5+", label: "Years building enterprise software" },
       ]}
       ctaTitle="Describe what you're building"
-      ctaSub="We'll scope it, price it, and propose a delivery timeline — free of charge."
+      ctaSub="We'll scope it, price it, and propose a delivery timeline free of charge."
     >
       <Label>What we build</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">

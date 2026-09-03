@@ -6,6 +6,7 @@ import cors from "cors";
 import chatRoute from "./src/routes/chat.js";
 import contactRoute from "./src/routes/contact.js";
 import newsletterRoute from "./src/routes/newsletter.js";
+import careersRoute from "./src/routes/careers.js";
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.get("/", (_req, res) =>
 app.use("/api/chat", chatRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/newsletter", newsletterRoute);
+app.use("/api/careers", careersRoute);
 
 app.use((err, req, res, next) => {
   console.error("[Error]", err.message);

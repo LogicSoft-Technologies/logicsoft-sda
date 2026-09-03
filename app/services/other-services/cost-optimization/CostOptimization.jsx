@@ -16,7 +16,7 @@ const DOMAINS = [
     num:"01", icon:Cloud,
     title:"Cloud Cost Optimisation",
     accent:"#059669", bg:"#ecfdf5",
-    desc:"Cloud bills grow fast and silently. We audit your AWS, GCP, or Azure spend — right-size over-provisioned resources, switch on Savings Plans and Reserved Instances, identify orphaned resources, and set budget guardrails.",
+    desc:"Cloud bills grow fast and silently. We audit your AWS, GCP, or Azure spend right-size over-provisioned resources, switch on Savings Plans and Reserved Instances, identify orphaned resources, and set budget guardrails.",
     savings:"Typical savings: 25–45% of cloud bill",
     tags:["FinOps","Reserved Instances","Savings Plans","Rightsizing","Waste elimination"],
   },
@@ -24,7 +24,7 @@ const DOMAINS = [
     num:"02", icon:Server,
     title:"Infrastructure Efficiency",
     accent:"#0d9488", bg:"#f0fdfa",
-    desc:"On-premise and hybrid infrastructure is often over-specced and under-utilised. We consolidate, virtualise, and eliminate redundant systems — reducing hardware, licensing, and operational costs together.",
+    desc:"On-premise and hybrid infrastructure is often over-specced and under-utilised. We consolidate, virtualise, and eliminate redundant systems reducing hardware, licensing, and operational costs together.",
     savings:"Typical savings: 20–35% infrastructure cost",
     tags:["Server consolidation","Virtualisation","Licensing optimisation","Storage tiering"],
   },
@@ -32,7 +32,7 @@ const DOMAINS = [
     num:"03", icon:Code2,
     title:"Software Licence Rationalisation",
     accent:"#059669", bg:"#ecfdf5",
-    desc:"SaaS sprawl is expensive and invisible. We inventory every software licence across your organisation, identify duplicates, unused seats, and better-value alternatives — then build a rationalisation roadmap.",
+    desc:"SaaS sprawl is expensive and invisible. We inventory every software licence across your organisation, identify duplicates, unused seats, and better-value alternatives then build a rationalisation roadmap.",
     savings:"Typical savings: 15–30% software spend",
     tags:["SaaS audit","Licence consolidation","Vendor negotiation","Shadow IT discovery"],
   },
@@ -40,7 +40,7 @@ const DOMAINS = [
     num:"04", icon:Cpu,
     title:"Engineering Process Efficiency",
     accent:"#0d9488", bg:"#f0fdfa",
-    desc:"Slow CI/CD, manual testing, poor test coverage, and technical debt cost engineering time — which costs money. We quantify the efficiency gap and design the improvements that pay for themselves.",
+    desc:"Slow CI/CD, manual testing, poor test coverage, and technical debt cost engineering time which costs money. We quantify the efficiency gap and design the improvements that pay for themselves.",
     savings:"Typical savings: 20–40% engineering time",
     tags:["CI/CD acceleration","Test automation","Technical debt","Developer productivity"],
   },
@@ -56,14 +56,14 @@ const DOMAINS = [
     num:"06", icon:DollarSign,
     title:"FinOps Programme Establishment",
     accent:"#0d9488", bg:"#f0fdfa",
-    desc:"A sustainable cost optimisation programme — not a one-time audit. We establish FinOps practices, tagging strategies, showback and chargeback models, and cost accountability across engineering teams.",
+    desc:"A sustainable cost optimization programme not a one-time audit. We establish FinOps practices, tagging strategies, showback and chargeback models, and cost accountability across engineering teams.",
     savings:"Ongoing: 10–20% year-on-year improvement",
     tags:["FinOps culture","Cost visibility","Showback / chargeback","Budget alerting"],
   },
 ];
 
 const PROCESS = [
-  { num:"01", title:"Cost Discovery Audit",     desc:"Full inventory of cloud, software, infrastructure, and engineering spend. No cost estimate — just an honest baseline."                  },
+  { num:"01", title:"Cost Discovery Audit",     desc:"Full inventory of cloud, software, infrastructure, and engineering spend. No cost estimate just an honest baseline."                  },
   { num:"02", title:"Opportunity Mapping",      desc:"Every identified saving opportunity documented with effort, impact, and implementation risk. Prioritised by ROI."                         },
   { num:"03", title:"Optimisation Roadmap",     desc:"Sequenced implementation plan. Quick wins in the first 30 days. Structural improvements over 90 days. Sustainable model at 6 months."  },
   { num:"04", title:"Implementation & Tracking",desc:"We implement or support implementation of recommendations. Savings tracked against baseline. Monthly reports until targets are hit."    },
@@ -214,7 +214,7 @@ export default function CostOptimization() {
                 Cost<br /><span style={{ color:"#34d399" }}>Optimisation</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                Cloud bills, software licences, infrastructure, and engineering inefficiency —
+                Cloud bills, software licences, infrastructure, and engineering inefficiency
                 we find the waste, quantify the opportunity, and implement the savings.
                 Typically 25–45% reduction in 90 days.
               </p>
@@ -281,7 +281,7 @@ export default function CostOptimization() {
               </tbody>
             </table>
           </div>
-          <p className="text-[12px] text-gray-400 mt-4 italic">Savings verified against client billing data. Names anonymised per NDA. Results not guaranteed — outcomes depend on current spend profile.</p>
+          <p className="text-[12px] text-gray-400 mt-4 italic">Savings verified against client billing data. Names anonymised per NDA. Results not guaranteed outcomes depend on current spend profile.</p>
         </div>
       </div>
 

@@ -29,7 +29,7 @@ const CAPABILITIES = [
     num:"01", icon:GitMerge,
     title:"CI/CD Pipeline Design & Implementation",
     accent:"#f97316", bg:"#fff7ed",
-    desc:"Automated build, test, and deployment pipelines from day one. GitHub Actions, GitLab CI, Bitbucket Pipelines, Jenkins — we design the workflow, write the manifests, and own the outcome.",
+    desc:"Automated build, test, and deployment pipelines from day one. GitHub Actions, GitLab CI, Bitbucket Pipelines, Jenkins, we design the workflow, write the manifests, and own the outcome.",
     tags:["GitHub Actions","GitLab CI","Jenkins","Bitbucket Pipelines","ArgoCD"],
   },
   {
@@ -88,7 +88,7 @@ const STACK = [
 ];
 
 const PROCESS = [
-  { num:"01", title:"Current State Audit",      desc:"We map your existing delivery process — deployment steps, lead time, failure rate, and infrastructure state — before proposing anything."  },
+  { num:"01", title:"Current State Audit",      desc:"We map your existing delivery process, deployment steps, lead time, failure rate, and infrastructure state before proposing anything."  },
   { num:"02", title:"Pipeline Architecture",     desc:"Pipeline design, branching strategy, environment model (dev → staging → prod), and toolchain selection documented and agreed."            },
   { num:"03", title:"Foundation Build",          desc:"CI/CD pipeline, containerisation, IaC baseline, and observability stack established in the first sprint."                                },
   { num:"04", title:"Handover & Enablement",    desc:"Your team trained on the toolchain. Runbooks written. On-call process defined. Platform handed over, not just built."                    },
@@ -226,7 +226,7 @@ export default function DevOps() {
                 DevOps<br /><span className="text-orange-500">Engineering</span>
               </h2>
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[500px] mb-8">
-                CI/CD pipelines, container orchestration, infrastructure as code, and observability —
+                CI/CD pipelines, container orchestration, infrastructure as code and observability
                 the engineering discipline that turns great software into software that ships. Fast,
                 reliably, and repeatedly.
               </p>
@@ -318,7 +318,7 @@ export default function DevOps() {
             <div className="lg:sticky top-[120px]">
               <p className="text-[11px] font-bold text-orange-600 uppercase tracking-[0.16em] mb-4">What we deliver</p>
               <h3 className="text-[30px] lg:text-[34px] font-serif text-[#1f3a5f] leading-tight mb-5">Six capabilities that accelerate delivery.</h3>
-              <p className="text-[13.5px] text-gray-500 leading-[1.85]">Every DevOps engagement ends with your team owning a platform they understand — not a black box we manage.</p>
+              <p className="text-[13.5px] text-gray-500 leading-[1.85]">Every DevOps engagement ends with your team owning a platform they understand not a black box we manage.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CAPABILITIES.map((cap, i) => (
