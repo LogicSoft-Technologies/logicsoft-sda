@@ -7,7 +7,7 @@ export default function ReportingPage() {
     <HowWeWorkPage
       index={7}
       title="Project Reporting"
-      description="Reporting is not bureaucracy — it's visibility. Our reporting structure gives every stakeholder the information they need, at the frequency they need it, in the format they can act on."
+      description="Reporting is not bureaucracy but it's visibility. Our reporting structure gives every stakeholder the information they need, at the frequency they need it, in the format they can act on."
       steps={[
         { title: "Sprint Reports", body: "At the close of every sprint we deliver a written report covering: completed work, velocity, blockers encountered, and planned next sprint. Delivered within 24 hours of sprint close." },
         { title: "Monthly Steering Reports", body: "Monthly executive reports covering: budget burn, milestone status, risk register summary, change log, and forward look. Designed for C-suite consumption." },

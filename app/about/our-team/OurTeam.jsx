@@ -72,7 +72,7 @@ const departments = [
       {
         icon: FaCloud,
         title: "Cloud Engineers",
-        description: "Designing and managing cloud infrastructure on AWS, Azure, and GCP — focused on reliability, scalability, and cost efficiency.",
+        description: "Designing and managing cloud infrastructure on AWS, Azure, and GCP focused on reliability, scalability, and cost efficiency.",
         skills: ["AWS", "Azure", "GCP", "Terraform"],
         iconColor: "#0891b2",
         badgeBg: "#cffafe",
@@ -178,7 +178,7 @@ export default function OurTeam() {
             Our Team
           </h1>
           <p className="text-[17px] text-gray-700 leading-[2] max-w-[860px]">
-            Logicsoft Technologies is built on people — engineers, analysts, designers,
+            Logicsoft Technologies is built on people engineers, analysts, designers,
             and consultants who bring deep technical expertise and genuine accountability
             to every project. Each role is staffed to match your project's specific
             demands, ensuring optimal performance and cost efficiency.

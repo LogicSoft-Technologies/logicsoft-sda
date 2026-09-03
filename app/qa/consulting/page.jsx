@@ -1,5 +1,6 @@
 "use client";
-// app/qa/consulting/page.jsx
+// app/qa/consulting/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function QAConsultingPage() {
@@ -8,14 +9,14 @@ export default function QAConsultingPage() {
       breadcrumbs={[["Testing & QA", "/software-testing"], ["QA Consulting"]]}
       eyebrow="Testing & QA"
       title="QA Consulting"
-      subtitle="Expert guidance on test strategy, toolchain selection, automation architecture, and quality engineering processes — for teams that want to own their quality function better."
+      subtitle="Expert guidance on test strategy, toolchain selection, automation architecture, and quality engineering processes for teams that want to own their quality function better."
       stats={[
         { value: "50+", label: "QA assessments delivered" },
         { value: "80%+", label: "Target automation coverage" },
         { value: "QA maturity", label: "Framework-led approach" },
       ]}
       ctaTitle="Improve your quality engineering"
-      ctaSub="Free QA maturity assessment — benchmarked against industry best practice."
+      ctaSub="Free QA maturity assessment benchmarked against industry best practice."
     >
       <Label>QA consulting services</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
@@ -23,8 +24,8 @@ export default function QAConsultingPage() {
         <CapCard icon="🏗️" title="Test Strategy Design" body="Risk-based test strategy aligned to your product type, release cadence, and team structure." />
         <CapCard icon="🤖" title="Automation Architecture" body="Framework selection, tool evaluation, and automation pyramid design for your specific context." />
         <CapCard icon="📋" title="Process Improvement" body="Shift-left testing practices, definition of done criteria, and QA integration into CI/CD pipelines." />
-        <CapCard icon="👥" title="Team Capability Building" body="Coaching, training, and mentoring for your QA engineers — building internal expertise permanently." />
-        <CapCard icon="📊" title="Quality Metrics" body="KPI framework design — defect escape rate, test coverage, mean time to detect, and more." />
+        <CapCard icon="👥" title="Team Capability Building" body="Coaching, training, and mentoring for your QA engineers, building internal expertise permanently." />
+        <CapCard icon="📊" title="Quality Metrics" body="KPI framework design, defect escape rate, test coverage, mean time to detect, and more." />
       </div>
 
       <Divider />

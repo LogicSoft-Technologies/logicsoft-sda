@@ -1,5 +1,6 @@
 "use client";
-// app/testing/security/page.jsx
+// app/testing/security/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function SecurityTestingPage() {
@@ -8,7 +9,7 @@ export default function SecurityTestingPage() {
       breadcrumbs={[["Testing & QA", "/software-testing"], ["Security Testing"]]}
       eyebrow="Testing & QA"
       title="Security Testing"
-      subtitle="Systematic identification of vulnerabilities in your applications before attackers find them — through code analysis, dynamic scanning, and manual verification."
+      subtitle="Systematic identification of vulnerabilities in your applications before attackers find them through code analysis, dynamic scanning, and manual verification."
       stats={[
         { value: "OWASP Top 10", label: "Baseline for every engagement" },
         { value: "100+", label: "Security assessments conducted" },
@@ -19,12 +20,12 @@ export default function SecurityTestingPage() {
     >
       <Label>Security testing techniques</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="🔍" title="Static Analysis (SAST)" body="Automated source code scanning for vulnerability patterns — SQL injection, XSS, insecure deserialization, and more." />
-        <CapCard icon="⚡" title="Dynamic Analysis (DAST)" body="Live application scanning — finding vulnerabilities in a running application without access to source code." />
-        <CapCard icon="📦" title="Dependency Scanning" body="Third-party library vulnerability scanning against CVE databases — finding risks in your supply chain." />
+        <CapCard icon="🔍" title="Static Analysis (SAST)" body="Automated source code scanning for vulnerability patterns include SQL injection, XSS, insecure deserialization, and more." />
+        <CapCard icon="⚡" title="Dynamic Analysis (DAST)" body="Live application scanning to find vulnerabilities in a running application without access to source code." />
+        <CapCard icon="📦" title="Dependency Scanning" body="Third-party library vulnerability scanning against CVE databases and finding risks in your supply chain." />
         <CapCard icon="🔐" title="Authentication Testing" body="OAuth flows, session management, token handling, MFA bypass, and privilege escalation testing." />
-        <CapCard icon="🌐" title="API Security Testing" body="REST and GraphQL API security — authentication, authorisation, input validation, and rate limiting." />
-        <CapCard icon="📋" title="Compliance Testing" body="GDPR, PCI-DSS, HIPAA, and ISO 27001 — control validation and gap analysis against standards." />
+        <CapCard icon="🌐" title="API Security Testing" body="REST and GraphQL API security, authentication, authorisation, input validation, and rate limiting." />
+        <CapCard icon="📋" title="Compliance Testing" body="GDPR, PCI-DSS, HIPAA, and ISO 27001 control validation and gap analysis against standards." />
       </div>
 
       <Divider />

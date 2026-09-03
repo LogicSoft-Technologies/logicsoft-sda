@@ -70,7 +70,7 @@ const PROCESS = [
 ];
 
 const STATS = [
-  { value: "100+",  label: "Frontend projects delivered" },
+  { value: "20+",  label: "Frontend projects delivered" },
   { value: "<2s",   label: "Target Time to Interactive"  },
   { value: "WCAG",  label: "2.1 AA on every product"     },
   { value: "100%",  label: "Code reviewed"               },

@@ -9,7 +9,7 @@ export default function SoftwareOutsourcingPage() {
       breadcrumbs={[["Software Development", "/software-development/services"], ["Outsourcing"]]}
       eyebrow="Software Development"
       title="Software Outsourcing"
-      subtitle="Delegate your software development to a trusted partner and focus your internal team on strategy, product decisions, and customer relationships."
+      subtitle="Delegate your software development to a trusted partner and focus your internal team on strategy, product decisions and customer relationships."
       stats={[
         { value: "20+", label: "Active outsourcing partnerships" },
         { value: "60%", label: "Average cost saving vs. in-house hiring" },

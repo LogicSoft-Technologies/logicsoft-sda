@@ -19,10 +19,12 @@ const NAV_SERVICES = [
     accent: "#1f6fb2",
     bg: "#eff6ff",
     tagline: "Scalable, accessible web applications from frontend to backend built for performance and longevity.",
+    tagline: "Scalable, accessible web applications from frontend to backend built for performance and longevity.",
     links: [
       {
         label: "Frontend Development",
         href:  "/services/web-development/frontend",
+        desc:  "React, Next.js, and Vue pixel-perfect, performant, accessible UI engineering.",
         desc:  "React, Next.js, and Vue pixel-perfect, performant, accessible UI engineering.",
       },
       {
@@ -71,6 +73,7 @@ const NAV_SERVICES = [
       {
         label: "Cyber Security",
         href:  "/services/security/cyber-security",
+        desc:  "Full-spectrum security practice offensive testing and defensive architecture.",
         desc:  "Full-spectrum security practice offensive testing and defensive architecture.",
       },
       {
@@ -144,14 +147,14 @@ const SERVICE = {
   description:  "We design and build software that solves real operational problems. Every system we deliver is architected from scratch for your specific context — your data model, your integrations, your users, your growth trajectory. No off-the-shelf shortcuts.",
 
   stats: [
-    { val: "300+", label: "Custom solutions delivered" },
+    { val: "20+", label: "Custom solutions delivered" },
     { val: "98%",  label: "On-time delivery rate"      },
-    { val: "12+",  label: "Years of engineering"       },
+    { val: "5+",  label: "Years of engineering"       },
     { val: "5★",   label: "Avg. client satisfaction"  },
   ],
 
   outcomes: [
-    { icon: Zap,    title: "Faster time-to-value",    body: "Two-week sprints with working software at every milestone — not just at the end of the engagement." },
+    { icon: Zap,    title: "Faster time-to-value",    body: "Two-week sprints with working software at every milestone, not just at the end of the engagement." },
     { icon: Shield, title: "Built to last",            body: "Production-grade code with >80% test coverage, OWASP compliance, and architecture designed for your next 5 years." },
     { icon: Users,  title: "Full IP ownership",        body: "Complete source code, documentation, and architecture diagrams transferred to you at project close." },
     { icon: Globe,  title: "Integrates with anything", body: "RESTful and GraphQL APIs, event-driven connectors, and third-party integrations handled as first-class concerns." },
@@ -170,9 +173,11 @@ const SERVICE = {
     { n: "01", title: "Discovery & Requirements", duration: "1–2 weeks",  body: "Structured workshops to define functional requirements, technical constraints, integration points, and success criteria. We produce a written specification before a line of production code is written.", deliverable: "Requirements specification document" },
     { n: "02", title: "Architecture & Design",    duration: "1–2 weeks",  body: "System architecture, data model, API surface, infrastructure design, and security model documented and reviewed with your team before development begins.", deliverable: "Architecture blueprint + ERD" },
     { n: "03", title: "Iterative Development",    duration: "4–16 weeks", body: "Two-week sprints with a working, deployable build at the end of each. You test real software, not wireframes priorities can be refined based on what you see.", deliverable: "Working software every 2 weeks" },
+    { n: "02", title: "Architecture & Design",    duration: "1–2 weeks",  body: "System architecture, data model, API surface, infrastructure design, and security model documented and reviewed with your team before development begins.", deliverable: "Architecture blueprint + ERD" },
+    { n: "03", title: "Iterative Development",    duration: "4–16 weeks", body: "Two-week sprints with a working, deployable build at the end of each. You test real software, not wireframes priorities can be refined based on what you see.", deliverable: "Working software every 2 weeks" },
     { n: "04", title: "QA & Security Review",     duration: "1–2 weeks",  body: "Automated and manual testing, OWASP Top 10 validation, performance benchmarking, and load testing before every production release.", deliverable: "QA sign-off report + pentest summary" },
     { n: "05", title: "Deployment & Handover",    duration: "1 week",     body: "Production deployment with full CI/CD pipeline, monitoring setup, runbook documentation, and a structured knowledge transfer session for your team.", deliverable: "Deployed system + runbooks + docs" },
-    { n: "06", title: "Post-Launch Support",      duration: "Ongoing",    body: "Optional SLA-backed support — bug fixes, dependency updates, performance monitoring, and a quarterly improvement review.", deliverable: "Monthly health reports + SLA" },
+    { n: "06", title: "Post-Launch Support",      duration: "Ongoing",    body: "Optional SLA-backed support bug fixes, dependency updates, performance monitoring, and a quarterly improvement review.", deliverable: "Monthly health reports + SLA" },
   ],
 
   deliverables: [
@@ -211,6 +216,7 @@ const SERVICE = {
   },
 
   faqs: [
+    { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
     { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
     { q: "What happens if requirements change mid-project?", a: "We use a formal change control process: any scope change is scoped, priced, and approved before it enters development. This keeps budgets predictable while giving you the flexibility to evolve priorities." },
     { q: "Do you work with our existing development team?",  a: "Yes many engagements involve our engineers working alongside your team. We adapt to your branching strategy, tools, and review process. We can also provide a standalone delivery squad that integrates into your Jira and Slack." },
@@ -794,6 +800,7 @@ export default function ServiceDetailPage() {
               </div>
               <h2 className="text-[32px] lg:text-[44px] font-serif text-white leading-tight mb-4">Ready to scope your project?</h2>
               <p className="text-[14.5px] text-white/45 leading-[1.9] max-w-lg">
+                Tell us what you're building. A LogicSoft principal will review your brief and schedule a scoping call at no cost, with no commitment.
                 Tell us what you're building. A LogicSoft principal will review your brief and schedule a scoping call at no cost, with no commitment.
               </p>
             </motion.div>
