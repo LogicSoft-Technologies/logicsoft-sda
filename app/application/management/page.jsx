@@ -1,5 +1,6 @@
 "use client";
-// app/application/management/page.jsx
+// app/application/management/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationManagementPage() {
@@ -8,7 +9,7 @@ export default function ApplicationManagementPage() {
       breadcrumbs={[["Application Services", "/application/services"], ["Application Management"]]}
       eyebrow="Application Services"
       title="Application Management"
-      subtitle="We take responsibility for the day-to-day operation, performance, and evolution of your applications — so your team can focus on building the future, not maintaining the present."
+      subtitle="We take responsibility for the day-to-day operation, performance, and evolution of your applications so your team can focus on building the future, not maintaining the present."
       stats={[
         { value: "99.9%", label: "Uptime SLA" },
         { value: "<2hr", label: "P1 incident response" },
@@ -19,7 +20,7 @@ export default function ApplicationManagementPage() {
     >
       <Label>Management scope</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="📊" title="Performance Monitoring" body="Real-time dashboards, latency tracking, error rate alerting, and database query analysis — always-on visibility." />
+        <CapCard icon="📊" title="Performance Monitoring" body="Real-time dashboards, latency tracking, error rate alerting, and database query analysis always-on visibility." />
         <CapCard icon="🔒" title="Security Patching" body="Dependency vulnerability scanning, OS patches, and security updates applied on a structured cadence." />
         <CapCard icon="💾" title="Backup & Recovery" body="Automated backups, regular recovery drills, and documented RTO/RPO commitments." />
         <CapCard icon="📈" title="Capacity Management" body="Proactive scaling recommendations and infrastructure right-sizing based on usage trends." />

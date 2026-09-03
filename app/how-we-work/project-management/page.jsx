@@ -25,7 +25,7 @@ const DISCIPLINES = [
   },
   {
     n: "05", title: "Change Management", href: "/how-we-work/change-requests",
-    desc: "Controlled change logging, impact assessment, and approval workflows — scope changes are never invisible or uncosted.",
+    desc: "Controlled change logging, impact assessment, and approval workflows and alsoscope changes are never invisible or uncosted.",
   },
   {
     n: "06", title: "Success Measurement", href: "/how-we-work/success-measurement",
@@ -33,7 +33,7 @@ const DISCIPLINES = [
   },
   {
     n: "07", title: "Project Reporting",   href: "/how-we-work/reporting",
-    desc: "Sprint reports, monthly steering packs, quality metrics, and closure reports — scheduled, written, and audience-appropriate.",
+    desc: "Sprint reports, monthly steering packs, quality metrics, and closure reports scheduled, written, and audience-appropriate.",
   },
   {
     n: "08", title: "Collaboration",       href: "/how-we-work/collaboration",
@@ -43,7 +43,7 @@ const DISCIPLINES = [
 
 const STATS = [
   { val: "8",    label: "Management disciplines" },
-  { val: "30+", label: "Projects governed"      },
+  { val: "20+", label: "Projects governed"      },
   { val: "20+",  label: "Projects calibrated"      },
   { val: "98%",  label: "On-time delivery rate"  },
 ];

@@ -55,33 +55,7 @@ const departments = [
   {
     label: "Data & AI",
     roles: [
-      {
-        icon: FaDatabase,
-        title: "Data Engineers",
-        description: "Building reliable data pipelines, warehouses, and integration layers that power business intelligence across the organisation.",
-        skills: ["Apache Kafka", "dbt", "AWS Glue", "Snowflake"],
-        iconColor: "#b45309",
-        badgeBg: "#fef3c7",
-        badgeBorder: "#fde68a",
-      },
-      {
-        icon: FaChartBar,
-        title: "Data Analysts & BI Specialists",
-        description: "Transforming raw data into actionable dashboards, reports, and decision-ready insights for enterprise clients.",
-        skills: ["Power BI", "Tableau", "SQL", "Python"],
-        iconColor: "#d97706",
-        badgeBg: "#fff7ed",
-        badgeBorder: "#fed7aa",
-      },
-      {
-        icon: FaBrain,
-        title: "Machine Learning Engineers",
-        description: "Designing, training, and deploying ML models for prediction, classification, NLP, and computer vision use cases.",
-        skills: ["TensorFlow", "PyTorch", "scikit-learn", "MLflow"],
-        iconColor: "#dc2626",
-        badgeBg: "#fee2e2",
-        badgeBorder: "#fecaca",
-      },
+  
       {
         icon: FaRobot,
         title: "AI & Automation Engineers",
@@ -99,7 +73,7 @@ const departments = [
       {
         icon: FaCloud,
         title: "Cloud Engineers",
-        description: "Designing and managing cloud infrastructure on AWS, Azure, and GCP — focused on reliability, scalability, and cost efficiency.",
+        description: "Designing and managing cloud infrastructure on AWS, Azure, and GCP focused on reliability, scalability, and cost efficiency.",
         skills: ["AWS", "Azure", "GCP", "Terraform"],
         iconColor: "#0891b2",
         badgeBg: "#cffafe",
@@ -114,15 +88,7 @@ const departments = [
         badgeBg: "#f1f5f9",
         badgeBorder: "#cbd5e1",
       },
-      {
-        icon: FaNetworkWired,
-        title: "Network & Infrastructure Engineers",
-        description: "Managing enterprise networks, server environments, and hybrid cloud setups for high availability and business continuity.",
-        skills: ["Cisco", "VPN", "Linux", "VMware"],
-        iconColor: "#1d4ed8",
-        badgeBg: "#dbeafe",
-        badgeBorder: "#bfdbfe",
-      },
+      
       {
         icon: FaShieldAlt,
         title: "Cybersecurity Engineers",
@@ -214,7 +180,7 @@ export default function OurTeam() {
             Our Team
           </h1>
           <p className="text-[17px] text-gray-700 leading-[2] max-w-[860px]">
-            Logicsoft Technologies is built on people — engineers, analysts, designers,
+            Logicsoft Technologies is built on people engineers, analysts, designers,
             and consultants who bring deep technical expertise and genuine accountability
             to every project. Each role is staffed to match your project's specific
             demands, ensuring optimal performance and cost efficiency.

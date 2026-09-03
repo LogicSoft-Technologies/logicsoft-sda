@@ -62,7 +62,7 @@ const DROPDOWNS = {
   services: {
     featured: {
       label: "End-to-End Engineering",
-      desc: "From architecture to deployment — we own the full delivery cycle.",
+      desc: "From architecture to deployment we own the full delivery cycle.",
       href: "/service",
     },
     columns: [

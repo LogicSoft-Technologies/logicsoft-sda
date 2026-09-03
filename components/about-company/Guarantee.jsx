@@ -40,14 +40,14 @@ const guarantees = [
   {
     icon: FaExclamationTriangle,
     title: "Comprehensive Risk Management",
-    description: "We evaluate operational, business, technology, and external risk factors — then plan mitigation strategies so we can react quickly and confidently to any disruption.",
+    description: "We evaluate operational, business, technology, and external risk factors then plan mitigation strategies so we can react quickly and confidently to any disruption.",
     href: "/how-we-work/risk-management",
     iconColor: "#dc2626", badgeBg: "#fee2e2", badgeBorder: "#fecaca",
   },
   {
     icon: FaRocket,
     title: "Agile Delivery",
-    description: "We manage evolving requirements by working in sprints — each covering a full cycle of feature ideation, development, testing, and deployment from a prioritised backlog.",
+    description: "We manage evolving requirements by working in sprints, each covering a full cycle of feature ideation, development, testing, and deployment from a prioritised backlog.",
     href: "/how-we-work/agile",
     iconColor: "#d97706", badgeBg: "#fef3c7", badgeBorder: "#fde68a",
   },
@@ -82,7 +82,7 @@ const guarantees = [
   {
     icon: FaChartBar,
     title: "Routine Reporting",
-    description: "We report regularly on agreed KPIs and provide progress forecasts so clients are always in the loop — no surprises, no ambiguity.",
+    description: "We report regularly on agreed KPIs and provide progress forecasts so clients are always in the loop with no surprises, no ambiguity.",
     href: "/how-we-work/reporting",
     iconColor: "#0891b2", badgeBg: "#cffafe", badgeBorder: "#a5f3fc",
   },

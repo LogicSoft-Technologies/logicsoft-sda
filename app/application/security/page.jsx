@@ -1,5 +1,6 @@
 "use client";
-// app/application/security/page.jsx
+// app/application/security/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationSecurityPage() {
@@ -8,7 +9,7 @@ export default function ApplicationSecurityPage() {
       breadcrumbs={[["Application Services", "/application/services"], ["Application Security"]]}
       eyebrow="Application Services"
       title="Application Security"
-      subtitle="We secure your applications at every layer — from code review and penetration testing to runtime protection and compliance validation."
+      subtitle="We secure your applications at every layer from code review and penetration testing to runtime protection and compliance validation."
       stats={[
         { value: "OWASP", label: "Top 10 compliance standard" },
         { value: "100+", label: "Security assessments conducted" },
@@ -19,7 +20,7 @@ export default function ApplicationSecurityPage() {
     >
       <Label>Security services</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="🔍" title="Security Code Review" body="Manual and automated review of source code for vulnerabilities — SQL injection, XSS, auth flaws, and insecure dependencies." />
+        <CapCard icon="🔍" title="Security Code Review" body="Manual and automated review of source code for vulnerabilities, SQL injection, XSS, auth flaws, and insecure dependencies." />
         <CapCard icon="🎯" title="Penetration Testing" body="Simulated attacks on your web, mobile, and API surfaces. OWASP-aligned methodology with a detailed findings report." />
         <CapCard icon="🔐" title="Auth & Identity Review" body="OAuth flows, session management, token handling, and privilege escalation assessment." />
         <CapCard icon="🏗️" title="Secure Architecture Design" body="Threat modelling, trust boundary analysis, and secure-by-design principles applied from the blueprint stage." />

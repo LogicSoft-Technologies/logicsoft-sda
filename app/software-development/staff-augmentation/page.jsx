@@ -12,8 +12,8 @@ export default function StaffAugmentationPage() {
       subtitle="Extend your engineering team with senior LogicSoft engineers embedded in your workflow, tools, and culture, without the overhead of permanent hiring."
       stats={[
         { value: "48hr", label: "Average onboarding time" },
-        { value: "15+", label: "Engineers available across specialisms" },
-        { value: "30-day", label: "Notice period — no lock-in" },
+        { value: "10+", label: "Engineers available across specialisms" },
+        { value: "30-day", label: "Notice period, no lock-in" },
       ]}
       ctaTitle="Expand your team this week"
       ctaSub="Tell us the skills you need and we'll match you within 24 hours."
