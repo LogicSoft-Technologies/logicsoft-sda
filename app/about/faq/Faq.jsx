@@ -64,7 +64,7 @@ const FAQ_ITEMS = [
   {
     id: 9, category: "Pricing",
     q: "What pricing models do you offer?",
-    a: "We offer four engagement models: Fixed Price (agreed scope, agreed cost), Time & Materials (flexible scope, billed on actual hours), Dedicated Team (a full embedded engineering team), and Support Retainer (monthly hours block for ongoing maintenance). Hybrid models are also available — for example, Fixed Price Phase 1 followed by T&M for ongoing development.",
+    a: "We offer four engagement models: Fixed Price (agreed scope, agreed cost), Time & Materials (flexible scope, billed on actual hours), Dedicated Team (a full embedded engineering team), and Support Retainer (monthly hours block for ongoing maintenance). Hybrid models are also available, for example, Fixed Price Phase 1 followed by T&M for ongoing development.",
     related: ["/about/price-models"],
   },
   {

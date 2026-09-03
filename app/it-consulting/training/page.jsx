@@ -12,7 +12,7 @@ export default function UserTrainingPage() {
       subtitle="Practical, role-specific technology training that drives real adoption not generic slide decks. We design and deliver training that makes technology investments actually work."
       stats={[
         { value: "95%", label: "Post-training adoption rate" },
-        { value: "500+", label: "Users trained across programmes" },
+        { value: "30+", label: "Users trained across programmes" },
         { value: "Custom", label: "All training built for your context" },
       ]}
       ctaTitle="Design a training programme"

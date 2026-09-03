@@ -63,11 +63,9 @@ const TECH_SECTIONS = [
     summary: "Native and hybrid mobile apps for iOS and Android platforms.",
     items: [
       { name: "Swift",    src: dv("swift",    "plain-wordmark") },
-      { name: "Android",  src: dv("android",  "plain-wordmark") },
-      { name: "Kotlin",   src: dv("kotlin",   "plain-wordmark") },
-      { name: "Xcode",    src: "/images/xcode.png"    },
-      { name: "Firebase", src: dv("firebase", "plain-wordmark") },
       { name: "Flutter",  src: "/images/flutter-logo1.png"},
+      { name: "Expo", src: "/images/expo.png" },
+      { name: "React Native", src: "/images/react-native.png" },
     ],
   },
   {

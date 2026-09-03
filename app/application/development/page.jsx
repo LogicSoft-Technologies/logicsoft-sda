@@ -11,7 +11,7 @@ export default function ApplicationDevelopmentPage() {
       title="Application Development"
       subtitle="We build reliable, performant, and maintainable applications across web, mobile, and desktop platforms designed for your users and engineered for your engineers."
       stats={[
-        { value: "300+", label: "Applications built" },
+        { value: "20+", label: "Applications built" },
         { value: "98%", label: "On-schedule delivery rate" },
         { value: "5★", label: "Average client satisfaction score" },
       ]}
