@@ -1,5 +1,6 @@
 "use client";
-// app/application/cloud/page.jsx
+// app/application/cloud/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function CloudApplicationDevelopmentPage() {
@@ -8,7 +9,7 @@ export default function CloudApplicationDevelopmentPage() {
       breadcrumbs={[["Application Services", "/application/services"], ["Cloud Application Development"]]}
       eyebrow="Application Services"
       title="Cloud Application Development"
-      subtitle="We design and build cloud-native applications engineered for elastic scale, high availability, and total cost efficiency — on AWS, Azure, or GCP."
+      subtitle="We design and build cloud-native applications engineered for elastic scale, high availability, and total cost efficiency on AWS, Azure, or GCP."
       stats={[
         { value: "AWS", label: "Advanced tier partner" },
         { value: "60%", label: "Average infra cost reduction post-migration" },
@@ -21,10 +22,10 @@ export default function CloudApplicationDevelopmentPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         <CapCard icon="🏗️" title="Cloud-Native Architecture" body="Microservices, event-driven systems, and serverless functions designed for the specific guarantees cloud infrastructure provides." />
         <CapCard icon="🐳" title="Containerisation & Orchestration" body="Docker and Kubernetes deployments with auto-scaling, rolling updates, and zero-downtime deploys." />
-        <CapCard icon="⚡" title="Serverless Engineering" body="AWS Lambda, Azure Functions, and GCP Cloud Run — event-triggered compute with zero idle cost." />
+        <CapCard icon="⚡" title="Serverless Engineering" body="AWS Lambda, Azure Functions, and GCP Cloud Run event-triggered compute with zero idle cost." />
         <CapCard icon="🔗" title="API & Integration Layer" body="RESTful and GraphQL APIs, message queues, and event buses that connect your cloud services reliably." />
         <CapCard icon="📊" title="Observability Stack" body="Distributed tracing, structured logging, and metrics dashboards so you understand exactly what's happening in production." />
-        <CapCard icon="🔐" title="Cloud Security" body="IAM design, secret management, VPC architecture, and encryption at rest and in transit — built in from day one." />
+        <CapCard icon="🔐" title="Cloud Security" body="IAM design, secret management, VPC architecture, and encryption at rest and in transit built in from day one." />
       </div>
 
       <Divider />

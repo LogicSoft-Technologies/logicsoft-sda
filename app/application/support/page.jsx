@@ -1,5 +1,6 @@
 "use client";
-// app/application/support/page.jsx
+// app/application/support/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationSupportPage() {
@@ -8,7 +9,7 @@ export default function ApplicationSupportPage() {
       breadcrumbs={[["Application Services", "/application/services"], ["Maintenance & Support"]]}
       eyebrow="Application Services"
       title="Application Maintenance & Support"
-      subtitle="Structured, SLA-backed support that keeps your applications healthy, secure, and improving — without the overhead of a full in-house operations team."
+      subtitle="Structured, SLA-backed support that keeps your applications healthy, secure, and improving without the overhead of a full in-house operations team."
       stats={[
         { value: "99.9%", label: "Uptime SLA available" },
         { value: "<2hr", label: "Critical response time" },
@@ -19,12 +20,12 @@ export default function ApplicationSupportPage() {
     >
       <Label>What's covered</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="🐛" title="Bug Fixes" body="Prioritised resolution of functional defects — critical issues addressed within agreed SLA windows." />
+        <CapCard icon="🐛" title="Bug Fixes" body="Prioritised resolution of functional defects critical issues addressed within agreed SLA windows." />
         <CapCard icon="🔒" title="Security Updates" body="Dependency patching, vulnerability remediation, and security advisory monitoring." />
         <CapCard icon="📈" title="Performance Tuning" body="Query optimisation, caching improvements, and infrastructure right-sizing based on usage patterns." />
-        <CapCard icon="♻️" title="Minor Enhancements" body="Feature updates, UI improvements, and configuration changes — included in monthly support hours." />
+        <CapCard icon="♻️" title="Minor Enhancements" body="Feature updates, UI improvements, and configuration changes included in monthly support hours." />
         <CapCard icon="👀" title="Proactive Monitoring" body="Uptime, error rate, and performance monitoring with alerting before users notice degradation." />
-        <CapCard icon="📋" title="Compliance Maintenance" body="Ongoing GDPR, PCI-DSS, and ISO 27001 hygiene — keeping certifications current." />
+        <CapCard icon="📋" title="Compliance Maintenance" body="Ongoing GDPR, PCI-DSS, and ISO 27001 hygiene keeping certifications current." />
       </div>
 
       <Divider />

@@ -15,7 +15,7 @@ export const BRAND = {
   orangeLight: "#FF7A00",
   bg: "#f4f5f7",
   border: "#e2e5e9",
-  companyEmail: "contact@logicsofttechnologies.online",
+  companyEmail: "contact@logicsofttechnologies.com",
 };
 
 export function logoAttachment() {

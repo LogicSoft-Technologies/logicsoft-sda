@@ -1,5 +1,6 @@
 "use client";
-// app/software-development/support/page.jsx
+// app/software-development/support/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function PostLaunchSupportPage() {
@@ -30,7 +31,7 @@ export default function PostLaunchSupportPage() {
         <div>
           <Label>What's covered</Label>
           <div className="space-y-6">
-            <Step n="01" title="Incident response" body="Rapid triage, root cause analysis, and resolution — with a post-incident report for every P1 event." />
+            <Step n="01" title="Incident response" body="Rapid triage, root cause analysis, and resolution with a post-incident report for every P1 event." />
             <Step n="02" title="Proactive monitoring" body="Uptime, error rates, performance metrics, and security events monitored continuously." />
             <Step n="03" title="Patch management" body="Dependency updates, security patches, and infrastructure upgrades applied on a regular cadence." />
             <Step n="04" title="Continuous improvement" body="Quarterly roadmap of technical debt reduction, performance wins, and reliability improvements." />

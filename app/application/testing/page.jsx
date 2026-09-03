@@ -1,5 +1,6 @@
 "use client";
-// app/application/testing/page.jsx
+// app/application/testing/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function ApplicationTestingPage() {
@@ -8,7 +9,7 @@ export default function ApplicationTestingPage() {
       breadcrumbs={[["Application Services", "/application/services"], ["Application Testing"]]}
       eyebrow="Application Services"
       title="Application Testing"
-      subtitle="Comprehensive testing across functional, performance, security, and usability dimensions — so applications reach production ready to handle real users at scale."
+      subtitle="Comprehensive testing across functional, performance, security, and usability dimensions so applications reach production ready to handle real users at scale."
       stats={[
         { value: "95%", label: "Defect detection rate before go-live" },
         { value: "Zero", label: "Critical defect policy in production" },
@@ -19,7 +20,7 @@ export default function ApplicationTestingPage() {
     >
       <Label>Testing services</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="✅" title="Functional Testing" body="Verify that every feature behaves exactly as specified — manual and automated across browsers and devices." />
+        <CapCard icon="✅" title="Functional Testing" body="Verify that every feature behaves exactly as specified manual and automated across browsers and devices." />
         <CapCard icon="⚡" title="Performance Testing" body="Load, stress, and endurance testing to validate behaviour under peak traffic conditions." />
         <CapCard icon="🔐" title="Security Testing" body="OWASP Top 10 validation, pen testing, and static analysis to identify exploitable vulnerabilities." />
         <CapCard icon="👤" title="Usability Testing" body="Real-user sessions with structured protocols to identify UX friction before launch." />

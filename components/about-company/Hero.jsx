@@ -6,14 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const heroImages = [
-  { src: "/images/company.png", alt: "Logicsoft Lagos HQ"      },
-  { src: "/images/eng-at-work.png",    alt: "Engineering team at work" },
-  { src: "/images/client-collaboration-2.png",    alt: "Client collaboration"     },
+  { src: "/images/company.png", alt: "Logicsoft Lagos HQ" },
+  { src: "/images/eng-at-work.png", alt: "Engineering team at work" },
+  { src: "/images/client-collaboration-2.png", alt: "Client collaboration" },
 ];
 
 const signals = [
   "5+ years delivering enterprise software",
-  "100+ projects shipped across 30+ industries",
+  "20+ projects shipped across 10+ industries",
   "Offices in Lagos, Abuja and Edo",
 ];
 
@@ -21,7 +21,10 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setCurrent(p => (p + 1) % heroImages.length), 5000);
+    const t = setInterval(
+      () => setCurrent((p) => (p + 1) % heroImages.length),
+      5000,
+    );
     return () => clearInterval(t);
   }, []);
 
@@ -34,12 +37,14 @@ export default function HeroSection() {
       aria-label="About Logicsoft Technologies"
     >
       <div className="max-w-[82rem] mx-auto px-4 sm:px-6">
-
         <nav
           aria-label="Breadcrumb"
           className="flex items-center gap-1.5 pt-6 sm:pt-8 pb-8 sm:pb-12 text-[12px] text-gray-400 tracking-wide"
         >
-          <Link href="/" className="hover:text-[#1f6fb2] transition-colors duration-200">
+          <Link
+            href="/"
+            className="hover:text-[#1f6fb2] transition-colors duration-200"
+          >
             Home
           </Link>
           <span className="text-gray-300">›</span>
@@ -47,13 +52,13 @@ export default function HeroSection() {
         </nav>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start pb-14 sm:pb-20">
-
           <div>
             <h1 className="text-[28px] sm:text-[36px] lg:text-[50px] font-serif font-normal text-[#1f3a5f] leading-[1.12] mb-3 sm:mb-4">
               About LogicSoft
             </h1>
 
             <h2 className="text-[16px] sm:text-[18px] text-[#1f6fb2] font-medium mb-4 sm:mb-6 leading-snug">
+              {/* Your Partner for Project Success */}
               Your Partner for Project Success
             </h2>
 
@@ -61,13 +66,20 @@ export default function HeroSection() {
               Founded as Logicsoft Technologies, we deliver IT consulting and
               software development services with a strong focus on transparency,
               budget control, and consistently high service quality. Our clients
-              trust us to build scalable, secure, and future-ready digital solutions.
+              trust us to build scalable, secure, and future-ready digital
+              solutions
             </p>
 
             <ul className="flex flex-col gap-2 sm:gap-2.5 mb-8 sm:mb-10">
               {signals.map((s, i) => (
-                <li key={i} className="flex items-center gap-2.5 text-[13px] sm:text-[13.5px] text-gray-500">
-                  <CheckCircle2 className="w-4 h-4 text-[#1f6fb2] shrink-0" aria-hidden="true" />
+                <li
+                  key={i}
+                  className="flex items-center gap-2.5 text-[13px] sm:text-[13.5px] text-gray-500"
+                >
+                  <CheckCircle2
+                    className="w-4 h-4 text-[#1f6fb2] shrink-0"
+                    aria-hidden="true"
+                  />
                   {s}
                 </li>
               ))}
@@ -127,7 +139,9 @@ export default function HeroSection() {
                   onClick={() => setCurrent(idx)}
                   aria-label={`Show: ${img.alt}`}
                   className={`h-[3px] transition-all duration-300 ${
-                    idx === current ? "w-8 bg-[#1f6fb2]" : "w-4 bg-gray-200 hover:bg-gray-300"
+                    idx === current
+                      ? "w-8 bg-[#1f6fb2]"
+                      : "w-4 bg-gray-200 hover:bg-gray-300"
                   }`}
                 />
               ))}
@@ -136,7 +150,6 @@ export default function HeroSection() {
               </span>
             </div>
           </div>
-
         </div>
       </div>
     </motion.section>

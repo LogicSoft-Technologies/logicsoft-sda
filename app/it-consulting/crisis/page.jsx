@@ -1,5 +1,6 @@
 "use client";
-// app/it-consulting/crisis/page.jsx
+// app/it-consulting/crisis/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function CrisisManagementPage() {
@@ -8,7 +9,7 @@ export default function CrisisManagementPage() {
       breadcrumbs={[["IT Consulting", "/it-consulting"], ["Crisis Management"]]}
       eyebrow="IT Consulting"
       title="IT Crisis Management"
-      subtitle="Rapid response when technology failures, security breaches, or major project failures threaten your operations. We stabilise, investigate, and restore — fast."
+      subtitle="Rapid response when technology failures, security breaches, or major project failures threaten your operations. We stabilise, investigate, and restore fast."
       stats={[
         { value: "<4hr", label: "Initial response time" },
         { value: "24/7", label: "Crisis response availability" },
@@ -19,11 +20,11 @@ export default function CrisisManagementPage() {
     >
       <Label>Crisis scenarios we handle</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        <CapCard icon="🔴" title="Production Outages" body="Major system failures, database corruption, and service unavailability — rapid diagnosis and restoration." />
+        <CapCard icon="🔴" title="Production Outages" body="Major system failures, database corruption, and service unavailability, rapid diagnosis and restoration." />
         <CapCard icon="🔐" title="Security Breaches" body="Active incident response for ransomware, data breaches, and unauthorised access events." />
-        <CapCard icon="💸" title="Failed Projects" body="Programme rescue — independent diagnosis, recovery planning, and stabilisation for troubled delivery." />
+        <CapCard icon="💸" title="Failed Projects" body="Programme rescue independent diagnosis, recovery planning, and stabilisation for troubled delivery." />
         <CapCard icon="📉" title="Data Loss Events" body="Emergency data recovery, backup restoration, and forensic analysis of data loss incidents." />
-        <CapCard icon="⚡" title="Infrastructure Failures" body="Cloud region outages, network failures, and hardware incidents — failover and continuity support." />
+        <CapCard icon="⚡" title="Infrastructure Failures" body="Cloud region outages, network failures, and hardware incidents failover and continuity support." />
         <CapCard icon="⚖️" title="Regulatory Events" body="Emergency compliance remediation and legal hold management following regulatory notifications." />
       </div>
 
@@ -42,7 +43,7 @@ export default function CrisisManagementPage() {
         <div>
           <Label>What to do right now</Label>
           <CheckList items={[
-            "Call our crisis line — do not send email for active incidents",
+            "Call our crisis line. Do not send email for active incidents",
             "Do not shut down affected systems before forensic capture",
             "Preserve logs and system state as-is",
             "Identify and brief your internal incident lead",

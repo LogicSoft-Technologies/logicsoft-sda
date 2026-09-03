@@ -23,7 +23,7 @@ const CAPABILITIES = [
     num:"02", icon:BarChart3,
     title:"Business Intelligence & Dashboards",
     accent:"#7c3aed", bg:"#ede9fe",
-    desc:"Self-service BI dashboards built on Looker, Power BI, Tableau, or Metabase — whichever your team already uses. Data models designed so the right people answer their own questions without engineering.",
+    desc:"Self-service BI dashboards built on Looker, Power BI, Tableau, or Metabase whichever your team already uses. Data models designed so the right people answer their own questions without engineering.",
     tags:["Looker","Power BI","Tableau","Metabase","Redash"],
   },
   {
@@ -44,7 +44,7 @@ const CAPABILITIES = [
     num:"05", icon:GitMerge,
     title:"Data Governance & Quality",
     accent:"#8b5cf6", bg:"#f5f3ff",
-    desc:"Data cataloguing, lineage tracking, quality rules, and access control policies. Great Engineering requires trustworthy data — we build the governance layer that makes analysis reliable.",
+    desc:"Data cataloguing, lineage tracking, quality rules, and access control policies. Great Engineering requires trustworthy data we build the governance layer that makes analysis reliable.",
     tags:["dbt tests","Great Expectations","DataHub","Apache Atlas","dbt docs"],
   },
   {
@@ -66,7 +66,7 @@ const STACK_LAYERS = [
 
 const PROCESS = [
   { num:"01", title:"Data Discovery",       desc:"Inventory of all data sources, quality assessment, existing tooling review, and business question prioritisation."             },
-  { num:"02", title:"Architecture Design",  desc:"Data platform architecture chosen based on volume, velocity, cost tolerance, and team capability — not fashion."              },
+  { num:"02", title:"Architecture Design",  desc:"Data platform architecture chosen based on volume, velocity, cost tolerance, and team capability not fashion."              },
   { num:"03", title:"Pipeline Build",       desc:"Data pipelines, transformation models, and quality tests built and deployed. First dashboard delivered within 4 weeks."       },
   { num:"04", title:"Insight & Iteration",  desc:"First insights delivered to stakeholders. Feedback loop established. Models and dashboards iterated based on real use."       },
 ];
@@ -300,7 +300,7 @@ export default function DataAnalytics() {
             <div className="lg:sticky top-[120px]">
               <p className="text-[11px] font-bold text-violet-600 uppercase tracking-[0.16em] mb-4">What we build</p>
               <h3 className="text-[30px] lg:text-[34px] font-serif text-[#1f3a5f] leading-tight mb-5">Six capabilities across the data lifecycle.</h3>
-              <p className="text-[13.5px] text-gray-500 leading-[1.85]">From raw event ingestion to ML in production — we build the whole stack or plug into what you already have.</p>
+              <p className="text-[13.5px] text-gray-500 leading-[1.85]">From raw event ingestion to ML in production, we build the whole stack or plug into what you already have.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CAPABILITIES.map((cap, i) => (

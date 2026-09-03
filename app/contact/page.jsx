@@ -63,8 +63,8 @@ const CHANNELS = [
   {
     icon: Mail,
     label: "Email our team",
-    value: "contact@logicsofttechnologies.online",
-    href: "mailto:contact@logicsofttechnologies.online",
+    value: "contact@logicsofttechnologies.com",
+    href: "mailto:contact@logicsofttechnologies.com",
     sub: "Responses within 24 hours",
   },
   {
@@ -101,15 +101,15 @@ const FAQS = [
   },
   {
     q: "What information should I include about my project?",
-    a: "The more context the better — project scope, timeline, budget range, and any technical constraints. You can also upload documentation or use voice recording. Even a rough brief is enough to get started.",
+    a: "The more context the better project scope, timeline, budget range, and any technical constraints. You can also upload documentation or use voice recording. Even a rough brief is enough to get started.",
   },
   {
     q: "Do you work with startups or only enterprise clients?",
-    a: "We work across the spectrum — from Series A startups to multinational corporations. Engagement size is less important than project clarity and ambition.",
+    a: "We work across the spectrum from Series A startups to multinational corporations. Engagement size is less important than project clarity and ambition.",
   },
   {
     q: "What is the typical process after I submit a form?",
-    a: "A solution architect reviews your submission and schedules a 30-minute discovery call. We then produce a scoped proposal within 5 business days — no cost, no obligation.",
+    a: "A solution architect reviews your submission and schedules a 30-minute discovery call. We then produce a scoped proposal within 5 business days, no cost, no obligation.",
   },
   {
     q: "Are your engagements fixed-price or time-and-materials?",
@@ -598,7 +598,7 @@ export default function ContactPage() {
                   <div className="w-8 h-8 bg-[#1f6fb2] flex items-center justify-center shrink-0"><Clock className="w-4 h-4 text-white" /></div>
                   <p className="text-[13.5px] font-bold text-[#1f3a5f]">24-hour response</p>
                 </div>
-                <p className="text-[12.5px] text-gray-500 leading-relaxed">Every enquiry is reviewed by a solution architect — not an SDR — and responded to within one business day.</p>
+                <p className="text-[12.5px] text-gray-500 leading-relaxed">Every enquiry is reviewed by a solution architect not an SDR and responded to within one business day.</p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.08 }}
@@ -629,7 +629,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[12.5px] font-semibold text-[#1f3a5f] group-hover:text-[#1f6fb2] transition-colors">Media & press enquiries</p>
-                    <p className="text-[11px] text-gray-400">contact@logicsofttechnologies.online</p>
+                    <p className="text-[11px] text-gray-400">contact@logicsofttechnologies.com</p>
                   </div>
                   <ArrowRight className="w-3.5 h-3.5 text-gray-200 group-hover:text-[#1f6fb2] ml-auto transition-all group-hover:translate-x-0.5" />
                 </a>

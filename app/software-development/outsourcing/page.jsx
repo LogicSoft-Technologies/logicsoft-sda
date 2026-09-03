@@ -1,5 +1,6 @@
 "use client";
-// app/software-development/outsourcing/page.jsx
+// app/software-development/outsourcing/page.jsx
+
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
 export default function SoftwareOutsourcingPage() {
@@ -8,9 +9,9 @@ export default function SoftwareOutsourcingPage() {
       breadcrumbs={[["Software Development", "/software-development/services"], ["Outsourcing"]]}
       eyebrow="Software Development"
       title="Software Outsourcing"
-      subtitle="Delegate your software development to a trusted partner — and focus your internal team on strategy, product decisions, and customer relationships."
+      subtitle="Delegate your software development to a trusted partner and focus your internal team on strategy, product decisions and customer relationships."
       stats={[
-        { value: "40+", label: "Active outsourcing partnerships" },
+        { value: "20+", label: "Active outsourcing partnerships" },
         { value: "60%", label: "Average cost saving vs. in-house hiring" },
         { value: "48hr", label: "Typical team onboarding time" },
       ]}
@@ -20,7 +21,7 @@ export default function SoftwareOutsourcingPage() {
       <Label>Outsourcing models</Label>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
         <CapCard icon="🎯" title="Project-Based" body="Fixed scope, fixed timeline, fixed price. We deliver a defined outcome and hand it over. Best for well-scoped initiatives." />
-        <CapCard icon="🔄" title="Dedicated Team" body="A full engineering squad works exclusively on your product — developers, QA, and a project manager embedded in your workflow." />
+        <CapCard icon="🔄" title="Dedicated Team" body="A full engineering squad works exclusively on your product developers, QA, and a project manager embedded in your workflow." />
         <CapCard icon="📈" title="On-Demand Capacity" body="Flexible resource allocation that scales with sprint demand. No headcount risk, no notice periods." />
       </div>
 
@@ -31,7 +32,7 @@ export default function SoftwareOutsourcingPage() {
           <Label>How we work with your team</Label>
           <div className="space-y-6">
             <Step n="01" title="Alignment workshop" body="We learn your codebase, tools, branching strategy, and communication preferences before we write a single line." />
-            <Step n="02" title="Team assembly" body="Engineers matched to your stack and domain — typically onboarded within 48 hours of contract signature." />
+            <Step n="02" title="Team assembly" body="Engineers matched to your stack and domain typically onboarded within 48 hours of contract signature." />
             <Step n="03" title="Integrated delivery" body="We work inside your Jira, GitHub, and Slack. Daily standups, sprint reviews, and regular demos." />
             <Step n="04" title="Transparent reporting" body="Weekly progress reports, velocity tracking, and escalation paths if anything drifts from plan." />
           </div>

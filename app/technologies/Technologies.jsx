@@ -39,7 +39,7 @@ const TECH_SECTIONS = [
         sublabel: "MERN Stack",
         items: [
           { name: "MongoDB",    src: dv("mongodb",   "plain-wordmark")    },
-          { name: "Express.js", src: dv("express",   "wordmark")          },
+          { name: "Express.js", src: "/images/expressjs.png"   },
           { name: "React.js",   src: dv("react",     "original-wordmark") },
           { name: "Node.js",    src: dv("nodejs",    "plain-wordmark")    },
         ],
@@ -48,8 +48,8 @@ const TECH_SECTIONS = [
         sublabel: "PERN Stack",
         items: [
           { name: "PostgreSQL",    src: dv("postgresql", "plain-wordmark")    },
-          { name: "Express.js",    src: dv("express",    "wordmark")          },
-          { name: "React/Next.js", src: dv("nextjs",     "plain-wordmark")    },
+          { name: "Express.js", src: "/images/expressjs.png"    },      
+          { name: "React/Next.js", src: "/images/nextjs-clean.png"    },
           { name: "Node.js",       src: dv("nodejs",     "plain-wordmark")    },
         ],
       },
@@ -65,9 +65,9 @@ const TECH_SECTIONS = [
       { name: "Swift",    src: dv("swift",    "plain-wordmark") },
       { name: "Android",  src: dv("android",  "plain-wordmark") },
       { name: "Kotlin",   src: dv("kotlin",   "plain-wordmark") },
-      { name: "Xcode",    src: dv("xcode",    "plain-wordmark") },
+      { name: "Xcode",    src: "/images/xcode.png"    },
       { name: "Firebase", src: dv("firebase", "plain-wordmark") },
-      { name: "Flutter",  src: dv("flutter",  "plain-wordmark") },
+      { name: "Flutter",  src: "/images/flutter-logo1.png"},
     ],
   },
   {
@@ -78,10 +78,9 @@ const TECH_SECTIONS = [
     summary: "Pixel-perfect interfaces with modern toolchains and animation.",
     items: [
       { name: "React.js",     src: dv("react",       "original-wordmark") },
-      { name: "Next.js",      src: dv("nextjs",      "plain-wordmark")    },
-      { name: "TypeScript",   src: dv("typescript",  "plain-wordmark")    },
-      { name: "Tailwind CSS", src: dv("tailwindcss", "plain-wordmark")    },
-      { name: "Sass",         src: dv("sass",        "original-wordmark") },
+      { name: "React/Next.js", src: "/images/nextjs-clean.png"    },
+      { name: "TypeScript",   src: "/images/typescript.png" },
+      { name: "Tailwind CSS", src: "/images/tailwind-css.png"},
       { name: "Webpack",      src: dv("webpack",     "plain-wordmark")    },
     ],
   },
@@ -93,11 +92,11 @@ const TECH_SECTIONS = [
     summary: "Robust server-side systems, REST and GraphQL APIs, and data layers.",
     items: [
       { name: "Node.js",    src: dv("nodejs",    "plain-wordmark") },
-      { name: "Express.js", src: dv("express",   "wordmark")       },
+      { name: "Express.js", src: "/images/expressjs.png"    },
       { name: "Python",     src: dv("python",    "plain-wordmark") },
       { name: "GraphQL",    src: dv("graphql",   "plain-wordmark") },
       { name: "Redis",      src: dv("redis",     "plain-wordmark") },
-      { name: "Nginx",      src: dv("nginx",     "plain-wordmark") },
+      { name: "Nginx",      src: "/images/nginx.png" },
     ],
   },
   {
@@ -110,7 +109,7 @@ const TECH_SECTIONS = [
       { name: "AWS",             src: dv("amazonwebservices", "plain-wordmark") },
       { name: "Microsoft Azure", src: dv("azure",             "plain-wordmark") },
       { name: "Google Cloud",    src: dv("googlecloud",       "plain-wordmark") },
-      { name: "DigitalOcean",    src: dv("digitalocean",      "plain-wordmark") },
+      { name: "DigitalOcean", src: "/Images/digitalocean.png" },
       { name: "Terraform",       src: dv("terraform",         "plain-wordmark") },
       { name: "Kubernetes",      src: dv("kubernetes",        "plain-wordmark") },
     ],
@@ -123,11 +122,11 @@ const TECH_SECTIONS = [
     summary: "Automated pipelines, monitoring, and infrastructure as code.",
     items: [
       { name: "Docker",     src: dv("docker",     "plain-wordmark") },
-      { name: "Jenkins",    src: dv("jenkins",    "line-wordmark")  },
+      { name: "Jenkins",    src: "/images/jenkins.png"},
       { name: "GitLab",     src: dv("gitlab",     "plain-wordmark") },
       { name: "Prometheus", src: dv("prometheus", "plain-wordmark") },
       { name: "Ansible",    src: dv("ansible",    "plain-wordmark") },
-      { name: "Linux",      src: dv("linux",      "plain-wordmark") },
+      { name: "Linux",      src: "/images/linux.png"},
     ],
   },
   {
@@ -137,8 +136,8 @@ const TECH_SECTIONS = [
     icon: Shield,
     summary: "Enterprise-grade security posture, auditing, and compliance frameworks.",
     items: [
-      { name: "Kali Linux", src: dv("linux",     "plain-wordmark") },
-      { name: "Splunk",     src: dv("splunk",    "plain-wordmark") },
+      { name: "Kali Linux", src: "/images/kali.png"},
+      { name: "Splunk",     src: "/images/splunks.png" },
       { name: "SonarQube",  src: dv("sonarqube", "plain-wordmark") },
       { name: "Vault",      src: dv("vault",     "plain-wordmark") },
       { name: "OWASP",      src: si("owasp",     "333333")         },
@@ -150,13 +149,13 @@ const TECH_SECTIONS = [
     label: "Cross-Platform Tools",
     category: "Cross-Platform",
     icon: Layers,
-    summary: "Write once, deploy everywhere — mobile and desktop.",
+    summary: "Write once, deploy everywhere, mobile and desktop.",
     items: [
       { name: "React Native", src: dv("react",    "original-wordmark") },
-      { name: "Flutter",      src: dv("flutter",  "plain-wordmark")    },
-      { name: "Xamarin",      src: dv("xamarin",  "plain-wordmark")    },
-      { name: "Ionic",        src: dv("ionic",    "plain-wordmark")    },
-      { name: "Electron",     src: dv("electron", "plain-wordmark")    },
+      { name: "Flutter",      src: "/images/flutter-logo1.png"},
+      { name: "Xamarin",      src: "/images/xamarin.png" },
+      { name: "Ionic",        src: "/images/ionic.png" },
+      { name: "Electron",     src: "/images/electron.png"},
       { name: "Cordova",      src: dv("apache",   "plain-wordmark")    },
     ],
   },
@@ -320,7 +319,7 @@ export default function TechnologiesPage() {
                 Technologies &amp; Platforms<br className="hidden lg:block" /> We Work With
               </h2>
               <p className="text-[18px] text-gray-600 leading-[1.85] max-w-[680px]">
-                We build with the tools that the world&apos;s best engineering teams rely on —
+                We build with the tools that the world&apos;s best engineering teams rely on
                 choosing the right stack for every layer of every project, not just the
                 most fashionable one.
               </p>
@@ -502,7 +501,7 @@ export default function TechnologiesPage() {
             </h3>
             <p className="text-[15px] text-white/50 max-w-lg leading-relaxed">
               Tell us your requirements and we&apos;ll recommend the right technology
-              combination — no upselling, no vendor bias.
+              combination, no upselling, no vendor bias.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">

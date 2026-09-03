@@ -24,7 +24,7 @@ const SERVICES = [
       ["Post-Launch Support",           "/software-development/support"           ],
     ],
     cta: "/software-development/services",
-    stat: "100+ projects delivered",
+    stat: "20+ projects delivered",
   },
   {
     id: 2,

@@ -12,18 +12,28 @@ const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 // ── Client locations on globe ─────────────────────────────────────────────────
 const CLIENT_POINTS = [
-  { lat: 6.5244,   lng: 3.3792,   label: "Lagos, Nigeria",     color: "#f59e0b" },
-  { lat: 9.0765,   lng: 7.3986,   label: "Abuja, Nigeria",     color: "#f59e0b" },
-  { lat: 51.5074,  lng: -0.1278,  label: "London, UK",         color: "#3b82f6" },
-  { lat: 40.7128,  lng: -74.0060, label: "New York, USA",      color: "#3b82f6" },
-  { lat: 25.2048,  lng: 55.2708,  label: "Dubai, UAE",         color: "#10b981" },
-  { lat: 1.3521,   lng: 103.8198, label: "Singapore",          color: "#10b981" },
-  { lat: 30.0444,  lng: 31.2357,  label: "Cairo, Egypt",       color: "#f59e0b" },
-  { lat: 5.6037,   lng: -0.1870,  label: "Accra, Ghana",       color: "#f59e0b" },
-  { lat: -33.8688, lng: 151.2093, label: "Sydney, Australia",  color: "#a855f7" },
-  { lat: 48.8566,  lng: 2.3522,   label: "Paris, France",      color: "#3b82f6" },
-  { lat: 19.0760,  lng: 72.8777,  label: "Mumbai, India",      color: "#10b981" },
-  { lat: -23.5505, lng: -46.6333, label: "São Paulo, Brazil",  color: "#ef4444" },
+  { lat: 6.5244, lng: 3.3792, label: "Lagos, Nigeria", color: "#f59e0b" },
+  { lat: 9.0765, lng: 7.3986, label: "Abuja, Nigeria", color: "#f59e0b" },
+  { lat: 51.5074, lng: -0.1278, label: "London, UK", color: "#3b82f6" },
+  { lat: 40.7128, lng: -74.006, label: "New York, USA", color: "#3b82f6" },
+  { lat: 25.2048, lng: 55.2708, label: "Dubai, UAE", color: "#10b981" },
+  { lat: 1.3521, lng: 103.8198, label: "Singapore", color: "#10b981" },
+  { lat: 30.0444, lng: 31.2357, label: "Cairo, Egypt", color: "#f59e0b" },
+  { lat: 5.6037, lng: -0.187, label: "Accra, Ghana", color: "#f59e0b" },
+  {
+    lat: -33.8688,
+    lng: 151.2093,
+    label: "Sydney, Australia",
+    color: "#a855f7",
+  },
+  { lat: 48.8566, lng: 2.3522, label: "Paris, France", color: "#3b82f6" },
+  { lat: 19.076, lng: 72.8777, label: "Mumbai, India", color: "#10b981" },
+  {
+    lat: -23.5505,
+    lng: -46.6333,
+    label: "São Paulo, Brazil",
+    color: "#ef4444",
+  },
 ];
 
 // ── Testimonial data ──────────────────────────────────────────────────────────
@@ -148,9 +158,9 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: "50+",  label: "Success stories"       },
-  { value: "98%",  label: "Client retention"      },
-  { value: "30+",  label: "Industries served"     },
+  { value: "15+", label: "Success stories" },
+  { value: "75%", label: "Client retention" },
+  { value: "10+", label: "Industries served" },
   { value: "4.9★", label: "Average client rating" },
 ];
 
@@ -158,7 +168,11 @@ function Stars({ count }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b]" aria-hidden="true" />
+        <Star
+          key={i}
+          className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b]"
+          aria-hidden="true"
+        />
       ))}
     </div>
   );
@@ -172,7 +186,13 @@ function Avatar({ t, size = 40, textSize = "text-[12px]" }) {
       style={{ backgroundColor: t.avatarBg, width: size, height: size }}
     >
       {t.image ? (
-        <Image src={t.image} alt={t.name} fill sizes={`${size}px`} className="object-cover" />
+        <Image
+          src={t.image}
+          alt={t.name}
+          fill
+          sizes={`${size}px`}
+          className="object-cover"
+        />
       ) : (
         t.initials
       )}
@@ -211,16 +231,25 @@ function GlobeWrapper() {
     ctrl.enableZoom = false;
     ctrl.enableRotate = false;
     ctrl.enablePan = false;
-    globeRef.current.pointOfView({ ...GLOBE_DEFAULT_VIEW, altitude: GLOBE_ALTITUDE }, 800);
+    globeRef.current.pointOfView(
+      { ...GLOBE_DEFAULT_VIEW, altitude: GLOBE_ALTITUDE },
+      800,
+    );
 
     // Smoothly eases the camera toward the mouse target whenever hovering.
     const animate = () => {
       if (isHovering.current && globeRef.current) {
-        current.current.lat += (target.current.lat - current.current.lat) * 0.09;
-        current.current.lng += (target.current.lng - current.current.lng) * 0.09;
+        current.current.lat +=
+          (target.current.lat - current.current.lat) * 0.09;
+        current.current.lng +=
+          (target.current.lng - current.current.lng) * 0.09;
         globeRef.current.pointOfView(
-          { lat: current.current.lat, lng: current.current.lng, altitude: GLOBE_ALTITUDE },
-          0
+          {
+            lat: current.current.lat,
+            lng: current.current.lng,
+            altitude: GLOBE_ALTITUDE,
+          },
+          0,
         );
       }
       rafRef.current = requestAnimationFrame(animate);
@@ -250,7 +279,7 @@ function GlobeWrapper() {
 
     target.current = {
       lat: Math.max(-85, Math.min(85, lat)),
-      lng: ((lng + 180) % 360 + 360) % 360 - 180,
+      lng: ((((lng + 180) % 360) + 360) % 360) - 180,
     };
   };
 
@@ -261,11 +290,12 @@ function GlobeWrapper() {
     }
   };
 
-  if (!mounted) return (
-    <div className="w-[340px] h-[340px] flex items-center justify-center">
-      <div className="w-[260px] h-[260px] rounded-full bg-blue-900/40 animate-pulse" />
-    </div>
-  );
+  if (!mounted)
+    return (
+      <div className="w-[340px] h-[340px] flex items-center justify-center">
+        <div className="w-[260px] h-[260px] rounded-full bg-blue-900/40 animate-pulse" />
+      </div>
+    );
 
   return (
     <div
@@ -313,30 +343,46 @@ export default function Testimonials() {
           aria-label="Breadcrumb"
           className="flex items-center gap-1.5 pt-8 pb-10 text-[12px] text-gray-400 tracking-wide"
         >
-          <Link href="/" className="hover:text-[#1f6fb2] transition-colors duration-200">Home</Link>
+          <Link
+            href="/"
+            className="hover:text-[#1f6fb2] transition-colors duration-200"
+          >
+            Home
+          </Link>
           <span className="text-gray-300">›</span>
           <span className="text-gray-600 font-medium">Client Reviews</span>
         </nav>
       </div>
 
       {/* ── Hero ── */}
-      <div className="relative border-t border-b border-[#162d4a] overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0d1f35 0%, #1f3a5f 45%, #1a4a7a 100%)" }}
+      <div
+        className="relative border-t border-b border-[#162d4a] overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, #0d1f35 0%, #1f3a5f 45%, #1a4a7a 100%)",
+        }}
       >
         {/* Decorative blobs */}
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          aria-hidden="true"
+        >
           <div className="absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-500/10 blur-[100px]" />
           <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] rounded-full bg-sky-400/8 blur-[80px]" />
           {/* Dot grid */}
-          <div className="absolute inset-0 opacity-[0.04]"
-            style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)", backgroundSize: "28px 28px" }}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
           />
         </div>
 
         <div className="relative z-10 max-w-[82rem] mx-auto px-6 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-
             {/* LEFT */}
             <div>
               <p className="text-[11px] font-semibold text-[#60a5fa] uppercase tracking-[0.12em] mb-4">
@@ -346,17 +392,25 @@ export default function Testimonials() {
                 Our Satisfied Clients
               </h1>
               <p className="text-[17px] text-white/70 leading-[2] max-w-[540px] mb-8">
-                Every project we deliver is a relationship built on trust, transparency,
-                and measurable outcomes. Heres what our clients say about working with
-                Logicsoft Technologies across banking, healthcare, retail, telecoms, and beyond.
+                Every project we deliver is a relationship built on trust,
+                transparency, and measurable outcomes. Heres what our clients
+                say about working with Logicsoft Technologies across banking,
+                healthcare, retail, telecoms, and beyond.
               </p>
 
               {/* Stats row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {stats.map((s, i) => (
-                  <div key={i} className="bg-white/8 border border-white/15 px-4 py-3 hover:bg-white/12 hover:border-white/25 transition-all duration-200 backdrop-blur-sm">
-                    <p className="text-[26px] font-light text-white leading-none mb-1">{s.value}</p>
-                    <p className="text-[12px] text-white/50 leading-snug">{s.label}</p>
+                  <div
+                    key={i}
+                    className="bg-white/8 border border-white/15 px-4 py-3 hover:bg-white/12 hover:border-white/25 transition-all duration-200 backdrop-blur-sm"
+                  >
+                    <p className="text-[26px] font-light text-white leading-none mb-1">
+                      {s.value}
+                    </p>
+                    <p className="text-[12px] text-white/50 leading-snug">
+                      {s.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -367,7 +421,10 @@ export default function Testimonials() {
               {/* Globe */}
               <div className="relative w-[340px] h-[340px] flex items-center justify-center">
                 {/* Glow ring */}
-                <div className="absolute inset-0 rounded-full bg-[#1f6fb2]/8 blur-[32px]" aria-hidden="true" />
+                <div
+                  className="absolute inset-0 rounded-full bg-[#1f6fb2]/8 blur-[32px]"
+                  aria-hidden="true"
+                />
                 <GlobeWrapper />
               </div>
 
@@ -382,27 +439,30 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div className="flex gap-0.5 mb-0.5">
-                    {[1,2,3,4,5].map(i => (
-                      <Star key={i} className="w-3 h-3 fill-[#f59e0b] text-[#f59e0b]" />
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star
+                        key={i}
+                        className="w-3 h-3 fill-[#f59e0b] text-[#f59e0b]"
+                      />
                     ))}
                   </div>
                   <p className="text-[12px] font-semibold text-white">
-                    Over <span className="text-[#60a5fa]">50+</span> success stories
+                    Over <span className="text-[#60a5fa]">15+</span> success
+                    stories
                   </p>
-                  <p className="text-[11px] text-white/50">across 30+ industries worldwide</p>
+                  <p className="text-[11px] text-white/50">
+                    across 10+ industries worldwide
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-      
 
       {/* ── Testimonial cards ── */}
       <div className="py-20 bg-white">
         <div className="max-w-[82rem] mx-auto px-6">
-
           <div className="flex items-center gap-4 mb-10">
             <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.1em] whitespace-nowrap">
               What our clients say
@@ -421,18 +481,28 @@ export default function Testimonials() {
                 className="group relative bg-white flex flex-col border border-gray-200 px-6 pt-6 pb-5 overflow-hidden hover:border-[#1f6fb2] hover:shadow-md transition-all duration-300"
               >
                 {/* Top slide-in line */}
-                <span className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full" aria-hidden="true" />
+                <span
+                  className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full"
+                  aria-hidden="true"
+                />
 
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <Avatar t={t} size={40} textSize="text-[12px]" />
                     <div>
-                      <p className="text-[13.5px] font-semibold text-[#1f3a5f] leading-snug">{t.name}</p>
-                      <p className="text-[12px] text-gray-400">{t.role}, {t.company}</p>
+                      <p className="text-[13.5px] font-semibold text-[#1f3a5f] leading-snug">
+                        {t.name}
+                      </p>
+                      <p className="text-[12px] text-gray-400">
+                        {t.role}, {t.company}
+                      </p>
                     </div>
                   </div>
-                  <Quote className="w-5 h-5 text-gray-100 shrink-0 group-hover:text-[#dbeafe] transition-colors duration-300" aria-hidden="true" />
+                  <Quote
+                    className="w-5 h-5 text-gray-100 shrink-0 group-hover:text-[#dbeafe] transition-colors duration-300"
+                    aria-hidden="true"
+                  />
                 </div>
 
                 {/* Stars + industry tag */}
@@ -440,7 +510,11 @@ export default function Testimonials() {
                   <Stars count={t.rating} />
                   <span
                     className="text-[10px] font-semibold uppercase tracking-[0.08em] px-2 py-[2px] border"
-                    style={{ color: t.tagText, borderColor: t.tagBorder, backgroundColor: t.tagBg }}
+                    style={{
+                      color: t.tagText,
+                      borderColor: t.tagBorder,
+                      backgroundColor: t.tagBg,
+                    }}
                   >
                     {t.industry}
                   </span>
@@ -452,7 +526,10 @@ export default function Testimonials() {
                 </p>
 
                 {/* Bottom slide-in line */}
-                <span className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-400 transition-all duration-500 ease-out group-hover:left-0 group-hover:w-full" aria-hidden="true" />
+                <span
+                  className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-400 transition-all duration-500 ease-out group-hover:left-0 group-hover:w-full"
+                  aria-hidden="true"
+                />
               </motion.div>
             ))}
           </div>
@@ -470,7 +547,8 @@ export default function Testimonials() {
               Ready to become our next success story?
             </h3>
             <p className="text-[14px] text-gray-500 mt-1">
-              Lets discuss your project and show you what Logicsoft Technologies can deliver.
+              Lets discuss your project and show you what Logicsoft Technologies
+              can deliver.
             </p>
           </div>
           <Link
@@ -481,7 +559,6 @@ export default function Testimonials() {
           </Link>
         </div>
       </div>
-
     </motion.div>
   );
 }
