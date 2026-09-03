@@ -104,7 +104,7 @@ export default function OurJourney() {
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[640px]">
                 From a small team of passionate builders to a growing network of
-                20+ engineers creating digital solutions for businesses across
+                10+ engineers creating digital solutions for businesses across
                 multiple countries. This is the story of how Logicsoft
                 Technologies has grown—one project, one partnership, and one
                 solution at a time.

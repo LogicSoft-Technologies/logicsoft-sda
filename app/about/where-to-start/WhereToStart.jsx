@@ -23,7 +23,7 @@ const ENGAGEMENT_TYPES = [
       { num: "01", title: "Free Discovery Call", desc: "30-minute session to understand your idea, goals, and constraints." },
       { num: "02", title: "Scoping Workshop", desc: "We map full requirements, user journeys, and technical scope with your team." },
       { num: "03", title: "Proposal & Estimate", desc: "A transparent project proposal with phased delivery plan and cost breakdown." },
-      { num: "04", title: "Kickoff", desc: "Team assembly, sprint planning, and environment setup — delivery starts immediately." },
+      { num: "04", title: "Kickoff", desc: "Team assembly, sprint planning, and environment setup and delivery starts immediately." },
     ],
     cta: { label: "Book a discovery call", href: "/contact" },
     timeline: "Proposal delivered within 5–7 business days",
@@ -52,7 +52,7 @@ const ENGAGEMENT_TYPES = [
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
     headline: "Start with a Team Fit Call.",
-    desc: "Your in-house team needs specialist engineers — frontend, backend, mobile, DevOps, or security. We provide fully embedded, senior-level engineers who operate to your processes and standards.",
+    desc: "Your in-house team needs specialist engineers in frontend, backend, mobile, DevOps, or security. We provide fully embedded, senior-level engineers who operate to your processes and standards.",
     steps: [
       { num: "01", title: "Role Definition", desc: "We clarify skills, seniority, stack, and time zone requirements with you." },
       { num: "02", title: "Candidate Shortlist", desc: "We present 2–3 vetted candidates within 5 business days." },
@@ -115,7 +115,7 @@ const FAQS = [
   },
   {
     q: "What if I don't know exactly what I need?",
-    a: "That's what the discovery call is for. You don't need a spec document to talk to us — just bring your business problem and we'll help translate it into a technical path forward.",
+    a: "That's what the discovery call is for. You don't need a spec document to talk to us, just bring your business problem and we'll help translate it into a technical path forward.",
   },
   {
     q: "Do you sign NDAs?",
@@ -220,7 +220,7 @@ export default function WhereToStart() {
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[640px]">
                 Whether you have a rough idea, an existing system that needs work, a team that needs
-                engineers, or a product that needs support — there's a clear starting point for every situation.
+                engineers, or a product that needs support there's a clear starting point for every situation.
                 Pick yours below.
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function WhereToStart() {
             {/* Trust signals */}
             <div className="shrink-0 flex flex-col gap-3">
               {[
-                { icon: CheckCircle2, text: "Free discovery call — no obligation"    },
+                { icon: CheckCircle2, text: "Free discovery call, no obligation"    },
                 { icon: CheckCircle2, text: "NDA signed before any discussion"       },
                 { icon: CheckCircle2, text: "Proposal within 5–7 business days"      },
                 { icon: CheckCircle2, text: "Senior engineers from day one"          },

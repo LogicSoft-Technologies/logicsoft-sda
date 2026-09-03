@@ -68,7 +68,7 @@ const MODELS = [
     accentBg: "#f5f3ff",
     tag: "Best for long-term scale",
     headline: "Your extended engineering team. Fully embedded.",
-    desc: "A dedicated team of engineers, QA specialists, and architects assigned exclusively to your product. They operate in your tools, follow your processes, and become indistinguishable from your in-house team — at a fraction of the cost.",
+    desc: "A dedicated team of engineers, QA specialists, and architects assigned exclusively to your product. They operate in your tools, follow your processes, and become indistinguishable from your in-house team at a fraction of the cost.",
     bestFor: [
       "Products requiring continuous development and evolution",
       "Companies scaling their engineering capacity rapidly",
@@ -81,7 +81,7 @@ const MODELS = [
       { step: "01", title: "Team composition", desc: "We build your team: frontend, backend, mobile, QA, DevOps, and PM as needed." },
       { step: "02", title: "Onboarding sprint", desc: "Team is onboarded to your systems, codebase, and product vision in week one." },
       { step: "03", title: "Steady-state delivery", desc: "Team operates in 2-week sprints. Regular syncs with your leadership." },
-      { step: "04", title: "Scaling up or down", desc: "Team size adjusted as product needs change — no fixed headcount lock-in." },
+      { step: "04", title: "Scaling up or down", desc: "Team size adjusted as product needs change, no fixed headcount lock-in." },
     ],
     featured: false,
   },
@@ -133,7 +133,7 @@ const FAQS = [
   { q: "Do you offer hybrid models?", a: "Absolutely. A common pattern is Fixed Price for Phase 1 (MVP) followed by T&M or a Dedicated Team for Phase 2 onwards." },
   { q: "How are rates determined?", a: "Rates depend on role seniority, engagement type, and duration. We provide a full rate card during the proposal process. There are no hidden fees." },
   { q: "Is there a minimum engagement size?", a: "For Fixed Price and T&M projects, our minimum engagement is typically 4 weeks. Retainer engagements start at a 3-month minimum commitment." },
-  { q: "What's included in a Dedicated Team?", a: "Roles are scoped to your needs — typically a mix of frontend, backend, QA, DevOps, and a technical lead or architect. You choose the composition." },
+  { q: "What's included in a Dedicated Team?", a: "Roles are scoped to your needs typically a mix of frontend, backend, QA, DevOps, and a technical lead or architect. You choose the composition." },
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -194,13 +194,13 @@ export default function PricingModels() {
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[640px]">
                 We don't have one pricing model because no two projects are the same. We offer four
-                engagement structures — each suited to a different project type, risk profile, and
+                engagement structures each suited to a different project type, risk profile, and
                 client preference. All are fully transparent with no hidden fees.
               </p>
             </div>
             <div className="shrink-0 flex flex-col gap-3">
               {[
-                { icon: Shield, text: "No hidden fees — ever"              },
+                { icon: Shield, text: "No hidden fees. Ever"              },
                 { icon: CheckCircle2, text: "Rate card provided upfront"   },
                 { icon: CheckCircle2, text: "Switch models if needs change"},
                 { icon: CheckCircle2, text: "Hybrid models available"      },
@@ -383,7 +383,7 @@ export default function PricingModels() {
           <div>
             <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">Get a proposal</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">Tell us about your project. We'll recommend the right model.</h3>
-            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">No commitment required. We'll assess your requirements and tell you which pricing model makes the most sense — and why.</p>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">No commitment required. We'll assess your requirements and tell you which pricing model makes the most sense and why.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] ring-1 ring-inset ring-white/30 transition-all duration-200">

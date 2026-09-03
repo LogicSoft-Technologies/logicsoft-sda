@@ -64,7 +64,7 @@ const FAQ_ITEMS = [
   {
     id: 9, category: "Pricing",
     q: "What pricing models do you offer?",
-    a: "We offer four engagement models: Fixed Price (agreed scope, agreed cost), Time & Materials (flexible scope, billed on actual hours), Dedicated Team (a full embedded engineering team), and Support Retainer (monthly hours block for ongoing maintenance). Hybrid models are also available — for example, Fixed Price Phase 1 followed by T&M for ongoing development.",
+    a: "We offer four engagement models: Fixed Price (agreed scope, agreed cost), Time & Materials (flexible scope, billed on actual hours), Dedicated Team (a full embedded engineering team), and Support Retainer (monthly hours block for ongoing maintenance). Hybrid models are also available for example, Fixed Price Phase 1 followed by T&M for ongoing development.",
     related: ["/about/price-models"],
   },
   {
@@ -102,7 +102,7 @@ const FAQ_ITEMS = [
   {
     id: 15, category: "Quality",
     q: "Do you test for accessibility?",
-    a: "Yes. WCAG 2.1 AA compliance is a default requirement on all client-facing products. We test with screen readers, keyboard navigation, colour contrast tools, and on low-bandwidth network profiles representative of our African and MENA markets. Accessibility is not optional — it's an engineering requirement.",
+    a: "Yes. WCAG 2.1 AA compliance is a default requirement on all client-facing products. We test with screen readers, keyboard navigation, colour contrast tools, and on low-bandwidth network profiles representative of our African and MENA markets. Accessibility is not optional, it's an engineering requirement.",
     related: ["/about/sustainability-policy"],
   },
 
@@ -110,13 +110,13 @@ const FAQ_ITEMS = [
   {
     id: 16, category: "Delivery",
     q: "How quickly can you start a project?",
-    a: "For most engagements, we can begin within 1–2 weeks of proposal acceptance. Team extension engagements — where we embed engineers into your existing team can begin in as little as 5 business days. The timeline depends on team composition requirements and any specific onboarding your systems require.",
+    a: "For most engagements, we can begin within 1–2 weeks of proposal acceptance. Team extension engagements, where we embed engineers into your existing team can begin in as little as 5 business days. The timeline depends on team composition requirements and any specific onboarding your systems require.",
     related: ["/about/where-to-start"],
   },
   {
     id: 17, category: "Delivery",
     q: "Who owns the code and IP?",
-    a: "You do — fully and permanently. All source code, design assets, documentation, and any other deliverables are transferred to you on project completion. We sign IP assignment agreements before work starts. We do not retain any licence, usage rights, or claims over anything we build for you.",
+    a: "You do, fully and permanently. All source code, design assets, documentation, and any other deliverables are transferred to you on project completion. We sign IP assignment agreements before work starts. We do not retain any licence, usage rights, or claims over anything we build for you.",
     related: ["/about/sustainability-policy"],
   },
   {
