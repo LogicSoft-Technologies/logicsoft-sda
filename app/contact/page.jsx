@@ -427,7 +427,7 @@ export default function ContactPage() {
                   </div>
                   <h2 className="text-[26px] font-serif text-[#1f3a5f] mb-3">Submission received</h2>
                   <p className="text-[14px] text-gray-500 leading-relaxed max-w-sm mx-auto mb-8">
-                    A LogicSoft solution architect will review your brief and respond within 24 business hours. Check your inbox — and your spam folder, just in case.
+                    A LogicSoft solution architect will review your brief and respond within 24 business hours. Check your inbox and your spam folder, just in case.
                   </p>
                   <button onClick={resetForm} className="text-[13px] font-semibold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors">
                     ← Submit another enquiry
@@ -623,7 +623,7 @@ export default function ContactPage() {
 
               <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: 0.14 }}
                 className="border border-[#e8eef6] bg-white divide-y divide-[#f1f5f9]">
-                <a href="mailto:contact@logicsofttechnologies.online.ng" className="flex items-center gap-3 p-4 group hover:bg-[#f8fafc] transition-colors">
+                <a href="mailto:contact@logicsofttechnologies.com" className="flex items-center gap-3 p-4 group hover:bg-[#f8fafc] transition-colors">
                   <div className="w-8 h-8 bg-[#f0f7ff] border border-[#dce8f5] flex items-center justify-center shrink-0 group-hover:bg-[#1f6fb2] group-hover:border-[#1f6fb2] transition-all">
                     <Mail className="w-3.5 h-3.5 text-[#1f6fb2] group-hover:text-white transition-colors" />
                   </div>
