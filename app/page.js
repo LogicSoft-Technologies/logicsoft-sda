@@ -1,7 +1,7 @@
 import { createMetadata } from "../lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Home",
+  title: "Software Development Company | LogicSoft Technologies",
   description:
     "Enterprise software development, cybersecurity, cloud engineering, and IT consulting for organisations across Africa, Europe, North America, and the Middle East.",
   path: "/",
