@@ -2,12 +2,6 @@
 
 import { motion } from "framer-motion";
 
-/**
- * Wraps any content and animates it in when scrolled into view.
- * Replays every time it re-enters the viewport (viewport.once = false).
- *
- * direction: "up" | "down" | "left" | "right" | "scale"
- */
 export default function ScrollReveal({
   children,
   direction = "up",

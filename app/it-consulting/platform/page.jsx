@@ -1,5 +1,4 @@
 "use client";
-// app/it-consulting/platform/page.jsx
 
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
@@ -9,11 +8,7 @@ export default function PlatformConsultingPage() {
       breadcrumbs={[["IT Consulting", "/it-consulting"], ["Platform Consulting"]]}
       eyebrow="IT Consulting"
       title="Platform Consulting"
-<<<<<<< HEAD
       subtitle="We advise on platform strategy, selection, and implementation — helping organisations build coherent technical platforms that support product development at scale."
-=======
-      subtitle="We advise on platform strategy, selection, and implementation helping organisations build coherent technical platforms that support product development at scale."
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
       stats={[
         { value: "20+", label: "Platform strategies designed" },
         { value: "AWS · Azure · GCP", label: "Cloud platforms covered" },
@@ -25,17 +20,10 @@ export default function PlatformConsultingPage() {
       <Label>Platform consulting areas</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         <CapCard icon="☁️" title="Cloud Platform Strategy" body="Multi-cloud or single-cloud strategy, platform selection, and landing zone design for enterprise cloud adoption." />
-<<<<<<< HEAD
         <CapCard icon="🔧" title="Developer Platform (IDP)" body="Internal developer platform design — self-service infrastructure, golden paths, and developer experience tooling." />
         <CapCard icon="📊" title="Data Platform" body="Modern data architecture: lakehouse, data mesh, or data warehouse — aligned to your analytics maturity." />
         <CapCard icon="🔗" title="Integration Platform" body="iPaaS selection and implementation — Mulesoft, Azure Integration Services, AWS EventBridge." />
         <CapCard icon="🛡️" title="Security Platform" body="SIEM, SOAR, and endpoint protection platform strategy — unified security operations." />
-=======
-        <CapCard icon="🔧" title="Developer Platform (IDP)" body="Internal developer platform design self-service infrastructure, golden paths, and developer experience tooling." />
-        <CapCard icon="📊" title="Data Platform" body="Modern data architecture: lakehouse, data mesh, or data warehouse aligned to your analytics maturity." />
-        <CapCard icon="🔗" title="Integration Platform" body="iPaaS selection and implementation Mulesoft, Azure Integration Services, AWS EventBridge." />
-        <CapCard icon="🛡️" title="Security Platform" body="SIEM, SOAR, and endpoint protection platform strategy, unified security operations." />
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
         <CapCard icon="🤖" title="AI/ML Platform" body="Machine learning infrastructure, model serving, and MLOps platform design for organisations scaling AI." />
       </div>
 

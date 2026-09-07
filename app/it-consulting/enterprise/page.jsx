@@ -1,5 +1,4 @@
 "use client";
-// app/it-consulting/enterprise/page.jsx
 
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 
@@ -9,11 +8,7 @@ export default function EnterpriseITConsultingPage() {
       breadcrumbs={[["IT Consulting", "/it-consulting"], ["Enterprise IT Consulting"]]}
       eyebrow="IT Consulting"
       title="Enterprise IT Consulting"
-<<<<<<< HEAD
       subtitle="Strategic technology advisory for large organisations — aligning IT investment to business outcomes, governing complex programmes, and building technology capability at scale."
-=======
-      subtitle="Strategic technology advisory for large organisations aligning IT investment to business outcomes, governing complex programmes, and building technology capability at scale."
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
       stats={[
         { value: "20+", label: "Enterprise clients served" },
         { value: "C-suite", label: "Engagement level" },
@@ -24,19 +19,11 @@ export default function EnterpriseITConsultingPage() {
     >
       <Label>Enterprise consulting services</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-<<<<<<< HEAD
         <CapCard icon="🎯" title="IT Strategy" body="Technology strategy aligned to business objectives — investment priorities, capability roadmaps, and governance frameworks." />
         <CapCard icon="🏗️" title="Enterprise Architecture" body="Business, data, application, and technology architecture designed to reduce complexity and enable agility." />
         <CapCard icon="💼" title="Technology M&A Advisory" body="Technical due diligence, integration planning, and post-merger technology rationalisation." />
         <CapCard icon="📊" title="IT Portfolio Management" body="Investment rationalisation, project portfolio governance, and benefits realisation tracking." />
         <CapCard icon="👥" title="IT Operating Model" body="Design of the IT function — structure, roles, sourcing strategy, and ways of working." />
-=======
-        <CapCard icon="🎯" title="IT Strategy" body="Technology strategy aligned to business objectives, investment priorities, capability roadmaps, and governance frameworks." />
-        <CapCard icon="🏗️" title="Enterprise Architecture" body="Business, data, application, and technology architecture designed to reduce complexity and enable agility." />
-        <CapCard icon="💼" title="Technology M&A Advisory" body="Technical due diligence, integration planning, and post-merger technology rationalisation." />
-        <CapCard icon="📊" title="IT Portfolio Management" body="Investment rationalisation, project portfolio governance, and benefits realisation tracking." />
-        <CapCard icon="👥" title="IT Operating Model" body="Design of the IT function, structure, roles, sourcing strategy, and ways of working." />
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
         <CapCard icon="🔐" title="Enterprise Risk & Compliance" body="Technology risk framework, regulatory compliance strategy, and board-level reporting." />
       </div>
 
@@ -49,11 +36,7 @@ export default function EnterpriseITConsultingPage() {
             <Step n="01" title="Executive alignment" body="C-suite session to understand strategic priorities and frame the technology agenda." />
             <Step n="02" title="Current state assessment" body="Comprehensive review of IT portfolio, architecture, organisation, and governance." />
             <Step n="03" title="Strategy development" body="Target state definition, investment roadmap, and business case development." />
-<<<<<<< HEAD
             <Step n="04" title="Advisory retainer" body="Ongoing strategic advisory — quarterly reviews, ad-hoc guidance, and programme oversight." />
-=======
-            <Step n="04" title="Advisory retainer" body="Ongoing strategic advisory quarterly reviews, ad-hoc guidance, and programme oversight." />
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
           </div>
         </div>
         <div>
@@ -61,15 +44,9 @@ export default function EnterpriseITConsultingPage() {
           <CheckList items={[
             "Access to principals with enterprise CTO/CIO experience",
             "Deep Africa and EMEA technology market knowledge",
-<<<<<<< HEAD
             "Independent advice — no software vendor relationships",
             "Practical — recommendations grounded in delivery experience",
             "Confidential — full NDA coverage as standard",
-=======
-            "Independent advice. No software vendor relationships",
-            "Practical recommendations grounded in delivery experience",
-            "Confidential full NDA coverage as standard",
->>>>>>> 879ca15e93475c2746b678c455aaf54a4902342e
             "Available for board presentation and investor briefings",
           ]} />
         </div>
