@@ -36,10 +36,9 @@ const TECH_SECTIONS = [
     label: "Mobile Development",
     items: [
       { name: "Swift",    src: dv("swift",    "plain-wordmark") },
-      { name: "Android",  src: dv("android",  "plain-wordmark") },
-      { name: "Firebase", src: dv("firebase", "plain-wordmark") },
       { name: "Flutter",  src: "/images/flutter-logo1.png"},
-      { name: "Kotlin",   src: dv("kotlin",   "plain-wordmark") },
+      { name: "Expo", src: "/images/expo.png" },
+      { name: "React Native", src: "/images/react-native.png" },
     ],
   },
   {

@@ -28,7 +28,7 @@ const PILLARS = [
     accentBg: "#eaf4ff",
     title: "Efficient Code Practice",
     headline: "Lean code is sustainable code.",
-    desc: "Inefficient software wastes energy at scale. We write performant, optimised code as a default standard — not a performance afterthought. Fewer database queries, smarter caching strategies, and lighter payloads mean less compute, less energy, and better products.",
+    desc: "Inefficient software wastes energy at scale. We write performant, optimised code as a default standard not a performance afterthought. Fewer database queries, smarter caching strategies, and lighter payloads mean less compute, less energy, and better products.",
     commitments: [
       "Performance benchmarking on every production release",
       "Query optimisation reviews as part of code review checklist",
@@ -48,7 +48,7 @@ const PILLARS = [
       "Structured mentorship for junior engineers in every team",
       "University partnership internship pipeline programme",
       "Annual learning budget for every full-time engineer",
-      "Zero-crunch culture — overtime is a failure of planning, not a solution",
+      "Zero-crunch culture. Overtime is a failure of planning, not a solution",
     ],
   },
   {
@@ -57,7 +57,7 @@ const PILLARS = [
     accentColor: "#d97706",
     accentBg: "#fff7ed",
     title: "Accessible Technology",
-    headline: "We build for everyone — not just well-connected users.",
+    headline: "We build for everyone not just well-connected users.",
     desc: "Sustainable digital products work on low-bandwidth connections, older devices, and assistive technologies. We engineer for WCAG 2.1 AA accessibility and test on real-world network conditions representative of our markets in Africa and the Middle East.",
     commitments: [
       "WCAG 2.1 AA accessibility compliance on all client products",
@@ -76,8 +76,8 @@ const PILLARS = [
     desc: "We maintain a clear policy on what we will and won't build. We decline projects that involve dark patterns, exploitative data practices, surveillance infrastructure, or technology designed to marginalise vulnerable populations. This is non-negotiable.",
     commitments: [
       "Documented ethics review for every new engagement",
-      "Data minimisation by default — collect only what's necessary",
-      "No dark pattern UI/UX — ever",
+      "Data minimisation by default collect only what's necessary",
+      "No dark pattern UI/UX. Ever",
       "GDPR and NDPR data privacy compliance as a baseline",
     ],
   },
@@ -87,7 +87,7 @@ const PILLARS = [
     accentColor: "#dc2626",
     accentBg: "#fff1f2",
     title: "Long-term Thinking",
-    headline: "We build to last — not to lock in.",
+    headline: "We build to last not to lock in.",
     desc: "Sustainable software doesn't create dependency. We use open standards, transfer full IP, write documentation that lets any competent engineer maintain our work, and design systems that can evolve without requiring us to be in the room.",
     commitments: [
       "Full IP transfer to clients on project completion",

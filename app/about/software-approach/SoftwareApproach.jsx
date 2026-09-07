@@ -60,7 +60,7 @@ const PHASES = [
     accentColor: "#db2777",
     accentBg: "#fdf2f8",
     headline: "Design with purpose. Not decoration.",
-    desc: "Design is a product function, not a cosmetic layer. We create interaction models, information architecture, and visual systems that serve users — validated with real feedback before a single component is built.",
+    desc: "Design is a product function, not a cosmetic layer. We create interaction models, information architecture, and visual systems that serve users, validated with real feedback before a single component is built.",
     activities: [
       "Information architecture and navigation design",
       "Wireframes and low-fidelity prototypes",
@@ -80,7 +80,7 @@ const PHASES = [
     accentColor: "#059669",
     accentBg: "#ecfdf5",
     headline: "Build in sprints. Deliver continuously.",
-    desc: "Development runs in 2-week sprints with working software delivered at each checkpoint. You see progress every two weeks — not a 6-month black box. Code is reviewed, tested, and deployed continuously.",
+    desc: "Development runs in 2-week sprints with working software delivered at each checkpoint. You see progress every two weeks not a 6-month black box. Code is reviewed, tested, and deployed continuously.",
     activities: [
       "2-week sprint cycles with defined deliverables",
       "Code review on every pull request (no exceptions)",
@@ -99,8 +99,8 @@ const PHASES = [
     duration: "Ongoing throughout",
     accentColor: "#d97706",
     accentBg: "#fff7ed",
-    headline: "Quality is built in — not bolted on.",
-    desc: "We follow a shift-left testing strategy: testing starts at requirements, not after build. Automated tests, manual exploratory testing, performance benchmarking, and security testing run continuously — not as a final gate.",
+    headline: "Quality is built in. Not bolted on.",
+    desc: "We follow a shift-left testing strategy: testing starts at requirements, not after build. Automated tests, manual exploratory testing, performance benchmarking, and security testing run continuously not as a final gate.",
     activities: [
       "Unit and integration test automation",
       "End-to-end test suites for critical user journeys",
@@ -120,7 +120,7 @@ const PHASES = [
     accentColor: "#0891b2",
     accentBg: "#ecfeff",
     headline: "Launch without drama.",
-    desc: "Production deployments are planned, rehearsed, and executed with zero-downtime strategies. We establish monitoring, alerting, and rollback procedures before go-live — so launch day is boring, not stressful.",
+    desc: "Production deployments are planned, rehearsed, and executed with zero-downtime strategies. We establish monitoring, alerting, and rollback procedures before go-live so launch day is boring, not stressful.",
     activities: [
       "Production environment hardening and security review",
       "Zero-downtime deployment strategy execution",
@@ -140,7 +140,7 @@ const PHASES = [
     accentColor: "#374151",
     accentBg: "#f9fafb",
     headline: "We stay accountable after delivery.",
-    desc: "The relationship doesn't end at launch. We provide tiered support, ongoing performance monitoring, security patching, and continuous improvement — evolving the product as your users and business grow.",
+    desc: "The relationship doesn't end at launch. We provide tiered support, ongoing performance monitoring, security patching, and continuous improvement evolving the product as your users and business grow.",
     activities: [
       "L1–L3 incident response within agreed SLAs",
       "Performance monitoring and proactive optimisation",
@@ -192,7 +192,7 @@ export default function SoftwareApproach() {
                 <span className="text-[#1f6fb2]">Predictable Outcomes.</span>
               </h2>
               <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[640px]">
-                Most software projects fail not because of bad engineers — but because of poor process.
+                Most software projects fail not because of bad engineers but because of poor process.
                 Our delivery methodology eliminates the ambiguity, rework, and communication failures
                 that cause projects to overrun, underdeliver, or collapse entirely.
               </p>
