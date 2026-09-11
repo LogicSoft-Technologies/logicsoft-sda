@@ -32,17 +32,17 @@ const RESPONSIBILITIES = [
   },
   {
     icon: TrendingUp, title: "Programme Management",
-    body: "Where multiple projects run in parallel, delivery managers oversee the full programme — ensuring dependencies are managed, resources are optimised, and goals remain aligned.",
+    body: "Where multiple projects run in parallel, delivery managers oversee the full programme ensuring dependencies are managed, resources are optimised, and goals remain aligned.",
   },
 ];
 
 const CERTIFICATIONS = ["PMP", "PRINCE2", "SAFe", "Scrum Master", "PMI-ACP", "ITIL"];
 
 const METRICS = [
-  { val: "300+", label: "Projects governed" },
+  { val: "20+", label: "Projects governed" },
   { val: "94%",  label: "On-time delivery"  },
   { val: "98%",  label: "On-budget delivery" },
-  { val: "12+",  label: "Years of PMO practice" },
+  { val: "5+",  label: "Years of PMO practice" },
 ];
 
 const APPROACH_STEPS = [
@@ -82,7 +82,7 @@ export default function PMOPage() {
                 <span className="text-[#60a5fa]">Office</span>
               </h1>
               <p className="text-[16px] text-white/50 leading-[1.95] max-w-[580px]">
-                The PMO applies lessons from hundreds of past projects to keep every initiative on track — even in complex, changing environments. Certified project managers take full ownership of scope, budget, timelines, and risks.
+                The PMO applies lessons from hundreds of past projects to keep every initiative on track even in complex, changing environments. Certified project managers take full ownership of scope, budget, timelines, and risks.
               </p>
             </motion.div>
             {/* Metrics */}
@@ -154,7 +154,7 @@ export default function PMOPage() {
                 {[
                   "Full scope, budget, and timeline ownership by a named PM",
                   "Proactive risk identification before threats become incidents",
-                  "No budget surprises — variance reported at every sprint",
+                  "No budget surprises variance reported at every sprint",
                   "Executive steering packs distributed 48hrs before every meeting",
                   "Programme-level coordination where multiple projects run in parallel",
                   "Formal closure documentation including lessons learned",
@@ -169,7 +169,7 @@ export default function PMOPage() {
             <motion.div initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="border border-[#bfdbfe] bg-[#eff6ff] p-8 mb-6">
                 <p className="text-[10.5px] font-bold text-[#1d4ed8] uppercase tracking-[0.16em] mb-3">PMO certifications</p>
-                <p className="text-[13.5px] text-gray-500 leading-relaxed mb-5">Our project managers hold certifications across the leading methodologies — applied pragmatically to match the needs of each engagement.</p>
+                <p className="text-[13.5px] text-gray-500 leading-relaxed mb-5">Our project managers hold certifications across the leading methodologies applied pragmatically to match the needs of each engagement.</p>
                 <div className="flex flex-wrap gap-2">
                   {CERTIFICATIONS.map((c) => (
                     <span key={c} className="text-[11px] font-bold border border-[#bfdbfe] text-[#1d4ed8] bg-white px-3 py-1.5">{c}</span>
@@ -179,7 +179,7 @@ export default function PMOPage() {
               <div className="border border-[#e8eef6] bg-[#f8fafc] p-6">
                 <Layers className="w-6 h-6 text-[#1d4ed8] mb-3" strokeWidth={1.5} />
                 <p className="text-[13.5px] font-bold text-[#1f3a5f] mb-2">Methodology-agnostic</p>
-                <p className="text-[13px] text-gray-500 leading-relaxed">We don't impose a single methodology. We apply the right framework — waterfall, agile, hybrid — based on your project's nature, risk profile, and team structure.</p>
+                <p className="text-[13px] text-gray-500 leading-relaxed">We don't impose a single methodology. We apply the right framework, waterfall, agile, hybrid based on your project's nature, risk profile, and team structure.</p>
               </div>
             </motion.div>
           </div>
@@ -214,7 +214,7 @@ export default function PMOPage() {
         <div className="relative z-10 max-w-[82rem] mx-auto px-6 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-[24px] font-serif text-white mb-2">Want PMO governance on your project?</h2>
-            <p className="text-[14px] text-white/45 max-w-lg">Every LogicSoft engagement includes dedicated PMO oversight as standard — not as an add-on.</p>
+            <p className="text-[14px] text-white/45 max-w-lg">Every LogicSoft engagement includes dedicated PMO oversight as standard not as an add-on.</p>
           </div>
           <div className="flex gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white transition-all hover:scale-[1.02]"

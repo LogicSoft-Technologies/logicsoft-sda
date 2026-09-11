@@ -45,7 +45,7 @@ const services = [
     title: "Testing and QA",
     description:
       "Rigorous quality assurance, automated regression testing, and performance benchmarking for confident releases.",
-    href: "/services/testing-and-qa",
+    href: "/software-testing",
     tag: "Quality",
     stat: "99.4% defect catch rate",
     iconColor: "#7c3aed",
@@ -191,7 +191,7 @@ export default function ServiceMap() {
             Our Service Map
           </h2>
           <Link
-            href="/services"
+            href="/service"
             className="flex items-center gap-2 text-[13px] sm:text-[13.5px] font-medium text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors duration-200 pb-1 border-b border-[#1f6fb2]/30 hover:border-[#1f3a5f]/30"
           >
             View all services <ArrowRight className="w-4 h-4" />

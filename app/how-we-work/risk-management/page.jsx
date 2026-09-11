@@ -7,9 +7,9 @@ export default function RiskManagementPage() {
     <HowWeWorkPage
       index={4}
       title="Risk Management"
-      description="Risks don't disappear by being ignored. We surface them early, quantify their impact, and implement controls — converting unknown unknowns into managed variables before they become incidents."
+      description="Risks don't disappear by being ignored. We surface them early, quantify their impact, and implement controls converting unknown unknowns into managed variables before they become incidents."
       steps={[
-        { title: "Risk Identification", body: "At project inception we run a structured risk workshop — technical, organisational, external, and delivery risks are catalogued and scored by probability and impact." },
+        { title: "Risk Identification", body: "At project inception we run a structured risk workshop technical, organisational, external, and delivery risks are catalogued and scored by probability and impact." },
         { title: "Risk Quantification", body: "Each risk is assigned a probability, an impact rating, and an expected monetary value. This moves risk from feeling to fact." },
         { title: "Mitigation Planning", body: "For every high and medium risk we define a mitigation action, an owner, and a deadline. Unowned risks are unmanaged risks." },
         { title: "Continuous Monitoring", body: "The risk register is reviewed at every sprint review and steering committee. New risks are added; resolved risks are closed. The register is never a one-time document." },

@@ -144,7 +144,7 @@ const SERVICE = {
   accentColor:  "#1f6fb2",
   title:        "Custom Software Development",
   tagline:      "Purpose-built software engineered for your exact workflows, integrations, and scale not adapted from a generic template.",
-  description:  "We design and build software that solves real operational problems. Every system we deliver is architected from scratch for your specific context — your data model, your integrations, your users, your growth trajectory. No off-the-shelf shortcuts.",
+  description:  "We design and build software that solves real operational problems. Every system we deliver is architected from scratch for your specific context your data model, your integrations, your users, your growth trajectory. No off-the-shelf shortcuts.",
 
   stats: [
     { val: "20+", label: "Custom solutions delivered" },
@@ -206,7 +206,7 @@ const SERVICE = {
     tag: "Case Study",
     industry: "Enterprise Platforms",
     title: "From zero to 200 active users in 4 months, ",
-    challenge: "An enterprise startup needed a scalable platform built from scratch: complex workflows, multi-tenant infrastructure, enterprise-grade security, analytics, integrations, and admin controls—all before a Series A close.",
+    challenge: "An enterprise startup needed a scalable platform built from scratch: complex workflows, multi-tenant infrastructure, enterprise-grade security, analytics, integrations, and admin controls all before a Series A close.",
     outcome: "We delivered the MVP in 7 weeks, the full platform in 6 months. The product onboarded 200 active users in its first year and the client raised their Series A round within 3 months of launch.",
     metrics: [
       { val: "8mo",     label: "Full platform delivered"          },
@@ -216,7 +216,6 @@ const SERVICE = {
   },
 
   faqs: [
-    { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
     { q: "How do you price custom software engagements?",    a: "We default to fixed-scope, fixed-price engagements you know the cost before we write a line of code. For longer-running products where scope evolves, we offer a dedicated team model with a monthly retainer. We never bill time-and-materials for defined-scope work." },
     { q: "What happens if requirements change mid-project?", a: "We use a formal change control process: any scope change is scoped, priced, and approved before it enters development. This keeps budgets predictable while giving you the flexibility to evolve priorities." },
     { q: "Do you work with our existing development team?",  a: "Yes many engagements involve our engineers working alongside your team. We adapt to your branching strategy, tools, and review process. We can also provide a standalone delivery squad that integrates into your Jira and Slack." },
@@ -280,10 +279,6 @@ function ServicesNavigator({ currentHref }) {
               The same four service categories from our navigation all links lead directly to their detail pages.
             </p>
           </div>
-          <Link href="/services"
-            className="inline-flex items-center gap-2 text-[13px] font-bold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors whitespace-nowrap shrink-0">
-            Full services overview <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </motion.div>
 
         <motion.div {...fadeUp(0.06)}

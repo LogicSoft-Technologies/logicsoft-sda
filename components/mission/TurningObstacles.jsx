@@ -13,7 +13,7 @@ const projects = [
       "A leading financial regulator commissioned two subcontractors to build its data analytics solution. Poor communication across 30+ stakeholders, unstructured change request workflows, and scope creep meant 40% of the project's duration was lost to coordination alone.",
     solution:
       "Logicsoft formalised requirements gathering and change processing, reorganised the development teams into 10 smaller units, established meeting and reporting schedules, and set up a shared knowledge repository. The client eliminated redundant communication, accelerated development, and regained full control of scope.",
-    href: "/case-studies/dwh-project-recovery",
+
   },
   {
     image: "/images/case-study-2.png",
@@ -24,7 +24,7 @@ const projects = [
       "A property insurance brokerage's custom system had incomplete documentation, no structured change management, and changes were being tested directly in production, meaning every unfixed defect immediately disrupted live operations.",
     solution:
       "Within one week, Logicsoft audited the legacy software and produced a full revamp plan including rearchitecting and refactoring guidelines. We identified workflow bottlenecks and helped implement standardised documentation, reporting, and change management practices reducing costs and accelerating the revamp.",
-    href: "/case-studies/insurance-software-rescue",
+    
   },
   {
     image: "/images/case-study-3.png",
@@ -35,7 +35,7 @@ const projects = [
       "A global conglomerate with 30+ businesses across retail, BFSI, and logistics operated dozens of siloed systems. Data was transferred manually between CRMs, ERPs, POS, and supply chain tools delaying decisions, causing errors, and making group-wide analytics impossible.",
     solution:
       "Logicsoft architects presented four integration scenarios, each backed by a detailed technology stack recommendation. The new integration foundation kept data clean, consistent, secure, and instantly accessible positioning the company to scale, innovate faster, and capitalise fully on its global reach.",
-    href: "/case-studies/enterprise-integration",
+    
   },
   {
     image: "/images/case-study-4.png",
@@ -46,7 +46,7 @@ const projects = [
       "A multinational pharmaceutical company relied on outdated, fragmented IT to manage oncology and TPN drug production. Disconnected modules, manual updates, fax-based ordering, and a system that failed GAMP4 standards all threatened regulatory compliance and patient safety.",
     solution:
       "Logicsoft delivered a GAMP4-compliant, full-cycle system unifying production, stock control, invoicing, reporting, and security. Key functions included automated recipe validation, least-waste compounding logic, and full production step tracking. The solution has sustained uninterrupted performance for over 10 years.",
-    href: "/case-studies/oncology-drug-system",
+    
   },
   {
     image: "/images/case-study-5.png",
@@ -57,7 +57,7 @@ const projects = [
       "A Texas-based telecom provider needed a platform to consolidate data from 10+ sources. The legacy setup couldn't support multi-tenancy, high-velocity telemetry, or predictive analytics creating cost inefficiencies and preventing churn prediction.",
     solution:
       "Logicsoft delivered a scalable, multi-tenant big data platform using AWS, Apache Kafka, and ROLAP cubes. Combining Amazon Spot Instances and load balancers with a thoughtfully designed data pipeline, the platform reduced AWS computing costs by 80% without compromising performance.",
-    href: "/case-studies/telecom-analytics",
+    
   },
   {
     image: "/images/case-study-6.png",
@@ -68,7 +68,7 @@ const projects = [
       "A global image processing company had a poor track record with offshore vendors. A parallel vendor they hired failed to deliver. They needed a team to take over the failing project and meet their demanding Agile and PM standards.",
     solution:
       "Logicsoft's Scrum Master established scoping, communication, and change management flows that ensured rapid, aligned delivery. Each product shipped within 4 months. Flexible resource scaling allowed the client to optimise costs. The collaboration lasted nearly 5 years and produced 12 software products.",
-    href: "/case-studies/digital-imaging-software",
+   
   },
 ];
 
@@ -144,12 +144,7 @@ export default function TurningObstacles() {
                   </div>
                 </div>
 
-                <Link
-                  href={project.href}
-                  className="self-start flex items-center gap-2 text-[13px] font-medium text-[#1f6fb2] hover:text-[#1f3a5f] border-b border-[#1f6fb2]/30 hover:border-[#1f3a5f]/40 pb-0.5 transition-all duration-200"
-                >
-                  See the full project <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+              
 
               </div>
 
@@ -164,7 +159,7 @@ export default function TurningObstacles() {
         {/* ── CTA ── */}
         <div className="flex justify-center mt-12">
           <Link
-            href="/case-studies"
+            href="/portfolio"
             className="flex items-center gap-2 px-8 py-3 text-[13.5px] font-medium border border-[#1f6fb2] text-[#1f6fb2] hover:bg-[#1f6fb2] hover:text-white transition-all duration-200"
           >
             See case studies from our portfolio <ArrowRight className="w-4 h-4" />

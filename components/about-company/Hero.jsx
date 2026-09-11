@@ -96,7 +96,7 @@ export default function HeroSection() {
                 Start a project <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/services"
+                href="/service"
                 className="flex items-center gap-2 px-5 sm:px-6 py-2.5 text-[13px] sm:text-[13.5px] font-medium
                   border border-[#1f6fb2] text-[#1f6fb2]
                   hover:bg-[#1f6fb2] hover:text-white transition-all duration-200"

@@ -20,7 +20,7 @@ const RESPONSIBILITIES = [
   },
   {
     icon: Award, title: "Certification Programmes",
-    body: "We fund and manage certification across cloud platforms, security frameworks, DevOps practices, and domain-specific qualifications — ensuring credentials are maintained and relevant.",
+    body: "We fund and manage certification across cloud platforms, security frameworks, DevOps practices, and domain-specific qualifications ensuring credentials are maintained and relevant.",
   },
   {
     icon: Target, title: "Skills Matching",
@@ -28,11 +28,11 @@ const RESPONSIBILITIES = [
   },
   {
     icon: Globe, title: "Domain & Industry Knowledge",
-    body: "Technical skill without domain knowledge produces generic solutions. The CoE ensures engineers working in FinTech, healthcare, logistics, and other regulated industries understand the sectoral context — regulations, challenges, and user expectations.",
+    body: "Technical skill without domain knowledge produces generic solutions. The CoE ensures engineers working in FinTech, healthcare, logistics, and other regulated industries understand the sectoral context regulations, challenges, and user expectations.",
   },
   {
     icon: TrendingUp, title: "Talent Pipeline",
-    body: "We maintain a development pipeline for high-potential junior and mid-level engineers — structured mentorship, stretch assignments, and progression frameworks that grow the next generation of senior talent.",
+    body: "We maintain a development pipeline for high-potential junior and mid-level engineers structured mentorship, stretch assignments, and progression frameworks that grow the next generation of senior talent.",
   },
 ];
 
@@ -177,7 +177,7 @@ export default function CompetencyCOEPage() {
               <h2 className="text-[28px] font-serif text-[#1f3a5f] mb-6">Outcomes of competency-led staffing</h2>
               <ul className="space-y-4">
                 {[
-                  "Engineers placed based on verified skills — not just availability",
+                  "Engineers placed based on verified skills not just availability",
                   "Domain knowledge matched to your industry's specific challenges",
                   "Consistent performance standards across the entire team",
                   "Skills gaps proactively addressed before they affect delivery",

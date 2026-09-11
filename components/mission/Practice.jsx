@@ -9,11 +9,7 @@ const practices = [
   { label: "Cost Estimation",             href: "/how-we-work/estimate"             },
   { label: "Resource Selection",          href: "/how-we-work/resources"            },
   { label: "Risk Management",             href: "/how-we-work/risk-management"      },
-  { label: "Deadline Management",         href: "/how-we-work/deadline-management"  },
-  { label: "Budget Management",           href: "/how-we-work/budget-management"    },
-  { label: "Change Request Management",   href: "/how-we-work/change-requests"      },
-  { label: "Software Documentation",      href: "/how-we-work/documentation"        },
-  { label: "Knowledge Management",        href: "/how-we-work/knowledge-management" },
+  { label: "Change Request Management",   href: "/how-we-work/change-request"      },
   { label: "Success Measurement",         href: "/how-we-work/success-measurement"  },
   { label: "Project Reporting",           href: "/how-we-work/reporting"            },
 ];

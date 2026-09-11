@@ -26,7 +26,7 @@ const items = [
   },
   {
     title: "Change Management",
-    href: "/how-we-work/change-requests",
+    href: "/how-we-work/change-request",
     desc: "Understand our structured and controllable process to record, assess, triage, and implement feasible change requests.",
   },
   {

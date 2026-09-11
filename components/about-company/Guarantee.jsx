@@ -117,7 +117,7 @@ export default function Guarantee() {
 
         <p className="text-[15px] sm:text-[17px] text-gray-700 leading-[1.85] sm:leading-[2] mb-10 sm:mb-14 max-w-[1100px]">
           At Logicsoft Technologies, we see our mission in driving project success no
-          matter what. These are not just ambitious words — we apply a proven set of
+          matter what. These are not just ambitious words we apply a proven set of
           practices and techniques to keep projects on track and deliver on our
           commitments despite any possible obstacles. Our Code of Conduct underpins
           this dedication, fostering accountability, fairness, and professionalism
@@ -128,46 +128,35 @@ export default function Guarantee() {
           {guarantees.map((item, index) => {
             const Icon = item.icon;
             return (
-              <Link
-                key={index}
-                href={item.href}
-                aria-label={item.title}
-                className="group relative bg-white flex flex-col border border-gray-200 px-5 sm:px-6 pt-6 sm:pt-7 pb-5 sm:pb-6 overflow-hidden hover:border-[#1f6fb2] hover:shadow-md transition-all duration-300"
-              >
-                <span
-                  className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full"
-                  aria-hidden="true"
-                />
+         <div
+            key={index}
+           className="group relative bg-white flex flex-col border border-gray-200 px-5 sm:px-6 pt-6 sm:pt-7 pb-5 sm:pb-6 overflow-hidden"
+        >
+          <span
+            className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full"
+            aria-hidden="true"
+          />
 
-                <ArrowUpRight
-                  className="absolute top-3 right-3 w-[15px] h-[15px] text-gray-300 transition-transform duration-300 ease-out group-hover:rotate-45 group-hover:text-[#1f6fb2]"
-                  aria-hidden="true"
-                />
+         <div
+           className="mb-4 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center border shrink-0"
+          style={{ backgroundColor: item.badgeBg, borderColor: item.badgeBorder }}
+         >
+         <Icon size={18} style={{ color: item.iconColor }} aria-hidden="true" />
+        </div>
 
-                <div
-                  className="mb-4 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center border shrink-0"
-                  style={{ backgroundColor: item.badgeBg, borderColor: item.badgeBorder }}
-                >
-                  <Icon size={18} style={{ color: item.iconColor }} aria-hidden="true" />
-                </div>
+          <h3 className="text-[14px] sm:text-[14.5px] font-semibold text-[#1f3a5f] leading-snug mb-2 group-hover:text-[#1f6fb2] transition-colors duration-200">
+            {item.title}
+          </h3>
 
-                <h3 className="text-[14px] sm:text-[14.5px] font-semibold text-[#1f3a5f] leading-snug mb-2 group-hover:text-[#1f6fb2] transition-colors duration-200">
-                  {item.title}
-                </h3>
+        <p className="text-[13px] text-gray-500 leading-[1.85] flex-1">
+          {item.description}
+        </p>
 
-                <p className="text-[13px] text-gray-500 leading-[1.85] flex-1">
-                  {item.description}
-                </p>
-
-                <span className="inline-flex items-center gap-1 mt-4 text-[12.5px] font-medium text-[#1f6fb2] group-hover:gap-2 transition-all duration-200">
-                  Details <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                </span>
-
-                <span
-                  className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-400 transition-all duration-500 ease-out group-hover:left-0 group-hover:w-full"
-                  aria-hidden="true"
-                />
-              </Link>
+       <span
+         className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-400 transition-all duration-500 ease-out group-hover:left-0 group-hover:w-full"
+         aria-hidden="true"
+         />
+       </div>
             );
           })}
         </div>

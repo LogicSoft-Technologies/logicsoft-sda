@@ -53,7 +53,7 @@ export default function CaseStudyPage({ params }) {
 
   const [videoReady, setVideoReady] = useState(false);
 
-  return (
+   return (
     <div className="bg-white">
       {/* ══════════════════════ HERO ══════════════════════ */}
       <section

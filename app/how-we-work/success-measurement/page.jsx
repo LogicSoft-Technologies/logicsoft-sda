@@ -7,11 +7,11 @@ export default function SuccessMeasurementPage() {
     <HowWeWorkPage
       index={6}
       title="Success Measurement"
-      description="Delivery isn't success. Outcomes are success. We define, track, and report KPIs that measure what actually matters — business results, not activity metrics."
+      description="Delivery isn't success. Outcomes are success. We define, track, and report KPIs that measure what actually matters business results, not activity metrics."
       steps={[
-        { title: "KPI Definition", body: "At project inception we co-define success metrics with your team — delivery KPIs (velocity, quality, adherence) and outcome KPIs (performance, adoption, ROI)." },
+        { title: "KPI Definition", body: "At project inception we co-define success metrics with your team delivery KPIs (velocity, quality, adherence) and outcome KPIs (performance, adoption, ROI)." },
         { title: "Baseline Establishment", body: "We measure the current state before delivery begins. Improvement can only be demonstrated against a documented baseline." },
-        { title: "Continuous Tracking", body: "KPIs are tracked in every sprint and reported in every steering committee. Trends are surfaced early — positive and negative." },
+        { title: "Continuous Tracking", body: "KPIs are tracked in every sprint and reported in every steering committee. Trends are surfaced early positive and negative." },
         { title: "Joint Review", body: "We conduct formal success reviews at major milestones and at project close. Findings inform future engagements and validate delivery value." },
       ]}
       principles={[

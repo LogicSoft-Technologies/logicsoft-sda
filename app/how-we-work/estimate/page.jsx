@@ -10,7 +10,7 @@ export default function EstimatePage() {
       description="We produce estimates that are accurate, explainable, and defensible. Every line item traces back to a specific requirement, team composition decision, or risk allowance and nothing is guesswork."
       steps={[
         { title: "Scope Decomposition", body: "We break the agreed scope into estimable work units, epics, features, and tasks are each estimated independently before being aggregated." },
-        { title: "Effort Modelling", body: "We apply effort models calibrated against 300+ delivered projects. Historical data eliminates the optimism bias that plagues most software estimates." },
+        { title: "Effort Modelling", body: "We apply effort models calibrated against 20+ delivered projects. Historical data eliminates the optimism bias that plagues most software estimates." },
         { title: "Risk Allowance", body: "We identify estimation risks, unclear requirements, third-party dependencies, novel technology and apply explicit contingency, not hidden padding." },
         { title: "Review & Validation", body: "Estimates are reviewed by a senior engineer who didn't produce them. Independent review catches systemic optimism and missing work items." },
       ]}

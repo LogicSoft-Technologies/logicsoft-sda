@@ -1,13 +1,14 @@
 "use client";
-// app/software-testing/page.jsx  — Testing & QA index
+// app/software-testing/page.jsx  — Testing & QA index
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ServicePageLayout, { Label } from "@/components/ServicePageLayout";
 
 const ITEMS = [
-  { href: "/qa/outsourcing",      icon: "🏢", title: "QA Outsourcing",       body: "Full transfer of QA ownership — dedicated team embedded in your delivery cycle." },
+  { href: "/qa/outsourcing",      icon: "🏢", title: "QA Outsourcing",       body: "Full transfer of QA ownership dedicated team embedded in your delivery cycle." },
   { href: "/qa/consulting",       icon: "🔍", title: "QA Consulting",        body: "Test strategy, toolchain selection, and quality engineering process improvement." },
-  { href: "/testing/functional",  icon: "✅", title: "Functional Testing",   body: "Every feature verified against acceptance criteria — manual and automated." },
+  { href: "/testing/functional",  icon: "✅", title: "Functional Testing",   body: "Every feature verified against acceptance criteria manual and automated." },
   { href: "/testing/usability",   icon: "👤", title: "Usability Testing",    body: "Real-user sessions that expose UX friction before your product reaches market." },
   { href: "/testing/performance", icon: "⚡", title: "Performance Testing",  body: "Load, stress, and endurance testing to validate behaviour under peak demand." },
   { href: "/testing/automation",  icon: "🤖", title: "Test Automation",      body: "CI/CD-integrated automation suites that give confidence on every build." },
@@ -21,7 +22,7 @@ export default function SoftwareTestingPage() {
       breadcrumbs={[["Testing & QA", null]]}
       eyebrow="Testing & QA"
       title="Testing & QA Services"
-      subtitle="Full-range quality assurance across mobile, web, and desktop — catching issues before they reach production and protecting your reputation with every release."
+      subtitle="Full-range quality assurance across mobile, web, and desktop catching issues before they reach production and protecting your reputation with every release."
       stats={[
         { value: "95%", label: "Defect detection before production" },
         { value: "Zero", label: "Critical defect policy in production" },

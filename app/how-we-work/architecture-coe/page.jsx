@@ -12,7 +12,7 @@ import { FaDraftingCompass } from "react-icons/fa";
 const RESPONSIBILITIES = [
   {
     icon: Layers, title: "Architecture Standards",
-    body: "We establish and enforce reusable architecture patterns across all engagements — ensuring consistency, reducing rework, and enabling engineers to build on proven foundations rather than reinventing solutions.",
+    body: "We establish and enforce reusable architecture patterns across all engagements ensuring consistency, reducing rework, and enabling engineers to build on proven foundations rather than reinventing solutions.",
   },
   {
     icon: Shield, title: "Risk-Aware Design",
@@ -28,11 +28,11 @@ const RESPONSIBILITIES = [
   },
   {
     icon: TrendingUp, title: "Emerging Technology Tracking",
-    body: "We systematically track the technology landscape — evaluating emerging tools, frameworks, and paradigms against the specific context of our clients' industries and system environments.",
+    body: "We systematically track the technology landscape evaluating emerging tools, frameworks, and paradigms against the specific context of our clients' industries and system environments.",
   },
   {
     icon: RefreshCw, title: "Technical Debt Management",
-    body: "Architecture decisions accumulate debt. We maintain a technical debt register, quantify the cost of carrying it, and ensure debt reduction is factored into roadmap planning — not deferred indefinitely.",
+    body: "Architecture decisions accumulate debt. We maintain a technical debt register, quantify the cost of carrying it, and ensure debt reduction is factored into roadmap planning not deferred indefinitely.",
   },
 ];
 
@@ -79,14 +79,14 @@ export default function ArchitectureCOEPage() {
                 <span className="text-[#a78bfa]">Solutions CoE</span>
               </h1>
               <p className="text-[16px] text-white/50 leading-[1.95] max-w-[580px]">
-                Our Architecture and Solutions CoE sets and enforces the standards for scalable, secure, and cost-effective solutions. Led by Principal Architects with 15+ years of experience each, it ensures every system supports your goals, avoids costly rework, and stands up to change.
+                Our Architecture and Solutions CoE sets and enforces the standards for scalable, secure, and cost-effective solutions. Led by Principal Architects with 8+ years of experience each, it ensures every system supports your goals, avoids costly rework, and stands up to change.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55, delay: 0.15 }}
               className="grid grid-cols-2 gap-2 min-w-[240px]">
               {[
                 { val: "3",   label: "Principal Architects" },
-                { val: "15+", label: "Avg years experience"  },
+                { val: "8+", label: "Avg years experience"  },
                 { val: "4",   label: "Review types"          },
                 { val: "100%", label: "Projects reviewed"    },
               ].map((m, i) => (
@@ -128,7 +128,7 @@ export default function ArchitectureCOEPage() {
         <div className="max-w-[82rem] mx-auto px-6">
           <div className="mb-12">
             <p className="text-[10.5px] font-bold text-[#7c3aed] uppercase tracking-[0.16em] mb-2">Architecture reviews</p>
-            <h2 className="text-[30px] font-serif text-[#1f3a5f]">Four review types — all mandatory</h2>
+            <h2 className="text-[30px] font-serif text-[#1f3a5f]">Four review types all mandatory</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {REVIEW_TYPES.map((r, i) => (
@@ -222,7 +222,7 @@ export default function ArchitectureCOEPage() {
         <div className="relative z-10 max-w-[82rem] mx-auto px-6 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-[24px] font-serif text-white mb-2">Want architecture-led delivery?</h2>
-            <p className="text-[14px] text-white/45 max-w-lg">Our Architecture CoE reviews every project before, during, and after delivery — as standard, not optional.</p>
+            <p className="text-[14px] text-white/45 max-w-lg">Our Architecture CoE reviews every project before, during, and after delivery as standard, not optional.</p>
           </div>
           <div className="flex gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white transition-all hover:scale-[1.02]"
