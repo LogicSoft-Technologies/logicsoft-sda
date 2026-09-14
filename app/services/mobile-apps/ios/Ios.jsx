@@ -20,7 +20,7 @@ const CAPABILITIES = [
     num: "02",
     icon: Cpu,
     title: "Core Data & CloudKit",
-    desc: "Offline-first data persistence with Core Data, synced seamlessly to iCloud via CloudKit. Users expect their data to follow them across iPhone, iPad, and Mac — we make that reliable.",
+    desc: "Offline-first data persistence with Core Data, synced seamlessly to iCloud via CloudKit. Users expect their data to follow them across iPhone, iPad, and Mac we make that reliable.",
     tags: ["Core Data", "CloudKit", "iCloud Sync", "NSPersistentCloudKitContainer"],
   },
   {
@@ -48,7 +48,7 @@ const CAPABILITIES = [
     num: "06",
     icon: Star,
     title: "App Store Optimisation & Launch",
-    desc: "We prepare your App Store listing, screenshots, preview videos, and metadata — and manage the review submission process so launch day isn't stressful.",
+    desc: "We prepare your App Store listing, screenshots, preview videos, and metadata and manage the review submission process so launch day isn't stressful.",
     tags: ["App Store Connect", "TestFlight", "ASO", "Phased rollout"],
   },
 ];
@@ -212,7 +212,7 @@ export default function Ios() {
 
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
                 Native iPhone and iPad applications built with SwiftUI and the full Apple
-                platform SDK. Apps that feel exactly like they belong on iOS — because
+                platform SDK. Apps that feel exactly like they belong on iOS because
                 they're engineered to Apple's own standards, not adapted from something else.
               </p>
 
@@ -282,7 +282,7 @@ export default function Ios() {
                 Six capabilities. All native. All Apple-quality.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
-                We build iOS apps that reviewers score 4.8+ because they're made the Apple way —
+                We build iOS apps that reviewers score 4.8+ because they're made the Apple way
                 not ported, not adapted, not compromised.
               </p>
             </div>

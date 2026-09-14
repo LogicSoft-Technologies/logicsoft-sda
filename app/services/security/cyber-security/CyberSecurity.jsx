@@ -32,7 +32,7 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { val:"300+",  label:"Assessments delivered",     color:"#10b981" },
+  { val:"20+",  label:"Assessments delivered",     color:"#10b981" },
   { val:"OWASP", label:"Top 10 baseline standard",  color:"#f59e0b" },
   { val:"ISO",   label:"27001 certified practice",  color:"#1f6fb2" },
   { val:"24/7",  label:"SIEM monitoring available", color:"#ef4444" },

@@ -13,14 +13,14 @@ const CAPABILITIES = [
     num: "01",
     icon: Smartphone,
     title: "Kotlin & Jetpack Compose",
-    desc: "Modern Android development using Kotlin and Jetpack Compose — Google's declarative UI toolkit. Concise, testable, and fully interoperable with existing View-based code where needed.",
+    desc: "Modern Android development using Kotlin and Jetpack Compose Google's declarative UI toolkit. Concise, testable, and fully interoperable with existing View-based code where needed.",
     tags: ["Kotlin", "Jetpack Compose", "Coroutines", "Flow"],
   },
   {
     num: "02",
     icon: Layers,
     title: "Material You Design System",
-    desc: "Apps that adapt to each user's wallpaper colour with Material You dynamic colour. Component library built on Material Design 3 — the system 3 billion Android users already know.",
+    desc: "Apps that adapt to each user's wallpaper colour with Material You dynamic colour. Component library built on Material Design 3 the system 3 billion Android users already know.",
     tags: ["Material Design 3", "Dynamic Color", "Adaptive UI", "Motion"],
   },
   {
@@ -41,14 +41,14 @@ const CAPABILITIES = [
     num: "05",
     icon: Zap,
     title: "Performance on All Devices",
-    desc: "Android runs on thousands of device profiles — from flagship Pixels to budget Tecno handsets. We profile with Android Studio, test on a representative device matrix, and optimise aggressively.",
+    desc: "Android runs on thousands of device profiles from flagship Pixels to budget Tecno handsets. We profile with Android Studio, test on a representative device matrix, and optimise aggressively.",
     tags: ["Android Profiler", "Memory Optimisation", "Firebase Test Lab", "Baseline Profiles"],
   },
   {
     num: "06",
     icon: BarChart3,
     title: "Firebase & Google Services Integration",
-    desc: "Full Firebase suite — Authentication, Firestore, Cloud Messaging (FCM), Analytics, Crashlytics, Remote Config, and App Distribution for test builds. Plus Google Maps, Pay, and Sign-In.",
+    desc: "Full Firebase suite Authentication, Firestore, Cloud Messaging (FCM), Analytics, Crashlytics, Remote Config, and App Distribution for test builds. Plus Google Maps, Pay, and Sign-In.",
     tags: ["Firebase", "FCM Push", "Crashlytics", "Google Pay", "Maps SDK"],
   },
 ];
@@ -231,7 +231,7 @@ export default function Android() {
               </h2>
 
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
-                Native Android apps built with Kotlin and Jetpack Compose — the modern Android
+                Native Android apps built with Kotlin and Jetpack Compose the modern Android
                 stack Google recommends. Material You adaptive design that feels at home on every
                 Android device from Lagos to London.
               </p>
@@ -302,7 +302,7 @@ export default function Android() {
                 Six capabilities. Built for the Android ecosystem.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
-                Android's diversity is its strength — and its challenge. We build apps that work
+                Android's diversity is its strength and its challenge. We build apps that work
                 across the full device spectrum while looking exceptional on every one.
               </p>
             </div>

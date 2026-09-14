@@ -1,5 +1,6 @@
 "use client";
-// app/it-consulting/page.jsx
+// app/it-consulting/page.jsx
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ServicePageLayout, { Label } from "@/components/ServicePageLayout";
@@ -21,10 +22,10 @@ export default function ITConsultingPage() {
       breadcrumbs={[["IT Consulting", null]]}
       eyebrow="IT Consulting"
       title="IT Consulting"
-      subtitle="Strategic technology advisory and hands-on consulting — helping organisations plan and execute effective IT strategies that support sustainable growth."
+      subtitle="Strategic technology advisory and hands-on consulting helping organisations plan and execute effective IT strategies that support sustainable growth."
       stats={[
-        { value: "40+", label: "Enterprise clients" },
-        { value: "12+", label: "Years of advisory experience" },
+        { value: "10+", label: "Enterprise clients" },
+        { value: "5+", label: "Years of advisory experience" },
         { value: "C-suite", label: "Engagement level" },
       ]}
       ctaTitle="Discuss your IT strategy"

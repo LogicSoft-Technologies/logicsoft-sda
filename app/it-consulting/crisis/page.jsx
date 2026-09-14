@@ -16,7 +16,7 @@ export default function CrisisManagementPage() {
         { value: "100%", label: "Client operations restored" },
       ]}
       ctaTitle="Need immediate crisis support?"
-      ctaSub="Contact us now — we respond within 4 hours, 24/7."
+      ctaSub="Contact us now, we respond within 4 hours, 24/7."
     >
       <Label>Crisis scenarios we handle</Label>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">

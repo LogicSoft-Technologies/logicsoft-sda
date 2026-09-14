@@ -24,7 +24,7 @@ const FOUNDERS = [
   credentials: [
     "B.Sc. Industrial Physics (In View), University of Benin",
     "Founder & CEO, Logicsoft Technologies",
-    "4+ Years in Full-Stack Software Engineering",
+    "5+ Years in Full-Stack Software Engineering",
     "Specializing in AI, Cloud & Enterprise Software"],
   },
 {
@@ -49,19 +49,26 @@ const FOUNDERS = [
     "Cybersecurity & Enterprise Application Development"],
 },
   {
-    name: "Ngozi Adeleke",
+    name: "Onyekanna Chukwuebuka Maximos",
     title: "Chief Operating Officer & Co-Founder",
-    image: "/images/founders/ngozi.jpg",
+    image: "/images/ebuka1.png",
     avatarBg: "#7c3aed",
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
     bio: [
-      "Ngozi brings the operational rigour that turns engineering talent into reliable delivery. With a background in management consulting at a Big Four firm, she joined Adewale and Emeka as the third co-founder to build the business infrastructure, the project management frameworks, client relationship processes, and financial discipline that allowed Logicsoft to scale without losing quality.",
-      "She architected Logicsoft's project management methodology, which draws from PRINCE2, Agile, and the company's own 5 years of hard won delivery lessons. She also leads People & Culture, a function she considers as important as engineering.",
-      "Under her leadership, Logicsoft has maintained a 98% client retention rate and a zero crunch culture that attracts and keeps exceptional engineers.",
+      "Chukwuebuka is a business-focused operator and Co-Founder at LogicSoft Technologies, where he work on the commercial and operational side of building and growing a technology company.",
+      "He work spans business development, client relationships, financial and operational planning, partnerships, negotiations, and coordinating the execution required to move opportunities from conversation to delivery.",
+      "At LogicSoft Technologies, he work closely with our technical leadership and delivery teams to ensure that business objectives are properly understood and translated into practical technology solutions.",
+      "He is particularly interested in building strong business relationships, identifying valuable opportunities, improving operational processes, and creating partnerships that produce long-term value.",
     ],
     quote: "Delivery methodology is not bureaucracy. It's the difference between a project that works and one that doesn't. Our clients don't pay us to be creative with their budgets, they pay us to hit our commitments, every single time.",
-    credentials: ["MBA, Lagos Business School", "PRINCE2 Practitioner", "PMP Certified", "Former Big Four Management Consultant"],
+    credentials: [
+     "Executive Leadership & Operations",
+     "Business Strategy & Growth",
+     "Technology Delivery Management",
+     "Organizational & Team Leadership",
+     "Client & Stakeholder Relations"
+    ],
   },
 ];
 
@@ -199,7 +206,7 @@ export default function FoundersStory() {
               </h2>
               <p className="text-[17px] text-white/70 leading-[1.9] mb-8 max-w-[620px]">
                 Three engineers. One shared belief. No external funding. This is the story of how
-                SDA Logicsoft Technologies went from a Victoria Island café to 100+ delivered projects
+                SDA Logicsoft Technologies went from a Victoria Island café to 20+ delivered projects
                 across three continents told by the people who built it.
               </p>
 

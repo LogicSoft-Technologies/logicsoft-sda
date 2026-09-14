@@ -699,7 +699,7 @@ export default function ContactPage() {
           <div>
             <p className="text-[10.5px] font-bold text-[#60a8dc] uppercase tracking-[0.16em] mb-3 font-mono">No obligation · No lock-in</p>
             <h2 className="text-[28px] font-serif font-normal text-white mb-2">Ready when you are.</h2>
-            <p className="text-[14px] text-white/45 max-w-lg leading-relaxed">Start with a conversation. We&rsquo;ll scope the work, provide a proposal, and you decide if it&rsquo;s the right fit — zero pressure.</p>
+            <p className="text-[14px] text-white/45 max-w-lg leading-relaxed">Start with a conversation. We&rsquo;ll scope the work, provide a proposal, and you decide if it&rsquo;s the right fit zero pressure.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <a href="#form" onClick={(e) => { e.preventDefault(); document.querySelector("form")?.scrollIntoView({ behavior: "smooth" }); }}

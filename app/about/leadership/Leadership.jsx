@@ -11,7 +11,7 @@ const team = [
     image: "/images/founders/elijah-x.jpg",
     bio: "Elijah leads Logicsoft Technologies with a focus on strategic growth, enterprise partnerships, and delivery excellence. With a background spanning software engineering and business development, he founded Logicsoft to bridge the gap between world-class technical execution and real business outcomes.",
     linkedin: "https://linkedin.com/in/elijah-alexander-516649331",
-    email: "elijah@logicsoft.com",
+    email: "contact@logicsofttechnologies.com",
   },
   {
     name: "Saviour Oviahon Efe",
@@ -22,12 +22,12 @@ const team = [
     email: "oviahonsaviourefe@gmail.com",
   },
   {
-    name: "TBA",
-    role: "Head of Delivery",
-    image: null,
-    bio: "Responsible for project management operations, client delivery frameworks, and ensuring every engagement meets LogicSoft's quality standards.",
-    linkedin: null,
-    email: null,
+    name: "Onyekanna Chukwuebuka Maximos",
+    role: "Chief Operating Officer",
+    image: "/images/ebuka1.png",
+    bio: "Onyekanna Chukwuebuka Maximos is the Chief Operating Officer at LogicSoft Technologies, overseeing the company’s day-to-day operations, organizational growth, and business execution. He works closely with leadership and delivery teams to streamline processes, strengthen operational efficiency, and ensure projects are delivered to a high standard. His leadership supports LogicSoft’s commitment to building strong client relationships, fostering effective teams, and delivering reliable technology solutions that create lasting business value.",
+    linkedin: "https://linkedin.com/in/maximus-chukwuebuka-475360436",
+    email: "maxchukwuebuka9@gmail.com",
   },
 ];
 

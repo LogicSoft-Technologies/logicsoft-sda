@@ -43,7 +43,7 @@ const PILLARS = [
     accentBg: "#f5f3ff",
     title: "People & Community",
     headline: "We invest in the engineers of tomorrow.",
-    desc: "Sustainable technology requires a sustainable talent pipeline. We run mentorship programmes for young Nigerian engineers, partner with universities across West Africa on internship pipelines, and maintain a culture where engineers grow — not burn out.",
+    desc: "Sustainable technology requires a sustainable talent pipeline. We run mentorship programmes for young Nigerian engineers, partner with universities across West Africa on internship pipelines, and maintain a culture where engineers grow not burn out.",
     commitments: [
       "Structured mentorship for junior engineers in every team",
       "University partnership internship pipeline programme",
@@ -276,7 +276,7 @@ export default function Sustainability() {
                 Work that creates lasting value.
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.85] mb-6">
-                We actively seek out projects that use technology to solve real problems —
+                We actively seek out projects that use technology to solve real problems
                 especially in underserved markets and sectors where good software can change lives.
               </p>
               <ul className="space-y-3">

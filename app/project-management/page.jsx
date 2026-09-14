@@ -11,8 +11,8 @@ export default function ProjectManagementConsultingPage() {
       title="Project Management Consulting"
       subtitle="Expert programme and project management for complex technology initiatives keeping scope, schedule, budget, and stakeholders aligned from initiation to closure."
       stats={[
-        { value: "98%", label: "On-time project delivery rate" },
-        { value: "100+", label: "Technology projects managed" },
+        { value: "92%", label: "On-time project delivery rate" },
+        { value: "20+", label: "Technology projects managed" },
         { value: "PMP", label: "Certified practitioners" },
       ]}
       ctaTitle="Get your project on track"

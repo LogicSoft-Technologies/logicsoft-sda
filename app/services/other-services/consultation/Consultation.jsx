@@ -55,7 +55,7 @@ const ADVISORS = [
     name: "Adewale Okonkwo",
     role: "CEO & Strategy Lead",
     expertise: ["Technology strategy","Digital transformation","Executive advisory"],
-    bio: "Former Engineering Director at a Pan-African fintech. 14 years shaping technology decisions for growth-stage and enterprise organisations across Nigeria, UK, and UAE.",
+    bio: "Former Engineering Director at a Pan-African fintech. 5 years shaping technology decisions for growth-stage and enterprise organisations across Nigeria, UK, and UAE.",
   },
   {
     name: "Chukwuemeka Eze",
@@ -212,8 +212,8 @@ export default function Consultation() {
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
                 {[
-                  { val:"14+", label:"Years of practice",         color:"#d97706" },
-                  { val:"100+",label:"Engagements delivered",     color:"#fbbf24" },
+                  { val:"5+", label:"Years of practice",         color:"#d97706" },
+                  { val:"20+",label:"Engagements delivered",     color:"#fbbf24" },
                   { val:"Fixed",label:"Fee — no billable hours",  color:"#d97706" },
                   { val:"Free", label:"Introductory call",        color:"#fbbf24" },
                 ].map(s => (

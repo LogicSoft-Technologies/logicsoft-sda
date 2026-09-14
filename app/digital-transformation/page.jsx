@@ -11,7 +11,7 @@ export default function DigitalTransformationPage() {
       title="Digital Transformation"
       subtitle="We help organisations systematically modernise their people, processes and technology replacing manual effort with scalable digital capability that compounds over time."
       stats={[
-        { value: "40+", label: "Transformation programmes delivered" },
+        { value: "20+", label: "Transformation programmes delivered" },
         { value: "3–18", label: "Month programme duration" },
         { value: "55%", label: "Average operational efficiency gain" },
       ]}

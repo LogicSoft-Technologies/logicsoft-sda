@@ -21,7 +21,7 @@ const services = [
       "Strategic technology advisory to align IT investments with measurable business outcomes and long-term digital roadmaps.",
     href: "/it-consulting",
     tag: "Strategy",
-    stat: "100+ engagements",
+    stat: "20+ engagements",
     iconColor: "#b45309",
     badgeBg: "#fef3c7",
     badgeBorder: "#fde68a",

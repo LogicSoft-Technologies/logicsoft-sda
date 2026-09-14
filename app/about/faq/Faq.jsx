@@ -414,7 +414,7 @@ export default function FAQPage() {
             <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">Ready to start?</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">Let's talk about your project.</h3>
             <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">
-              Every engagement starts with a free 30-minute discovery call. No obligation, no pressure — just a conversation about what you're building and whether we're the right team to help.
+              Every engagement starts with a free 30-minute discovery call. No obligation, no pressure just a conversation about what you're building and whether we're the right team to help.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">

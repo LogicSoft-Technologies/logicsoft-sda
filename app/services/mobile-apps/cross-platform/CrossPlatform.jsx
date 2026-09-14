@@ -31,27 +31,27 @@ const CAPABILITIES = [
     num: "01",
     icon: Repeat2,
     title: "One Codebase. Two App Stores.",
-    desc: "80–90% shared code across iOS and Android with platform-specific adaptations where needed. We don't pretend one codebase means zero platform work — we manage that complexity for you.",
+    desc: "80–90% shared code across iOS and Android with platform-specific adaptations where needed. We don't pretend one codebase means zero platform work we manage that complexity for you.",
     tags: ["Shared logic", "Platform channels", "Native modules", "OTA updates"],
   },
   {
     num: "02",
     icon: DollarSign,
     title: "Cost-Effective Without Compromise",
-    desc: "Cross-platform halves the build time and cost for most apps. We help you evaluate where that trade-off makes sense — and where native is worth the premium. Honest advice, not a sales pitch.",
+    desc: "Cross-platform halves the build time and cost for most apps. We help you evaluate where that trade-off makes sense and where native is worth the premium. Honest advice, not a sales pitch.",
     tags: ["Budget optimisation", "Native bridge", "Performance profiling"],
   },
   {
     num: "03",
     icon: Zap,
     title: "60fps Animations & Native Feel",
-    desc: "React Native Reanimated 3 and Flutter's Skia/Impeller renderer deliver animations that run on the UI thread — indistinguishable from native to users. Smooth scrolling, gesture-driven UI, hero transitions.",
+    desc: "React Native Reanimated 3 and Flutter's Skia/Impeller renderer deliver animations that run on the UI thread indistinguishable from native to users. Smooth scrolling, gesture-driven UI, hero transitions.",
     tags: ["Reanimated 3", "Impeller", "Gesture Handler", "Shared Element"],
   },
   {
     num: "04",
     icon: Code2,
-    title: "React Native or Flutter — We Advise",
+    title: "React Native or Flutter We Advise",
     desc: "React Native if your team is JavaScript-fluent or you're building a business app. Flutter if you need pixel-perfect custom UI or a very consistent cross-platform experience. We recommend based on your context.",
     tags: ["React Native", "Flutter", "Technology selection", "Migration"],
   },
@@ -59,7 +59,7 @@ const CAPABILITIES = [
     num: "05",
     icon: Shield,
     title: "Security on Both Platforms",
-    desc: "Secure storage (Keychain on iOS, Keystore on Android), biometric auth, certificate pinning, and jailbreak/root detection — all implemented correctly across platforms from the start.",
+    desc: "Secure storage (Keychain on iOS, Keystore on Android), biometric auth, certificate pinning, and jailbreak/root detection all implemented correctly across platforms from the start.",
     tags: ["Keychain / Keystore", "Biometrics", "Cert pinning", "Root detection"],
   },
   {
@@ -259,7 +259,7 @@ export default function CrossPlatform() {
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
                 One engineering team. One codebase. Two production-grade apps delivered to both
                 App Store and Play Store simultaneously. We recommend React Native or Flutter
-                based on your project — never based on what's easier for us.
+                based on your project never based on what's easier for us.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
@@ -382,7 +382,7 @@ export default function CrossPlatform() {
               </h3>
               <p className="text-[14px] text-gray-500 leading-[1.9]">
                 Cross-platform doesn't mean cut corners. We engineer the same quality across
-                both stores — at roughly half the cost of two separate native teams.
+                both stores at roughly half the cost of two separate native teams.
               </p>
             </div>
 
@@ -449,8 +449,8 @@ export default function CrossPlatform() {
           <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-6">Need native instead?</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { title: "iOS Development",     href: "/services/mobile-apps/ios",     desc: "SwiftUI, UIKit, Face ID, WidgetKit — truly native Apple.", accent: "#007AFF" },
-              { title: "Android Development", href: "/services/mobile-apps/android", desc: "Kotlin, Jetpack Compose, Material You — truly native Google.", accent: "#34A853" },
+              { title: "iOS Development",     href: "/services/mobile-apps/ios",     desc: "SwiftUI, UIKit, Face ID, WidgetKit truly native Apple.", accent: "#007AFF" },
+              { title: "Android Development", href: "/services/mobile-apps/android", desc: "Kotlin, Jetpack Compose, Material You truly native Google.", accent: "#34A853" },
             ].map((s) => (
               <Link key={s.title} href={s.href}
                 className="group flex items-center justify-between gap-4 border border-gray-200 bg-[#f9fafb] hover:border-gray-300 hover:bg-white hover:shadow-sm transition-all duration-200 px-6 py-5"
@@ -473,7 +473,7 @@ export default function CrossPlatform() {
           <div>
             <p className="text-[11px] font-bold text-cyan-400 uppercase tracking-[0.15em] mb-3">Build for both</p>
             <h3 className="text-[26px] font-serif font-normal text-white mb-2">One build. Two stores. Ship faster.</h3>
-            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">Book a free call and we'll tell you whether React Native or Flutter is right for your product — and by how much cross-platform would reduce your budget.</p>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">Book a free call and we'll tell you whether React Native or Flutter is right for your product and by how much cross-platform would reduce your budget.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link href="/contact" className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white bg-cyan-600 hover:bg-cyan-500 transition-all duration-200">

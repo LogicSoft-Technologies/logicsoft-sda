@@ -30,7 +30,7 @@ const MILESTONES = [
     year: "2023",
     quarter: "Q2",
     title: "20-person engineering team",
-    desc: "Grew from 3 founders to a team of 20 full-time engineers. Introduced our first formal code review process, sprint cadence, and documentation standards the foundations of the delivery methodology still in use today.",
+    desc: "Grew from 3 founders to a team of 10 full-time engineers. Introduced our first formal code review process, sprint cadence, and documentation standards the foundations of the delivery methodology still in use today.",
     tags: ["Team growth", "Process", "Engineering standards"],
     accentColor: "#7c3aed",
     accentBg: "#f5f3ff",
@@ -40,8 +40,8 @@ const MILESTONES = [
     year: "2025",
     quarter: "Q2",
     title: "Abuja & Edo offices opened",
-    desc: "Expanded operations beyond Lagos with new offices in Abuja (serving public sector and government clients) and Edo (engineering hub). Total headcount reached 45 engineers across three locations.",
-    tags: ["Expansion", "Abuja", "Edo", "45 engineers"],
+    desc: "Expanded operations beyond Lagos with new offices in Abuja (serving public sector and government clients) and Edo (engineering hub). Total headcount reached 10 engineers across three locations.",
+    tags: ["Expansion", "Abuja", "Edo", "10 engineers"],
     accentColor: "#0891b2",
     accentBg: "#ecfeff",
     highlight: false,
@@ -49,7 +49,7 @@ const MILESTONES = [
   {
     year: "2026",
     quarter: "Q3",
-    title: "First international client — London",
+    title: "First international client London",
     desc: "Delivered a cross-border payments platform for a UK-based FinTech serving the African diaspora market. Our first engagement outside Nigeria validated our capacity for distributed, time-zone spanning delivery to international standards.",
     tags: ["UK", "FinTech", "International", "Cross-border payments"],
     accentColor: "#1f6fb2",
@@ -61,7 +61,7 @@ const MILESTONES = [
 const COMPANY_STATS = [
   { value: "5+", label: "Years in operation", icon: Award },
   { value: "20+", label: "Projects delivered", icon: Code2 },
-  { value: "20+", label: "Engineers", icon: Users },
+  { value: "10+", label: "Engineers", icon: Users },
   { value: "10+", label: "Industries served", icon: Globe2 },
 ];
 
@@ -106,7 +106,7 @@ export default function OurJourney() {
                 From a small team of passionate builders to a growing network of
                 10+ engineers creating digital solutions for businesses across
                 multiple countries. This is the story of how Logicsoft
-                Technologies has grown—one project, one partnership, and one
+                Technologies has grown one project, one partnership, and one
                 solution at a time.
               </p>
             </div>
@@ -298,7 +298,7 @@ export default function OurJourney() {
                   detail: "Permanent Dubai presence — Q2 2025",
                 },
                 {
-                  label: "100-engineer milestone",
+                  label: "30-engineer milestone",
                   detail: "On track for Q3 2025",
                 },
               ].map((item, i) => (
@@ -333,7 +333,7 @@ export default function OurJourney() {
               Let's build something together.
             </h3>
             <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">
-              Every client relationship is a new chapter. Join the 100+
+              Every client relationship is a new chapter. Join the 20+
               organisations who've trusted us to build their most important
               systems.
             </p>
