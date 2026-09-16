@@ -6,15 +6,21 @@ import cors from "cors";
 import chatRoute from "./src/routes/chat.js";
 import contactRoute from "./src/routes/contact.js";
 import newsletterRoute from "./src/routes/newsletter.js";
+import blogRoute from "./src/routes/blog.js";
 import careersRoute from "./src/routes/careers.js";
+import adminAuthRoute from "./src/routes/admin-auth.js";
+import adminPostsRoute from "./src/routes/admin-posts.js";
+import adminTaxonomyRoute from "./src/routes/admin-taxonomy.js";
+import adminSubscribersRoute from "./src/routes/admin-subscribers.js";
+import adminNewslettersRoute from "./src/routes/admin-newsletters.js";
 
 const app = express();
 
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://localhost:3000",
-  "https://logicsofttechnologies.online",
-  "https://www.logicsofttechnologies.online",
+  "http://localhost:3001",
+  "https://admin.logicsofttechnologies.com",
   "https://logicsofttechnologies.com",
   "https://www.logicsofttechnologies.com",
 ].filter(Boolean);
@@ -40,6 +46,12 @@ app.get("/", (_req, res) =>
 app.use("/api/chat", chatRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/newsletter", newsletterRoute);
+app.use("/api/blog", blogRoute);
+app.use("/api/admin/auth", adminAuthRoute);
+app.use("/api/admin/posts", adminPostsRoute);
+app.use("/api/admin/taxonomy", adminTaxonomyRoute);
+app.use("/api/admin/subscribers", adminSubscribersRoute);
+app.use("/api/admin/newsletters", adminNewslettersRoute);
 app.use("/api/careers", careersRoute);
 
 app.use((err, req, res, next) => {

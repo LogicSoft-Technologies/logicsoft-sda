@@ -14,6 +14,8 @@ const footerLinks = {
     { label: "Leadership", href: "/about/leadership" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Client Reviews", href: "/about/client-review" },
+    { label: "LogicSoft Insights", href: "/blog" },
+    { label: "Newsletter", href: "/newsletter" },
   ],
   Services: [
     {
@@ -61,7 +63,11 @@ export default function Footer() {
       const res = await fetch(`${BACKEND_URL}/api/newsletter/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          source: "footer",
+          sourcePage: window.location.pathname,
+        }),
       });
       const json = await res.json();
 
@@ -116,7 +122,7 @@ export default function Footer() {
                   />
                 </svg>
                 <p className="text-[13.5px] font-semibold text-[#15803d]">
-                  You're subscribed! Check your inbox for a welcome email.
+                  Check your inbox to confirm your subscription.
                 </p>
               </div>
             ) : (

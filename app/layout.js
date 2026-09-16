@@ -1,12 +1,6 @@
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { Playfair_Display, Inter } from "next/font/google";
-import ScrollToTop from "@/components/ScrollToTop";
-import GlobalLoader from "@/components/GlobalLoader";
-import LiveChatWidget from "@/components/LiveChatWidget";
-import MascotPeekaboo from "@/components/robot/MascotPeekaboo";
-import MascotHideout from "@/components/robot/MascotHideout";
 import Script from "next/script";
 
 import {
@@ -386,15 +380,7 @@ export default function RootLayout({ children }) {
             gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
           `}
         </Script>
-        <GlobalLoader />
-        <ScrollToTop />
-        <Navbar />
-        {children}
-        <MascotPeekaboo />
-        <MascotHideout />
-        <LiveChatWidget />
-        <Footer />
-        <div id="dropdown-root" />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

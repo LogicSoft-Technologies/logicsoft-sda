@@ -106,7 +106,14 @@ const DROPDOWNS = {
   },
 };
 
-const NAV_LINKS = ["about", "services", "industries", "technologies", "portfolio"];
+const NAV_LINKS = [
+  { key: "about", label: "About", href: "/about/about-company" },
+  { key: "services", label: "Services", href: "/service" },
+  { key: "industries", label: "Industries", href: "/industries" },
+  { key: "technologies", label: "Technologies", href: "/technologies" },
+  { key: "portfolio", label: "Portfolio", href: "/portfolio" },
+  { key: "insights", label: "Insights", href: "/blog" },
+];
 
 function SearchOverlay({ query, onClose }) {
   const router    = useRouter();
@@ -375,8 +382,13 @@ function MobileDrawer({ open, onClose }) {
                   );
                 })}
 
-                {["industries", "technologies", "portfolio"].map((link) => (
-                  <Link key={link} href={`/${link}`}
+                {[
+                  ["industries", "/industries"],
+                  ["technologies", "/technologies"],
+                  ["portfolio", "/portfolio"],
+                  ["insights", "/blog"],
+                ].map(([link, href]) => (
+                  <Link key={link} href={href}
                     className="flex items-center justify-between px-5 py-4 text-[14px] font-semibold text-[#1f3a5f] hover:text-[#1f6fb2] hover:bg-[#f8fafd] border-b border-[#f1f5f9] transition-colors group">
                     <span className="capitalize">{link}</span>
                     <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#1f6fb2] transition-colors" />
@@ -608,25 +620,35 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden md:flex items-center gap-1 ml-auto">
-              {NAV_LINKS.map((link) => {
-                const isActive    = clicked === link;
-                const hasDropdown = link === "about" || link === "services";
-                const label       = link.charAt(0).toUpperCase() + link.slice(1);
+              {NAV_LINKS.map((item) => {
+                const isActive = clicked === item.key;
+                const hasDropdown = item.key === "about" || item.key === "services";
 
                 return hasDropdown ? (
-                  <button key={link} type="button" onClick={() => toggle(link)}
+                  <button
+                    key={item.key}
+                    type="button"
+                    onClick={() => toggle(item.key)}
                     aria-expanded={isActive}
                     aria-haspopup="true"
-                    aria-controls={`dropdown-${link}`}
-                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "text-[#1f6fb2] bg-blue-50" : "text-gray-700 hover:text-[#1f3a5f] hover:text-[#1f6fb2]"}`}>
-                    {label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : "text-gray-400 hover:text-[#1f6fb2]"}`} />
-                    {isActive && <motion.span layoutId="navUnderline" className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1f6fb2]" />}
+                    aria-controls={`dropdown-${item.key}`}
+                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "bg-blue-50 text-[#1f6fb2]" : "text-gray-700 hover:text-[#1f6fb2]"}`}>
+                    {item.label}
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : "text-gray-400"}`} />
+                    {isActive && (
+                      <motion.span
+                        layoutId="navUnderline"
+                        className="absolute bottom-0 left-3 right-3 h-[2px] bg-[#1f6fb2]"
+                      />
+                    )}
                   </button>
                 ) : (
-                  <Link key={link} href={`/${link}`}
-                    className="px-3 py-2 text-[14px] font-medium text-gray-700 hover:text-[#1f3a5f] hover:text-[#1f6fb2] transition-colors duration-150 capitalize">
-                    {label}
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className="px-3 py-2 text-[14px] font-medium text-gray-700 transition-colors duration-150 hover:text-[#1f6fb2]"
+                  >
+                    {item.label}
                   </Link>
                 );
               })}

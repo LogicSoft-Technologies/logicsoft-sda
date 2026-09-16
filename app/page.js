@@ -17,6 +17,7 @@ import DifferenceCard from "@/components/home/DifferenceCard";
 import Contact from "@/components/home/Contact";
 import Secure from "@/components/home/Secure";
 import SuccessStories from "@/components/home/SuccessStories";
+import LatestInsights from "@/components/home/LatestInsights";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Offering />
       <Expertise />
       <SuccessStories />
+      <LatestInsights />
       <DifferenceCard />
       <Technologies />
       <Secure />

@@ -1,5 +1,4 @@
 "use client";
-// app/qa/outsourcing/page.jsx
 
 import ServicePageLayout, { Label, Divider, CapCard, Step, CheckList } from "@/components/ServicePageLayout";
 

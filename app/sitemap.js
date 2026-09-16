@@ -1,54 +1,111 @@
-// app/sitemap.js
 import fs from "fs";
 import path from "path";
-import { SITE_URL } from "@/lib/seo-config";
+
+import { getBlogSitemapEntries } from "@/lib/blog-api";
 import { CASE_STUDIES } from "@/lib/case-studies-data";
+import { SITE_URL } from "@/lib/seo-config";
 
 const APP_DIR = path.join(process.cwd(), "app");
 
-// Folders that shouldn't appear in the sitemap
-const EXCLUDE = ["api", "admin", "dashboard", "login", "register", "account", "search"];
+const EXCLUDE = [
+  "api",
+  "admin",
+  "dashboard",
+  "login",
+  "register",
+  "account",
+  "search",
+];
 
 function isDynamicSegment(segment) {
   return segment.startsWith("[") && segment.endsWith("]");
 }
 
-function walkRoutes(dir, baseSegments = []) {
+function walkRoutes(directory, baseSegments = []) {
   let routes = [];
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-  const hasPage = entries.some((e) => /^page\.(js|jsx)$/.test(e.name));
+  const entries = fs.readdirSync(directory, {
+    withFileTypes: true,
+  });
+
+  const hasPage = entries.some((entry) =>
+    /^page\.(js|jsx)$/.test(entry.name)
+  );
+
   if (hasPage && !baseSegments.some(isDynamicSegment)) {
-    const routePath = "/" + baseSegments.join("/");
-    routes.push(routePath === "/" ? "/" : routePath.replace(/\/$/, ""));
+    const route = `/${baseSegments.join("/")}`.replace(/\/$/, "") || "/";
+    routes.push(route);
   }
 
   for (const entry of entries) {
-    if (entry.isDirectory() && !EXCLUDE.includes(entry.name) && !entry.name.startsWith("_")) {
-      routes = routes.concat(walkRoutes(path.join(dir, entry.name), [...baseSegments, entry.name]));
+    if (
+      entry.isDirectory() &&
+      !EXCLUDE.includes(entry.name) &&
+      !entry.name.startsWith("_")
+    ) {
+      routes = routes.concat(
+        walkRoutes(path.join(directory, entry.name), [
+          ...baseSegments,
+          entry.name,
+        ])
+      );
     }
   }
 
   return routes;
 }
 
-export default function sitemap() {
-  const now = new Date().toISOString();
-  const routes = walkRoutes(APP_DIR);
+export default async function sitemap() {
+  const now = new Date();
+  const staticRoutes = walkRoutes(APP_DIR);
 
-  const staticEntries = routes.map((url) => ({
-    url: `${SITE_URL}${url}`,
+  const staticEntries = staticRoutes.map((route) => ({
+    url: `${SITE_URL}${route}`,
     lastModified: now,
-    changeFrequency: url === "/" ? "weekly" : "monthly",
-    priority: url === "/" ? 1.0 : url.split("/").length <= 2 ? 0.8 : 0.7,
+    changeFrequency: route === "/" ? "weekly" : "monthly",
+    priority:
+      route === "/"
+        ? 1
+        : route === "/blog" || route === "/newsletter"
+          ? 0.9
+          : route.split("/").length <= 2
+            ? 0.8
+            : 0.7,
   }));
 
   const caseStudyEntries = CASE_STUDIES.map((study) => ({
     url: `${SITE_URL}/case-studies/${study.id}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  return [...staticEntries, ...caseStudyEntries];
+  try {
+    const { posts, categories } = await getBlogSitemapEntries();
+
+    const articleEntries = posts.map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: post.updatedAt || post.publishedAt || now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    }));
+
+    const categoryEntries = categories.map((category) => ({
+      url: `${SITE_URL}/blog/category/${category.slug}`,
+      lastModified: category.updatedAt || now,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    }));
+
+    return [
+      ...staticEntries,
+      ...caseStudyEntries,
+      ...articleEntries,
+      ...categoryEntries,
+    ];
+  } catch (error) {
+    console.error("[Sitemap] Blog API unavailable:", error.message);
+
+    return [...staticEntries, ...caseStudyEntries];
+  }
 }
