@@ -6,6 +6,7 @@ import cors from "cors";
 import chatRoute from "./src/routes/chat.js";
 import contactRoute from "./src/routes/contact.js";
 import newsletterRoute from "./src/routes/newsletter.js";
+import blogFeedbackRoute from "./src/routes/blog-feedback.js";
 import blogRoute from "./src/routes/blog.js";
 import careersRoute from "./src/routes/careers.js";
 import adminAuthRoute from "./src/routes/admin-auth.js";
@@ -46,6 +47,7 @@ app.get("/", (_req, res) =>
 app.use("/api/chat", chatRoute);
 app.use("/api/contact", contactRoute);
 app.use("/api/newsletter", newsletterRoute);
+app.use("/api/blog", blogFeedbackRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/admin/auth", adminAuthRoute);
 app.use("/api/admin/posts", adminPostsRoute);

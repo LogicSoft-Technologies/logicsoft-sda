@@ -1,179 +1,236 @@
 "use client";
 
-import { useState } from "react";
-import { Heart, MessageCircle, Send, ThumbsUp } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  Heart,
+  LoaderCircle,
+  ThumbsUp,
+} from "lucide-react";
 
-const initialComments = [
-  {
-    id: 1,
-    name: "LogicSoft Reader",
-    message: "Great insight. Thanks for sharing this.",
-    date: "Just now",
-  },
-];
+const BACKEND_URL = (
+  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"
+).replace(/\/$/, "");
 
-export default function BlogEngagement({ postTitle }) {
-  const [reactions, setReactions] = useState({
-    like: 12,
-    love: 8,
-  });
-  const [selectedReaction, setSelectedReaction] = useState(null);
-  const [comments, setComments] = useState(initialComments);
-  const [form, setForm] = useState({ name: "", message: "" });
+const EMPTY_FEEDBACK = {
+  helpful: 0,
+  love: 0,
+  total: 0,
+  selectedReaction: null,
+};
 
-  function react(type) {
-    if (selectedReaction === type) {
-      setReactions((current) => ({
-        ...current,
-        [type]: current[type] - 1,
-      }));
-      setSelectedReaction(null);
-      return;
+function reactionUrl(slug) {
+  return `${BACKEND_URL}/api/blog/posts/${encodeURIComponent(slug)}/reaction`;
+}
+
+function reactionsUrl(slug) {
+  return `${BACKEND_URL}/api/blog/posts/${encodeURIComponent(slug)}/reactions`;
+}
+
+function createOptimisticFeedback(current, nextReaction) {
+  const previousReaction = current.selectedReaction;
+
+  let helpful = current.helpful;
+  let love = current.love;
+
+  if (previousReaction === "HELPFUL") helpful = Math.max(0, helpful - 1);
+  if (previousReaction === "LOVE") love = Math.max(0, love - 1);
+
+  if (nextReaction === "HELPFUL") helpful += 1;
+  if (nextReaction === "LOVE") love += 1;
+
+  return {
+    helpful,
+    love,
+    total: helpful + love,
+    selectedReaction: nextReaction,
+  };
+}
+
+export default function BlogEngagement({ slug, postTitle }) {
+  const [feedback, setFeedback] = useState(EMPTY_FEEDBACK);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadFeedback() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch(reactionsUrl(slug), {
+          credentials: "include",
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Could not load article reactions.");
+        }
+
+        const data = await response.json();
+
+        if (active) {
+          setFeedback(data.feedback || EMPTY_FEEDBACK);
+        }
+      } catch {
+        if (active) {
+          setError("Reactions are temporarily unavailable.");
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
     }
 
-    setReactions((current) => ({
-      ...current,
-      ...(selectedReaction
-        ? { [selectedReaction]: current[selectedReaction] - 1 }
-        : {}),
-      [type]: current[type] + 1,
-    }));
+    if (slug) loadFeedback();
 
-    setSelectedReaction(type);
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
+  async function submitReaction(reaction) {
+    if (submitting || !slug) return;
+
+    const nextReaction =
+      feedback.selectedReaction === reaction ? null : reaction;
+
+    const previousFeedback = feedback;
+    setFeedback(createOptimisticFeedback(previousFeedback, nextReaction));
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch(reactionUrl(slug), {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reaction: nextReaction,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Could not save your reaction.");
+      }
+
+      setFeedback(data.feedback || EMPTY_FEEDBACK);
+    } catch (requestError) {
+      setFeedback(previousFeedback);
+      setError(
+        requestError.message || "Your reaction could not be saved. Please try again."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
-  function submitComment(event) {
-    event.preventDefault();
-
-    if (!form.name.trim() || !form.message.trim()) return;
-
-    setComments((current) => [
-      {
-        id: Date.now(),
-        name: form.name.trim(),
-        message: form.message.trim(),
-        date: "Just now",
-      },
-      ...current,
-    ]);
-
-    setForm({ name: "", message: "" });
-  }
+  const selectedHelpful = feedback.selectedReaction === "HELPFUL";
+  const selectedLove = feedback.selectedReaction === "LOVE";
 
   return (
-    <section className="mt-12 border-t border-[#e2eaf3] pt-10">
-      <div className="rounded-2xl border border-[#e2eaf3] bg-[#f8fbff] p-6 sm:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
-          Was this helpful?
-        </p>
+    <section
+      className="mt-14 border-y border-[#dbe7f3] py-10"
+      aria-label="Article feedback"
+    >
+      <div className="grid gap-7 border border-[#dbe7f3] bg-[#f5f8fc] p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div>
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
+            Article feedback
+          </p>
 
-        <h2 className="mt-2 font-serif text-2xl text-[#1f3a5f]">
-          Share your reaction
-        </h2>
+          <h2 className="mt-3 font-serif text-[27px] leading-tight text-[#1f3a5f]">
+            Was this insight useful?
+          </h2>
 
-        <p className="mt-2 text-sm leading-relaxed text-slate-500">
-          Let us know what you think about “{postTitle}”.
-        </p>
+          <p className="mt-3 max-w-xl text-[13.5px] leading-relaxed text-slate-600">
+            Your feedback helps our team create more useful technology and
+            business insight.
+          </p>
 
-        <div className="mt-5 flex flex-wrap gap-3">
+          {feedback.total > 0 && !loading && (
+            <p className="mt-4 flex items-center gap-2 text-[12px] font-medium text-slate-500">
+              <CheckCircle2 className="h-4 w-4 text-[#1f6fb2]" />
+              {feedback.total} reader{feedback.total === 1 ? "" : "s"} reacted
+              to this article.
+            </p>
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-3 lg:justify-end">
           <button
             type="button"
-            onClick={() => react("like")}
-            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition ${
-              selectedReaction === "like"
+            onClick={() => submitReaction("HELPFUL")}
+            disabled={loading || submitting}
+            aria-pressed={selectedHelpful}
+            className={`inline-flex min-w-[128px] items-center justify-center gap-2 border px-4 py-3 text-[13px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
+              selectedHelpful
                 ? "border-[#1f6fb2] bg-[#1f6fb2] text-white"
-                : "border-[#cdddeb] bg-white text-[#1f3a5f] hover:border-[#1f6fb2]"
+                : "border-[#c9dceb] bg-white text-[#1f3a5f] hover:border-[#1f6fb2] hover:text-[#1f6fb2]"
             }`}
           >
-            <ThumbsUp size={16} />
-            Helpful <span>{reactions.like}</span>
+            {submitting && selectedHelpful ? (
+              <LoaderCircle className="h-4 w-4 animate-spin" />
+            ) : (
+              <ThumbsUp className="h-4 w-4" />
+            )}
+            Helpful
+            <span className={selectedHelpful ? "text-white/75" : "text-slate-400"}>
+              {feedback.helpful}
+            </span>
           </button>
 
           <button
             type="button"
-            onClick={() => react("love")}
-            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition ${
-              selectedReaction === "love"
-                ? "border-rose-500 bg-rose-500 text-white"
-                : "border-[#cdddeb] bg-white text-[#1f3a5f] hover:border-rose-400"
+            onClick={() => submitReaction("LOVE")}
+            disabled={loading || submitting}
+            aria-pressed={selectedLove}
+            className={`inline-flex min-w-[128px] items-center justify-center gap-2 border px-4 py-3 text-[13px] font-bold transition-all disabled:cursor-not-allowed disabled:opacity-60 ${
+              selectedLove
+                ? "border-[#a61e3c] bg-gradient-to-br from-[#b42345] via-[#d6325a] to-[#ee5b78] text-white shadow-[0_8px_20px_rgba(180,35,69,0.25)]"
+                : "border-[#efb5c3] bg-[#fff5f7] text-[#a61e3c] hover:border-[#d6325a] hover:bg-[#ffe8ee] hover:shadow-[0_6px_16px_rgba(180,35,69,0.12)]"
             }`}
           >
-            <Heart size={16} />
-            Love it <span>{reactions.love}</span>
-          </button>
-
-          <span className="inline-flex items-center gap-2 px-2 text-sm text-slate-500">
-            <MessageCircle size={16} />
-            {comments.length} comment{comments.length === 1 ? "" : "s"}
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="font-serif text-2xl text-[#1f3a5f]">Join the discussion</h2>
-        <p className="mt-2 text-sm text-slate-500">
-          Share a thoughtful comment or question.
-        </p>
-
-        <form
-          onSubmit={submitComment}
-          className="mt-6 rounded-2xl border border-[#e2eaf3] bg-white p-6"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="text-sm font-semibold text-[#1f3a5f]">
-              Your name
-              <input
-                value={form.name}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, name: event.target.value }))
-                }
-                required
-                placeholder="Enter your name"
-                className="mt-2 w-full rounded-lg border border-[#d7e3ee] px-4 py-3 text-sm outline-none transition focus:border-[#1f6fb2] focus:ring-2 focus:ring-[#1f6fb2]/15"
+            {submitting && selectedLove ? (
+              <LoaderCircle className="h-4 w-4 animate-spin" />
+            ) : (
+              <Heart
+                className={`h-4 w-4 ${selectedLove ? "fill-current" : ""}`}
               />
-            </label>
-          </div>
+            )}
 
-          <label className="mt-5 block text-sm font-semibold text-[#1f3a5f]">
-            Your comment
-            <textarea
-              value={form.message}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, message: event.target.value }))
-              }
-              required
-              rows={5}
-              placeholder="What did you think?"
-              className="mt-2 w-full resize-none rounded-lg border border-[#d7e3ee] px-4 py-3 text-sm outline-none transition focus:border-[#1f6fb2] focus:ring-2 focus:ring-[#1f6fb2]/15"
-            />
-          </label>
+            Love it
 
-          <button
-            type="submit"
-            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#1f6fb2] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#175b94]"
-          >
-            <Send size={16} />
-            Post comment
+            <span className={selectedLove ? "text-white/80" : "text-[#c13a57]"}>
+              {feedback.love}
+            </span>
           </button>
-        </form>
-
-        <div className="mt-8 space-y-4">
-          {comments.map((comment) => (
-            <article
-              key={comment.id}
-              className="rounded-xl border border-[#e2eaf3] bg-white p-5"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <h3 className="font-semibold text-[#1f3a5f]">{comment.name}</h3>
-                <span className="text-xs text-slate-400">{comment.date}</span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {comment.message}
-              </p>
-            </article>
-          ))}
         </div>
       </div>
+
+      {error && (
+        <p
+          role="status"
+          className="mt-4 flex items-center gap-2 text-[12px] text-amber-700"
+        >
+          <AlertCircle className="h-4 w-4" />
+          {error}
+        </p>
+      )}
+
+      <p className="mt-5 text-[11.5px] leading-relaxed text-slate-400">
+        You may change or remove your reaction at any time. Feedback is stored
+        anonymously and does not publish your identity.
+      </p>
     </section>
   );
 }

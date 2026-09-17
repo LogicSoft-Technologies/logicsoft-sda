@@ -39,49 +39,73 @@ export default async function BlogPage({ searchParams }) {
 
   return (
     <main className="bg-white">
-      <section
-        className="relative overflow-hidden border-b border-[#17345f]"
-        style={{
-          background:
-            "linear-gradient(145deg, #07111f 0%, #0d2448 58%, #123a69 100%)",
-        }}
-      >
-        <div className="absolute -right-24 top-0 h-[450px] w-[450px] rounded-full bg-[#1f6fb2]/25 blur-3xl" />
-        <div className="relative mx-auto max-w-[82rem] px-6 py-20 lg:py-45">
+      <section className="relative overflow-hidden border-b border-[#17345f] bg-[#07111f]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(196,85,0,0.18),transparent_24%),radial-gradient(circle_at_74%_88%,rgba(31,111,178,0.24),transparent_35%),linear-gradient(118deg,#07111f_0%,#0a1c35_52%,#123b66_100%)]" />
 
-          <h1 className="max-w-3xl font-serif text-[45px] leading-[1.06] text-white sm:text-[62px]">
-            Ideas for building what comes next.
-          </h1>
+        <div className="relative mx-auto grid max-w-[82rem] gap-12 px-6 pb-16 pt-40 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-end lg:pb-20 lg:pt-44">
+          <div className="max-w-3xl">
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#ffd1ae]">
+              LogicSoft Insights
+            </p>
 
-          <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-white/65">
-            Clear, practical thinking on software, AI, cloud, security, and
-            digital transformation from the LogicSoft team.
-          </p>
+            <div className="mt-4 h-px w-14 bg-gradient-to-r from-[#FF7A00] to-[#ffb27a]" />
 
-          <form
-            action="/blog"
-            className="mt-8 flex max-w-xl overflow-hidden border border-white/20 bg-white"
-          >
-            <label htmlFor="blog-search" className="sr-only">
-              Search LogicSoft Insights
-            </label>
+            <h1 className="mt-6 font-serif text-[44px] leading-[1.06] text-white sm:text-[58px]">
+              Better technology decisions start with clearer thinking.
+            </h1>
 
-            <input
-              id="blog-search"
-              name="q"
-              defaultValue={query}
-              placeholder="Search articles"
-              className="min-w-0 flex-1 px-4 py-3.5 text-[14px] text-[#1a2d4a] outline-none"
-            />
+            <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-white/70">
+              Practical insight on software engineering, AI, cloud, cybersecurity,
+              and digital transformation from the LogicSoft team.
+            </p>
 
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 bg-[#1f6fb2] px-5 text-[13px] font-bold text-white hover:bg-[#1a5a96]"
+            <form
+              action="/blog"
+              className="mt-8 flex max-w-2xl overflow-hidden border border-white/20 bg-white shadow-[0_12px_32px_rgba(0,0,0,0.20)]"
             >
-              <Search className="h-4 w-4" />
-              Search
-            </button>
-          </form>
+              <label htmlFor="blog-search" className="sr-only">
+                Search LogicSoft Insights
+              </label>
+
+              <input
+                id="blog-search"
+                name="q"
+                defaultValue={query}
+                placeholder="Search insights"
+                className="min-w-0 flex-1 px-4 py-3.5 text-[14px] text-[#1a2d4a] outline-none"
+              />
+
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] px-5 text-[13px] font-bold text-white transition-all hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]"
+              >
+                <Search className="h-4 w-4" />
+                Search
+              </button>
+            </form>
+          </div>
+
+          <div className="border-l border-[#ffb27a]/35 pl-6 lg:pb-1">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#ffd1ae]">
+              What we cover
+            </p>
+
+            <ul className="mt-5 space-y-3">
+              {[
+                "Software engineering and architecture",
+                "AI and business automation",
+                "Cloud, DevOps, and cybersecurity",
+                "Digital-product strategy and delivery",
+              ].map((topic) => (
+                <li
+                  key={topic}
+                  className="border-b border-white/10 pb-3 text-[13px] leading-relaxed text-white/70"
+                >
+                  {topic}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

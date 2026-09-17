@@ -23,10 +23,25 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value:
-              "camera=(), microphone=(), payment=(), usb=()",
+            value: "camera=(), microphone=(), payment=(), usb=()",
           },
         ],
+      },
+    ];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.logicsofttechnologies.com",
+          },
+        ],
+        destination: "https://logicsofttechnologies.com/:path*",
+        permanent: true,
       },
     ];
   },
@@ -40,6 +55,5 @@ const nextConfig = {
     ],
   },
 };
-
 
 export default nextConfig;

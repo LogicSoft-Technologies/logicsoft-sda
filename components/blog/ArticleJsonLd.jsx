@@ -5,8 +5,8 @@ function safeJson(value) {
 }
 
 export default function ArticleJsonLd({ post }) {
-  const articleUrl =
-    post.canonicalUrl || `${SITE_URL}/blog/${post.slug}`;
+  
+  const articleUrl = `${SITE_URL}/blog/${post.slug}`;
 
   const image = post.coverImage
     ? [post.coverImage]

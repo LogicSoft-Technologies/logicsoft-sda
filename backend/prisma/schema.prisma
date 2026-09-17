@@ -201,6 +201,7 @@ model BlogPost {
   categoryId     String?
   category       Category?     @relation(fields: [categoryId], references: [id])
   tags           BlogPostTag[]
+  reactions       BlogPostReaction[]
   newsletterEditions NewsletterEdition[]
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
@@ -209,6 +210,25 @@ model BlogPost {
   @@index([categoryId, publishedAt(sort: Desc)])
   @@index([featured, publishedAt(sort: Desc)])
   @@map("blog_posts")
+}
+
+enum BlogReactionType {
+  HELPFUL
+  LOVE
+}
+
+model BlogPostReaction {
+  id          String            @id @default(cuid())
+  postId      String
+  post        BlogPost          @relation(fields: [postId], references: [id], onDelete: Cascade)
+  visitorHash String            @db.VarChar(64)
+  reaction    BlogReactionType
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@unique([postId, visitorHash])
+  @@index([postId, reaction])
+  @@map("blog_post_reactions")
 }
 
 enum NewsletterEditionStatus {

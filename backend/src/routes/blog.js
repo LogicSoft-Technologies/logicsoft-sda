@@ -147,19 +147,17 @@ router.get("/posts", async (req, res, next) => {
         : {}),
     };
 
-    const [posts, total] = await prisma.$transaction([
-      prisma.blogPost.findMany({
-        where,
-        select: postCardSelect,
-        orderBy: {
-          publishedAt: "desc",
-        },
-        skip: (page - 1) * pageSize,
-        take: pageSize,
-      }),
+    const posts = await prisma.blogPost.findMany({
+      where,
+      select: postCardSelect,
+      orderBy: {
+        publishedAt: "desc",
+      },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    });
 
-      prisma.blogPost.count({ where }),
-    ]);
+    const total = await prisma.blogPost.count({ where });
 
     res.set(
       "Cache-Control",

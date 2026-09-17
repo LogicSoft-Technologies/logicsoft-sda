@@ -547,15 +547,30 @@ const Navbar = () => {
   const searchWrapRef = useRef(null);
   const pathname      = usePathname();
 
-  const isHome         = pathname === "/";
-const isBlog         = pathname === "/blog" || pathname.startsWith("/blog/");
-const isDropdownOpen = clicked !== "";
-const showSolid      = (!isHome && !isBlog) || scrolled || isDropdownOpen || mobileOpen;
+  const isHome = pathname === "/";
 
-// Text/icon color set for the transparent state — differs by hero background
-const transparentText   = isBlog ? "text-white/90"   : "text-gray-700";
-const transparentMuted  = isBlog ? "text-white/60"   : "text-gray-400";
-const transparentHover  = isBlog ? "hover:text-white" : "hover:text-[#1f6fb2]";
+  // These routes have a dark hero directly behind the fixed navbar.
+  const isBlogHero =
+    pathname === "/blog" || pathname.startsWith("/blog/category/");
+
+  // Individual articles use a solid navbar because their page begins on white.
+  const isBlogArticle =
+    pathname.startsWith("/blog/") && !isBlogHero;
+
+  const isDropdownOpen = clicked !== "";
+
+  const showSolid =
+    (!isHome && !isBlogHero) ||
+    scrolled ||
+    isDropdownOpen ||
+    mobileOpen;
+
+  // Text/icon colour for routes with a transparent navbar.
+  const transparentText = isBlogHero ? "text-white/90" : "text-gray-700";
+  const transparentMuted = isBlogHero ? "text-white/60" : "text-gray-400";
+  const transparentHover = isBlogHero
+    ? "hover:text-white"
+    : "hover:text-[#1f6fb2]";
 
   // Case study detail pages (/case-studies/[id]) run their own minimal,
   // flush top bar over the hero video instead of the global nav — those
@@ -604,7 +619,7 @@ const transparentHover  = isBlog ? "hover:text-white" : "hover:text-[#1f6fb2]";
   className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}
 >
         <div className={`hidden md:block transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
-          <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : isBlog ? "text-white/70" : "text-gray-800"}`}>
+          <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : isBlogHero ? "text-white/70" : "text-gray-800"}`}>
             <a href="mailto:contact@logicsofttechnologies.com"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>
               <Mail className="w-3 h-3" /> contact@logicsofttechnologies.com
@@ -626,7 +641,7 @@ const transparentHover  = isBlog ? "hover:text-white" : "hover:text-[#1f6fb2]";
 
             <Link href="/" aria-label="LogicSoft Technologies — Home" className="flex items-center shrink-0 mr-6">
               <Image
-  src={!showSolid && isBlog ? "/images/logicsoft-logo-white.png" : "/images/logicsoft-logo.png"}
+  src={!showSolid && isBlogHero ? "/images/logicsoft-logo-white.png" : "/images/logicsoft-logo.png"}
   alt="LogicSoft Technologies"
   width={148}
   height={26}

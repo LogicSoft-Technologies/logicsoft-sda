@@ -61,7 +61,6 @@ export default async function sitemap() {
 
   const staticEntries = staticRoutes.map((route) => ({
     url: `${SITE_URL}${route}`,
-    lastModified: now,
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority:
       route === "/"
@@ -75,7 +74,6 @@ export default async function sitemap() {
 
   const caseStudyEntries = CASE_STUDIES.map((study) => ({
     url: `${SITE_URL}/case-studies/${study.id}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.8,
   }));

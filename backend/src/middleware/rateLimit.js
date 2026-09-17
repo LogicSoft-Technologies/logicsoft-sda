@@ -35,3 +35,13 @@ export const adminReadLimiter = rateLimit({
     "Too many administrative requests. Please try again shortly."
   ),
 });
+
+export const blogFeedbackLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 40,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: jsonMessage(
+    "Too many reactions from this device. Please try again shortly."
+  ),
+});
