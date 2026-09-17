@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -15,7 +15,7 @@ import {
 import { adminApi } from "@/lib/admin-api";
 import RobotMascot from "@/components/robot/RobotMascot";
 
-export default function AdminLoginPage() {
+function AdminLoginForm() {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -208,5 +208,17 @@ export default function AdminLoginPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-[#f5f8fc]" aria-busy="true" />
+      }
+    >
+      <AdminLoginForm />
+    </Suspense>
   );
 }
