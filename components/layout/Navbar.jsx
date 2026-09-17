@@ -539,14 +539,23 @@ const Navbar = () => {
   const [mobileSearch, setMobileSearch] = useState(false);
   const [mobileQuery,  setMobileQuery]  = useState("");
   const [query,        setQuery]        = useState("");
+  const [hideNav, setHideNav] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollDownDistance = useRef(0);
 
   const searchRef     = useRef(null);
   const searchWrapRef = useRef(null);
   const pathname      = usePathname();
 
   const isHome         = pathname === "/";
-  const isDropdownOpen = clicked !== "";
-  const showSolid      = !isHome || scrolled || isDropdownOpen || mobileOpen;
+const isBlog         = pathname === "/blog" || pathname.startsWith("/blog/");
+const isDropdownOpen = clicked !== "";
+const showSolid      = (!isHome && !isBlog) || scrolled || isDropdownOpen || mobileOpen;
+
+// Text/icon color set for the transparent state — differs by hero background
+const transparentText   = isBlog ? "text-white/90"   : "text-gray-700";
+const transparentMuted  = isBlog ? "text-white/60"   : "text-gray-400";
+const transparentHover  = isBlog ? "hover:text-white" : "hover:text-[#1f6fb2]";
 
   // Case study detail pages (/case-studies/[id]) run their own minimal,
   // flush top bar over the hero video instead of the global nav — those
@@ -566,7 +575,7 @@ const Navbar = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (searchOpen) searchRef.current?.focus(); // Function added by Elijah march 23rd d not touch please 🙏
+    if (searchOpen) searchRef.current?.focus(); // Function added by saviour march 23rd d not touch please 🙏
   }, [searchOpen]);
 
   useEffect(() => {
@@ -590,12 +599,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
-        aria-label="Main navigation"
-        className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}
-      >
+     <nav
+  aria-label="Main navigation"
+  className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}
+>
         <div className={`hidden md:block transition-colors duration-300 ${showSolid ? "bg-[#1f3a5f]" : "bg-transparent"}`}>
-          <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : "text-gray-800"}`}>
+          <div className={`max-w-[82rem] mx-auto px-4 py-[5px] flex items-center gap-6 text-[11.5px] transition-colors duration-300 ${showSolid ? "text-white/70" : isBlog ? "text-white/70" : "text-gray-800"}`}>
             <a href="mailto:contact@logicsofttechnologies.com"
               className={`flex items-center gap-1.5 transition-colors duration-150 ${showSolid ? "hover:text-white" : "hover:text-[#1f6fb2]"}`}>
               <Mail className="w-3 h-3" /> contact@logicsofttechnologies.com
@@ -616,7 +625,14 @@ const Navbar = () => {
           <div className="max-w-[82rem] mx-auto px-4 py-3 flex items-center">
 
             <Link href="/" aria-label="LogicSoft Technologies — Home" className="flex items-center shrink-0 mr-6">
-              <Image src="/images/logicsoft-logo.png" alt="LogicSoft Technologies" width={148} height={26} priority className="h-7 w-auto md:h-8 lg:h-9"/>
+              <Image
+  src={!showSolid && isBlog ? "/images/logicsoft-logo-white.png" : "/images/logicsoft-logo.png"}
+  alt="LogicSoft Technologies"
+  width={148}
+  height={26}
+  priority
+  className="h-7 w-auto md:h-8 lg:h-9"
+/>
             </Link>
 
             <div className="hidden md:flex items-center gap-1 ml-auto">
@@ -632,9 +648,9 @@ const Navbar = () => {
                     aria-expanded={isActive}
                     aria-haspopup="true"
                     aria-controls={`dropdown-${item.key}`}
-                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "bg-blue-50 text-[#1f6fb2]" : "text-gray-700 hover:text-[#1f6fb2]"}`}>
+                    className={`relative flex items-center gap-1 px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${isActive ? "bg-blue-50 text-[#1f6fb2]" : showSolid ? "text-gray-700 hover:text-[#1f6fb2]" : `${transparentText} ${transparentHover}`}`}>
                     {item.label}
-                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : "text-gray-400"}`} />
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-250 ${isActive ? "rotate-180 text-[#1f6fb2]" : showSolid ? "text-gray-400" : transparentMuted}`} />
                     {isActive && (
                       <motion.span
                         layoutId="navUnderline"
@@ -643,13 +659,14 @@ const Navbar = () => {
                     )}
                   </button>
                 ) : (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    className="px-3 py-2 text-[14px] font-medium text-gray-700 transition-colors duration-150 hover:text-[#1f6fb2]"
-                  >
+                 <Link
+                  key={item.key}
+                  href={item.href}
+                  className={`px-3 py-2 text-[14px] font-medium transition-colors duration-150 ${
+                    showSolid ? "text-gray-700 hover:text-[#1f6fb2]" : `${transparentText} ${transparentHover}`
+                     }`} >
                     {item.label}
-                  </Link>
+                 </Link>
                 );
               })}
 
@@ -686,12 +703,13 @@ const Navbar = () => {
                       </button>
                     </motion.div>
                   ) : (
-                    <motion.button key="search-icon"
-                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      onClick={() => setSearchOpen(true)}
-                      className="p-2 text-gray-500 hover:text-[#1f3a5f] hover:bg-gray-50 transition-colors duration-150" aria-label="Open search">
-                      <Search className="w-4 h-4" />
-                    </motion.button>
+                   <motion.button key="search-icon"
+                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                     onClick={() => setSearchOpen(true)}
+                     className={`p-2 transition-colors duration-150 ${showSolid ? "text-gray-500 hover:text-[#1f3a5f] hover:bg-gray-50" : `${transparentText} hover:bg-white/10`}`}
+                     aria-label="Open search">
+                    <Search className="w-4 h-4" />
+                   </motion.button>
                   )}
                 </AnimatePresence>
                 <AnimatePresence>
@@ -701,20 +719,20 @@ const Navbar = () => {
             </div>
 
             <div className="md:hidden flex items-center gap-2 ml-auto">
-              <button
-                onClick={() => { setMobileSearch((v) => !v); setMobileQuery(""); setMobileOpen(false); }}
-                className="p-2 text-gray-500 hover:text-[#1f3a5f] transition-colors"
-                aria-label="Search"
-              >
-                {mobileSearch ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
-              </button>
+             <button
+  onClick={() => { setMobileSearch((v) => !v); setMobileQuery(""); setMobileOpen(false); }}
+  className={`p-2 transition-colors ${showSolid ? "text-gray-500 hover:text-[#1f3a5f]" : `${transparentText} ${transparentHover}`}`}
+  aria-label="Search"
+>
+  {mobileSearch ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
+</button>
 
-              <button
-                onClick={() => { setMobileOpen((v) => !v); setMobileSearch(false); }}
-                className={`p-2 transition-colors ${mobileOpen ? "text-[#1f6fb2]" : "text-gray-600 hover:text-[#1f3a5f]"}`}
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                aria-expanded={mobileOpen}
-              >
+<button
+  onClick={() => { setMobileOpen((v) => !v); setMobileSearch(false); }}
+  className={`p-2 transition-colors ${mobileOpen ? "text-[#1f6fb2]" : showSolid ? "text-gray-600 hover:text-[#1f3a5f]" : `${transparentText} ${transparentHover}`}`}
+  aria-label={mobileOpen ? "Close menu" : "Open menu"}
+  aria-expanded={mobileOpen}
+> 
                 <AnimatePresence mode="wait" initial={false}>
                   {mobileOpen ? (
                     <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>

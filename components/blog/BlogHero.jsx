@@ -38,7 +38,7 @@ export default function BlogHero({ query = "" }) {
             name="q"
             defaultValue={query}
             placeholder="Search articles"
-            className="min-w-0 flex-1 px-4 py-3.5 text-[14px] text-[#1a2d4a] outline-none"
+            className="min-w-0 flex-1 px-4 py-3.5 text-[14px] text-[#1a2d4a] outline-none "
           />
 
           <button

@@ -55,18 +55,6 @@ export default function AdminShell({ children }) {
     return children;
   }
 
-  if (loading) {
-    return (
-      <main className="grid min-h-screen place-items-center bg-[#f5f8fc]">
-        <div className="text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#d8e4f0] border-t-[#1f6fb2]" />
-          <p className="mt-4 text-[13px] font-medium text-slate-500">
-            Loading LogicSoft CMS…
-          </p>
-        </div>
-      </main>
-    );
-  }
 
   if (!admin) {
     return null;

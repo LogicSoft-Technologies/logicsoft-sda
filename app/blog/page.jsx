@@ -47,11 +47,7 @@ export default async function BlogPage({ searchParams }) {
         }}
       >
         <div className="absolute -right-24 top-0 h-[450px] w-[450px] rounded-full bg-[#1f6fb2]/25 blur-3xl" />
-
-        <div className="relative mx-auto max-w-[82rem] px-6 py-20 lg:py-24">
-          <p className="mb-4 text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#8ac8f2]">
-            LogicSoft Insights
-          </p>
+        <div className="relative mx-auto max-w-[82rem] px-6 py-20 lg:py-45">
 
           <h1 className="max-w-3xl font-serif text-[45px] leading-[1.06] text-white sm:text-[62px]">
             Ideas for building what comes next.
@@ -234,7 +230,7 @@ export default async function BlogPage({ searchParams }) {
 
             <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-slate-600">
               Software engineering, AI, cloud, cybersecurity, and practical
-              digital strategy — sent only when it is worth reading.
+              digital strategy sent only when it is worth reading.
             </p>
           </div>
 

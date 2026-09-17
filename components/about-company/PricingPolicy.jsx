@@ -133,18 +133,6 @@ export default function PricingPolicy() {
           })}
         </div>
 
-        <div className="flex justify-center">
-          <Link
-            href="/pricing"
-            className="flex items-center gap-2 px-6 sm:px-8 py-3 text-[13px] sm:text-[13.5px] font-semibold text-white
-              bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00]
-              hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]
-              ring-1 ring-inset ring-white/30 transition-all duration-200"
-          >
-            Estimate your project cost <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
       </div>
     </section>
   );

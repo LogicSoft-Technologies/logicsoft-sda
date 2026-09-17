@@ -2,6 +2,7 @@ import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { Playfair_Display, Inter } from "next/font/google";
 import Script from "next/script";
+import GlobalLoader from "@/components/GlobalLoader";
 
 import {
   SITE_URL,
@@ -380,6 +381,7 @@ export default function RootLayout({ children }) {
             gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
           `}
         </Script>
+         <GlobalLoader />
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>

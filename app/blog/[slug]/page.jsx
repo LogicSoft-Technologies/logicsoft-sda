@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock3, Mail } from "lucide-react";
 import { notFound } from "next/navigation";
+import BlogEngagement from "@/components/blog/BlogEngagement";
 
 import ArticleContent from "@/components/blog/ArticleContent";
 import ArticleJsonLd from "@/components/blog/ArticleJsonLd";
@@ -142,6 +143,8 @@ export default async function BlogArticlePage({ params }) {
 
         <div className="mx-auto max-w-[48rem] px-6 py-14">
           <ArticleContent content={post.content} />
+
+          <BlogEngagement postTitle={post.title} />
 
           <section className="mt-16 border border-[#dbe7f3] bg-[#f5f8fc] p-7 sm:p-9">
             <div className="flex items-start gap-3">

@@ -13,6 +13,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 export default function SiteChrome({ children }) {
   const pathname = usePathname();
   const isAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
+  const isBlog = pathname === "/blog" || pathname.startsWith("/blog/");
 
   if (isAdmin) {
     return children;
@@ -27,7 +28,7 @@ export default function SiteChrome({ children }) {
       <MascotPeekaboo />
       <MascotHideout />
       <LiveChatWidget />
-      <Footer />
+      {!isBlog && <Footer />}
       <div id="dropdown-root" />
     </>
   );
