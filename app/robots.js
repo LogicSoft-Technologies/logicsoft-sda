@@ -12,7 +12,7 @@ export default function robots() {
           "/login/",
           "/register/",
           "/account/",
-          "/api/",
+          "/api/",\
           "/thank-you/",
           "/*?utm_source=*",
           "/*?utm_medium=*",

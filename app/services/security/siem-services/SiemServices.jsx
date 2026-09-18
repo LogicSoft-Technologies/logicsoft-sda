@@ -98,7 +98,7 @@ const TIERS = [
     price: "24/7 SOC coverage",
     desc: "Full SOC-as-a-service. Unlimited scale. Named analysts. SLA-backed response.",
     accent: "#7c3aed",
-    features: ["Unlimited log ingestion", "Custom rule development — unlimited", "Full MITRE ATT&CK coverage", "24/7/365 analyst monitoring", "2-minute P1 alert SLA", "SOAR — unlimited playbooks", "Dedicated SIEM engineer", "Quarterly red team exercises"],
+    features: ["Unlimited log ingestion", "Custom rule development is unlimited", "Full MITRE ATT&CK coverage", "24/7/365 analyst monitoring", "2-minute P1 alert SLA", "SOAR with unlimited playbooks", "Dedicated SIEM engineer", "Quarterly red team exercises"],
     cta: "Book a call",
   },
 ];

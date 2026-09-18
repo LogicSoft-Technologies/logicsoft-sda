@@ -31,7 +31,7 @@ const CAPABILITIES = [
     num: "01",
     icon: Repeat2,
     title: "One Codebase. Two App Stores.",
-    desc: "80–90% shared code across iOS and Android with platform-specific adaptations where needed. We don't pretend one codebase means zero platform work we manage that complexity for you.",
+    desc: "80–90% shared code across iOS and Android with platform-specific adaptations where needed. We don't pretend one codebase means zero platform work, we manage that complexity for you.",
     tags: ["Shared logic", "Platform channels", "Native modules", "OTA updates"],
   },
   {
@@ -51,7 +51,7 @@ const CAPABILITIES = [
   {
     num: "04",
     icon: Code2,
-    title: "React Native or Flutter We Advise",
+    title: "React Native or Flutter. We Advise",
     desc: "React Native if your team is JavaScript-fluent or you're building a business app. Flutter if you need pixel-perfect custom UI or a very consistent cross-platform experience. We recommend based on your context.",
     tags: ["React Native", "Flutter", "Technology selection", "Migration"],
   },
@@ -59,7 +59,7 @@ const CAPABILITIES = [
     num: "05",
     icon: Shield,
     title: "Security on Both Platforms",
-    desc: "Secure storage (Keychain on iOS, Keystore on Android), biometric auth, certificate pinning, and jailbreak/root detection all implemented correctly across platforms from the start.",
+    desc: "Secure storage (Keychain on iOS, Keystore on Android), biometric auth, certificate pinning, and jailbreak/root detection, all implemented correctly across platforms from the start.",
     tags: ["Keychain / Keystore", "Biometrics", "Cert pinning", "Root detection"],
   },
   {
@@ -259,7 +259,7 @@ export default function CrossPlatform() {
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
                 One engineering team. One codebase. Two production-grade apps delivered to both
                 App Store and Play Store simultaneously. We recommend React Native or Flutter
-                based on your project never based on what's easier for us.
+                based on your project and never based on what's easier for us.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
@@ -449,8 +449,8 @@ export default function CrossPlatform() {
           <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-6">Need native instead?</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { title: "iOS Development",     href: "/services/mobile-apps/ios",     desc: "SwiftUI, UIKit, Face ID, WidgetKit truly native Apple.", accent: "#007AFF" },
-              { title: "Android Development", href: "/services/mobile-apps/android", desc: "Kotlin, Jetpack Compose, Material You truly native Google.", accent: "#34A853" },
+              { title: "iOS Development",     href: "/services/mobile-apps/ios",     desc: "SwiftUI, UIKit, Face ID, WidgetKit for truly native Apple.", accent: "#007AFF" },
+              { title: "Android Development", href: "/services/mobile-apps/android", desc: "Kotlin, Jetpack Compose, Material You for truly native Google.", accent: "#34A853" },
             ].map((s) => (
               <Link key={s.title} href={s.href}
                 className="group flex items-center justify-between gap-4 border border-gray-200 bg-[#f9fafb] hover:border-gray-300 hover:bg-white hover:shadow-sm transition-all duration-200 px-6 py-5"

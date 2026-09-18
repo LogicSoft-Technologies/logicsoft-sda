@@ -44,9 +44,7 @@ const footerLinks = {
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms of Use", href: "/terms" },
-  { label: "Legal", href: "/legal" },
-  { label: "Sitemap", href: "/sitemap" },
+  { label: "Terms of Use", href: "/terms-of-use" },
 ];
 
 export default function Footer() {

@@ -20,7 +20,7 @@ const CAPABILITIES = [
     num: "02",
     icon: Cpu,
     title: "Core Data & CloudKit",
-    desc: "Offline-first data persistence with Core Data, synced seamlessly to iCloud via CloudKit. Users expect their data to follow them across iPhone, iPad, and Mac we make that reliable.",
+    desc: "Offline-first data persistence with Core Data, synced seamlessly to iCloud via CloudKit. Users expect their data to follow them across iPhone, iPad, and Mac. We make that reliable.",
     tags: ["Core Data", "CloudKit", "iCloud Sync", "NSPersistentCloudKitContainer"],
   },
   {
