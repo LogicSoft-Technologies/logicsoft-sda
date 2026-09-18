@@ -10,9 +10,6 @@ body {
   line-height: 1.6;
 }
 
-html, body {
-  cursor: none !important;
-}
 
 .leaflet-container {
   width: 100%;
@@ -325,34 +322,5 @@ html, body {
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@media (pointer: fine) {
-  .admin-cursor-zone,
-  .admin-cursor-zone * {
-    cursor: none !important;
-  }
-
-  .admin-cursor-zone input,
-  .admin-cursor-zone textarea,
-  .admin-cursor-zone [contenteditable="true"] {
-    cursor: text !important;
-  }
-}
-
-@media (pointer: fine) {
-  html.admin-cursor-active,
-  html.admin-cursor-active body,
-  html.admin-cursor-active body *,
-  html.admin-cursor-active body *::before,
-  html.admin-cursor-active body *::after {
-    cursor: none !important;
-  }
-
-  html.admin-cursor-active input,
-  html.admin-cursor-active textarea,
-  html.admin-cursor-active [contenteditable="true"] {
-    cursor: text !important;
   }
 }
