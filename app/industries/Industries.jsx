@@ -71,7 +71,6 @@ const INDUSTRIES = [
     headline: "Property platforms that close deals faster.",
     description:
       "Investment platforms, fractional ownership systems, property management portals, automated valuation models, and escrow integrations purpose-built for the African and MENA property markets.",
-      "Investment platforms, fractional ownership systems, property management portals, automated valuation models, and escrow integrations purpose-built for the African and MENA property markets.",
     services: ["Property Investment Platforms", "Fractional Ownership Systems", "AVM & Valuation Tools", "Escrow Integration", "Tenant Management Portals"],
     stats: [{ value: "3×", label: "Listing conversion" }, { value: "5", label: "Markets served" }],
     featured: false,
@@ -87,7 +86,6 @@ const INDUSTRIES = [
     accentBg: "#fff7ed",
     headline: "Fleet intelligence and supply chain visibility.",
     description:
-      "End-to-end logistics platforms with GPS tracking, route optimisation, driver management, warehouse management systems, and ERP sync engineered for multi-country operations.",
       "End-to-end logistics platforms with GPS tracking, route optimisation, driver management, warehouse management systems, and ERP sync engineered for multi-country operations.",
     services: ["Fleet Management Systems", "Route Optimisation", "Warehouse Management", "Last-Mile Delivery Apps", "ERP Integration"],
     stats: [{ value: "30%", label: "Efficiency gain" }, { value: "3", label: "Countries deployed" }],
@@ -136,7 +134,6 @@ const INDUSTRIES = [
     accentBg: "#f9fafb",
     headline: "Citizen-facing digital services and e-government platforms.",
     description:
-      "Digital identity systems, e-government portals, public service automation, revenue collection platforms, and compliance management systems built to ISO 27001 and NDPR standards.",
       "Digital identity systems, e-government portals, public service automation, revenue collection platforms, and compliance management systems built to ISO 27001 and NDPR standards.",
     services: ["e-Government Portals", "Digital Identity Systems", "Revenue Collection Platforms", "Public Records Management", "Compliance & Audit Systems"],
     stats: [{ value: "ISO 27001", label: "Certified" }, { value: "NDPR", label: "Compliant" }],
