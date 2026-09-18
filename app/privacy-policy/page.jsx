@@ -258,7 +258,7 @@ export default function PrivacyPolicyPage() {
               </h1>
               <p className="text-[15.5px] text-white/50 leading-[1.9] max-w-[560px]">
                 LogicSoft Technologies is committed to protecting the personal data of everyone
-                who engages with us — clients, visitors, job applicants, and partners alike.
+                who engages with us clients, visitors, job applicants, and partners alike.
                 This policy explains exactly what we collect, why, and how you can exercise your rights.
               </p>
             </motion.div>
@@ -289,7 +289,7 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-[82rem] mx-auto px-6">
           <motion.div {...fadeUp()} className="mb-10">
             <p className="text-[10.5px] font-bold text-[#1f6fb2] uppercase tracking-[0.16em] mb-2 font-mono">Privacy at a glance</p>
-            <h2 className="text-[26px] font-serif text-[#1f3a5f]">Key points — before you read further</h2>
+            <h2 className="text-[26px] font-serif text-[#1f3a5f]">Key points before you read further</h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {GLANCE_ITEMS.map((item, i) => (
@@ -354,7 +354,7 @@ export default function PrivacyPolicyPage() {
 
               {/* ── 1. About this policy ── */}
               <SectionHeading id="s1" n="01">About this policy</SectionHeading>
-              <P>LogicSoft Technologies Limited ("<strong>LogicSoft</strong>", "<strong>we</strong>", "<strong>us</strong>", or "<strong>our</strong>") is the data controller for the personal data described in this Privacy Policy. We are registered in Nigeria and operate in compliance with the Nigeria Data Protection Regulation 2019 (NDPR), the Nigeria Data Protection Act 2023, and — where applicable to our EU/UK clients and contacts — the General Data Protection Regulation (GDPR) and UK GDPR.</P>
+              <P>LogicSoft Technologies Limited ("<strong>LogicSoft</strong>", "<strong>we</strong>", "<strong>us</strong>", or "<strong>our</strong>") is the data controller for the personal data described in this Privacy Policy. We are registered in Nigeria and operate in compliance with the Nigeria Data Protection Regulation 2019 (NDPR), the Nigeria Data Protection Act 2023, and where applicable to our EU/UK clients and contacts, the General Data Protection Regulation (GDPR) and UK GDPR.</P>
               <P>This policy applies to all personal data we process in connection with:</P>
               <UL items={[
                 "Our website at logicsoft.ng and any subdomains",
@@ -365,7 +365,7 @@ export default function PrivacyPolicyPage() {
               ]} />
               <P>This policy does not apply to third-party websites linked from our platform. We are not responsible for the privacy practices of those sites and encourage you to review their own policies.</P>
               <InfoBox icon={HelpCircle} color="#1f6fb2" bg="#eff6ff">
-                If you have questions about this policy, please contact our Data Protection Officer at <strong>dpo@logicsoft.ng</strong> before taking any action. We are always willing to explain how your data is handled.
+                If you have questions about this policy, please contact our Data Protection Officer at <strong>logicsofttechnologies.com</strong> before taking any action. We are always willing to explain how your data is handled.
               </InfoBox>
 
               {/* ── 2. Information we collect ── */}
@@ -417,8 +417,8 @@ export default function PrivacyPolicyPage() {
                 {[
                   { basis: "Contract",             color: "#1f6fb2", bg: "#eff6ff", desc: "Processing necessary to perform a contract with you, or to take steps at your request before entering into a contract." },
                   { basis: "Legal obligation",      color: "#dc2626", bg: "#fff1f2", desc: "Processing necessary to comply with Nigerian law, tax regulations, or applicable international legal requirements." },
-                  { basis: "Legitimate interests",  color: "#7c3aed", bg: "#f5f3ff", desc: "Processing for our legitimate business interests — improving services, fraud prevention, network security — where these are not overridden by your rights." },
-                  { basis: "Consent",               color: "#059669", bg: "#ecfdf5", desc: "Processing based on your freely given, specific, informed consent — principally for marketing emails and non-essential cookies. Consent may be withdrawn at any time." },
+                  { basis: "Legitimate interests",  color: "#7c3aed", bg: "#f5f3ff", desc: "Processing for our legitimate business, interests improving services, fraud prevention, network security where these are not overridden by your rights." },
+                  { basis: "Consent",               color: "#059669", bg: "#ecfdf5", desc: "Processing based on your freely given, specific, informed consent principally for marketing emails and non-essential cookies. Consent may be withdrawn at any time." },
                 ].map((b) => (
                   <div key={b.basis} className="flex gap-3 border p-4"
                     style={{ borderColor: `${b.color}25`, background: b.bg }}>
@@ -471,7 +471,7 @@ export default function PrivacyPolicyPage() {
 
               {/* ── 8. Your rights ── */}
               <SectionHeading id="s8" n="08">Your rights</SectionHeading>
-              <P>Under the NDPR and GDPR, you have the following rights in relation to your personal data. To exercise any right, submit a request to <strong>dpo@logicsoft.ng</strong> with sufficient information to verify your identity. We will respond within 30 days.</P>
+              <P>Under the NDPR and GDPR, you have the following rights in relation to your personal data. To exercise any right, submit a request to <strong>logicsofttechnologies.com</strong> with sufficient information to verify your identity. We will respond within 30 days.</P>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 {RIGHTS.map((r, i) => (
                   <motion.div key={r.right} {...fadeUp(i * 0.05)}
