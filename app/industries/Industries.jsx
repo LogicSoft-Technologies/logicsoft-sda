@@ -22,7 +22,7 @@ const INDUSTRIES = [
     accentBg: "#eaf4ff",
     headline: "Core banking, payments, and digital finance at scale.",
     description:
-      "We build core banking integrations, lending platforms, digital wallets, PCI DSS-compliant payment gateways, and regulatory reporting systems. From neobanks to tier-1 financial institutions — we speak the language of money.",
+      "We build core banking integrations, lending platforms, digital wallets, PCI DSS-compliant payment gateways, and regulatory reporting systems. From neobanks to tier-1 financial institutions we speak the language of money.",
     services: ["Core Banking Integration", "Payment Gateway Development", "KYC & AML Systems", "Regulatory Reporting", "Digital Wallet Platforms"],
     stats: [{ value: "40+", label: "FinTech projects" }, { value: "PCI DSS", label: "Compliant" }],
     featured: true,
@@ -38,7 +38,7 @@ const INDUSTRIES = [
     accentBg: "#ecfdf5",
     headline: "HIPAA-aligned systems for modern healthcare networks.",
     description:
-      "Electronic health records, patient management systems, telemedicine platforms, medical billing automation, and clinical data analytics — all engineered to meet HIPAA and local regulatory standards.",
+      "Electronic health records, patient management systems, telemedicine platforms, medical billing automation, and clinical data analytics all engineered to meet HIPAA and local regulatory standards.",
     services: ["EHR & EMR Systems", "Telemedicine Platforms", "Medical Billing Automation", "Clinical Analytics", "Patient Portals"],
     stats: [{ value: "18mo", label: "Zero downtime" }, { value: "HIPAA", label: "Aligned" }],
     featured: true,
@@ -54,7 +54,7 @@ const INDUSTRIES = [
     accentBg: "#fdf2f8",
     headline: "Multi-channel retail platforms built to convert and scale.",
     description:
-      "From multi-vendor marketplaces to headless commerce storefronts — we build retail platforms with real-time inventory sync, dynamic pricing engines, logistics integrations, and omnichannel customer experiences.",
+      "From multi-vendor marketplaces to headless commerce storefronts we build retail platforms with real-time inventory sync, dynamic pricing engines, logistics integrations, and omnichannel customer experiences.",
     services: ["Multi-Vendor Marketplaces", "Headless Commerce", "Inventory Management", "Loyalty & CRM Systems", "Logistics API Integration"],
     stats: [{ value: "40+", label: "Stores unified" }, { value: "3×", label: "Conversion lift" }],
     featured: true,
@@ -70,7 +70,7 @@ const INDUSTRIES = [
     accentBg: "#fffbeb",
     headline: "Property platforms that close deals faster.",
     description:
-      "Investment platforms, fractional ownership systems, property management portals, automated valuation models, and escrow integrations — purpose-built for the African and MENA property markets.",
+      "Investment platforms, fractional ownership systems, property management portals, automated valuation models, and escrow integrations purpose-built for the African and MENA property markets.",
     services: ["Property Investment Platforms", "Fractional Ownership Systems", "AVM & Valuation Tools", "Escrow Integration", "Tenant Management Portals"],
     stats: [{ value: "3×", label: "Listing conversion" }, { value: "5", label: "Markets served" }],
     featured: false,
@@ -86,7 +86,7 @@ const INDUSTRIES = [
     accentBg: "#fff7ed",
     headline: "Fleet intelligence and supply chain visibility.",
     description:
-      "End-to-end logistics platforms with GPS tracking, route optimisation, driver management, warehouse management systems, and ERP sync — engineered for multi-country operations.",
+      "End-to-end logistics platforms with GPS tracking, route optimisation, driver management, warehouse management systems, and ERP sync engineered for multi-country operations.",
     services: ["Fleet Management Systems", "Route Optimisation", "Warehouse Management", "Last-Mile Delivery Apps", "ERP Integration"],
     stats: [{ value: "30%", label: "Efficiency gain" }, { value: "3", label: "Countries deployed" }],
     featured: false,
@@ -118,7 +118,7 @@ const INDUSTRIES = [
     accentBg: "#f5f3ff",
     headline: "Learning platforms that scale from classroom to continent.",
     description:
-      "Learning management systems, student information platforms, adaptive learning engines, virtual classrooms, and institutional analytics — built for K-12, tertiary, and corporate training environments.",
+      "Learning management systems, student information platforms, adaptive learning engines, virtual classrooms, and institutional analytics built for K-12, tertiary, and corporate training environments.",
     services: ["Learning Management Systems", "Student Information Platforms", "Adaptive Learning Engines", "Virtual Classrooms", "Institutional Analytics"],
     stats: [{ value: "50K+", label: "Learners served" }, { value: "99.9%", label: "Uptime SLA" }],
     featured: false,
@@ -134,7 +134,7 @@ const INDUSTRIES = [
     accentBg: "#f9fafb",
     headline: "Citizen-facing digital services and e-government platforms.",
     description:
-      "Digital identity systems, e-government portals, public service automation, revenue collection platforms, and compliance management systems — built to ISO 27001 and NDPR standards.",
+      "Digital identity systems, e-government portals, public service automation, revenue collection platforms, and compliance management systems built to ISO 27001 and NDPR standards.",
     services: ["e-Government Portals", "Digital Identity Systems", "Revenue Collection Platforms", "Public Records Management", "Compliance & Audit Systems"],
     stats: [{ value: "ISO 27001", label: "Certified" }, { value: "NDPR", label: "Compliant" }],
     featured: false,
@@ -317,16 +317,6 @@ function IndustryCard({ industry, index }) {
             <p className="text-[11px] text-gray-400">{industry.caseStudy.client} · <span style={{ color: industry.accentColor }} className="font-semibold">↑ {industry.caseStudy.outcome}</span></p>
           </div>
         )}
-
-        {/* CTA */}
-        <Link
-          href={`/industries/${industry.slug}`}
-          className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-all duration-200 group-hover:gap-3"
-          style={{ color: industry.accentColor }}
-        >
-          Explore {industry.name} solutions
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
       </div>
     </motion.div>
   );
@@ -520,12 +510,12 @@ export default function IndustriesPage() {
               {
                 num: "03",
                 title: "Domain-trained teams",
-                desc: "We assign engineers with prior experience in your sector — not generalists who need three months to understand your business model.",
+                desc: "We assign engineers with prior experience in your sector not generalists who need three months to understand your business model.",
               },
               {
                 num: "04",
                 title: "Long-term partnership",
-                desc: "We stay involved post-launch — evolving your product as your industry's technology landscape and regulatory environment shifts.",
+                desc: "We stay involved post-launch evolving your product as your industry's technology landscape and regulatory environment shifts.",
               },
             ].map((p, i) => (
               <div

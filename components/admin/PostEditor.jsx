@@ -48,6 +48,14 @@ function mapPostToForm(post) {
   };
 }
 
+const inputClasses =
+  "mt-2 w-full border border-[#cfe3f2] bg-[#fbfdff] px-4 py-3 text-[14px] text-[#111827] outline-none transition placeholder:text-slate-400 focus:border-[#065bad] focus:bg-white focus:ring-2 focus:ring-[#065bad]/15";
+
+const labelClasses = "block text-[12px] font-bold text-[#111827]";
+
+const cardClasses =
+  "border border-white/60 bg-white/50 backdrop-blur-2xl p-6 ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.06)]";
+
 export default function PostEditor({ postId }) {
   const router = useRouter();
 
@@ -160,20 +168,23 @@ export default function PostEditor({ postId }) {
   if (loading) {
     return (
       <div className="grid min-h-80 place-items-center">
-        <div className="h-7 w-7 animate-spin rounded-full border-2 border-[#d8e4f0] border-t-[#1f6fb2]" />
+        <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/60 border-t-[#065bad]" />
       </div>
     );
   }
 
   return (
     <form className="space-y-7" onSubmit={(event) => save(event)}>
-      <div className="flex flex-col justify-between gap-4 border-b border-[#e2eaf3] pb-6 md:flex-row md:items-end">
+      <div className="flex flex-col justify-between gap-4 border-b border-white/60 pb-6 md:flex-row md:items-end">
         <div>
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
+          <p className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#065bad]">
             {postId ? "Edit article" : "New article"}
           </p>
 
-          <h1 className="mt-2 font-serif text-[33px] text-[#1f3a5f]">
+          <h1
+            className="mt-2 text-[33px] leading-tight text-[#111827]"
+            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+          >
             {postId ? "Refine your insight." : "Write a new insight."}
           </h1>
         </div>
@@ -182,7 +193,7 @@ export default function PostEditor({ postId }) {
           <button
             type="submit"
             disabled={saving}
-            className="inline-flex items-center gap-2 border border-[#cbd9e7] bg-white px-4 py-3 text-[12px] font-bold text-[#1f3a5f]"
+            className="inline-flex items-center gap-2 border border-white/60 bg-white/50 px-4 py-3 text-[12px] font-bold text-[#111827] transition hover:border-[#065bad] hover:text-[#065bad] disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Save className="h-3.5 w-3.5" />
             Save draft
@@ -192,7 +203,7 @@ export default function PostEditor({ postId }) {
             type="button"
             disabled={saving}
             onClick={(event) => save(event, "PUBLISHED")}
-            className="inline-flex items-center gap-2 bg-[#1f6fb2] px-4 py-3 text-[12px] font-bold text-white hover:bg-[#1a5a96]"
+            className="inline-flex items-center gap-2 px-4 py-3 text-[12px] font-bold text-white transition bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A] disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Send className="h-3.5 w-3.5" />
             Publish
@@ -201,53 +212,48 @@ export default function PostEditor({ postId }) {
       </div>
 
       {error && (
-        <div className="border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700">
+        <p
+          role="alert"
+          className="border-l-4 border-red-500 bg-red-50 px-4 py-3 text-[12px] leading-relaxed text-red-700"
+        >
           {error}
-        </div>
+        </p>
       )}
 
       <section className="grid gap-7 xl:grid-cols-[1fr_340px]">
         <div className="space-y-6">
-          <div className="border border-[#e2eaf3] bg-white p-6">
-            <label className="block text-[12px] font-bold text-[#1f3a5f]">
-              Article title
-            </label>
+          <div className={cardClasses}>
+            <label className={labelClasses}>Article title</label>
 
             <input
               value={form.title}
               onChange={(event) => update("title", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] px-4 py-3 text-[16px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} text-[16px]`}
               placeholder="How to build reliable enterprise software"
               required
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              URL slug
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>URL slug</label>
 
             <input
               value={form.slug}
               onChange={(event) => update("slug", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] px-4 py-3 text-[14px] outline-none focus:border-[#1f6fb2]"
+              className={inputClasses}
               placeholder="Generated from title if empty"
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Excerpt
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Excerpt</label>
 
             <textarea
               value={form.excerpt}
               onChange={(event) => update("excerpt", event.target.value)}
               rows={4}
               maxLength={600}
-              className="mt-2 w-full resize-y border border-[#cbd9e7] px-4 py-3 text-[14px] leading-relaxed outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} resize-y leading-relaxed`}
               required
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Article content
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Article content</label>
 
             <p className="mt-1 text-[11.5px] leading-relaxed text-slate-500">
               Use safe HTML: paragraphs, headings, links, lists, blockquotes,
@@ -258,28 +264,24 @@ export default function PostEditor({ postId }) {
               value={form.content}
               onChange={(event) => update("content", event.target.value)}
               rows={24}
-              className="mt-2 w-full resize-y border border-[#cbd9e7] bg-[#fbfdff] px-4 py-3 font-mono text-[12px] leading-relaxed outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} resize-y font-mono text-[12px] leading-relaxed`}
               required
             />
           </div>
 
-          <div className="border border-[#e2eaf3] bg-white p-6">
-            <p className="text-[12px] font-bold text-[#1f3a5f]">SEO</p>
+          <div className={cardClasses}>
+            <p className="text-[12px] font-bold text-[#111827]">SEO</p>
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              SEO title
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>SEO title</label>
 
             <input
               value={form.seoTitle || ""}
               onChange={(event) => update("seoTitle", event.target.value)}
               maxLength={70}
-              className="mt-2 w-full border border-[#cbd9e7] px-4 py-3 text-[14px] outline-none focus:border-[#1f6fb2]"
+              className={inputClasses}
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Meta description
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Meta description</label>
 
             <textarea
               value={form.seoDescription || ""}
@@ -288,33 +290,29 @@ export default function PostEditor({ postId }) {
               }
               rows={3}
               maxLength={160}
-              className="mt-2 w-full resize-y border border-[#cbd9e7] px-4 py-3 text-[14px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} resize-y`}
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Canonical URL
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Canonical URL</label>
 
             <input
               type="url"
               value={form.canonicalUrl || ""}
               onChange={(event) => update("canonicalUrl", event.target.value)}
               placeholder="Leave blank to use the LogicSoft article URL"
-              className="mt-2 w-full border border-[#cbd9e7] px-4 py-3 text-[14px] outline-none focus:border-[#1f6fb2]"
+              className={inputClasses}
             />
           </div>
         </div>
 
         <aside className="space-y-6">
-          <div className="border border-[#e2eaf3] bg-white p-6">
-            <label className="block text-[12px] font-bold text-[#1f3a5f]">
-              Author
-            </label>
+          <div className={cardClasses}>
+            <label className={labelClasses}>Author</label>
 
             <select
               value={form.authorId}
               onChange={(event) => update("authorId", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] bg-white px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
               required
             >
               <option value="">Select author</option>
@@ -325,14 +323,12 @@ export default function PostEditor({ postId }) {
               ))}
             </select>
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Category
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Category</label>
 
             <select
               value={form.categoryId || ""}
               onChange={(event) => update("categoryId", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] bg-white px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             >
               <option value="">No category</option>
               {categories.map((category) => (
@@ -342,7 +338,7 @@ export default function PostEditor({ postId }) {
               ))}
             </select>
 
-            <p className="mt-5 text-[12px] font-bold text-[#1f3a5f]">Tags</p>
+            <p className={`mt-5 ${labelClasses}`}>Tags</p>
 
             <div className="mt-3 flex flex-wrap gap-2">
               {tags.map((tag) => {
@@ -353,10 +349,10 @@ export default function PostEditor({ postId }) {
                     key={tag.id}
                     type="button"
                     onClick={() => toggleTag(tag.id)}
-                    className={`border px-2.5 py-1.5 text-[11px] font-semibold ${
+                    className={`border px-2.5 py-1.5 text-[11px] font-semibold transition ${
                       selected
-                        ? "border-[#1f6fb2] bg-[#1f6fb2] text-white"
-                        : "border-[#d8e4f0] text-slate-600"
+                        ? "border-[#065bad] bg-[#065bad] text-white"
+                        : "border-white/60 bg-white/50 text-slate-600 hover:border-[#065bad] hover:text-[#065bad]"
                     }`}
                   >
                     {tag.name}
@@ -366,19 +362,17 @@ export default function PostEditor({ postId }) {
             </div>
           </div>
 
-          <div className="border border-[#e2eaf3] bg-white p-6">
-            <label className="block text-[12px] font-bold text-[#1f3a5f]">
-              Cover image URL
-            </label>
+          <div className={cardClasses}>
+            <label className={labelClasses}>Cover image URL</label>
 
             <input
               type="url"
               value={form.coverImage || ""}
               onChange={(event) => update("coverImage", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
+            <label className={`mt-5 ${labelClasses}`}>
               Cover image alt text
             </label>
 
@@ -387,46 +381,43 @@ export default function PostEditor({ postId }) {
               onChange={(event) =>
                 update("coverImageAlt", event.target.value)
               }
-              className="mt-2 w-full border border-[#cbd9e7] px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             />
 
-            <label className="mt-5 flex items-center gap-2 text-[12px] font-bold text-[#1f3a5f]">
+            <label className="mt-5 flex items-center gap-2 text-[12px] font-bold text-[#111827]">
               <input
                 type="checkbox"
                 checked={Boolean(form.featured)}
                 onChange={(event) => update("featured", event.target.checked)}
+                className="accent-[#065bad]"
               />
               Feature on Insights home
             </label>
           </div>
 
-          <div className="border border-[#e2eaf3] bg-white p-6">
-            <label className="block text-[12px] font-bold text-[#1f3a5f]">
-              Publishing status
-            </label>
+          <div className={cardClasses}>
+            <label className={labelClasses}>Publishing status</label>
 
             <select
               value={form.status}
               onChange={(event) => update("status", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] bg-white px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             >
               <option value="DRAFT">Draft</option>
               <option value="PUBLISHED">Published</option>
               <option value="ARCHIVED">Archived</option>
             </select>
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
-              Publish date
-            </label>
+            <label className={`mt-5 ${labelClasses}`}>Publish date</label>
 
             <input
               type="datetime-local"
               value={form.publishedAt}
               onChange={(event) => update("publishedAt", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             />
 
-            <label className="mt-5 block text-[12px] font-bold text-[#1f3a5f]">
+            <label className={`mt-5 ${labelClasses}`}>
               Schedule for later
             </label>
 
@@ -434,7 +425,7 @@ export default function PostEditor({ postId }) {
               type="datetime-local"
               value={form.scheduledFor}
               onChange={(event) => update("scheduledFor", event.target.value)}
-              className="mt-2 w-full border border-[#cbd9e7] px-3 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+              className={`${inputClasses} py-3 text-[13px]`}
             />
           </div>
         </aside>

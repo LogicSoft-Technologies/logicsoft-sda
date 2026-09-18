@@ -1,5 +1,6 @@
 import AdminShell from "@/components/admin/AdminShell";
 import { Playfair_Display, Inter } from "next/font/google";
+import CustomCursor from "@/components/admin/CustomCursor";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export const metadata = {
 export default function AdminLayout({ children }) {
   return (
     <div className={`${playfair.variable} ${inter.variable}`}>
+      <CustomCursor />
       <AdminShell>{children}</AdminShell>
     </div>
   );

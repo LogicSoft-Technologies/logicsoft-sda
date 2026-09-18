@@ -71,34 +71,46 @@ export default function SubscribersPage() {
   }
 
   return (
-    <div>
-      <div className="mb-8">
-        <p className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
+    <div className="relative">
+      <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-[#065bad]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-[#0a7d3e]/10 blur-3xl" />
+
+      <div className="relative mb-8">
+        <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#065bad]">
           Audience
         </p>
-        <h1 className="mt-2 font-serif text-[35px] text-[#1f3a5f]">
+        <h1
+          className="mt-3 text-[35px] leading-tight text-[#111827]"
+          style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+        >
           Newsletter subscribers
         </h1>
       </div>
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
+      <div className="relative mb-6 grid gap-4 sm:grid-cols-3">
         {[
           ["ACTIVE", "Active"],
           ["PENDING", "Awaiting confirmation"],
           ["UNSUBSCRIBED", "Unsubscribed"],
         ].map(([key, label]) => (
-          <div key={key} className="border border-[#e2eaf3] bg-white p-4">
+          <div
+            key={key}
+            className="border border-white/60 bg-white/50 backdrop-blur-2xl p-4 ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.06)]"
+          >
             <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-slate-500">
               {label}
             </p>
-            <p className="mt-2 text-[26px] font-semibold text-[#1f3a5f]">
+            <p
+              className="mt-2 text-[26px] leading-none text-[#111827]"
+              style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+            >
               {counts[key] || 0}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row">
+      <div className="relative mb-6 flex flex-col gap-3 sm:flex-row">
         <form
           className="flex flex-1"
           onSubmit={(event) => {
@@ -110,9 +122,9 @@ export default function SubscribersPage() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search email address"
-            className="min-w-0 flex-1 border border-[#cbd9e7] bg-white px-4 py-3 text-[13px] outline-none focus:border-[#1f6fb2]"
+            className="min-w-0 flex-1 border border-[#cfe3f2] bg-[#fbfdff] px-4 py-3 text-[13px] text-[#111827] outline-none transition placeholder:text-slate-400 focus:border-[#065bad] focus:bg-white focus:ring-2 focus:ring-[#065bad]/15"
           />
-          <button className="bg-[#1f3a5f] px-4 text-white">
+          <button className="px-4 text-white transition bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]">
             <Search className="h-4 w-4" />
           </button>
         </form>
@@ -120,7 +132,7 @@ export default function SubscribersPage() {
         <select
           value={status}
           onChange={(event) => setStatus(event.target.value)}
-          className="border border-[#cbd9e7] bg-white px-3 py-3 text-[13px]"
+          className="border border-[#cfe3f2] bg-[#fbfdff] px-3 py-3 text-[13px] text-[#111827] outline-none focus:border-[#065bad]"
         >
           <option value="">All statuses</option>
           <option value="ACTIVE">Active</option>
@@ -131,14 +143,14 @@ export default function SubscribersPage() {
       </div>
 
       {error && (
-        <p className="mb-5 border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700">
+        <p className="relative mb-5 border-l-4 border-red-500 bg-red-50 px-4 py-3 text-[13px] text-red-700">
           {error}
         </p>
       )}
 
-      <div className="overflow-x-auto border border-[#e2eaf3] bg-white">
+      <div className="relative overflow-x-auto border border-white/60 bg-white/50 backdrop-blur-2xl ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.08)]">
         <table className="min-w-[850px] w-full text-left">
-          <thead className="border-b border-[#e2eaf3] bg-[#f8fafc]">
+          <thead className="border-b border-white/50 bg-white/40">
             <tr>
               {["Subscriber", "Status", "Source", "Joined", "Action"].map(
                 (label) => (
@@ -153,11 +165,11 @@ export default function SubscribersPage() {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-[#edf2f7]">
+          <tbody className="divide-y divide-white/50">
             {subscribers.map((subscriber) => (
-              <tr key={subscriber.id}>
+              <tr key={subscriber.id} className="transition-colors hover:bg-white/40">
                 <td className="px-5 py-4">
-                  <p className="text-[13px] font-bold text-[#1f3a5f]">
+                  <p className="text-[13px] font-bold text-[#111827]">
                     {subscriber.email}
                   </p>
                   {subscriber.firstName && (
@@ -213,7 +225,7 @@ export default function SubscribersPage() {
 
         {!subscribers.length && (
           <div className="px-6 py-14 text-center text-[13px] text-slate-500">
-            <Users className="mx-auto h-5 w-5 text-[#1f6fb2]" />
+            <Users className="mx-auto h-5 w-5 text-[#065bad]" />
             <p className="mt-3">No subscribers match this filter.</p>
           </div>
         )}
