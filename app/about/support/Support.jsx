@@ -555,8 +555,8 @@ export default function Support() {
               Our team is ready.
             </h3>
             <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">
-              Whether it's a critical incident or a question about your project
-              reach out and we'll respond fast.
+              Whether it's a critical incident or a question about your project,
+             reach out and we'll respond fast.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">

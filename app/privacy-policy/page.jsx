@@ -40,12 +40,12 @@ const GLANCE_ITEMS = [
   { icon: Eye,         title: "How we use it",        body: "To deliver services, respond to enquiries, improve our platform, and meet legal obligations. Never sold.",          color: "#0d9488", bg: "#f0fdfa" },
   { icon: UserCheck,   title: "Your rights",          body: "Access, rectify, erase, port, restrict, or object to your data at any time. No friction.",                         color: "#7c3aed", bg: "#f5f3ff" },
   { icon: Globe,       title: "Who we share with",    body: "Only trusted sub-processors (hosting, analytics, email). All bound by GDPR/NDPR-compliant agreements.",            color: "#b45309", bg: "#fffbeb" },
-  { icon: Clock,       title: "How long we keep it",  body: "Data is kept only as long as necessary — typically 3–7 years for business records, or until you request deletion.", color: "#dc2626", bg: "#fff1f2" },
+  { icon: Clock,       title: "How long we keep it",  body: "Data is kept only as long as necessary typically 3–7 years for business records, or until you request deletion.", color: "#dc2626", bg: "#fff1f2" },
   { icon: Shield,      title: "How we protect it",    body: "TLS in transit, AES-256 at rest, SOC 2-aligned controls, penetration testing, and role-based access.",             color: "#059669", bg: "#ecfdf5" },
 ];
 
 const COMPLIANCE_BADGES = [
-  { label: "NDPR",       sub: "Nigeria Data Protection Regulation 2019", icon: Shield  },
+  { label: "NDP Act",       sub: "Nigeria Data Protection Act 2023", icon: Shield  },
   { label: "GDPR",       sub: "General Data Protection Regulation (EU)", icon: Globe   },
   { label: "ISO 27001",  sub: "Information Security Management",         icon: Lock    },
   { label: "PCI DSS",    sub: "Payment Card Industry Data Security",      icon: Database},
@@ -365,7 +365,7 @@ export default function PrivacyPolicyPage() {
               ]} />
               <P>This policy does not apply to third-party websites linked from our platform. We are not responsible for the privacy practices of those sites and encourage you to review their own policies.</P>
               <InfoBox icon={HelpCircle} color="#1f6fb2" bg="#eff6ff">
-                If you have questions about this policy, please contact our Data Protection Officer at <strong>logicsofttechnologies.com</strong> before taking any action. We are always willing to explain how your data is handled.
+                If you have questions about this policy, please contact our Data Protection Officer at <strong>support@logicsofttechnologies.com</strong> before taking any action. We are always willing to explain how your data is handled.
               </InfoBox>
 
               {/* ── 2. Information we collect ── */}
@@ -435,14 +435,14 @@ export default function PrivacyPolicyPage() {
               <SectionHeading id="s5" n="05">How we share your information</SectionHeading>
               <P>We do not sell personal data. We share data only with the following categories of recipients, under strict contractual and/or regulatory safeguards:</P>
               <UL items={[
-                "Cloud infrastructure providers (e.g. AWS, Azure, GCP) — for hosting our systems and client project environments",
-                "Analytics providers (e.g. Google Analytics, Mixpanel) — pseudonymised usage data only",
-                "Email and communication platforms (e.g. Mailchimp, Postmark) — for transactional and marketing email",
-                "Customer support software (e.g. Zendesk, Intercom) — for support ticket management",
-                "Accounting and payment systems (e.g. Paystack, QuickBooks) — for billing and financial management",
-                "Professional advisers (solicitors, accountants, auditors) — under confidentiality obligations",
-                "Law enforcement or regulatory bodies — where required by law or court order",
-                "Acquirers or successors — in the event of a merger, acquisition, or sale of assets, subject to equivalent protections",
+                "Cloud infrastructure providers (e.g. AWS, Azure, GCP) for hosting our systems and client project environments",
+                "Analytics providers (e.g. Google Analytics, Mixpanel) pseudonymised usage data only",
+                "Email and communication platforms (e.g. Mailchimp, Postmark) for transactional and marketing email",
+                "Customer support software (e.g. Zendesk, Intercom) for support ticket management",
+                "Accounting and payment systems (e.g. Paystack, QuickBooks) for billing and financial management",
+                "Professional advisers (solicitors, accountants, auditors) under confidentiality obligations",
+                "Law enforcement or regulatory bodies where required by law or court order",
+                "Acquirers or successors in the event of a merger, acquisition, or sale of assets, subject to equivalent protections",
               ]} />
               <P>All sub-processors are bound by data processing agreements that require NDPR and/or GDPR-equivalent protections. We publish a list of our current sub-processors on request.</P>
 
@@ -455,7 +455,7 @@ export default function PrivacyPolicyPage() {
                 "Your explicit consent where no other mechanism is available",
               ]} />
               <InfoBox icon={Globe} color="#0d9488" bg="#f0fdfa">
-                Clients subject to GDPR should note that LogicSoft has entered into Data Processing Agreements (DPAs) with all EU-based sub-processors. Request a copy from your account manager or at <strong>dpo@logicsoft.ng</strong>.
+                Clients subject to GDPR should note that LogicSoft has entered into Data Processing Agreements (DPAs) with all EU-based sub-processors. Request a copy from your account manager or at <strong>support@logicsofttechnologies.com</strong>.
               </InfoBox>
 
               {/* ── 7. Data retention ── */}
@@ -471,7 +471,7 @@ export default function PrivacyPolicyPage() {
 
               {/* ── 8. Your rights ── */}
               <SectionHeading id="s8" n="08">Your rights</SectionHeading>
-              <P>Under the NDPR and GDPR, you have the following rights in relation to your personal data. To exercise any right, submit a request to <strong>logicsofttechnologies.com</strong> with sufficient information to verify your identity. We will respond within 30 days.</P>
+              <P>Under the NDP Act and GDPR, you have the following rights in relation to your personal data. To exercise any right, submit a request to <strong>support@logicsofttechnologies.com</strong> with sufficient information to verify your identity. We will respond within 30 days.</P>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 {RIGHTS.map((r, i) => (
                   <motion.div key={r.right} {...fadeUp(i * 0.05)}
@@ -487,7 +487,7 @@ export default function PrivacyPolicyPage() {
                 ))}
               </div>
               <InfoBox icon={AlertCircle} color="#b45309" bg="#fffbeb">
-                You also have the right to lodge a complaint with the Nigeria Data Protection Commission (NDPC) at <strong>ndpb.gov.ng</strong>, or with your local data protection authority if you are in the EU or UK.
+                You also have the right to lodge a complaint with the Nigeria Data Protection Act (NDP Act) at <strong>placng.org</strong>, or with your local data protection authority if you are in the EU or UK.
               </InfoBox>
 
               {/* ── 9. Cookies ── */}
@@ -518,7 +518,7 @@ export default function PrivacyPolicyPage() {
 
               {/* ── 10. Children's privacy ── */}
               <SectionHeading id="s10" n="10">Children's privacy</SectionHeading>
-              <P>Our services are not directed at children under the age of 18. We do not knowingly collect personal data from anyone under 18. If we become aware that we have inadvertently collected data from a child, we will delete it promptly. If you believe we have received personal data from a minor, please contact <strong>dpo@logicsoft.ng</strong> immediately.</P>
+              <P>Our services are not directed at children under the age of 18. We do not knowingly collect personal data from anyone under 18. If we become aware that we have inadvertently collected data from a child, we will delete it promptly. If you believe we have received personal data from a minor, please contact <strong>support@logicsofttechnologies.com</strong> immediately.</P>
 
               {/* ── 11. Security ── */}
               <SectionHeading id="s11" n="11">Security</SectionHeading>
@@ -541,7 +541,7 @@ export default function PrivacyPolicyPage() {
               <SectionHeading id="s12" n="12">Changes to this policy</SectionHeading>
               <P>We review this Privacy Policy at least annually and whenever there is a material change to how we process personal data. The "Last reviewed" date at the top of the page indicates when the current version was issued.</P>
               <P>For material changes, we will notify you by email (if we hold your address) or by placing a prominent notice on our website for at least 30 days before the change takes effect. Continued use of our services after the effective date of a revised policy constitutes acceptance of the revised terms.</P>
-              <P>Previous versions of this policy are available on request from <strong>dpo@logicsoft.ng</strong>.</P>
+              <P>Previous versions of this policy are available on request from <strong>support@logicsofttechnologies.com</strong>.</P>
 
               {/* ── 13. Contact & DPO ── */}
               <SectionHeading id="s13" n="13">Contact us & DPO</SectionHeading>
@@ -559,7 +559,7 @@ export default function PrivacyPolicyPage() {
                   </div>
                   <div className="space-y-3">
                     {[
-                      { icon: Mail,     label: "Email",      value: "dpo@logicsoft.ng",   href: "mailto:dpo@logicsoft.ng" },
+                      { icon: Mail,     label: "Email",      value: "support@logicsofttechnologies.com",   href: "mailto:support@logicsofttechnologies.com" },
                       { icon: FileText, label: "Subject",    value: "Mark: PRIVACY REQUEST", href: null },
                       { icon: Clock,    label: "Response",   value: "Within 30 days",      href: null },
                     ].map((c) => (
@@ -661,8 +661,8 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-[26px] font-serif text-[#1f3a5f] mb-6">How to make a data request</h2>
               <div className="space-y-3">
                 {[
-                  { n: "01", title: "Identify your request",    body: "Determine which right you wish to exercise — access, erasure, restriction, portability, rectification, or objection." },
-                  { n: "02", title: "Email the DPO",            body: 'Send your request to dpo@logicsoft.ng with the subject line "PRIVACY REQUEST" and your full name and the email address associated with your data.' },
+                  { n: "01", title: "Identify your request",    body: "Determine which right you wish to exercise access, erasure, restriction, portability, rectification, or objection." },
+                  { n: "02", title: "Email the DPO",            body: 'Send your request to contact@logicsofttechnologies.com with the subject line "PRIVACY REQUEST" and your full name and the email address associated with your data.' },
                   { n: "03", title: "Identity verification",    body: "We may ask for proof of identity to ensure we do not disclose data to the wrong person. This is a security measure, not a barrier." },
                   { n: "04", title: "We respond within 30 days",body: "We aim to respond within 14 days and will always meet the 30-day statutory deadline. Complex requests may be extended by a further 60 days with notice." },
                 ].map((s) => (
@@ -690,10 +690,10 @@ export default function PrivacyPolicyPage() {
                 ))}
               </ul>
               <div className="mt-5 pt-5 border-t border-[#bfdbfe]">
-                <a href="mailto:dpo@logicsoft.ng"
+                <a href="mailto:contact@logicsofttechnologies.com"
                   className="flex items-center gap-2 text-[13px] font-bold text-[#1f6fb2] hover:text-[#1f3a5f] transition-colors">
                   <Mail className="w-4 h-4" />
-                  dpo@logicsoft.ng
+                   support@logicsofttechnologies.com
                 </a>
               </div>
             </motion.div>
@@ -730,7 +730,7 @@ export default function PrivacyPolicyPage() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col gap-3 shrink-0">
-              <a href="mailto:dpo@logicsoft.ng"
+              <a href="mailto:support@logicsofttechnologies.com"
                 className="inline-flex items-center justify-center gap-2.5 px-9 py-4 text-[14px] font-bold text-white transition-all duration-200 hover:scale-[1.02]"
                 style={{ background: "linear-gradient(135deg, #7A2E00, #C45500 50%, #FF7A00)", boxShadow: "0 8px 28px rgba(196,85,0,0.4)" }}>
                 Email the DPO <Mail className="w-4 h-4" />
