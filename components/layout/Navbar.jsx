@@ -545,6 +545,7 @@ const Navbar = () => {
 
   const searchRef     = useRef(null);
   const searchWrapRef = useRef(null);
+  const dropdownRef   = useRef(null);
   const pathname      = usePathname();
 
   const isHome = pathname === "/";
@@ -594,6 +595,17 @@ const Navbar = () => {
   }, [searchOpen]);
 
   useEffect(() => {
+  if (!isDropdownOpen) return;
+  const handler = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setClicked("");
+    }
+  };
+  document.addEventListener("mousedown", handler);
+  return () => document.removeEventListener("mousedown", handler);
+}, [isDropdownOpen]);
+
+  useEffect(() => {
     if (!searchOpen) return;
     const handler = (e) => {
       if (searchWrapRef.current && !searchWrapRef.current.contains(e.target)) {
@@ -615,6 +627,7 @@ const Navbar = () => {
   return (
     <>
      <nav
+  ref={dropdownRef}
   aria-label="Main navigation"
   className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${showSolid ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]" : "bg-transparent"}`}
 >

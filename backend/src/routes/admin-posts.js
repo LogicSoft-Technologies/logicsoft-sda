@@ -655,4 +655,46 @@ router.delete(
   }
 );
 
+router.delete(
+  "/:id/permanent",
+  adminWriteLimiter,
+  requireRole("ADMIN"),
+  async (req, res, next) => {
+    try {
+      await prisma.$transaction([
+        prisma.blogPostTag.deleteMany({
+          where: {
+            postId: req.params.id,
+          },
+        }),
+
+        prisma.blogPost.delete({
+          where: {
+            id: req.params.id,
+          },
+        }),
+      ]);
+
+      return res.json({
+        success: true,
+      });
+    } catch (error) {
+      if (error.code === "P2025") {
+        return res.status(404).json({
+          error: "Post not found.",
+        });
+      }
+
+      if (error.code === "P2003") {
+        return res.status(409).json({
+          error:
+            "This post cannot be deleted because other records still reference it.",
+        });
+      }
+
+      next(error);
+    }
+  }
+);
+
 export default router;

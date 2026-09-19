@@ -19,7 +19,6 @@ export default function AdminShell({ children }) {
   useEffect(() => {
     let active = true;
 
-    // Login must remain public. Every other /admin route requires a session.
     if (isLoginPage) {
       setLoading(false);
 
@@ -54,7 +53,6 @@ export default function AdminShell({ children }) {
   if (isLoginPage) {
     return children;
   }
-
 
   if (!admin) {
     return null;

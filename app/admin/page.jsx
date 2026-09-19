@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileText, Plus } from "lucide-react";
+import { ArrowRight, FileText, Plus, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import DashboardStats from "@/components/admin/DashboardStats";
@@ -45,21 +45,29 @@ export default function AdminDashboardPage() {
   }, []);
 
   return (
-    <div>
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <p className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
-            Content overview
-          </p>
+    <div className="relative">
+      {/* Decorative background blobs — matches login page */}
+      <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-[#065bad]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 top-1/4 h-96 w-96 rounded-full bg-[#0a7d3e]/10 blur-3xl" />
 
-          <h1 className="mt-2 font-serif text-[35px] text-[#1f3a5f]">
+      <div className="relative mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <span className="inline-flex items-center gap-2 bg-[#eaf3fb] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.17em] text-[#065bad]">
+            <Sparkles className="h-3.5 w-3.5" />
+            Content overview
+          </span>
+
+          <h1
+            className="mt-4 text-[35px] leading-tight text-[#111827]"
+            style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+          >
             Good morning. Build authority.
           </h1>
         </div>
 
         <Link
           href="/admin/posts/new"
-          className="inline-flex w-fit items-center gap-2 bg-[#1f6fb2] px-4 py-3 text-[12px] font-bold text-white hover:bg-[#1a5a96]"
+          className="inline-flex w-fit items-center gap-2 px-4 py-3.5 text-[13px] font-bold text-white transition bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]"
         >
           <Plus className="h-4 w-4" />
           New article
@@ -67,37 +75,44 @@ export default function AdminDashboardPage() {
       </div>
 
       {error && (
-        <p className="mb-6 border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700">
+        <p className="relative mb-6 border-l-4 border-red-500 bg-red-50 px-4 py-3 text-[12px] leading-relaxed text-red-700">
           {error}
         </p>
       )}
 
-      <DashboardStats stats={stats} />
+      <div className="relative">
+        <DashboardStats stats={stats} />
+      </div>
 
-      <section className="mt-9">
+      <section className="relative mt-9">
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#1f6fb2]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#065bad]">
               Publishing queue
             </p>
-            <h2 className="mt-1 font-serif text-[27px] text-[#1f3a5f]">
+            <h2
+              className="mt-2 text-[27px] leading-tight text-[#111827]"
+              style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+            >
               Recent articles
             </h2>
           </div>
 
           <Link
             href="/admin/posts"
-            className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1f6fb2]"
+            className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#065bad] hover:text-[#054d94]"
           >
             All posts
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <PostTable posts={posts} />
+        <div className="border border-white/60 bg-white/50 backdrop-blur-2xl ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.08)]">
+          <PostTable posts={posts} />
+        </div>
       </section>
 
-      <section className="mt-9 grid gap-4 lg:grid-cols-3">
+      <section className="relative mt-9 grid gap-4 lg:grid-cols-3">
         {[
           {
             href: "/admin/posts/new",
@@ -121,13 +136,18 @@ export default function AdminDashboardPage() {
           <Link
             key={item.href}
             href={item.href}
-            className="border border-[#e2eaf3] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#1f6fb2]/40 hover:shadow-lg hover:shadow-[#1f6fb2]/5"
+            className="border border-white/60 bg-white/50 backdrop-blur-2xl p-6 ring-1 ring-white/40 ring-inset transition hover:-translate-y-0.5 hover:border-[#065bad]/40 hover:shadow-[0_8px_30px_rgba(6,91,173,0.15)]"
           >
-            <FileText className="h-4 w-4 text-[#1f6fb2]" />
-            <h3 className="mt-4 font-serif text-[21px] text-[#1f3a5f]">
+            <span className="grid h-11 w-11 place-items-center bg-[#eaf3fb] text-[#0a7d3e]">
+              <FileText className="h-4 w-4" />
+            </span>
+            <h3
+              className="mt-4 text-[21px] leading-snug text-[#111827]"
+              style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+            >
               {item.title}
             </h3>
-            <p className="mt-2 text-[13px] leading-relaxed text-slate-600">
+            <p className="mt-2 text-[13px] leading-relaxed text-[#4b5563]">
               {item.description}
             </p>
           </Link>

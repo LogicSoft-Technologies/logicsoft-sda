@@ -62,13 +62,13 @@ export default function AdminPostsPage() {
       label: "All articles",
       value: metrics.total,
       icon: FileText,
-      iconClass: "bg-[#eaf3fb] text-[#1f6fb2]",
+      iconClass: "bg-[#eaf3fb] text-[#065bad]",
     },
     {
       label: "Published",
       value: metrics.published,
       icon: CheckCircle2,
-      iconClass: "bg-emerald-50 text-emerald-600",
+      iconClass: "bg-[#eafbf2] text-[#0a7d3e]",
     },
     {
       label: "Drafts",
@@ -85,19 +85,27 @@ export default function AdminPostsPage() {
   ];
 
   return (
-    <div className="pb-10">
+    <div className="relative pb-10">
+      {/* Decorative background blobs — matches login page */}
+      <div className="pointer-events-none absolute -left-24 top-40 h-96 w-96 rounded-full bg-[#065bad]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 top-96 h-96 w-96 rounded-full bg-[#0a7d3e]/10 blur-3xl" />
+
       <section className="relative overflow-hidden bg-[#0b1b33] px-6 py-8 sm:px-8 sm:py-10">
         <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border border-white/10" />
-        <div className="absolute -bottom-28 right-32 h-56 w-56 rounded-full bg-[#1f6fb2]/20 blur-3xl" />
+        <div className="absolute -bottom-28 right-32 h-56 w-56 rounded-full bg-[#065bad]/20 blur-3xl" />
+        <div className="absolute -bottom-16 left-20 h-40 w-40 rounded-full bg-[#0a7d3e]/15 blur-3xl" />
 
         <div className="relative flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
-            <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8ac8f2]">
+            <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8ac8f2]">
               <Sparkles className="h-3.5 w-3.5" />
               LogicSoft Content Engine
             </div>
 
-            <h1 className="mt-3 font-serif text-3xl text-white sm:text-4xl">
+            <h1
+              className="mt-4 text-3xl leading-tight text-white sm:text-4xl"
+              style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+            >
               Publish with purpose.
             </h1>
 
@@ -109,7 +117,7 @@ export default function AdminPostsPage() {
 
           <Link
             href="/admin/posts/new"
-            className="inline-flex w-fit items-center gap-2 bg-[#1f6fb2] px-5 py-3 text-[12px] font-bold text-white transition hover:bg-[#2c82c8]"
+            className="inline-flex w-fit items-center gap-2 px-5 py-3.5 text-[13px] font-bold text-white transition bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]"
           >
             <Plus className="h-4 w-4" />
             Create article
@@ -117,21 +125,24 @@ export default function AdminPostsPage() {
         </div>
       </section>
 
-      <section className="grid gap-4 py-6 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="relative grid gap-4 py-6 sm:grid-cols-2 xl:grid-cols-4">
         {statCards.map((card) => {
           const Icon = card.icon;
 
           return (
             <div
               key={card.label}
-              className="border border-[#e2eaf3] bg-white p-5 shadow-sm"
+              className="border border-white/60 bg-white/50 backdrop-blur-2xl p-5 ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(6,91,173,0.12)]"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
                     {card.label}
                   </p>
-                  <p className="mt-2 text-3xl font-bold tracking-tight text-[#1f3a5f]">
+                  <p
+                    className="mt-2 text-3xl leading-none text-[#111827]"
+                    style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+                  >
                     {card.value}
                   </p>
                 </div>
@@ -145,21 +156,26 @@ export default function AdminPostsPage() {
         })}
       </section>
 
-      <section className="border border-[#e2eaf3] bg-white">
-        <div className="flex flex-col justify-between gap-4 border-b border-[#eaf0f6] px-5 py-5 sm:px-6 lg:flex-row lg:items-center">
+      <section className="relative border border-white/60 bg-white/50 backdrop-blur-2xl ring-1 ring-white/40 ring-inset shadow-[0_8px_30px_rgba(6,91,173,0.08)]">
+        <div className="flex flex-col justify-between gap-4 border-b border-white/50 px-5 py-5 sm:px-6 lg:flex-row lg:items-center">
           <div>
-            <h2 className="font-serif text-2xl text-[#1f3a5f]">Article library</h2>
-            <p className="mt-1 text-[13px] text-slate-500">
+            <h2
+              className="text-2xl leading-tight text-[#111827]"
+              style={{ fontFamily: "var(--font-playfair), serif", fontWeight: 600 }}
+            >
+              Article library
+            </h2>
+            <p className="mt-1 text-[13px] text-[#4b5563]">
               Search, filter, and manage your published knowledge.
             </p>
           </div>
 
-          <span className="w-fit bg-[#f2f7fc] px-3 py-1.5 text-[11px] font-bold text-[#1f6fb2]">
+          <span className="w-fit bg-[#eaf3fb] px-3 py-1.5 text-[11px] font-bold text-[#065bad]">
             {metrics.total} {metrics.total === 1 ? "article" : "articles"} shown
           </span>
         </div>
 
-        <div className="flex flex-col gap-3 border-b border-[#eaf0f6] bg-[#fbfdff] p-5 sm:flex-row sm:p-6">
+        <div className="flex flex-col gap-3 border-b border-white/50 bg-white/30 p-5 sm:flex-row sm:p-6">
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -178,13 +194,13 @@ export default function AdminPostsPage() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search by article title or slug..."
-                className="w-full border border-[#cbd9e7] bg-white py-3 pl-11 pr-4 text-[13px] text-[#1f3a5f] outline-none transition placeholder:text-slate-400 focus:border-[#1f6fb2] focus:ring-2 focus:ring-[#1f6fb2]/10"
+                className="w-full border border-[#cfe3f2] bg-[#fbfdff] py-3 pl-11 pr-4 text-[13px] text-[#111827] outline-none transition placeholder:text-slate-400 focus:border-[#065bad] focus:bg-white focus:ring-2 focus:ring-[#065bad]/15"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-[#1f3a5f] px-5 text-[12px] font-bold text-white transition hover:bg-[#153052]"
+              className="px-5 text-[12px] font-bold text-white transition bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]"
             >
               Search
             </button>
@@ -198,7 +214,7 @@ export default function AdminPostsPage() {
             id="status-filter"
             value={status}
             onChange={(event) => setStatus(event.target.value)}
-            className="border border-[#cbd9e7] bg-white px-4 py-3 text-[13px] font-medium text-[#1f3a5f] outline-none focus:border-[#1f6fb2]"
+            className="border border-[#cfe3f2] bg-[#fbfdff] px-4 py-3 text-[13px] font-medium text-[#111827] outline-none focus:border-[#065bad]"
           >
             <option value="">All statuses</option>
             <option value="DRAFT">Drafts</option>
@@ -216,7 +232,7 @@ export default function AdminPostsPage() {
         {loading ? (
           <div className="grid min-h-72 place-items-center">
             <div className="text-center">
-              <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#d8e4f0] border-t-[#1f6fb2]" />
+              <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[#d8e4f0] border-t-[#065bad]" />
               <p className="mt-4 text-[13px] font-medium text-slate-500">
                 Loading your article library…
               </p>

@@ -13,14 +13,14 @@ const CAPABILITIES = [
     num: "01",
     icon: Smartphone,
     title: "Kotlin & Jetpack Compose",
-    desc: "Modern Android development using Kotlin and Jetpack Compose Google's declarative UI toolkit. Concise, testable, and fully interoperable with existing View-based code where needed.",
+    desc: "Modern Android development using Kotlin and Jetpack Compose. Google's declarative UI toolkit. Concise, testable, and fully interoperable with existing View-based code where needed.",
     tags: ["Kotlin", "Jetpack Compose", "Coroutines", "Flow"],
   },
   {
     num: "02",
     icon: Layers,
     title: "Material You Design System",
-    desc: "Apps that adapt to each user's wallpaper colour with Material You dynamic colour. Component library built on Material Design 3 the system 3 billion Android users already know.",
+    desc: "Apps that adapt to each user's wallpaper colour with Material You dynamic colour. Component library built on Material Design 3. The system 3 billion Android users already know.",
     tags: ["Material Design 3", "Dynamic Color", "Adaptive UI", "Motion"],
   },
   {
@@ -231,7 +231,7 @@ export default function Android() {
               </h2>
 
               <p className="text-[17px] text-white/60 leading-[1.9] max-w-[520px] mb-8">
-                Native Android apps built with Kotlin and Jetpack Compose the modern Android
+                Native Android apps built with Kotlin and Jetpack Compose The modern Android
                 stack Google recommends. Material You adaptive design that feels at home on every
                 Android device from Lagos to London.
               </p>
