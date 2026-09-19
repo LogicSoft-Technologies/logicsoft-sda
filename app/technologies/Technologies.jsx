@@ -1,526 +1,680 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight, Layers, Cpu, Shield, GitBranch,
-  ChevronDown, Code2, Cloud,
+  ArrowRight,
+  CheckCircle2,
+  ChevronDown,
+  Cloud,
+  Code2,
+  Database,
+  Eye,
+  GitBranch,
+  Layers3,
+  LockKeyhole,
+  MonitorCog,
+  ServerCog,
+  ShieldCheck,
+  Smartphone,
+  TestTube2,
 } from "lucide-react";
 
-// ── CDN helpers ───────────────────────────────────────────────────────────────
-const dv = (name, variant = "plain-wordmark") =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${name}/${name}-${variant}.svg`;
-const si = (slug, color = "444444") =>
-  `https://cdn.simpleicons.org/${slug}/${color}`;
-
-// ── Data ──────────────────────────────────────────────────────────────────────
-const CATEGORIES = [
+const DOMAINS = [
   "All",
-  "Full Stack",
+  "Frontend",
+  "Backend",
+  "Data",
   "Mobile",
-  "Frontend & UI",
-  "Backend & APIs",
-  "Cloud & Infrastructure",
-  "DevOps & CI/CD",
-  "Security & Compliance",
-  "Cross-Platform",
+  "Cloud",
+  "DevOps",
+  "Reliability",
+  "Security",
+  "Quality",
 ];
 
-const TECH_SECTIONS = [
+const STACKS = [
   {
-    eyebrow: "01",
-    label: "Full Stack Development",
-    category: "Full Stack",
-    icon: Layers,
-    summary: "End-to-end web applications built on proven, scalable stacks.",
+    id: "frontend",
+    number: "01",
+    domain: "Frontend",
+    title: "Web & Frontend Engineering",
+    icon: Code2,
+    summary:
+      "Accessible, performant interfaces and design systems engineered for real users, maintainable delivery, and long-term product evolution.",
+    capability:
+      "We build application frontends that connect cleanly to APIs, authentication, analytics, content systems, and operational workflows.",
     groups: [
       {
-        sublabel: "MERN Stack",
+        title: "Core frameworks",
         items: [
-          { name: "MongoDB",    src: dv("mongodb",   "plain-wordmark")    },
-          { name: "Express.js", src: "/images/expressjs.png"   },
-          { name: "React.js",   src: dv("react",     "original-wordmark") },
-          { name: "Node.js",    src: dv("nodejs",    "plain-wordmark")    },
+          ["React", "Component-based web applications and product interfaces."],
+          ["Next.js", "Server-rendered and full-stack web applications."],
+          ["TypeScript", "Safer, maintainable application code at scale."],
+          ["JavaScript", "Modern browser and application development."],
         ],
       },
       {
-        sublabel: "PERN Stack",
+        title: "UI systems & tooling",
         items: [
-          { name: "PostgreSQL",    src: dv("postgresql", "plain-wordmark")    },
-          { name: "Express.js", src: "/images/expressjs.png"    },      
-          { name: "React/Next.js", src: "/images/nextjs-clean.png"    },
-          { name: "Node.js",       src: dv("nodejs",     "plain-wordmark")    },
+          ["Tailwind CSS", "Consistent responsive interfaces and design systems."],
+          ["Webpack", "Production build tooling and asset optimisation."],
+          ["Framer Motion", "Purposeful interface motion and interaction feedback."],
         ],
       },
     ],
   },
   {
-    eyebrow: "02",
-    label: "Mobile Development",
-    category: "Mobile",
-    icon: Cpu,
-    summary: "Native and hybrid mobile apps for iOS and Android platforms.",
-    items: [
-      { name: "Swift",    src: dv("swift",    "plain-wordmark") },
-      { name: "Flutter",  src: "/images/flutter-logo1.png"},
-      { name: "Expo", src: "/images/expo.png" },
-      { name: "React Native", src: "/images/react-native.png" },
+    id: "backend",
+    number: "02",
+    domain: "Backend",
+    title: "Backend & API Engineering",
+    icon: ServerCog,
+    summary:
+      "Reliable application services, APIs, business logic, integrations, authentication flows, and operational back-office systems.",
+    capability:
+      "Backend architecture is selected around security, integrations, performance, data consistency, and the operational demands of the product.",
+    groups: [
+      {
+        title: "Languages & runtime",
+        items: [
+          ["Node.js", "Event-driven services, APIs, automation, and integrations."],
+          ["TypeScript", "Typed server-side application development."],
+          ["Python", "Automation, data processing, integrations, and services."],
+        ],
+      },
+      {
+        title: "Application & API layer",
+        items: [
+          ["Express.js", "Production REST APIs and service backends."],
+          ["GraphQL", "Flexible data APIs for application clients."],
+          ["REST APIs", "Interoperable services and third-party integrations."],
+          ["WebSockets", "Real-time updates and interactive application flows."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "03",
-    label: "Frontend & UI",
-    category: "Frontend & UI",
-    icon: Code2,
-    summary: "Pixel-perfect interfaces with modern toolchains and animation.",
-    items: [
-      { name: "React.js",     src: dv("react",       "original-wordmark") },
-      { name: "React/Next.js", src: "/images/nextjs-clean.png"    },
-      { name: "TypeScript",   src: "/images/typescript.png" },
-      { name: "Tailwind CSS", src: "/images/tailwind-css.png"},
-      { name: "Webpack",      src: dv("webpack",     "plain-wordmark")    },
+    id: "data",
+    number: "03",
+    domain: "Data",
+    title: "Databases & Data Services",
+    icon: Database,
+    summary:
+      "Transactional data stores, document databases, caching layers, and data-access patterns for modern applications.",
+    capability:
+      "We choose storage models based on consistency requirements, query patterns, scale, availability, reporting needs, and the business domain.",
+    groups: [
+      {
+        title: "Production databases",
+        items: [
+          ["PostgreSQL", "Transactional applications, SaaS products, and structured business data."],
+          ["MongoDB", "Flexible document data models and application workloads."],
+          ["Firebase", "Managed application data and real-time product features."],
+        ],
+      },
+      {
+        title: "Data access & performance",
+        items: [
+          ["Prisma", "Type-safe database access and maintainable application data layers."],
+          ["Redis", "Caching, sessions, queues, and high-speed application state."],
+          ["Cloudinary", "Managed media storage, delivery, and transformation."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "04",
-    label: "Backend & APIs",
-    category: "Backend & APIs",
-    icon: GitBranch,
-    summary: "Robust server-side systems, REST and GraphQL APIs, and data layers.",
-    items: [
-      { name: "Node.js",    src: dv("nodejs",    "plain-wordmark") },
-      { name: "Express.js", src: "/images/expressjs.png"    },
-      { name: "Python",     src: dv("python",    "plain-wordmark") },
-      { name: "GraphQL",    src: dv("graphql",   "plain-wordmark") },
-      { name: "Redis",      src: dv("redis",     "plain-wordmark") },
-      { name: "Nginx",      src: "/images/nginx.png" },
+    id: "mobile",
+    number: "04",
+    domain: "Mobile",
+    title: "Mobile & Cross-Platform Engineering",
+    icon: Smartphone,
+    summary:
+      "Native-quality mobile experiences for customer applications, employee tools, field operations, and connected business products.",
+    capability:
+      "We select native or cross-platform delivery based on device requirements, time-to-market, performance, integrations, and lifecycle cost.",
+    groups: [
+      {
+        title: "Mobile platforms",
+        items: [
+          ["React Native", "Cross-platform mobile products from a shared codebase."],
+          ["Expo", "Accelerated React Native delivery and mobile platform tooling."],
+          ["Flutter", "Cross-platform mobile applications with expressive UI."],
+          ["Swift", "Native iOS development where platform depth matters."],
+        ],
+      },
+      {
+        title: "Additional application surfaces",
+        items: [
+          ["Electron", "Desktop applications built with web technologies."],
+          ["Ionic", "Hybrid application delivery for selected business cases."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "05",
-    label: "Cloud Platforms & Engineering",
-    category: "Cloud & Infrastructure",
+    id: "cloud",
+    number: "05",
+    domain: "Cloud",
+    title: "Cloud & Infrastructure Engineering",
     icon: Cloud,
-    summary: "Multi-cloud deployment, IaC, and container orchestration.",
-    items: [
-      { name: "AWS",             src: dv("amazonwebservices", "plain-wordmark") },
-      { name: "Microsoft Azure", src: dv("azure",             "plain-wordmark") },
-      { name: "Google Cloud",    src: dv("googlecloud",       "plain-wordmark") },
-      { name: "DigitalOcean", src: "/Images/digitalocean.png" },
-      { name: "Terraform",       src: dv("terraform",         "plain-wordmark") },
-      { name: "Kubernetes",      src: dv("kubernetes",        "plain-wordmark") },
+    summary:
+      "Cloud environments and infrastructure designed around security, availability, performance, cost control, and operational clarity.",
+    capability:
+      "From a focused product deployment to multi-service infrastructure, we design the operating environment alongside the application.",
+    groups: [
+      {
+        title: "Cloud platforms",
+        items: [
+          ["AWS", "Compute, storage, networking, managed services, and cloud-native delivery."],
+          ["Microsoft Azure", "Enterprise cloud services and Microsoft ecosystem workloads."],
+          ["Google Cloud", "Cloud infrastructure, platform services, and managed workloads."],
+          ["DigitalOcean", "Focused cloud environments for product teams and growing businesses."],
+        ],
+      },
+      {
+        title: "Infrastructure foundations",
+        items: [
+          ["Docker", "Consistent, portable application packaging."],
+          ["Kubernetes", "Container orchestration for distributed workloads."],
+          ["Terraform", "Repeatable infrastructure as code."],
+          ["Nginx", "Reverse proxying, routing, performance, and web delivery."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "06",
-    label: "DevOps & CI/CD",
-    category: "DevOps & CI/CD",
+    id: "devops",
+    number: "06",
+    domain: "DevOps",
+    title: "DevOps & Platform Delivery",
     icon: GitBranch,
-    summary: "Automated pipelines, monitoring, and infrastructure as code.",
-    items: [
-      { name: "Docker",     src: dv("docker",     "plain-wordmark") },
-      { name: "Jenkins",    src: "/images/jenkins.png"},
-      { name: "GitLab",     src: dv("gitlab",     "plain-wordmark") },
-      { name: "Prometheus", src: dv("prometheus", "plain-wordmark") },
-      { name: "Ansible",    src: dv("ansible",    "plain-wordmark") },
-      { name: "Linux",      src: "/images/linux.png"},
+    summary:
+      "Repeatable delivery pipelines, environment management, release discipline, and automation that make software safer to change.",
+    capability:
+      "Our delivery approach connects engineering, quality, security, deployment, and operational ownership rather than treating them as separate handoffs.",
+    groups: [
+      {
+        title: "Delivery automation",
+        items: [
+          ["Jenkins", "Automated build, test, and deployment workflows."],
+          ["GitLab", "Source control and CI/CD workflows."],
+          ["PM2", "Node.js process management and application operations."],
+          ["Linux", "Production server administration and application hosting."],
+        ],
+      },
+      {
+        title: "Infrastructure automation",
+        items: [
+          ["Ansible", "Configuration automation and environment consistency."],
+          ["Terraform", "Versioned, reviewable cloud infrastructure."],
+          ["Docker", "Standardised build and deployment artefacts."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "07",
-    label: "Security & Compliance",
-    category: "Security & Compliance",
-    icon: Shield,
-    summary: "Enterprise-grade security posture, auditing, and compliance frameworks.",
-    items: [
-      { name: "Kali Linux", src: "/images/kali.png"},
-      { name: "Splunk",     src: "/images/splunks.png" },
-      { name: "SonarQube",  src: dv("sonarqube", "plain-wordmark") },
-      { name: "Vault",      src: dv("vault",     "plain-wordmark") },
-      { name: "OWASP",      src: si("owasp",     "333333")         },
-      { name: "Metasploit", src: si("metasploit","2596CD")         },
+    id: "reliability",
+    number: "07",
+    domain: "Reliability",
+    title: "Observability & Reliability",
+    icon: Eye,
+    summary:
+      "Monitoring, diagnostics, and operational signals that help teams understand how systems behave after launch.",
+    capability:
+      "Building software is only the beginning. We design for visibility into uptime, application health, errors, performance, and change impact.",
+    groups: [
+      {
+        title: "Monitoring & visibility",
+        items: [
+          ["Prometheus", "Metrics collection and operational monitoring."],
+          ["Grafana", "Dashboards and service-health visibility."],
+          ["Sentry", "Application error monitoring and issue diagnosis."],
+          ["Splunk", "Centralised event and security-oriented log analysis."],
+        ],
+      },
+      {
+        title: "Operational practices",
+        items: [
+          ["Health Checks", "Clear signals for application and dependency health."],
+          ["Alerting", "Actionable notification paths for service conditions."],
+          ["Performance Monitoring", "Evidence for prioritising speed and stability work."],
+          ["Incident Readiness", "Operational context for diagnosing production issues."],
+        ],
+      },
     ],
   },
   {
-    eyebrow: "08",
-    label: "Cross-Platform Tools",
-    category: "Cross-Platform",
-    icon: Layers,
-    summary: "Write once, deploy everywhere, mobile and desktop.",
-    items: [
-      { name: "React Native", src: dv("react",    "original-wordmark") },
-      { name: "Flutter",      src: "/images/flutter-logo1.png"},
-      { name: "Xamarin",      src: "/images/xamarin.png" },
-      { name: "Ionic",        src: "/images/ionic.png" },
-      { name: "Electron",     src: "/images/electron.png"},
-      { name: "Cordova",      src: dv("apache",   "plain-wordmark")    },
+    id: "security",
+    number: "08",
+    domain: "Security",
+    title: "Security Engineering",
+    icon: ShieldCheck,
+    summary:
+      "Security-aware architecture, secure delivery practices, identity controls, application testing, and infrastructure protection.",
+    capability:
+      "We position security as an engineering practice across design, implementation, delivery, and operations—not as a logo collection.",
+    groups: [
+      {
+        title: "Secure application delivery",
+        items: [
+          ["OWASP Top 10", "Common web application risk awareness and remediation."],
+          ["OWASP ASVS", "A structured reference for application-security controls."],
+          ["SonarQube", "Code quality and static-analysis support."],
+          ["Secure SDLC", "Security considerations integrated through delivery."],
+        ],
+      },
+      {
+        title: "Identity, secrets & validation",
+        items: [
+          ["JWT", "Signed session and API authentication patterns."],
+          ["RBAC", "Role-based access control for business applications."],
+          ["HashiCorp Vault", "Secrets-management tooling for supported environments."],
+          ["Kali Linux", "Security assessment environment and tooling."],
+        ],
+      },
+    ],
+  },
+  {
+    id: "quality",
+    number: "09",
+    domain: "Quality",
+    title: "Quality Engineering",
+    icon: TestTube2,
+    summary:
+      "Quality practices that protect releases through validation, automation, code review, regression testing, and delivery controls.",
+    capability:
+      "Quality is planned into delivery from requirements and architecture through pre-release validation and production monitoring.",
+    groups: [
+      {
+        title: "Quality & testing practice",
+        items: [
+          ["Automated Regression Testing", "Repeatable validation for stable releases."],
+          ["API Testing", "Verification of integration contracts and service behaviour."],
+          ["Performance Testing", "Evidence-based assessment of responsiveness and load."],
+          ["CI Quality Gates", "Checks that help prevent unsafe changes from shipping."],
+        ],
+      },
+      {
+        title: "Supporting tools",
+        items: [
+          ["SonarQube", "Code-quality and maintainability feedback."],
+          ["Postman", "API development and request validation workflows."],
+          ["Jest", "JavaScript and TypeScript unit testing."],
+          ["Cypress", "Browser-based end-to-end test automation."],
+        ],
+      },
     ],
   },
 ];
 
 const STATS = [
-  { value: "40+",  label: "Technologies mastered" },
-  { value: "8",    label: "Practice areas"         },
-  { value: "20+", label: "Projects shipped"       },
-  { value: "5+",  label: "Years in practice"      },
+  { value: "9", label: "Engineering domains" },
+  { value: "40+", label: "Technologies in our stack" },
+  { value: "20+", label: "Projects shipped" },
+  { value: "1", label: "Production-minded delivery model" },
 ];
 
-// ── Logo Tile — big, bold, generous ─────────────────────────────────────────
-function LogoTile({ tech, index }) {
-  const [imgError, setImgError] = useState(false);
-
+function TechPill({ name, description }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.05 }}
-      className="group relative flex flex-col items-center justify-center bg-white border border-gray-200 hover:border-[#1f6fb2] hover:shadow-md transition-all duration-250 cursor-default"
-      style={{ padding: "28px 20px 24px", minHeight: "120px" }}
-    >
-      {/* Hover top accent */}
-      <span
-        className="absolute top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-[#1f6fb2] to-[#5ba8e5] transition-all duration-400 ease-out group-hover:w-full"
-        aria-hidden="true"
-      />
-
-      {imgError ? (
-        <span className="text-[13px] font-semibold text-gray-500 group-hover:text-[#1f6fb2] text-center leading-tight transition-colors duration-200 px-2">
-          {tech.name}
-        </span>
-      ) : (
-        <img
-          src={tech.src}
-          alt={tech.name}
-          className="w-auto object-contain opacity-100 transition-all duration-300"
-          style={{ maxWidth: "130px", maxHeight: "60px", minHeight: "40px" }}
-          loading="lazy"
-          onError={() => setImgError(true)}
-        />
-      )}
-    </motion.div>
+    <article className="group border border-[#dce7f1] bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1f6fb2]/50 hover:shadow-[0_10px_28px_rgba(31,111,178,0.10)]">
+      <div className="flex items-start justify-between gap-4">
+        <h4 className="text-[14px] font-bold text-[#1f3a5f]">{name}</h4>
+        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF7A00]" />
+      </div>
+      <p className="mt-3 text-[12.5px] leading-relaxed text-slate-500">
+        {description}
+      </p>
+    </article>
   );
 }
 
-// ── Section Block ─────────────────────────────────────────────────────────────
-function TechSection({ section }) {
-  const Icon = section.icon;
-  const totalItems = section.groups
-    ? section.groups.reduce((a, g) => a + g.items.length, 0)
-    : section.items.length;
+function StackSection({ stack }) {
+  const Icon = stack.icon;
 
   return (
-    <div className="mb-16 last:mb-0">
-      {/* Section header row */}
-      <div className="flex items-center gap-5 mb-3">
-        <div className="flex items-center gap-3">
-          <span className="text-[12px] font-mono text-gray-300 tracking-widest">{section.eyebrow}</span>
-          <div className="flex items-center gap-2.5">
-            <Icon className="w-4 h-4 text-[#1f6fb2]" />
-            <h3 className="text-[13px] font-bold text-[#1f3a5f] uppercase tracking-[0.13em]">
-              {section.label}
-            </h3>
+    <section className="border-b border-[#dce7f1] py-14 last:border-b-0 lg:py-18">
+      <div className="grid gap-10 lg:grid-cols-[250px_minmax(0,1fr)]">
+        <div>
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[11px] font-bold tracking-[0.14em] text-[#FF7A00]">
+              {stack.number}
+            </span>
+            <span className="h-px flex-1 bg-[#dce7f1]" />
+          </div>
+
+          <div className="mt-6 flex h-10 w-10 items-center justify-center bg-[#eff6fc] text-[#1f6fb2]">
+            <Icon className="h-5 w-5" />
+          </div>
+
+          <h2 className="mt-5 font-serif text-[29px] leading-tight text-[#1f3a5f]">
+            {stack.title}
+          </h2>
+
+          <p className="mt-4 text-[13px] leading-relaxed text-slate-500">
+            {stack.summary}
+          </p>
+        </div>
+
+        <div>
+          <p className="max-w-3xl border-l-2 border-[#FF7A00] pl-4 text-[14px] leading-relaxed text-slate-600">
+            {stack.capability}
+          </p>
+
+          <div className="mt-8 grid gap-8 xl:grid-cols-2">
+            {stack.groups.map((group) => (
+              <div key={group.title}>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
+                    {group.title}
+                  </h3>
+                  <span className="h-px flex-1 bg-[#e8eef6]" />
+                </div>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {group.items.map(([name, description]) => (
+                    <TechPill
+                      key={name}
+                      name={name}
+                      description={description}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="flex-1 h-px bg-blue-100" />
-        <span className="text-[12px] text-gray-300 font-medium">{totalItems} technologies</span>
       </div>
-
-      {/* Summary */}
-      <p className="text-[14px] text-gray-400 mb-7 ml-[calc(12px+1rem+0.625rem+10px)] leading-relaxed">
-        {section.summary}
-      </p>
-
-      {/* Grid — grouped */}
-      {section.groups ? (
-        <div className="flex flex-col gap-10">
-          {section.groups.map((group) => (
-            <div key={group.sublabel}>
-              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.12em] mb-5 flex items-center gap-2">
-                <span className="w-5 h-px bg-[#1f6fb2]" />
-                {group.sublabel}
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                {group.items.map((tech, i) => (
-                  <LogoTile key={`${group.sublabel}-${tech.name}`} tech={tech} index={i} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {section.items.map((tech, i) => (
-            <LogoTile key={tech.name} tech={tech} index={i} />
-          ))}
-        </div>
-      )}
-    </div>
+    </section>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
-export default function TechnologiesPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [isFilterOpen, setIsFilterOpen]     = useState(false);
-  const filterRef = useRef(null);
+export default function Technologies() {
+  const [activeDomain, setActiveDomain] = useState("All");
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (filterRef.current && !filterRef.current.contains(e.target))
-        setIsFilterOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  const visibleStacks = useMemo(() => {
+    if (activeDomain === "All") return STACKS;
+    return STACKS.filter((stack) => stack.domain === activeDomain);
+  }, [activeDomain]);
 
-  const filtered = useMemo(
-    () =>
-      activeCategory === "All"
-        ? TECH_SECTIONS
-        : TECH_SECTIONS.filter((s) => s.category === activeCategory),
-    [activeCategory]
+  const totalTechnologyEntries = STACKS.reduce(
+    (total, stack) =>
+      total +
+      stack.groups.reduce((groupTotal, group) => groupTotal + group.items.length, 0),
+    0
   );
 
-  const handleCategoryChange = (cat) => {
-    setActiveCategory(cat);
-    setIsFilterOpen(false);
-  };
-
-  const totalTech = TECH_SECTIONS.reduce((acc, s) => {
-    if (s.groups) return acc + s.groups.reduce((a, g) => a + g.items.length, 0);
-    return acc + s.items.length;
-  }, 0);
+  function chooseDomain(domain) {
+    setActiveDomain(domain);
+    setMobileFiltersOpen(false);
+  }
 
   return (
-    <div className="pt-[96px] bg-white">
-      <h1 className="sr-only">Technologies & Platforms — Logicsoft Technologies</h1>
+    <main className="bg-white pt-[64px] md:pt-[92px]">
+      <section className="border-b border-[#17345f] bg-[#07111f]">
+        <div className="relative mx-auto max-w-[82rem] overflow-hidden px-6 pb-16 pt-14 lg:px-10 lg:pb-20 lg:pt-20">
+          <div className="pointer-events-none absolute -right-36 -top-32 h-[480px] w-[480px] rounded-full bg-[#1f6fb2]/20 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 right-1/4 h-40 w-96 bg-[#FF7A00]/10 blur-3xl" />
 
-      {/* ── Breadcrumb ── */}
-      <div className="max-w-[82rem] mx-auto px-6 sm:px-10">
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 pt-8 pb-10 text-[12px] text-gray-400">
-          <Link href="/" className="hover:text-[#1f6fb2] transition-colors">Home</Link>
-          <span className="text-gray-300">›</span>
-          <span className="text-gray-600 font-medium">Technologies</span>
-        </nav>
-      </div>
+          <nav
+            aria-label="Breadcrumb"
+            className="relative flex items-center gap-2 text-[11.5px] text-white/55"
+          >
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-white/80">Technologies</span>
+          </nav>
 
-      {/* ── Hero Header ── */}
-      <div className="border-t border-b border-gray-200 bg-[#f5f5f5]">
-        <div className="max-w-[82rem] mx-auto px-6 sm:px-10 py-16">
-          <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-end">
-            <div>
-              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.15em] mb-5">
-                Our tech stack
+          <div className="relative mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-end">
+            <div className="max-w-4xl">
+              <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#ffd1ae]">
+                Technologies & platforms
               </p>
-              <h2 className="text-[40px] lg:text-[54px] font-serif text-[#1f3a5f] leading-[1.08] mb-6">
-                Technologies &amp; Platforms<br className="hidden lg:block" /> We Work With
-              </h2>
-              <p className="text-[18px] text-gray-600 leading-[1.85] max-w-[680px]">
-                We build with the tools that the world&apos;s best engineering teams rely on
-                choosing the right stack for every layer of every project, not just the
-                most fashionable one.
+
+              <div className="mt-4 h-px w-14 bg-gradient-to-r from-[#FF7A00] to-[#ffb27a]" />
+
+              <h1 className="mt-6 font-serif text-[45px] leading-[1.05] text-white sm:text-[58px]">
+                Engineering the systems behind modern businesses.
+              </h1>
+
+              <p className="mt-7 max-w-3xl text-[16px] leading-relaxed text-white/70 sm:text-[18px]">
+                We select technology around your product requirements, security
+                posture, scale, operational needs, and long-term business
+                objectives—not around trends.
               </p>
+
+              <Link
+                href="/contact"
+                className="mt-9 inline-flex items-center gap-2 bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] px-5 py-3 text-[13px] font-bold text-white transition-transform hover:scale-[1.02]"
+              >
+                Discuss your architecture
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4 shrink-0">
-              {STATS.map((s, i) => (
-                <div key={i} className="bg-white border border-gray-200 px-6 py-5 min-w-[150px]">
-                  <p className="text-[36px] font-light text-[#1f3a5f] leading-none mb-1">{s.value}</p>
-                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.09em]">{s.label}</p>
+            <div className="grid grid-cols-2 border border-white/15">
+              {STATS.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`p-5 ${
+                    index % 2 === 0 ? "border-r border-white/15" : ""
+                  } ${index < 2 ? "border-b border-white/15" : ""}`}
+                >
+                  <p className="font-serif text-[31px] text-white">{stat.value}</p>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white/50">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── Filter bar ── */}
-      <div className="sticky top-[64px] z-20 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-[82rem] mx-auto px-6 sm:px-10">
+      <section className="border-b border-[#dce7f1] bg-[#f7fafc]">
+        <div className="mx-auto max-w-[82rem] px-6 py-6 lg:px-10">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-end">
+            <div>
+              <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
+                Capability map
+              </p>
+              <h2 className="mt-3 font-serif text-[30px] text-[#1f3a5f]">
+                Technology across the delivery lifecycle.
+              </h2>
+            </div>
 
-          {/* Desktop tabs */}
-          <div className="hidden md:flex items-center gap-0 overflow-x-auto">
-            {CATEGORIES.map((cat) => {
-              const count =
-                cat === "All"
-                  ? TECH_SECTIONS.length
-                  : TECH_SECTIONS.filter((s) => s.category === cat).length;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => handleCategoryChange(cat)}
-                  aria-pressed={activeCategory === cat}
-                  className={`shrink-0 px-5 py-[18px] text-[13px] font-semibold border-b-[3px] transition-all duration-200 whitespace-nowrap ${
-                    activeCategory === cat
-                      ? "border-[#1f6fb2] text-[#1f6fb2]"
-                      : "border-transparent text-gray-500 hover:text-[#1f3a5f] hover:border-gray-300"
-                  }`}
-                >
-                  {cat}
-                  {cat !== "All" && (
-                    <span className="ml-2 text-[11px] text-gray-300 font-normal">({count})</span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Mobile dropdown */}
-          <div className="md:hidden py-3 relative" ref={filterRef}>
-            <button
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="flex items-center justify-between w-full px-4 py-3 border border-gray-200 text-[14px] font-semibold text-[#1f3a5f] bg-white"
-              aria-expanded={isFilterOpen}
-            >
-              <span>{activeCategory === "All" ? "All categories" : activeCategory}</span>
-              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isFilterOpen ? "rotate-180" : ""}`} />
-            </button>
-            <AnimatePresence>
-              {isFilterOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 right-0 bg-white border border-gray-200 shadow-xl z-30 max-h-[60vh] overflow-y-auto"
-                >
-                  {CATEGORIES.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => handleCategoryChange(cat)}
-                      className={`w-full text-left px-5 py-3.5 text-[13px] border-b border-gray-100 last:border-0 transition-colors duration-150 ${
-                        activeCategory === cat
-                          ? "text-[#1f6fb2] bg-[#f0f6ff] font-semibold"
-                          : "text-gray-600 hover:bg-gray-50"
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Main content ── */}
-      <div
-        className="py-16"
-        style={{ background: "linear-gradient(135deg, #eaf6ff 0%, #dff0ff 50%, #eef7ff 100%)" }}
-      >
-        <div className="max-w-[82rem] mx-auto px-6 sm:px-10">
-
-          {/* Meta row */}
-          <div className="flex items-center gap-4 mb-12">
-            <p className="text-[13px] text-gray-500">
-              Showing{" "}
-              <span className="font-bold text-[#1f3a5f]">{filtered.length}</span> of{" "}
-              <span className="font-bold text-[#1f3a5f]">{TECH_SECTIONS.length}</span> practice areas
-              {activeCategory !== "All" && (
-                <> — <span className="text-[#1f6fb2] font-semibold">{activeCategory}</span></>
-              )}
+            <p className="text-[13px] leading-relaxed text-slate-500 lg:text-right">
+              {totalTechnologyEntries} capabilities shown across product
+              engineering, cloud delivery, security, quality, and operations.
             </p>
-            {activeCategory !== "All" && (
-              <button
-                onClick={() => handleCategoryChange("All")}
-                className="text-[12px] text-gray-400 hover:text-[#1f6fb2] underline underline-offset-2 transition-colors"
-              >
-                Clear filter
-              </button>
-            )}
-            <div className="flex-1 h-px bg-blue-100" />
-            <span className="text-[12px] text-gray-400 font-medium">{totalTech} total technologies</span>
           </div>
 
-          {/* Sections */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.28 }}
-            >
-              {filtered.length > 0 ? (
-                filtered.map((section) => (
-                  <TechSection key={section.label} section={section} />
-                ))
-              ) : (
-                <div className="flex flex-col items-center py-24 text-center">
-                  <p className="text-[16px] text-gray-400 mb-4">No technologies found in this category.</p>
-                  <button
-                    onClick={() => handleCategoryChange("All")}
-                    className="text-[14px] font-semibold text-[#1f6fb2] hover:underline"
-                  >
-                    View all technologies
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* ── Standards strip ── */}
-      <div className="border-t border-gray-200 bg-white">
-        <div className="max-w-[82rem] mx-auto px-6 sm:px-10 py-14">
-          <p className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.13em] mb-6">
-            Standards &amp; certifications we engineer against
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {[
-              "ISO 27001","SOC 2 Type II","HIPAA","PCI DSS",
-              "GDPR","NDPR","OWASP Top 10","CIS Benchmarks",
-              "NIST CSF","ISO 9001","IEEE 829","12-Factor App",
-            ].map((std) => (
-              <span
-                key={std}
-                className="text-[13px] font-medium text-gray-600 border border-gray-200 bg-[#f9f9f9] px-4 py-2 hover:border-[#1f6fb2] hover:text-[#1f6fb2] hover:bg-white transition-all duration-150 cursor-default"
+          <div className="mt-7 hidden flex-wrap gap-2 md:flex">
+            {DOMAINS.map((domain) => (
+              <button
+                key={domain}
+                type="button"
+                onClick={() => chooseDomain(domain)}
+                aria-pressed={activeDomain === domain}
+                className={`border px-4 py-2 text-[12px] font-bold transition-colors ${
+                  activeDomain === domain
+                    ? "border-[#1f6fb2] bg-[#1f6fb2] text-white"
+                    : "border-[#d4e2ee] bg-white text-slate-600 hover:border-[#FF7A00] hover:text-[#C45500]"
+                }`}
               >
-                {std}
-              </span>
+                {domain}
+              </button>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* ── CTA strip ── */}
-      <div className="border-t border-gray-200 bg-[#1f3a5f]">
-        <div className="max-w-[82rem] mx-auto px-6 sm:px-10 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">
-              Start your project
-            </p>
-            <h3 className="text-[28px] font-serif font-normal text-white mb-2 leading-snug">
-              Need a specific stack? Let&apos;s talk architecture.
-            </h3>
-            <p className="text-[15px] text-white/50 max-w-lg leading-relaxed">
-              Tell us your requirements and we&apos;ll recommend the right technology
-              combination, no upselling, no vendor bias.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <Link
-              href="/contact"
-              className="flex items-center gap-2.5 px-8 py-4 text-[14px] font-bold text-white
-                bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00]
-                hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]
-                ring-1 ring-inset ring-white/30 transition-all duration-200"
+          <div className="relative mt-7 md:hidden">
+            <button
+              type="button"
+              onClick={() => setMobileFiltersOpen((value) => !value)}
+              aria-expanded={mobileFiltersOpen}
+              className="flex w-full items-center justify-between border border-[#d4e2ee] bg-white px-4 py-3 text-left text-[13px] font-bold text-[#1f3a5f]"
             >
-              Discuss my stack <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/portfolio"
-              className="flex items-center gap-2.5 px-8 py-4 text-[14px] font-semibold border border-white/30 text-white hover:bg-white/10 transition-all duration-200"
-            >
-              See our work
-            </Link>
+              {activeDomain === "All" ? "All engineering domains" : activeDomain}
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  mobileFiltersOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {mobileFiltersOpen && (
+              <div className="absolute z-20 mt-2 w-full border border-[#d4e2ee] bg-white shadow-xl">
+                {DOMAINS.map((domain) => (
+                  <button
+                    key={domain}
+                    type="button"
+                    onClick={() => chooseDomain(domain)}
+                    className={`block w-full border-b border-[#edf2f7] px-4 py-3 text-left text-[13px] last:border-0 ${
+                      domain === activeDomain
+                        ? "bg-[#eff6fc] font-bold text-[#1f6fb2]"
+                        : "text-slate-600"
+                    }`}
+                  >
+                    {domain}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
+          {visibleStacks.map((stack) => (
+            <StackSection key={stack.id} stack={stack} />
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-[#dce7f1] bg-[#f7fafc] py-16 lg:py-20">
+        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)]">
+            <div>
+              <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
+                How we select technology
+              </p>
+
+              <h2 className="mt-4 font-serif text-[34px] leading-tight text-[#1f3a5f]">
+                Right-sized architecture, not a preset stack.
+              </h2>
+
+              <p className="mt-5 text-[14px] leading-relaxed text-slate-600">
+                The best stack is the one that serves the operating reality of
+                your product—not simply the one that is fashionable today.
+              </p>
+            </div>
+
+            <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {[
+                ["01", "Requirements", "Users, workflows, constraints, and the outcomes that matter."],
+                ["02", "Architecture", "Data, integrations, scale, security, and operating model."],
+                ["03", "Delivery", "Development, testing, CI/CD, release process, and ownership."],
+                ["04", "Operate & improve", "Monitoring, support, optimisation, and continuous evolution."],
+              ].map(([number, title, text]) => (
+                <li key={number} className="border border-[#dce7f1] bg-white p-5">
+                  <span className="font-mono text-[11px] font-bold text-[#FF7A00]">
+                    {number}
+                  </span>
+                  <h3 className="mt-4 text-[15px] font-bold text-[#1f3a5f]">
+                    {title}
+                  </h3>
+                  <p className="mt-3 text-[12.5px] leading-relaxed text-slate-500">
+                    {text}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 lg:py-20">
+        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
+          <div className="grid gap-10 border border-[#dce7f1] p-7 lg:grid-cols-[minmax(0,1fr)_390px] lg:p-10">
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center bg-[#eff6fc] text-[#1f6fb2]">
+                <LockKeyhole className="h-5 w-5" />
+              </div>
+
+              <p className="mt-6 text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
+                Engineering standards & frameworks
+              </p>
+
+              <h2 className="mt-4 font-serif text-[32px] leading-tight text-[#1f3a5f]">
+                Built with production discipline.
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-slate-600">
+                We use recognised engineering and security frameworks to guide
+                implementation. These are practices we engineer against, not
+                claims of certification or attestation unless stated separately.
+              </p>
+            </div>
+
+            <div className="grid content-start gap-3 sm:grid-cols-2">
+              {[
+                "OWASP Top 10 & OWASP ASVS",
+                "Secure SDLC & DevSecOps",
+                "CIS Benchmarks",
+                "NIST Cybersecurity Framework",
+                "ISO/IEC 27001-aligned practices",
+                "GDPR, NDPR, HIPAA & PCI DSS considerations",
+                "12-Factor App principles",
+                "Documented testing & quality controls",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 border border-[#e1eaf2] bg-[#f9fbfd] px-4 py-3"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#1f6fb2]" />
+                  <span className="text-[12.5px] font-medium leading-relaxed text-slate-600">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#07111f]">
+        <div className="absolute -right-32 -top-20 h-80 w-80 rounded-full bg-[#1f6fb2]/20 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-48 w-96 bg-[#FF7A00]/10 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-[82rem] gap-10 px-6 py-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:px-10 lg:py-20">
+          <div>
+            <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#ffd1ae]">
+              Have a technology requirement?
+            </p>
+
+            <h2 className="mt-4 font-serif text-[34px] leading-tight text-white lg:text-[42px]">
+              Tell us what you are building.
+            </h2>
+
+            <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-white/65">
+              We will help you assess the architecture, technology trade-offs,
+              delivery plan, and the practical path to a secure production system.
+            </p>
+          </div>
+
+          <Link
+            href="/contact"
+            className="inline-flex w-fit items-center justify-center gap-2 bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] px-6 py-4 text-[13px] font-bold text-white transition-transform hover:scale-[1.02]"
+          >
+            Start a scoping conversation
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,17 +1,13 @@
 import { createMetadata } from "../../lib/metadata";
+import Technologies from "./Technologies";
 
 export const metadata = createMetadata({
-  title: "Technologies",
+  title: "Technologies & Platforms",
   description:
-    "The technologies and tools LogicSoft Technologies works with, including React, Node.js, AWS, and Kubernetes.",
+    "Explore LogicSoft Technologies' production engineering capabilities across frontend, backend, mobile, data, cloud, DevOps, observability, security, and quality engineering.",
   path: "/technologies",
 });
 
-import Technologies from "./Technologies";
-
-
-export default function page() {
-    return (
-        <Technologies />
-    ) 
+export default function TechnologiesPage() {
+  return <Technologies />;
 }
