@@ -1,10 +1,48 @@
 "use client";
 
-const dv = (name, variant = "plain-wordmark") =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${name}/${name}-${variant}.svg`;
-const si = (slug, color = "444444") =>
-  `https://cdn.simpleicons.org/${slug}/${color}`;
+// Shared card: logo by default → bio fades in on hover (same as /technologies).
+// Adjust this path to wherever you put TechCard.jsx.
+import TechCard from "@/components/TechCard";
 
+// Short bio shown on hover, keyed by tech name.
+// Logos come from TechCard's own map (public/tech/*.svg), so items only need a name.
+// Add `src: "/images/your-file.png"` to any item to force a custom image instead.
+const BIOS = {
+  "MongoDB": "Flexible document data models and application workloads.",
+  "PostgreSQL": "Transactional applications, SaaS products, and structured business data.",
+  "Express.js": "Production REST APIs and service backends.",
+  "React.js": "Component-based web applications and product interfaces.",
+  "React/Next.js": "Interactive interfaces with server-rendered, full-stack delivery.",
+  "Next.js": "Server-rendered and full-stack web applications.",
+  "Node.js": "Event-driven services, APIs, automation, and integrations.",
+  "Swift": "Native iOS development where platform depth matters.",
+  "Flutter": "Cross-platform mobile applications with expressive UI.",
+  "Expo": "Accelerated React Native delivery and mobile platform tooling.",
+  "React Native": "Cross-platform mobile products from a shared codebase.",
+  "TypeScript": "Safer, maintainable application code at scale.",
+  "Tailwind CSS": "Consistent responsive interfaces and design systems.",
+  "Python": "Automation, data processing, integrations, and services.",
+  "GraphQL": "Flexible data APIs for application clients.",
+  "Redis": "Caching, sessions, queues, and high-speed application state.",
+  "AWS": "Compute, storage, networking, managed services, and cloud-native delivery.",
+  "Azure": "Enterprise cloud services and Microsoft ecosystem workloads.",
+  "Google Cloud": "Cloud infrastructure, platform services, and managed workloads.",
+  "Terraform": "Repeatable infrastructure as code.",
+  "Kubernetes": "Container orchestration for distributed workloads.",
+  "Docker": "Consistent, portable application packaging.",
+  "Jenkins": "Automated build, test, and deployment workflows.",
+  "GitLab": "Source control and CI/CD workflows.",
+  "Ansible": "Configuration automation and environment consistency.",
+  "Linux": "Production server administration and application hosting.",
+  "Splunk": "Centralised event and security-oriented log analysis.",
+  "SonarQube": "Code quality and static-analysis support.",
+  "Vault": "Secrets-management tooling for supported environments.",
+  "OWASP": "Common web application risk awareness and remediation.",
+  "Kali Linux": "Security assessment environment and tooling.",
+  "Ionic": "Hybrid application delivery for selected business cases.",
+  "Electron": "Desktop applications built with web technologies.",
+  "Xamarin": "Cross-platform mobile applications on the .NET stack.",
+};
 
 const TECH_SECTIONS = [
   {
@@ -14,19 +52,19 @@ const TECH_SECTIONS = [
       {
         sublabel: "MERN Stack",
         items: [
-          { name: "MongoDB",    src: dv("mongodb",   "plain-wordmark")    },
-          { name: "Express.js", src: "/images/expressjs.png"},
-          { name: "React.js",   src: dv("react",     "original-wordmark") },
-          { name: "Node.js",    src: dv("nodejs",    "plain-wordmark")    },
+          { name: "MongoDB" },
+          { name: "Express.js" },
+          { name: "React.js" },
+          { name: "Node.js" },
         ],
       },
       {
         sublabel: "PERN Stack",
         items: [
-          { name: "PostgreSQL",    src: dv("postgresql", "plain-wordmark")    },
-          { name: "Express.js",    src: "/images/expressjs.png"},
-          { name: "React/Next.js", src: "/images/react-next.png"},
-          { name: "Node.js",       src: dv("nodejs",     "plain-wordmark")    },
+          { name: "PostgreSQL" },
+          { name: "Express.js" },
+          { name: "React/Next.js", src: "/images/react-next.png" },
+          { name: "Node.js" },
         ],
       },
     ],
@@ -35,109 +73,81 @@ const TECH_SECTIONS = [
     eyebrow: "02",
     label: "Mobile Development",
     items: [
-      { name: "Swift",    src: dv("swift",    "plain-wordmark") },
-      { name: "Flutter",  src: "/images/flutter-logo1.png"},
-      { name: "Expo", src: "/images/expo.png" },
-      { name: "React Native", src: "/images/react-native.png" },
+      { name: "Swift" },
+      { name: "Flutter" },
+      { name: "Expo" },
+      { name: "React Native" },
     ],
   },
   {
     eyebrow: "03",
     label: "Frontend & UI",
     items: [
-      { name: "React.js",     src: dv("react",       "original-wordmark") },
-      { name: "Next.js",      src: "/images/nextjs-clean.png"},
-      { name: "TypeScript",   src: "/images/typescript.png"},
-      { name: "Tailwind CSS", src: "/images/tailwind-css.png"},
+      { name: "React.js" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
     ],
   },
   {
     eyebrow: "04",
     label: "Backend & APIs",
     items: [
-      { name: "Node.js",    src: dv("nodejs",    "plain-wordmark") },
-      { name: "Express.js", src: "/images/expressjs.png"},
-      { name: "Python",     src: dv("python",    "plain-wordmark") },
-      { name: "GraphQL",    src: dv("graphql",   "plain-wordmark") },
-      { name: "Redis",      src: dv("redis",     "plain-wordmark") },
+      { name: "Node.js" },
+      { name: "Express.js" },
+      { name: "Python" },
+      { name: "GraphQL" },
+      { name: "Redis" },
     ],
   },
   {
     eyebrow: "05",
     label: "Cloud & Infrastructure",
     items: [
-      { name: "AWS",          src: dv("amazonwebservices", "plain-wordmark") },
-      { name: "Azure",        src: dv("azure",             "plain-wordmark") },
-      { name: "Google Cloud", src: dv("googlecloud",       "plain-wordmark") },
-      { name: "Terraform",    src: dv("terraform",         "plain-wordmark") },
-      { name: "Kubernetes",   src: dv("kubernetes",        "plain-wordmark") },
+      { name: "AWS" },
+      { name: "Azure" },
+      { name: "Google Cloud" },
+      { name: "Terraform" },
+      { name: "Kubernetes" },
     ],
   },
   {
     eyebrow: "06",
     label: "DevOps & CI/CD",
     items: [
-      { name: "Docker",     src: dv("docker",     "plain-wordmark") },
-      { name: "Jenkins",    src: "/images/jenkins.png"},
-      { name: "GitLab",     src: dv("gitlab",     "plain-wordmark") },
-      { name: "Ansible",    src: dv("ansible",    "plain-wordmark") },
-      { name: "Linux",      src: "/images/linux.png"},
+      { name: "Docker" },
+      { name: "Jenkins" },
+      { name: "GitLab" },
+      { name: "Ansible" },
+      { name: "Linux" },
     ],
   },
   {
     eyebrow: "07",
     label: "Security & Compliance",
     items: [
-      { name: "Splunk",     src: "/images/splunks.png"},
-      { name: "SonarQube",  src: dv("sonarqube", "plain-wordmark") },
-      { name: "Vault",      src: dv("vault",     "plain-wordmark") },
-      { name: "OWASP",      src: si("owasp",     "333333")         },
-      { name: "Kali Linux", src: "/images/kali.png"},
+      { name: "Splunk" },
+      { name: "SonarQube" },
+      { name: "Vault" },
+      { name: "OWASP" },
+      { name: "Kali Linux" },
     ],
   },
   {
     eyebrow: "08",
     label: "Cross-Platform Tools",
     items: [
-      { name: "Flutter",      src: "/images/flutter-logo1.png"},
-      { name: "React Native", src: dv("react",    "original-wordmark") },
-      { name: "Ionic",        src: "/images/ionic.png"},
-      { name: "Electron",     src: "/images/electron.png"},
-      { name: "Xamarin",      src: "/images/xamarin.png"},
+      { name: "Flutter" },
+      { name: "React Native" },
+      { name: "Ionic" },
+      { name: "Electron" },
+      { name: "Xamarin" },
     ],
   },
 ];
 
-function LogoTile({ tech }) {
-  return (
-    <div
-      className="group relative flex items-center justify-center border border-gray-200 bg-white overflow-hidden hover:border-[#1f6fb2] hover:shadow-sm transition-all duration-200"
-      style={{ padding: "18px 16px", minHeight: "80px" }}
-    >
-      <span
-        className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#1f6fb2] to-blue-300 transition-all duration-500 ease-out group-hover:w-full"
-        aria-hidden="true"
-      />
-      <img
-        src={tech.src}
-        alt={tech.name}
-        className="w-auto object-contain transition-all duration-300"
-        style={{ maxWidth: "110px", maxHeight: "44px" }}
-        loading="lazy"
-        onError={(e) => {
-          e.currentTarget.style.display = "none";
-          if (e.currentTarget.nextSibling) {
-            e.currentTarget.nextSibling.style.display = "block";
-          }
-        }}
-      />
-      <span className="hidden text-[11px] font-semibold text-gray-500 text-center leading-tight">
-        {tech.name}
-      </span>
-    </div>
-  );
-}
-
+// 5 columns on desktop (was 6) so each card has room for its bio.
+const GRID = "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3";
 
 export default function Technologies() {
   return (
@@ -206,18 +216,28 @@ export default function Technologies() {
                         <span className="w-4 h-px bg-[#1f6fb2]" aria-hidden="true" />
                         {group.sublabel}
                       </p>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                      <div className={GRID}>
                         {group.items.map((tech) => (
-                          <LogoTile key={`${group.sublabel}-${tech.name}`} tech={tech} />
+                          <TechCard
+                            key={`${group.sublabel}-${tech.name}`}
+                            name={tech.name}
+                            description={BIOS[tech.name]}
+                            src={tech.src}
+                          />
                         ))}
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <div className={GRID}>
                   {section.items.map((tech) => (
-                    <LogoTile key={tech.name} tech={tech} />
+                    <TechCard
+                      key={tech.name}
+                      name={tech.name}
+                      description={BIOS[tech.name]}
+                      src={tech.src}
+                    />
                   ))}
                 </div>
               )}

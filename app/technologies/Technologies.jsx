@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import TechCard from "../../components/TechCard";
 import {
   ArrowRight,
   CheckCircle2,
@@ -399,7 +400,7 @@ function StackSection({ stack, index }) {
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {group.items.map(([name, description]) => (
-                    <TechPill key={name} name={name} description={description} />
+                    <TechCard key={name} name={name} description={description} />
                   ))}
                 </div>
               </div>
