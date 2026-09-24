@@ -333,18 +333,14 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: SITE_NAME,
-  url: SITE_URL,
+  name: "LogicSoft Technologies",
+  alternateName: [
+    "LogicSoft",
+    "logicsofttechnologies.com",
+  ],
+  url: "https://logicsofttechnologies.com/",
   description: SITE_DESCRIPTION,
   inLanguage: "en",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 export default function RootLayout({ children }) {
