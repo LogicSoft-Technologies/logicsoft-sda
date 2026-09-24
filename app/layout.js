@@ -93,7 +93,7 @@ export const metadata = {
     title:
       "Custom Software Development Company | Web, Mobile, AI & Cloud | LogicSoft Technologies",
     description:
-      "We engineer high-performance software, cloud infrastructure, and cybersecurity solutions for enterprises across 4 continents. 300+ projects delivered.",
+      "We engineer high-performance software, cloud infrastructure, and cybersecurity solutions for enterprises across 4 continents. 20+ projects delivered.",
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
