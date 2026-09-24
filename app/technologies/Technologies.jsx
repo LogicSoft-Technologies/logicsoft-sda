@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import TechCard from "../../components/TechCard";
 import {
   ArrowRight,
   CheckCircle2,
@@ -11,15 +13,14 @@ import {
   Database,
   Eye,
   GitBranch,
-  Layers3,
   LockKeyhole,
-  MonitorCog,
   ServerCog,
   ShieldCheck,
   Smartphone,
   TestTube2,
 } from "lucide-react";
 
+// ── Data ──────────────────────────────────────────────────────────────────────
 const DOMAINS = [
   "All",
   "Frontend",
@@ -315,49 +316,75 @@ const STATS = [
   { value: "1", label: "Production-minded delivery model" },
 ];
 
+const SELECTION_STEPS = [
+  { num: "01", title: "Requirements", desc: "Users, workflows, constraints, and the outcomes that matter." },
+  { num: "02", title: "Architecture", desc: "Data, integrations, scale, security, and operating model." },
+  { num: "03", title: "Delivery", desc: "Development, testing, CI/CD, release process, and ownership." },
+  { num: "04", title: "Operate & improve", desc: "Monitoring, support, optimisation, and continuous evolution." },
+];
+
+const STANDARDS = [
+  "OWASP Top 10 & OWASP ASVS",
+  "Secure SDLC & DevSecOps",
+  "CIS Benchmarks",
+  "NIST Cybersecurity Framework",
+  "ISO/IEC 27001-aligned practices",
+  "GDPR, NDPR, HIPAA & PCI DSS considerations",
+  "12-Factor App principles",
+  "Documented testing & quality controls",
+];
+
+const countItems = (stack) =>
+  stack.groups.reduce((total, group) => total + group.items.length, 0);
+
+// ── Tech card (design kept, palette aligned to Industries) ────────────────────
 function TechPill({ name, description }) {
   return (
-    <article className="group border border-[#dce7f1] bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1f6fb2]/50 hover:shadow-[0_10px_28px_rgba(31,111,178,0.10)]">
+    <article className="group border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1f6fb2]/50 hover:shadow-[0_10px_28px_rgba(31,111,178,0.10)]">
       <div className="flex items-start justify-between gap-4">
-        <h4 className="text-[14px] font-bold text-[#1f3a5f]">{name}</h4>
-        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF7A00]" />
+        <h4 className="text-[14px] font-bold text-[#1f3a5f] transition-colors duration-200 group-hover:text-[#1f6fb2]">
+          {name}
+        </h4>
+        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1f6fb2]/40 transition-colors duration-200 group-hover:bg-[#1f6fb2]" />
       </div>
-      <p className="mt-3 text-[12.5px] leading-relaxed text-slate-500">
-        {description}
-      </p>
+      <p className="mt-3 text-[12.5px] leading-relaxed text-gray-500">{description}</p>
     </article>
   );
 }
 
-function StackSection({ stack }) {
+// ── Stack section ─────────────────────────────────────────────────────────────
+function StackSection({ stack, index }) {
   const Icon = stack.icon;
 
   return (
-    <section className="border-b border-[#dce7f1] py-14 last:border-b-0 lg:py-18">
-      <div className="grid gap-10 lg:grid-cols-[250px_minmax(0,1fr)]">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.04 }}
+      className="border-t border-gray-200 py-12"
+    >
+      <div className="grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-12">
+        {/* Left column */}
         <div>
           <div className="flex items-center gap-3">
-            <span className="font-mono text-[11px] font-bold tracking-[0.14em] text-[#FF7A00]">
-              {stack.number}
-            </span>
-            <span className="h-px flex-1 bg-[#dce7f1]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] text-gray-300">{stack.number}</span>
+            <span className="h-px flex-1 bg-blue-100" />
           </div>
 
-          <div className="mt-6 flex h-10 w-10 items-center justify-center bg-[#eff6fc] text-[#1f6fb2]">
+          <div className="mt-6 flex h-10 w-10 items-center justify-center bg-[#eaf4ff] text-[#1f6fb2]">
             <Icon className="h-5 w-5" />
           </div>
 
-          <h2 className="mt-5 font-serif text-[29px] leading-tight text-[#1f3a5f]">
-            {stack.title}
-          </h2>
+          <h2 className="mt-5 font-serif text-[26px] leading-snug text-[#1f3a5f]">{stack.title}</h2>
 
-          <p className="mt-4 text-[13px] leading-relaxed text-slate-500">
-            {stack.summary}
-          </p>
+          <div className="mt-4 mb-4 h-[2px] w-8 bg-[#1f6fb2] opacity-30" />
+
+          <p className="text-[13px] leading-[1.85] text-gray-500">{stack.summary}</p>
         </div>
 
+        {/* Right column */}
         <div>
-          <p className="max-w-3xl border-l-2 border-[#FF7A00] pl-4 text-[14px] leading-relaxed text-slate-600">
+          <p className="max-w-3xl border-l-[3px] border-[#1f6fb2] bg-[#eaf4ff] px-4 py-3 text-[13px] leading-[1.85] text-gray-600">
             {stack.capability}
           </p>
 
@@ -365,19 +392,15 @@ function StackSection({ stack }) {
             {stack.groups.map((group) => (
               <div key={group.title}>
                 <div className="flex items-center gap-3">
-                  <h3 className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1f6fb2]">
                     {group.title}
                   </h3>
-                  <span className="h-px flex-1 bg-[#e8eef6]" />
+                  <span className="h-px flex-1 bg-blue-100" />
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {group.items.map(([name, description]) => (
-                    <TechPill
-                      key={name}
-                      name={name}
-                      description={description}
-                    />
+                    <TechCard key={name} name={name} description={description} />
                   ))}
                 </div>
               </div>
@@ -385,25 +408,21 @@ function StackSection({ stack }) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
+// ── Main page ─────────────────────────────────────────────────────────────────
 export default function Technologies() {
   const [activeDomain, setActiveDomain] = useState("All");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  const visibleStacks = useMemo(() => {
-    if (activeDomain === "All") return STACKS;
-    return STACKS.filter((stack) => stack.domain === activeDomain);
-  }, [activeDomain]);
-
-  const totalTechnologyEntries = STACKS.reduce(
-    (total, stack) =>
-      total +
-      stack.groups.reduce((groupTotal, group) => groupTotal + group.items.length, 0),
-    0
+  const visibleStacks = useMemo(
+    () => (activeDomain === "All" ? STACKS : STACKS.filter((stack) => stack.domain === activeDomain)),
+    [activeDomain]
   );
+
+  const totalTechnologyEntries = STACKS.reduce((total, stack) => total + countItems(stack), 0);
 
   function chooseDomain(domain) {
     setActiveDomain(domain);
@@ -411,270 +430,287 @@ export default function Technologies() {
   }
 
   return (
-    <main className="bg-white pt-[64px] md:pt-[92px]">
-      <section className="border-b border-[#17345f] bg-[#07111f]">
-        <div className="relative mx-auto max-w-[82rem] overflow-hidden px-6 pb-16 pt-14 lg:px-10 lg:pb-20 lg:pt-20">
-          <div className="pointer-events-none absolute -right-36 -top-32 h-[480px] w-[480px] rounded-full bg-[#1f6fb2]/20 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 right-1/4 h-40 w-96 bg-[#FF7A00]/10 blur-3xl" />
+    <main className="pt-[96px] bg-gradient-to-br from-[#eaf6ff] via-[#dff0ff] to-[#eef7ff]">
+      {/* ── Breadcrumb ── */}
+      <div className="max-w-[82rem] mx-auto px-4">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 pt-8 pb-10 text-[12px] text-gray-400">
+          <Link href="/" className="hover:text-[#1f6fb2] transition-colors duration-200">
+            Home
+          </Link>
+          <span className="text-gray-300">›</span>
+          <span className="text-gray-600 font-medium">Technologies</span>
+        </nav>
+      </div>
 
-          <nav
-            aria-label="Breadcrumb"
-            className="relative flex items-center gap-2 text-[11.5px] text-white/55"
-          >
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-white/80">Technologies</span>
-          </nav>
-
-          <div className="relative mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-end">
-            <div className="max-w-4xl">
-              <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#ffd1ae]">
-                Technologies & platforms
+      {/* ── Hero Header ── */}
+      <div className="border-t border-b border-gray-200 bg-[#f5f5f5]">
+        <div className="max-w-[82rem] mx-auto px-4 py-14">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end">
+            <div>
+              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.15em] mb-4">
+                Technologies &amp; platforms
               </p>
-
-              <div className="mt-4 h-px w-14 bg-gradient-to-r from-[#FF7A00] to-[#ffb27a]" />
-
-              <h1 className="mt-6 font-serif text-[45px] leading-[1.05] text-white sm:text-[58px]">
-                Engineering the systems behind modern businesses.
+              <h1 className="text-[38px] lg:text-[52px] font-serif text-[#1f3a5f] leading-[1.08] mb-5">
+                Engineering the systems
+                <br className="hidden lg:block" /> behind{" "}
+                <span className="text-[#1f6fb2]">modern businesses.</span>
               </h1>
-
-              <p className="mt-7 max-w-3xl text-[16px] leading-relaxed text-white/70 sm:text-[18px]">
-                We select technology around your product requirements, security
-                posture, scale, operational needs, and long-term business
-                objectives—not around trends.
+              <p className="text-[17px] text-gray-600 leading-[1.9] max-w-[680px]">
+                We select technology around your product requirements, security posture, scale,
+                operational needs, and long-term business objectives not around trends.
               </p>
 
               <Link
                 href="/contact"
-                className="mt-9 inline-flex items-center gap-2 bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] px-5 py-3 text-[13px] font-bold text-white transition-transform hover:scale-[1.02]"
+                className="mt-8 inline-flex items-center gap-2 border border-[#1f6fb2] text-[#1f6fb2] text-[13px] font-semibold px-7 py-3 hover:bg-[#1f6fb2] hover:text-white transition-all duration-200"
               >
-                Discuss your architecture
-                <ArrowRight className="h-4 w-4" />
+                Discuss your architecture <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 border border-white/15">
-              {STATS.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`p-5 ${
-                    index % 2 === 0 ? "border-r border-white/15" : ""
-                  } ${index < 2 ? "border-b border-white/15" : ""}`}
-                >
-                  <p className="font-serif text-[31px] text-white">{stat.value}</p>
-                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white/50">
-                    {stat.label}
-                  </p>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-3 shrink-0">
+              {STATS.map((s) => (
+                <div key={s.label} className="bg-white border border-gray-200 px-5 py-4 min-w-[140px]">
+                  <p className="text-[36px] font-light text-[#1f3a5f] leading-none mb-1">{s.value}</p>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.1em]">{s.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="border-b border-[#dce7f1] bg-[#f7fafc]">
-        <div className="mx-auto max-w-[82rem] px-6 py-6 lg:px-10">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-end">
-            <div>
-              <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
-                Capability map
-              </p>
-              <h2 className="mt-3 font-serif text-[30px] text-[#1f3a5f]">
-                Technology across the delivery lifecycle.
-              </h2>
-            </div>
-
-            <p className="text-[13px] leading-relaxed text-slate-500 lg:text-right">
-              {totalTechnologyEntries} capabilities shown across product
-              engineering, cloud delivery, security, quality, and operations.
-            </p>
+      {/* ── Sticky filter bar ── */}
+      <div className="sticky top-[64px] z-20 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-[82rem] mx-auto px-4">
+          {/* Desktop */}
+          <div className="hidden md:flex items-center overflow-x-auto scrollbar-hide">
+            {DOMAINS.map((domain) => {
+              const count =
+                domain === "All"
+                  ? null
+                  : STACKS.filter((s) => s.domain === domain).reduce((t, s) => t + countItems(s), 0);
+              return (
+                <button
+                  key={domain}
+                  type="button"
+                  onClick={() => chooseDomain(domain)}
+                  aria-pressed={activeDomain === domain}
+                  className={`shrink-0 px-4 py-[18px] text-[12.5px] font-semibold border-b-[3px] transition-all duration-200 whitespace-nowrap ${
+                    activeDomain === domain
+                      ? "border-[#1f6fb2] text-[#1f6fb2]"
+                      : "border-transparent text-gray-500 hover:text-[#1f3a5f] hover:border-gray-300"
+                  }`}
+                >
+                  {domain}
+                  {count !== null && (
+                    <span className="ml-1.5 text-[10px] text-gray-300 font-normal">({count})</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
-          <div className="mt-7 hidden flex-wrap gap-2 md:flex">
-            {DOMAINS.map((domain) => (
-              <button
-                key={domain}
-                type="button"
-                onClick={() => chooseDomain(domain)}
-                aria-pressed={activeDomain === domain}
-                className={`border px-4 py-2 text-[12px] font-bold transition-colors ${
-                  activeDomain === domain
-                    ? "border-[#1f6fb2] bg-[#1f6fb2] text-white"
-                    : "border-[#d4e2ee] bg-white text-slate-600 hover:border-[#FF7A00] hover:text-[#C45500]"
-                }`}
-              >
-                {domain}
-              </button>
-            ))}
-          </div>
-
-          <div className="relative mt-7 md:hidden">
+          {/* Mobile */}
+          <div className="md:hidden py-3 relative">
             <button
               type="button"
-              onClick={() => setMobileFiltersOpen((value) => !value)}
+              onClick={() => setMobileFiltersOpen((v) => !v)}
               aria-expanded={mobileFiltersOpen}
-              className="flex w-full items-center justify-between border border-[#d4e2ee] bg-white px-4 py-3 text-left text-[13px] font-bold text-[#1f3a5f]"
+              className="flex items-center justify-between w-full px-4 py-3 border border-gray-200 text-[13px] font-semibold text-[#1f3a5f] bg-white"
             >
-              {activeDomain === "All" ? "All engineering domains" : activeDomain}
+              <span>{activeDomain === "All" ? "All engineering domains" : activeDomain}</span>
               <ChevronDown
-                className={`h-4 w-4 transition-transform ${
+                className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
                   mobileFiltersOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
-
-            {mobileFiltersOpen && (
-              <div className="absolute z-20 mt-2 w-full border border-[#d4e2ee] bg-white shadow-xl">
-                {DOMAINS.map((domain) => (
-                  <button
-                    key={domain}
-                    type="button"
-                    onClick={() => chooseDomain(domain)}
-                    className={`block w-full border-b border-[#edf2f7] px-4 py-3 text-left text-[13px] last:border-0 ${
-                      domain === activeDomain
-                        ? "bg-[#eff6fc] font-bold text-[#1f6fb2]"
-                        : "text-slate-600"
-                    }`}
-                  >
-                    {domain}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {mobileFiltersOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute top-full left-0 right-0 bg-white border border-gray-200 shadow-xl z-30 max-h-[60vh] overflow-y-auto"
+                >
+                  {DOMAINS.map((domain) => (
+                    <button
+                      key={domain}
+                      type="button"
+                      onClick={() => chooseDomain(domain)}
+                      className={`w-full text-left px-5 py-3 text-[13px] border-b border-gray-100 last:border-0 transition-colors ${
+                        activeDomain === domain
+                          ? "text-[#1f6fb2] bg-[#f0f6ff] font-semibold"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      {domain}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
-          {visibleStacks.map((stack) => (
-            <StackSection key={stack.id} stack={stack} />
+      {/* ── Main content ── */}
+      <div className="max-w-[82rem] mx-auto px-4 pt-14 pb-14">
+        {/* Meta row */}
+        <div className="flex items-center gap-4 mb-10">
+          <p className="text-[12px] text-gray-400">
+            Showing <span className="font-bold text-[#1f3a5f]">{visibleStacks.length}</span> of{" "}
+            <span className="font-bold text-[#1f3a5f]">{STACKS.length}</span> engineering domains
+            {activeDomain !== "All" && (
+              <>
+                {" "}
+                — <span className="text-[#1f6fb2] font-semibold">{activeDomain}</span>
+              </>
+            )}
+          </p>
+          {activeDomain !== "All" && (
+            <button
+              type="button"
+              onClick={() => chooseDomain("All")}
+              className="text-[11.5px] text-gray-400 hover:text-[#1f6fb2] underline underline-offset-2 transition-colors"
+            >
+              Clear filter
+            </button>
+          )}
+          <div className="flex-1 h-px bg-blue-100" />
+          <span className="hidden sm:block text-[11px] text-gray-300 font-medium">
+            {totalTechnologyEntries} capabilities across the delivery lifecycle
+          </span>
+        </div>
+
+        <div>
+          {visibleStacks.map((stack, index) => (
+            <StackSection key={stack.id} stack={stack} index={index} />
           ))}
         </div>
-      </section>
+      </div>
 
-      <section className="border-y border-[#dce7f1] bg-[#f7fafc] py-16 lg:py-20">
-        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)]">
+      {/* ── How we select technology ── */}
+      <div className="border-t border-gray-200 bg-white">
+        <div className="max-w-[82rem] mx-auto px-4 py-16">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
             <div>
-              <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
+              <p className="text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.15em] mb-4">
                 How we select technology
               </p>
-
-              <h2 className="mt-4 font-serif text-[34px] leading-tight text-[#1f3a5f]">
+              <h2 className="text-[28px] lg:text-[36px] font-serif text-[#1f3a5f] leading-tight max-w-[520px]">
                 Right-sized architecture, not a preset stack.
               </h2>
-
-              <p className="mt-5 text-[14px] leading-relaxed text-slate-600">
-                The best stack is the one that serves the operating reality of
-                your product—not simply the one that is fashionable today.
-              </p>
             </div>
-
-            <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {[
-                ["01", "Requirements", "Users, workflows, constraints, and the outcomes that matter."],
-                ["02", "Architecture", "Data, integrations, scale, security, and operating model."],
-                ["03", "Delivery", "Development, testing, CI/CD, release process, and ownership."],
-                ["04", "Operate & improve", "Monitoring, support, optimisation, and continuous evolution."],
-              ].map(([number, title, text]) => (
-                <li key={number} className="border border-[#dce7f1] bg-white p-5">
-                  <span className="font-mono text-[11px] font-bold text-[#FF7A00]">
-                    {number}
-                  </span>
-                  <h3 className="mt-4 text-[15px] font-bold text-[#1f3a5f]">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-[12.5px] leading-relaxed text-slate-500">
-                    {text}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <p className="text-[13px] text-gray-500 leading-[1.85] max-w-[440px]">
+              The best stack is the one that serves the operating reality of your product not simply
+              the one that is fashionable today.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="bg-white py-16 lg:py-20">
-        <div className="mx-auto max-w-[82rem] px-6 lg:px-10">
-          <div className="grid gap-10 border border-[#dce7f1] p-7 lg:grid-cols-[minmax(0,1fr)_390px] lg:p-10">
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {SELECTION_STEPS.map((p, i) => (
+              <li
+                key={p.num}
+                className={[
+                  "group relative px-8 py-8 border-t border-gray-200 hover:bg-[#f7fbff] transition-colors duration-200",
+                  i % 2 !== 0 ? "sm:border-l" : "",
+                  i % 4 !== 0 ? "lg:border-l" : "",
+                ].join(" ")}
+              >
+                <span
+                  className="absolute top-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 bg-gradient-to-r from-[#1f6fb2] to-[#6db3f2]"
+                  aria-hidden="true"
+                />
+                <span className="block text-[10px] font-mono text-gray-300 tracking-[0.2em] mb-4">{p.num}</span>
+                <h3 className="text-[15px] font-bold text-[#1f3a5f] mb-3 group-hover:text-[#1f6fb2] transition-colors duration-200">
+                  {p.title}
+                </h3>
+                <div className="w-6 h-[2px] bg-[#1f6fb2] mb-3 opacity-20 group-hover:opacity-100 group-hover:w-10 transition-all duration-300" />
+                <p className="text-[13px] text-gray-500 leading-[1.85]">{p.desc}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="w-full h-px bg-gray-200" />
+        </div>
+      </div>
+
+      {/* ── Engineering standards ── */}
+      <div className="border-t border-gray-200 bg-[#f5f5f5]">
+        <div className="max-w-[82rem] mx-auto px-4 py-16">
+          <div className="grid gap-10 border border-gray-200 bg-white p-7 lg:grid-cols-[minmax(0,1fr)_390px] lg:p-10">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center bg-[#eff6fc] text-[#1f6fb2]">
+              <div className="flex h-10 w-10 items-center justify-center bg-[#eaf4ff] text-[#1f6fb2]">
                 <LockKeyhole className="h-5 w-5" />
               </div>
 
-              <p className="mt-6 text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#1f6fb2]">
-                Engineering standards & frameworks
+              <p className="mt-6 text-[11px] font-bold text-[#1f6fb2] uppercase tracking-[0.15em] mb-4">
+                Engineering standards &amp; frameworks
               </p>
 
-              <h2 className="mt-4 font-serif text-[32px] leading-tight text-[#1f3a5f]">
+              <h2 className="text-[28px] lg:text-[32px] font-serif text-[#1f3a5f] leading-tight">
                 Built with production discipline.
               </h2>
 
-              <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-slate-600">
-                We use recognised engineering and security frameworks to guide
-                implementation. These are practices we engineer against, not
-                claims of certification or attestation unless stated separately.
+              <p className="mt-4 max-w-2xl text-[13px] leading-[1.85] text-gray-500">
+                We use recognised engineering and security frameworks to guide implementation. These
+                are practices we engineer against, not claims of certification or attestation unless
+                stated separately.
               </p>
             </div>
 
             <div className="grid content-start gap-3 sm:grid-cols-2">
-              {[
-                "OWASP Top 10 & OWASP ASVS",
-                "Secure SDLC & DevSecOps",
-                "CIS Benchmarks",
-                "NIST Cybersecurity Framework",
-                "ISO/IEC 27001-aligned practices",
-                "GDPR, NDPR, HIPAA & PCI DSS considerations",
-                "12-Factor App principles",
-                "Documented testing & quality controls",
-              ].map((item) => (
+              {STANDARDS.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 border border-[#e1eaf2] bg-[#f9fbfd] px-4 py-3"
+                  className="flex items-start gap-3 border border-gray-200 bg-[#f9fafb] px-4 py-3 hover:border-[#1f6fb2] transition-colors duration-150"
                 >
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#1f6fb2]" />
-                  <span className="text-[12.5px] font-medium leading-relaxed text-slate-600">
-                    {item}
-                  </span>
+                  <span className="text-[12px] font-medium leading-relaxed text-gray-500">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="relative overflow-hidden bg-[#07111f]">
-        <div className="absolute -right-32 -top-20 h-80 w-80 rounded-full bg-[#1f6fb2]/20 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-48 w-96 bg-[#FF7A00]/10 blur-3xl" />
-
-        <div className="relative mx-auto grid max-w-[82rem] gap-10 px-6 py-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:px-10 lg:py-20">
+      {/* ── CTA strip ── */}
+      <div className="border-t border-gray-200 bg-[#1f3a5f]">
+        <div className="max-w-[82rem] mx-auto px-4 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#ffd1ae]">
+            <p className="text-[11px] font-bold text-[#60a5fa] uppercase tracking-[0.15em] mb-3">
               Have a technology requirement?
             </p>
-
-            <h2 className="mt-4 font-serif text-[34px] leading-tight text-white lg:text-[42px]">
+            <h3 className="text-[26px] font-serif font-normal text-white mb-2 leading-snug">
               Tell us what you are building.
-            </h2>
-
-            <p className="mt-4 max-w-2xl text-[14px] leading-relaxed text-white/65">
-              We will help you assess the architecture, technology trade-offs,
-              delivery plan, and the practical path to a secure production system.
+            </h3>
+            <p className="text-[14px] text-white/50 max-w-lg leading-relaxed">
+              We will help you assess the architecture, technology trade-offs, delivery plan, and the
+              practical path to a secure production system.
             </p>
           </div>
-
-          <Link
-            href="/contact"
-            className="inline-flex w-fit items-center justify-center gap-2 bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00] px-6 py-4 text-[13px] font-bold text-white transition-transform hover:scale-[1.02]"
-          >
-            Start a scoping conversation
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-bold text-white
+                bg-gradient-to-br from-[#7A2E00] via-[#C45500] to-[#FF7A00]
+                hover:from-[#8F3600] hover:via-[#D46000] hover:to-[#FF8C1A]
+                ring-1 ring-inset ring-white/30 transition-all duration-200"
+            >
+              Start a scoping conversation <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2.5 px-8 py-4 text-[13.5px] font-semibold border border-white/30 text-white hover:bg-white/10 transition-all duration-200"
+            >
+              See our work
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
