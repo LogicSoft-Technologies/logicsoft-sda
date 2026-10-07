@@ -28,7 +28,7 @@ const PROJECTS = [
     image: "/images/telefya-main.png",
     year: "2026",
     outcome: "60% efficiency gain",
-    tags: ["Vue.js", "Python", "PostgreSQL", "Google Maps API"],
+    tags: ["Next.js", "TypeScript", "mediasoup","WebRTC"],
     resultBg: "#fff7ed", resultText: "#d97706",
     },
   {
