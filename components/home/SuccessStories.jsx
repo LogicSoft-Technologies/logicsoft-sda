@@ -6,7 +6,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Briefcase } from "lucide-react";
 
-const CATEGORIES = ["All", "Enterprise", "FinTech", "Healthcare", "E-Commerce", "UI/UX"];
+const CATEGORIES = ["All", "Enterprise", "FinTech", "Healthcare", "E-Commerce", "UI/UX", "Mobile Apps",];
 
 const PROJECTS = [
   {
@@ -76,6 +76,18 @@ const PROJECTS = [
   resultBg: "#eff6ff", resultText: "#2563eb",
   tags: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
 },
+{
+  id: 7,
+  title: "Telefya Mobile App",
+  client: "Telefya",
+  category: "Mobile Apps",
+  image: "/images/telefya_app.png",
+  year: "2025",
+  duration: "10 months",
+  outcome: "Communication Platform",
+  resultBg: "#eff6ff", resultText: "#2563eb",
+   tags: ["React Native", "Expo", "NativeWind", "TypeScript", "Node.js", "Express", "PostgreSQL", "MediaSoup", "Native WebRTC"],
+}
 ];
 
 export default function SuccessStories() {
