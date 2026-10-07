@@ -64,6 +64,18 @@ const PROJECTS = [
   resultBg: "#e0f2fe", resultText: "#0284c7",
   tags: ["WordPress", "CMS", "SEO", "Content Management"],
 },
+{
+  id: 6,
+  title: "Business Acquisition Marketplace",
+  client: "Asset Busters",
+  category: "FinTech / Marketplace",
+  image: "/images/assetbusters.png",
+  year: "2026",
+  duration: "12 months",
+  outcome: "Investment Marketplace",
+  resultBg: "#eff6ff", resultText: "#2563eb",
+  tags: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+},
 ];
 
 export default function SuccessStories() {

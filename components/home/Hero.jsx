@@ -9,7 +9,7 @@ import HeroColorMood from "@/components/shared/HeroColorMood";
 const INDUSTRIES = [
   {
     label: "FinTech & Banking",
-    image: "/images/fintech.png",
+    image: "/images/assetbusters.png",
     cta: "Our FinTech & Banking portfolio →",
     link: "/portfolio/fintech",
   },
