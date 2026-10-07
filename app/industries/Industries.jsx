@@ -22,7 +22,7 @@ const INDUSTRIES = [
     accentBg: "#eaf4ff",
     headline: "Core banking, payments, and digital finance at scale.",
     description:
-      "We build core banking integrations, lending platforms, digital wallets, PCI DSS-compliant payment gateways, and regulatory reporting systems. From neobanks to tier-1 financial institutions we speak the language of money.",
+      "We build core banking integrations, lending platforms, digital wallets, PCI DSS-compliant payment gateways, and regulatory reporting systems. From neobanks to tier-1 financial institutions, we speak the language of money.",
     services: ["Core Banking Integration", "Payment Gateway Development", "KYC & AML Systems", "Regulatory Reporting", "Digital Wallet Platforms"],
     stats: [{ value: "40+", label: "FinTech projects" }, { value: "PCI DSS", label: "Compliant" }],
     featured: true,
@@ -38,7 +38,7 @@ const INDUSTRIES = [
     accentBg: "#ecfdf5",
     headline: "HIPAA-aligned systems for modern healthcare networks.",
     description:
-      "Electronic health records, patient management systems, telemedicine platforms, medical billing automation, and clinical data analytics all engineered to meet HIPAA and local regulatory standards.",
+      "Electronic health records, patient management systems, telemedicine platforms, medical billing automation, and clinical data analytics, all engineered to meet HIPAA and local regulatory standards.",
     services: ["EHR & EMR Systems", "Telemedicine Platforms", "Medical Billing Automation", "Clinical Analytics", "Patient Portals"],
     stats: [{ value: "18mo", label: "Zero downtime" }, { value: "HIPAA", label: "Aligned" }],
     featured: true,
@@ -54,7 +54,7 @@ const INDUSTRIES = [
     accentBg: "#fdf2f8",
     headline: "Multi-channel retail platforms built to convert and scale.",
     description:
-      "From multi-vendor marketplaces to headless commerce storefronts we build retail platforms with real-time inventory sync, dynamic pricing engines, logistics integrations, and omnichannel customer experiences.",
+      "From multi-vendor marketplaces to headless commerce storefronts, we build retail platforms with real-time inventory sync, dynamic pricing engines, logistics integrations, and omnichannel customer experiences.",
     services: ["Multi-Vendor Marketplaces", "Headless Commerce", "Inventory Management", "Loyalty & CRM Systems", "Logistics API Integration"],
     stats: [{ value: "40+", label: "Stores unified" }, { value: "3×", label: "Conversion lift" }],
     featured: true,
@@ -118,7 +118,7 @@ const INDUSTRIES = [
     accentBg: "#f5f3ff",
     headline: "Learning platforms that scale from classroom to continent.",
     description:
-      "Learning management systems, student information platforms, adaptive learning engines, virtual classrooms, and institutional analytics built for K-12, tertiary, and corporate training environments.",
+      "Learning management systems, student information platforms, adaptive learning engines, virtual classrooms, and institutional analytics  built for K-12, tertiary, and corporate training environments.",
     services: ["Learning Management Systems", "Student Information Platforms", "Adaptive Learning Engines", "Virtual Classrooms", "Institutional Analytics"],
     stats: [{ value: "50K+", label: "Learners served" }, { value: "99.9%", label: "Uptime SLA" }],
     featured: false,
