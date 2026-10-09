@@ -938,7 +938,7 @@ export default function LiveChatWidget() {
           _id: "2",
           name: "Saviour Oviahon",
           role: "Technical Lead",
-          whatsappNumber: "2347034302056",
+          whatsappNumber: "2348110914219",
           whatsappGreeting:
             "Hi Saviour! I've just been speaking with Treasure, the Logicsoft receptionist, and I have a few technical questions.",
           avatarInitials: "SO",

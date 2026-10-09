@@ -22,7 +22,7 @@ const STAFF = [
   {
     name: "Oviahon Saviour",
     role: "Technical Lead",
-    whatsappNumber: "2347034302056",
+    whatsappNumber: "2348110914219",
     whatsappGreeting:
       "Hi Oviahon! I was just chatting with the Logicsoft AI assistant and I have some technical questions.",
     avatarInitials: "TA",
