@@ -85,12 +85,12 @@ const OFFICES = [
   {
     city: "Benin", country: "Nigeria",  flag: "NG",
     address: "15 Akenzua Street, GRA",
-    phone: "+234 7034302054",  timezone: "WAT · UTC+1", primary: false,
+    phone: "+234 811 091 4219",  timezone: "WAT · UTC+1", primary: false,
   },
   {
     city: "Abuja",  country: "Nigeria",             flag: "NG",
     address: "12 Aguiyi Ironsi Street, Maitama District",
-    phone: "+234 9135257462",   timezone: "WAT · UTC+1", primary: false,
+    phone: "+234 913 525 7462",   timezone: "WAT · UTC+1", primary: false,
   },
 ];
 
